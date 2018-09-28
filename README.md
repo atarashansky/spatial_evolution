@@ -2,11 +2,11 @@
 2D evolutionary spatial simulation of cells
 
 ## Requirements:
-    -`scipy`
-    -`numpy`
-    -`matplotlib`
-    -`PIL`
-    -`ffmpeg`
+-`scipy`
+-`numpy`
+-`matplotlib`
+-`PIL`
+-`ffmpeg`
     
 ## Installation:
     
