@@ -2,11 +2,11 @@
 2D evolutionary spatial simulation of cells
 
 Requirements:
-    scipy
+    `scipy
     numpy
     matplotlib
     PIL
-    ffmpeg
+    ffmpeg`
     
 installation:
     `git clone https://github.com/atarashansky/spatial_evolution.git
