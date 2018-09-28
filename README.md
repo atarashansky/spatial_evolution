@@ -52,4 +52,4 @@ Example line to run code:
 import evolution
 evolution.evolve("example_input_image.png","Data Folder","run1",numgen=50000)
 ```
-
+Input image should be white where you want cells and black where you don't want cells. For now, please make sure that there is a boundary of black around the image.
