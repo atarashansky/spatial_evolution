@@ -1,6 +1,21 @@
 # spatial_evolution
 2D evolutionary spatial simulation of cells
 
+Requirements:
+    scipy
+    numpy
+    matplotlib
+    PIL
+    ffmpeg
+    
+installation:
+    git clone https://github.com/atarashansky/spatial_evolution.git
+    cd spatial_evolution
+    conda create env_name python=3.6
+    conda activate env_name
+    python setup.py install
+    conda install -c menpo ffmpeg
+
 mandatory arguments:
 
     "input_image" -- path to the input image
