@@ -47,5 +47,9 @@ The output data are:
     "_primary.mp4" -- movie of primary mutations
     "_extant.mp4" -- movie of extant mutations
 
-
+Example line to run code:
+```
+import evolution
+evolution.evolve("example_input_image.png","Data Folder","run1",numgen=50000)
+```
 
