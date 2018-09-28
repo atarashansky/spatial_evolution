@@ -2,7 +2,7 @@
 2D evolutionary spatial simulation of cells
 
 Requirements:
-    `scipy
+    `scipy\\
     numpy
     matplotlib
     PIL
