@@ -2,25 +2,21 @@ from setuptools import setup
 
 setup(
 
-    name='sam-algorithm', 
+    name='spatial-evo', 
 
-    version='0.1.7',  
+    version='0.1.0',  
 
-    description='The Self-Assembling-Manifold algorithm', 
-
-    long_description="The Self-Assembling-Manifold algorithm for analyzing single-cell RNA sequencing data.",  
+    description='2D Spatial evolution', 
 
     long_description_content_type='text/markdown',  
     
-    url='https://github.com/atarashansky/self-assembling-manifold',  
+    url='https://github.com/atarashansky/spatial_evolution',  
 
     author='Alexander J. Tarashansky',  
 
     author_email='tarashan@stanford.edu',  
 
-    keywords='scrnaseq analysis manifold reconstruction',  
-
-    py_modules=["SAM","utilities"],
+    py_modules=["evolution"],
     
-    install_requires=['pandas','numpy','scikit-learn','matplotlib','scipy','anndata','scanpy']
+    install_requires=['numpy','scipy','matplotlib','Pillow']
 )
