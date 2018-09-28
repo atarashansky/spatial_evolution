@@ -5,7 +5,7 @@
     scipy
     numpy
     matplotlib
-    PIL
+    Pillow
     ffmpeg
     
 ## Installation:
