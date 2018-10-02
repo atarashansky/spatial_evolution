@@ -14,15 +14,9 @@ import time;
 import matplotlib.animation as manimation
 from matplotlib.ticker import FormatStrFormatter
 import errno
-
-def find_boundary(im):
-    return np.argmax(np.sum(np.abs(np.diff(im,axis=1)),axis=0))
     
 def data_visualization(tree_info,all_nodes,colorsx,sbins,threshold=0.2,height=400,sample=250,deltat=1200,do_plot=True,GG=1e5,WIDTH=800):
     print('Execution started 1');
-    
-    
-    
     
     width=int(tree_info.shape[2])   
     if(WIDTH < tree_info.shape[2]):
