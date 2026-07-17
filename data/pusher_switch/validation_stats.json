@@ -1,0 +1,167 @@
+{
+ "gate1_bitexact_mu_c0": {
+  "pass": true,
+  "seed": 42,
+  "checks": [
+   "t_fix",
+   "winner",
+   "final_fit",
+   "final_label",
+   "h_t",
+   "com",
+   "ben_log"
+  ],
+  "note": "mixed kernel with mu_c=0,b=0 consumes identical RNG stream to dB kernel"
+ },
+ "gate2_allpusher_vs_bd": {
+  "pass": true,
+  "n_per_arm": 200,
+  "geometry": "96x32 neutral, b=20*p_die",
+  "clock": "turnovers: bd=t*p_die, mixed=t*b*occ",
+  "ks_p": 0.394,
+  "ks_D": 0.09,
+  "censored": 0,
+  "median_turnovers": {
+   "bd": 5403,
+   "mixed": 5329
+  }
+ },
+ "calibration_bstar": {
+  "bracket": [
+   0.04,
+   0.044
+  ],
+  "in_p_die_units": [
+   1.46,
+   1.6
+  ],
+  "p_die": 0.027455,
+  "naive_front_balance": 0.0732,
+  "protocol": "4-col patch, 192x64, neutral, 300-400 seeds/point",
+  "coarse_grid": [
+   0.02,
+   0.04,
+   0.06,
+   0.08,
+   0.11,
+   0.15
+  ],
+  "refine_grid": [
+   0.044,
+   0.048,
+   0.052,
+   0.056
+  ],
+  "p_persist": {
+   "0.020": 0.0,
+   "0.040": 0.0,
+   "0.044": 1.0,
+   "0.048": 1.0,
+   "0.052": 1.0,
+   "0.056": 1.0,
+   "0.060": 1.0,
+   "0.080": 1.0,
+   "0.110": 1.0,
+   "0.150": 1.0
+  },
+  "b50_logistic": 0.04126,
+  "b50_ci95_bootstrap": [
+   0.04121,
+   0.04132
+  ],
+  "b50_in_p_die_units": 1.503,
+  "b50_ci95_in_p_die_units": [
+   1.501,
+   1.505
+  ],
+  "logistic_scale": 0.000243,
+  "fit_n_runs": 4440,
+  "bootstrap_n": 2000,
+  "fine_transition_grid": [
+   0.0405,
+   0.041,
+   0.0415,
+   0.042,
+   0.0425,
+   0.043,
+   0.0435
+  ],
+  "fine_transition_p_persist_500k": {
+   "0.0405": 0.0,
+   "0.0410": 0.25,
+   "0.0415": 0.867,
+   "0.0420": 0.933,
+   "0.0425": 0.933,
+   "0.0430": 1.0,
+   "0.0435": 1.0
+  },
+  "note": "bracket kept for reference; b50 is the point estimate (P(persist)=0.5, logistic in b, stratified bootstrap CI; 500k-frame horizon for the fine grid)"
+ },
+ "coexistence_composition_neutral_750k": {
+  "b": [
+   0.05,
+   0.0625,
+   0.075,
+   0.1,
+   0.15
+  ],
+  "push_frac": [
+   0.338,
+   0.504,
+   0.598,
+   0.71,
+   0.817
+  ],
+  "dB_frac": [
+   0.661,
+   0.489,
+   0.383,
+   0.228,
+   0.0
+  ],
+  "vac_frac": [
+   0.002,
+   0.007,
+   0.019,
+   0.062,
+   0.183
+  ],
+  "closed_bound_1_minus_pd_over_b": [
+   0.451,
+   0.561,
+   0.634,
+   0.725,
+   0.817
+  ]
+ },
+ "main_ensemble": {
+  "n_runs": 4320,
+  "geometry": "192x64",
+  "window_frames": 750000,
+  "grids": {
+   "b_sweep": "mu_c=1e-5, b in {0.05,0.0625,0.075,0.10,0.15}, clock in {rel,abs}, 3 loads, 120 seeds",
+   "incidence": "b=0.075 rel, mu_c in {1e-7,1e-6,1e-5}, 3 loads, 120 seeds"
+  },
+  "headline": {
+   "rel_clock_plateau_b0.075": {
+    "neutral": 0.601,
+    "L1e-3": 0.599,
+    "L4e-3": 0.595
+   },
+   "abs_clock_loaded_plateau": 0.0,
+   "abs_clock_loaded_p_establish": 1.0,
+   "t_first_switch_median": {
+    "1e-07": 9900,
+    "1e-06": 1000,
+    "1e-05": 111
+   }
+  },
+  "aggressiveness_ratios_b_over_bstar": [
+   1.21,
+   1.51,
+   1.82,
+   2.42,
+   3.64
+  ]
+ }
+}

@@ -1,0 +1,22 @@
+quantity,Lambda,value,CI,note
+nu0 exact (SOS enumeration),-,0.010296,-,"exact; linear in Laplacian, zero interaction"
+"nu one-frame MC, sharp imprint, neutral, k=4",0,0.01087,"[0.00808, 0.01375]",4000 x 1-frame continuations
+"kinetic stiffness, aged real states, neutral",0,0.01015,"[0.00958, 0.01071]","1-frame regression on local Laplacian, overhangs included"
+"kinetic stiffness, aged real states, loaded",4e-3,0.01065,"[0.01018, 0.01117]","same, mud=0.1 sd=0.04"
+"mode decay nu, k=8, my runs",0,0.01023,"[0.00942, 0.01121]","48 seeds, 384x128, early-window fit"
+"mode decay nu, k=8, my runs",4e-3,0.01100,"[0.01024, 0.01185]",48 seeds
+"mode decay nu, k=4, my runs (t<=1500)",0,0.01061,"[0.00880, 0.01221]",wandering-limited
+"mode decay nu, k=4, my runs (t<=1500)",4e-3,0.01271,"[0.01086, 0.01497]",wandering-limited
+"mode decay nu, k=4, track raw data refit",0,0.00914,"[0.00661, 0.01044]","60 seeds, their runs, my fit"
+"mode decay nu, k=4, track raw data refit",4e-3,0.01297,"[0.01131, 0.01466]",60 seeds
+"bare noise D0 (my long runs, init slope)",0,0.0349,-,"flat start, k=4..12, t<=300"
+"bare noise D0 (my long runs, init slope)",1e-3,0.0321,-,
+"bare noise D0 (my long runs, init slope)",4e-3,0.0335,-,
+"FDT excess S/S_FDT, k=9-64, my runs",0,10.2,-,"late window, all runs alive"
+"FDT excess S/S_FDT, k=9-64, my runs",1e-3,3.8 (alive) / 4.1 (survivors),-,survivorship changes <7%
+"FDT excess S/S_FDT, k=9-64, my runs",4e-3,3.5 (alive) / 3.6 (survivors),-,survivorship changes <3%
+fixers/survivors spectral ratio at equal age (60-120k),1e-3,0.94-1.08 (k=2-127),1sd 0.85-1.29,no survivorship bias
+fixers/survivors spectral ratio at equal age (60-120k),4e-3,0.89-1.04 (k=2-127),1sd 0.78-1.24,no survivorship bias
+fraction of strips fixed by 300k frames (384x256),0 / 1e-3 / 4e-3,0% / 70% / 62%,-,median t_fix ~194k / 166k
+"high-q plateau drift per 100k frames, loaded k=32",4e-3,-2%,-,steady state
+"high-q growth per 100k frames, neutral k=32",0,+22%,-,still coarsening at 300k

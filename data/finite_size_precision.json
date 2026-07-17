@@ -1,0 +1,464 @@
+{
+ "source_files": {
+  "finite_size": "/root/src/.operon/orgs/01582c35-9930-414e-93b9-0dd852675b4d/artifacts/proj_bcf0e7b390f2/89e3e751-5b7f-4f74-9021-4b9b4068a1bc/v43b435f4_finite_size.parquet",
+  "finite_size_summary": "/root/src/.operon/orgs/01582c35-9930-414e-93b9-0dd852675b4d/artifacts/proj_bcf0e7b390f2/5d1f0728-4b99-43cc-91cf-233dd9cd80bd/vb256c234_finite_size_summary.json",
+  "tfix": "/root/src/.operon/orgs/01582c35-9930-414e-93b9-0dd852675b4d/artifacts/proj_bcf0e7b390f2/13c7f761-ec3d-4981-844b-74e4fb1b3098/v9cac3e79_tfix_results.parquet",
+  "reduced_summary": "/root/src/.operon/orgs/01582c35-9930-414e-93b9-0dd852675b4d/artifacts/proj_bcf0e7b390f2/f1ee5b77-c5b9-4184-8299-c23d36afaf36/vb5c3de2c_reduced_model_summary.json",
+  "reduced_runs": "/root/src/.operon/orgs/01582c35-9930-414e-93b9-0dd852675b4d/artifacts/proj_bcf0e7b390f2/b8a1cac2-6168-4e84-924f-7e9eb3411599/v41dbc98f_reduced_model_runs.parquet"
+ },
+ "B1": {
+  "method": "log10-log10 OLS on arm medians; 95% CI by run-level bootstrap (resample runs within each arm with replacement, 5,000 replicates, seed 20260716); local exponent = log(med(L2)/med(L1))/log(2) between consecutive L_long at L_short=32",
+  "arms": {
+   "loaded|96x32": {
+    "n_runs": 200,
+    "median_t_fix_frames": 38504.5,
+    "n_censored": 0
+   },
+   "loaded|192x32": {
+    "n_runs": 200,
+    "median_t_fix_frames": 84393.0,
+    "n_censored": 0
+   },
+   "loaded|192x128": {
+    "n_runs": 200,
+    "median_t_fix_frames": 105212.0,
+    "n_censored": 0
+   },
+   "loaded|384x32": {
+    "n_runs": 200,
+    "median_t_fix_frames": 189946.5,
+    "n_censored": 0
+   },
+   "loaded|384x128": {
+    "n_runs": 200,
+    "median_t_fix_frames": 218806.5,
+    "n_censored": 0
+   },
+   "loaded|768x32": {
+    "n_runs": 200,
+    "median_t_fix_frames": 435221.5,
+    "n_censored": 0
+   },
+   "neutral|96x32": {
+    "n_runs": 150,
+    "median_t_fix_frames": 199390.0,
+    "n_censored": 0
+   },
+   "neutral|192x32": {
+    "n_runs": 150,
+    "median_t_fix_frames": 607064.5,
+    "n_censored": 0
+   },
+   "neutral|192x128": {
+    "n_runs": 100,
+    "median_t_fix_frames": 1562189.5,
+    "n_censored": 0
+   },
+   "neutral|384x32": {
+    "n_runs": 150,
+    "median_t_fix_frames": 1965205.5,
+    "n_censored": 0
+   },
+   "neutral|384x128": {
+    "n_runs": 60,
+    "median_t_fix_frames": 3436415.0,
+    "n_censored": 0
+   },
+   "neutral|768x32": {
+    "n_runs": 60,
+    "median_t_fix_frames": 7258605.5,
+    "n_censored": 0
+   }
+  },
+  "refit_exponents": {
+   "neutral_Lshort32": {
+    "zeta": 1.7253,
+    "ci95": [
+     1.5985,
+     1.897
+    ],
+    "prefactor": 72.49,
+    "n_points": 4,
+    "L_long_range": [
+     96,
+     768
+    ]
+   },
+   "loaded_Lshort32": {
+    "zeta": 1.1666,
+    "ci95": [
+     1.113,
+     1.224
+    ],
+    "prefactor": 185.32,
+    "n_points": 4,
+    "L_long_range": [
+     96,
+     768
+    ]
+   },
+   "neutral_Lshort128_two_point_slope": {
+    "zeta": 1.1373,
+    "ci95": [
+     0.8254,
+     1.7827
+    ],
+    "note": "two geometries only (192, 384) - a slope, not a fit"
+   },
+   "loaded_Lshort128_two_point_slope": {
+    "zeta": 1.0564,
+    "ci95": [
+     0.9014,
+     1.17
+    ],
+    "note": "two geometries only (192, 384) - a slope, not a fit"
+   }
+  },
+  "local_exponents_Lshort32": {
+   "neutral": {
+    "96-192": [
+     1.6063,
+     [
+      1.2456,
+      1.8939
+     ]
+    ],
+    "192-384": [
+     1.6948,
+     [
+      1.3646,
+      2.0824
+     ]
+    ],
+    "384-768": [
+     1.885,
+     [
+      1.4595,
+      2.4578
+     ]
+    ]
+   },
+   "loaded": {
+    "96-192": [
+     1.1321,
+     [
+      0.9362,
+      1.3196
+     ]
+    ],
+    "192-384": [
+     1.1704,
+     [
+      1.0038,
+      1.3417
+     ]
+    ],
+    "384-768": [
+     1.1962,
+     [
+      1.0408,
+      1.3571
+     ]
+    ]
+   }
+  },
+  "crossover_tests": {
+   "neutral": {
+    "trend_per_octave": 0.1394,
+    "trend_ci95": [
+     -0.1277,
+     0.4733
+    ],
+    "last_minus_first_local_exponent": 0.2788,
+    "diff_ci95": [
+     -0.2554,
+     0.9465
+    ],
+    "loglog_quadratic_curvature": 0.2315,
+    "curv_ci95": [
+     -0.2121,
+     0.7861
+    ],
+    "corroborating_diagnostic": "med T_fix / L_long^2 falls monotonically 21.6 -> 16.5 -> 13.3 -> 12.3 (finite_size_summary.neutral_law): not yet at the diffusive L^2 plateau",
+    "verdict": "local exponent drifts upward toward 2 in point value (1.61 -> 1.69 -> 1.88) but the drift is not significant at n=4 geometries (trend CI spans 0). Data are consistent BOTH with a pure power law of exponent ~1.7 and with pre-asymptotic approach to the diffusive exponent 2; they do not distinguish."
+   },
+   "loaded": {
+    "trend_per_octave": 0.032,
+    "trend_ci95": [
+     -0.0895,
+     0.1618
+    ],
+    "last_minus_first_local_exponent": 0.0641,
+    "diff_ci95": [
+     -0.179,
+     0.3235
+    ],
+    "loglog_quadratic_curvature": 0.0532,
+    "curv_ci95": [
+     -0.1487,
+     0.2687
+    ],
+    "verdict": "no detectable curvature; local exponents 1.13, 1.17, 1.20 consistent with a single power law over 96-768"
+   }
+  },
+  "acceleration": {
+   "ratios_Lshort32": {
+    "96": [
+     5.18,
+     [
+      4.44,
+      6.19
+     ]
+    ],
+    "192": [
+     7.19,
+     [
+      5.71,
+      8.63
+     ]
+    ],
+    "384": [
+     10.35,
+     [
+      8.54,
+      12.04
+     ]
+    ],
+    "768": [
+     16.68,
+     [
+      12.75,
+      24.0
+     ]
+    ]
+   },
+   "ratios_Lshort128": {
+    "192": [
+     14.85,
+     [
+      12.22,
+      17.64
+     ]
+    ],
+    "384": [
+     15.71,
+     [
+      13.45,
+      23.54
+     ]
+    ]
+   },
+   "exponent_Lshort32": {
+    "d_zeta": 0.5586,
+    "ci95": [
+     0.4172,
+     0.7369
+    ],
+    "L_long_range": [
+     96,
+     768
+    ],
+    "n_points": 4
+   },
+   "two_point_slope_Lshort128": {
+    "value": 0.081,
+    "ci95": [
+     -0.24,
+     0.7501
+    ],
+    "note": "consistent with zero over 192->384 at L_short=128"
+   }
+  },
+  "replacement_sentence": "Over the measured range L_long = 96-768 sites (L_short = 32), the median neutral fixation time scales as T_fix \u221d L_long^\u03b6 with \u03b6 = 1.73 (95% CI 1.60-1.90; four geometries, run-level bootstrap), and the loaded fixation time with \u03b6 = 1.17 (1.11-1.22); their ratio, the acceleration, grows as L_long^0.56 (0.42-0.74) from 5.2 (4.4-6.2) at L_long = 96 to 16.7 (12.8-24.0) at 768. At L_short = 128 the two available lengths (192, 384) give an acceleration of 14.8 (12.2-17.6) and 15.7 (13.4-23.5).",
+  "not_established": "Nothing beyond L_long = 768 is measured. The neutral exponent is a two-decade-short apparent exponent: its running value rises from 1.61 (96-192) to 1.88 (384-768) toward the diffusive value 2 - a drift the four geometries cannot yet distinguish from zero (trend +0.14 per octave, CI -0.13 to +0.47), so the neutral law, and with it the acceleration exponent, must not be extrapolated to tissue scale; if the neutral arm reaches \u03b6 = 2 asymptotically the asymptotic acceleration exponent would be ~0.8, not 0.57."
+ },
+ "B2": {
+  "data": "six per-geometry sigma_DeltaR values with 95% CIs (finite_size_summary.gap_process.sigma_dR_per_frame); N = clone area = L_long*L_short/2. Per-run gap series are not persisted in the store, so the comparison is on the six geometry values with parametric CI propagation (20,000 lognormal resamples within each geometry's CI).",
+  "isotropic_N_model": {
+   "eta": 0.503,
+   "eta_ci95": [
+    0.4583,
+    0.5471
+   ],
+   "RSS_log": 0.32358,
+   "AIC": -11.52,
+   "max_multiplicative_residual": 1.543
+  },
+  "isotropic_N_model_eta_fixed_half": {
+   "RSS_log": 0.32363,
+   "AIC": -13.52,
+   "note": "visually indistinguishable from the free-eta fit (eta=0.503)"
+  },
+  "anisotropic_model": {
+   "p_Llong": 0.7383,
+   "p_ci95": [
+    0.6774,
+    0.8
+   ],
+   "q_Lshort": 0.2603,
+   "q_ci95": [
+    0.1957,
+    0.3243
+   ],
+   "p_plus_q": 0.9986,
+   "p_plus_q_ci95": [
+    0.9092,
+    1.0869
+   ],
+   "RSS_log": 0.02638,
+   "AIC": -24.56,
+   "max_multiplicative_residual": 1.084
+  },
+  "comparison": {
+   "delta_AIC_iso_minus_ani": 13.04,
+   "nested_F": 33.8,
+   "nested_F_p": 0.0101,
+   "caveat": "n = 6 geometries; AICc penalises the 3-parameter model heavily at this n (AICc iso +0.48 vs ani +15.4) - the decisive evidence is the controlled same-area pair, not the information criterion",
+   "same_area_pair": {
+    "N": 12288,
+    "sigma_192x128": 9.92660485607606e-07,
+    "ci_192x128": [
+     8.913699814165191e-07,
+     1.0965052239740193e-06
+    ],
+    "sigma_768x32": 5.137447194237976e-07,
+    "ci_768x32": [
+     4.628746706255182e-07,
+     5.667968273501203e-07
+    ],
+    "ratio": 1.9322057202280296
+   }
+  },
+  "winner": "anisotropic (L_long^-0.74 L_short^-0.26). The isotropic exponent eta = 0.50 [0.46, 0.55] is a real feature of the pooled fit but the isotropic model is falsified by the equal-area pair: 192x128 and 768x32 both have N = 12,288 yet sigma_DeltaR differs 1.93x with non-overlapping CIs.",
+  "replacement_sentence": "The per-run scatter of the ratchet-rate difference decays with domain size, but not with clone area alone: fitting the six geometries gives \u03c3_\u0394R \u221d L_long^-0.74 (0.68-0.80) L_short^-0.26 (0.20-0.32), and two geometries of equal clone area (192x128 vs 768x32, N = 12,288) differ 1.93-fold (non-overlapping CIs), which the naive central-limit form \u03c3_\u0394R \u221d N^-1/2 forbids. The exponents sum to 1.00 (0.91-1.09), so \u03c3_\u0394R is intensive in the total area only up to this anisotropy. [State as an empirical fit; the six geometries are not a factorial design, so p and q are partially confounded and no mechanism is claimed.]",
+  "not_established": "The mechanistic origin of the anisotropy (weight -0.74 along the interface-crossing direction vs -0.26 across it). The six geometries do not form a factorial grid (L_long spans 8x, L_short 4x, only two shared columns), so the exponent pair is a description of these six points, not a validated law; the pooled N^-0.50 [0.46, 0.55] fit should be reported only as the leading term with a 1.5x worst-case residual."
+ },
+ "B3": {
+  "provenance_table": [
+   {
+    "quantity": "kappa (front-response coefficient beta = dv_front/d(gap), 6 geometry values)",
+    "measured_from": "the 1,200 LOADED FIXATION runs of finite_size.parquet (per-run gap series n_g logged only in loaded arms; beta reported per fixation geometry in finite_size_summary.gap_process.front_response_beta)",
+    "disjoint_from_Tfix_runs_it_predicts": false,
+    "note": "same trajectories that supply the medians the collapse describes"
+   },
+   {
+    "quantity": "sigma_DeltaR (per-frame s.d. of the per-run ratchet-rate difference)",
+    "measured_from": "the same 1,200 LOADED FIXATION runs (gap trajectories g(t) of the fixation ensemble; finite_size_summary.gap_process.sigma_dR_per_frame, keyed by the six fixation geometries)",
+    "disjoint_from_Tfix_runs_it_predicts": false,
+    "note": "neutral arms carry n_g = 0: no gap series exist outside the loaded fixation runs"
+   },
+   {
+    "quantity": "C = 1.64 (single collapse constant)",
+    "measured_from": "mean over the six fixation geometries of T_fix,med / sqrt(L_long/(beta*sigma_DeltaR)); i.e. FITTED to the six medians",
+    "disjoint_from_Tfix_runs_it_predicts": false,
+    "note": "one fitted constant, CV 6.8%; leave-one-geometry-out C predicts the held-out median to within -8.5%..+14.6%"
+   },
+   {
+    "quantity": "drift response v(g) = a*g^alpha (reduced-model input)",
+    "measured_from": "B_drift ensemble: 400 runs, mud = 0 (no ratchet), imposed static fitness ratio g0 in {0.005..0.08}, no mutation, 40 seeds/point (reduced_model_runs.parquet exp='B_drift')",
+    "disjoint_from_Tfix_runs_it_predicts": true,
+    "note": "seeds 130xxxx vs tfix seeds 200000-202749; different kernel campaign"
+   },
+   {
+    "quantity": "zero-mode diffusivity D0(L_short, t) (reduced-model input)",
+    "measured_from": "D_neutral ensemble: 320 neutral runs (mud=0), 64 seeds x L_short in {16..256}, dense h_bar logging (exp='D_neutral')",
+    "disjoint_from_Tfix_runs_it_predicts": true,
+    "note": "neutral MSD input to the SDE prediction"
+   },
+   {
+    "quantity": "D_g(N) gap diffusivity power law (reduced-model input)",
+    "measured_from": "A_load ensemble: 840 loaded runs (120 seeds x 7 conditions), reduced-model campaign (seeds 1360000-1366119, kernel evolution_strip_re.py)",
+    "disjoint_from_Tfix_runs_it_predicts": true,
+    "note": "replicate ensemble at the same dynamics; disjoint in seeds/kernel from the tfix L_short-scan runs (seeds 200000-202749) whose exponent it is compared against"
+   }
+  ],
+  "collapse_check": {
+   "C_values": {
+    "96x32": 1.678,
+    "192x32": 1.589,
+    "384x32": 1.604,
+    "768x32": 1.462,
+    "192x128": 1.764,
+    "384x128": 1.742
+   },
+   "C_mean": 1.64,
+   "C_sd": 0.112,
+   "cv": 0.068,
+   "leave_one_geometry_out": {
+    "96x32": {
+     "C_own": 1.6782,
+     "C_from_other5": 1.6321,
+     "T_pred": 37448.212,
+     "T_obs": 38504.5,
+     "rel_err": -0.0274
+    },
+    "192x32": {
+     "C_own": 1.5893,
+     "C_from_other5": 1.6499,
+     "T_pred": 87607.8971,
+     "T_obs": 84393.0,
+     "rel_err": 0.0381
+    },
+    "384x32": {
+     "C_own": 1.6035,
+     "C_from_other5": 1.647,
+     "T_pred": 195100.7293,
+     "T_obs": 189946.5,
+     "rel_err": 0.0271
+    },
+    "768x32": {
+     "C_own": 1.4615,
+     "C_from_other5": 1.6754,
+     "T_pred": 498917.2184,
+     "T_obs": 435221.5,
+     "rel_err": 0.1464
+    },
+    "192x128": {
+     "C_own": 1.7642,
+     "C_from_other5": 1.6149,
+     "T_pred": 96311.6729,
+     "T_obs": 105212.0,
+     "rel_err": -0.0846
+    },
+    "384x128": {
+     "C_own": 1.742,
+     "C_from_other5": 1.6193,
+     "T_pred": 203396.9594,
+     "T_obs": 218806.5,
+     "rel_err": -0.0704
+    }
+   },
+   "loo_rel_error_range": [
+    -0.0846,
+    0.1464
+   ],
+   "verdict": "the collapse has ONE fitted constant (C) and TWO inputs (beta, sigma_DeltaR) measured from the very fixation runs it describes; it is a consistency check (one number rescales six curves to within +/-15%), not an independent prediction"
+  },
+  "genuine_out_of_sample": {
+   "reduced_model_loaded_Lshort_exponent": {
+    "predicted": 0.1496,
+    "measured_refit": 0.1732,
+    "measured_ci95": [
+     0.1249,
+     0.2132
+    ],
+    "measured_source": "tfix_results.parquet exp=1 regime='load', 200 runs per L_short in {16,32,64,128,256}, 4,000-replicate run bootstrap",
+    "prediction_inputs": "D_g(N) from A_load reduced-model replicates + v(g) from B_drift + D0 from D_neutral; no T_fix medians or the L_short exponent enter the SDE"
+   },
+   "reduced_model_neutral_Lshort_exponent": {
+    "predicted": 0.9422,
+    "measured_refit": 0.6571,
+    "measured_ci95": [
+     0.5904,
+     0.7187
+    ],
+    "verdict": "prediction FAILS (0.94 vs 0.66) - honest to report alongside the loaded success"
+   },
+   "absolute_scale": "the same prediction under-shoots the loaded median T_fix by a factor 0.52-0.62 at every L_short (loaded_pred_over_lattice in reduced_model_summary), i.e. it gets the exponent, not the prefactor",
+   "collapse_LOO": "a partial internal check only: predicting each geometry's median from the other five via the shared C gives relative errors -8.5% to +14.6% (still uses beta and sigma from the target geometry's own runs)"
+  },
+  "honest_description": "A one-constant scaling collapse: with the front-response coefficient \u03b2 and the rate-scatter \u03c3_\u0394R both measured from the loaded fixation ensemble itself, a single fitted constant C = 1.64 \u00b1 0.11 (CV 6.8%) places all six geometries on T_fix = C sqrt(L_long/(\u03b2 \u03c3_\u0394R)); this demonstrates internal consistency of the ballistic-sweep form, not a parameter-free prediction. The genuinely out-of-sample test is the reduced model: with D_g, v(g) and D_0 measured in three separate ensembles (none containing the L_short-scan fixation runs), the simulated SDE predicts a loaded exponent of 0.150 in L_short against 0.173 [0.125, 0.213] measured, while under-predicting the absolute scale by ~0.6x and failing on the neutral exponent (0.94 predicted vs 0.66 measured).",
+  "not_established": "Any claim of a 'parameter-free' or 'no fitted parameter' collapse. C is fitted; beta and sigma_DeltaR are same-ensemble inputs. Also unestablished: absolute-scale predictivity of the reduced model (systematically ~0.6x) and its neutral-arm exponent."
+ },
+ "B4_reference": "see experiment_spec.json"
+}

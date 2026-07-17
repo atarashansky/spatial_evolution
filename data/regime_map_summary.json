@@ -1,0 +1,354 @@
+{
+ "geometry": {
+  "new_runs": {
+   "L_long": 192,
+   "L_short": 32,
+   "numgen_cap": 20000000,
+   "sampling": 100000,
+   "mub": 0.0
+  },
+  "reused_tail_ensemble": {
+   "L_long": 192,
+   "L_short": 32,
+   "numgen_cap": 20000000,
+   "sampling": 100000,
+   "mub": 0.0
+  },
+  "reused_tfix_results_diagonal": {
+   "L_long": 192,
+   "L_short": 32,
+   "numgen_cap": 5000000,
+   "sampling": 5000,
+   "mub": 0.0,
+   "note": "numgen cap and sampling differ from task spec (5M/5k vs 20M/100k); inconsequential for t_fix medians \u2014 0 censored, all medians < 130k generations, well under the 5M cap"
+  }
+ },
+ "neutral_anchor": {
+  "n": 200,
+  "median_t_fix": 580331.5,
+  "ci95": [
+   485287.0,
+   690626.5
+  ],
+  "censored": 0,
+  "source": "new"
+ },
+ "grid": {
+  "Lambda": [
+   0.00025,
+   0.0005,
+   0.001,
+   0.002,
+   0.004
+  ],
+  "sd": [
+   0.0025,
+   0.01,
+   0.04,
+   0.16
+  ]
+ },
+ "skipped_cells": [
+  {
+   "Lambda": 0.004,
+   "sd": 0.0025,
+   "mud": 1.6,
+   "reason": "mud > 0.8"
+  }
+ ],
+ "reused_sources": {
+  "0.00025|0.0025": "tfix_results.parquet (diagonal, mud=0.1)",
+  "0.001|0.01": "tail_ensemble.parquet",
+  "0.001|0.04": "tail_ensemble.parquet",
+  "0.001|0.16": "tail_ensemble.parquet",
+  "0.004|0.04": "tfix_results.parquet (diagonal, mud=0.1)"
+ },
+ "cells": [
+  {
+   "Lambda": 0.00025,
+   "sd": 0.0025,
+   "mud": 0.1,
+   "n": 250,
+   "censored": 0,
+   "median_t_fix": 124021.0,
+   "ci95": [
+    118785.0,
+    127672.0
+   ],
+   "ratio_to_neutral": 0.21370716564584208,
+   "log10_ratio": -0.6701809156072226,
+   "source": "tfix_results.parquet"
+  },
+  {
+   "Lambda": 0.00025,
+   "sd": 0.01,
+   "mud": 0.025,
+   "n": 150,
+   "censored": 0,
+   "median_t_fix": 110998.0,
+   "ci95": [
+    106015.0,
+    118161.0
+   ],
+   "ratio_to_neutral": 0.19126654334634602,
+   "log10_ratio": -0.7183609908237227,
+   "source": "new"
+  },
+  {
+   "Lambda": 0.00025,
+   "sd": 0.04,
+   "mud": 0.00625,
+   "n": 150,
+   "censored": 0,
+   "median_t_fix": 481676.0,
+   "ci95": [
+    403265.0,
+    530724.0
+   ],
+   "ratio_to_neutral": 0.8300014732958663,
+   "log10_ratio": -0.08092113672790555,
+   "source": "new"
+  },
+  {
+   "Lambda": 0.00025,
+   "sd": 0.16,
+   "mud": 0.0015625,
+   "n": 150,
+   "censored": 0,
+   "median_t_fix": 650243.0,
+   "ci95": [
+    536348.0,
+    747395.0
+   ],
+   "ratio_to_neutral": 1.1204682151494447,
+   "log10_ratio": 0.04939954120932678,
+   "source": "new"
+  },
+  {
+   "Lambda": 0.0005,
+   "sd": 0.0025,
+   "mud": 0.2,
+   "n": 150,
+   "censored": 0,
+   "median_t_fix": 107005.5,
+   "ci95": [
+    100485.0,
+    116007.5
+   ],
+   "ratio_to_neutral": 0.184386854754567,
+   "log10_ratio": -0.7342700437544541,
+   "source": "new"
+  },
+  {
+   "Lambda": 0.0005,
+   "sd": 0.01,
+   "mud": 0.05,
+   "n": 150,
+   "censored": 0,
+   "median_t_fix": 100929.5,
+   "ci95": [
+    86155.0,
+    114132.5
+   ],
+   "ratio_to_neutral": 0.1739169767624194,
+   "log10_ratio": -0.7596580226299664,
+   "source": "new"
+  },
+  {
+   "Lambda": 0.0005,
+   "sd": 0.04,
+   "mud": 0.0125,
+   "n": 150,
+   "censored": 0,
+   "median_t_fix": 386408.5,
+   "ci95": [
+    347822.0,
+    473599.0
+   ],
+   "ratio_to_neutral": 0.6658409891587825,
+   "log10_ratio": -0.1766294731962634,
+   "source": "new"
+  },
+  {
+   "Lambda": 0.0005,
+   "sd": 0.16,
+   "mud": 0.003125,
+   "n": 150,
+   "censored": 0,
+   "median_t_fix": 596982.0,
+   "ci95": [
+    496305.5,
+    655781.5
+   ],
+   "ratio_to_neutral": 1.0286913600243999,
+   "log10_ratio": 0.012285092211893847,
+   "source": "new"
+  },
+  {
+   "Lambda": 0.001,
+   "sd": 0.0025,
+   "mud": 0.4,
+   "n": 150,
+   "censored": 0,
+   "median_t_fix": 94563.0,
+   "ci95": [
+    89245.0,
+    102420.0
+   ],
+   "ratio_to_neutral": 0.16294652280636154,
+   "log10_ratio": -0.7879549027172306,
+   "source": "new"
+  },
+  {
+   "Lambda": 0.001,
+   "sd": 0.01,
+   "mud": 0.1,
+   "n": 400,
+   "censored": 0,
+   "median_t_fix": 81880.5,
+   "ci95": [
+    78547.0,
+    87213.0
+   ],
+   "ratio_to_neutral": 0.14109263412377235,
+   "log10_ratio": -0.8504956584136251,
+   "source": "tail_ensemble.parquet"
+  },
+  {
+   "Lambda": 0.001,
+   "sd": 0.04,
+   "mud": 0.025,
+   "n": 400,
+   "censored": 0,
+   "median_t_fix": 295259.5,
+   "ci95": [
+    259878.0,
+    326128.0
+   ],
+   "ratio_to_neutral": 0.5087773108990292,
+   "log10_ratio": -0.2934722644411351,
+   "source": "tail_ensemble.parquet"
+  },
+  {
+   "Lambda": 0.001,
+   "sd": 0.16,
+   "mud": 0.00625,
+   "n": 400,
+   "censored": 0,
+   "median_t_fix": 543983.0,
+   "ci95": [
+    504126.5,
+    605218.0
+   ],
+   "ratio_to_neutral": 0.9373659710010571,
+   "log10_ratio": -0.028090816630524512,
+   "source": "tail_ensemble.parquet"
+  },
+  {
+   "Lambda": 0.002,
+   "sd": 0.0025,
+   "mud": 0.8,
+   "n": 150,
+   "censored": 0,
+   "median_t_fix": 98426.0,
+   "ci95": [
+    89287.0,
+    107492.1
+   ],
+   "ratio_to_neutral": 0.16960306307687933,
+   "log10_ratio": -0.7705663085334695,
+   "source": "new"
+  },
+  {
+   "Lambda": 0.002,
+   "sd": 0.01,
+   "mud": 0.2,
+   "n": 150,
+   "censored": 0,
+   "median_t_fix": 75620.5,
+   "ci95": [
+    68739.5,
+    78843.9375
+   ],
+   "ratio_to_neutral": 0.13030569596859726,
+   "log10_ratio": -0.8850365998387287,
+   "source": "new"
+  },
+  {
+   "Lambda": 0.002,
+   "sd": 0.04,
+   "mud": 0.05,
+   "n": 150,
+   "censored": 0,
+   "median_t_fix": 85402.0,
+   "ci95": [
+    77218.6125,
+    93290.0
+   ],
+   "ratio_to_neutral": 0.14716071762432334,
+   "log10_ratio": -0.8322081030132142,
+   "source": "new"
+  },
+  {
+   "Lambda": 0.002,
+   "sd": 0.16,
+   "mud": 0.0125,
+   "n": 150,
+   "censored": 0,
+   "median_t_fix": 545211.5,
+   "ci95": [
+    502568.0,
+    638141.5
+   ],
+   "ratio_to_neutral": 0.9394828645351838,
+   "log10_ratio": -0.027111136697762005,
+   "source": "new"
+  },
+  {
+   "Lambda": 0.004,
+   "sd": 0.01,
+   "mud": 0.4,
+   "n": 150,
+   "censored": 0,
+   "median_t_fix": 70455.0,
+   "ci95": [
+    64552.0,
+    81567.0
+   ],
+   "ratio_to_neutral": 0.12140474883751787,
+   "log10_ratio": -0.9157643251751525,
+   "source": "new"
+  },
+  {
+   "Lambda": 0.004,
+   "sd": 0.04,
+   "mud": 0.1,
+   "n": 250,
+   "censored": 0,
+   "median_t_fix": 66080.5,
+   "ci95": [
+    61730.0,
+    70167.5
+   ],
+   "ratio_to_neutral": 0.11386681577684479,
+   "log10_ratio": -0.9436028239876614,
+   "source": "tfix_results.parquet"
+  },
+  {
+   "Lambda": 0.004,
+   "sd": 0.16,
+   "mud": 0.025,
+   "n": 150,
+   "censored": 0,
+   "median_t_fix": 466551.5,
+   "ci95": [
+    404522.0,
+    577614.0
+   ],
+   "ratio_to_neutral": 0.8039396448409228,
+   "log10_ratio": -0.09477655435656952,
+   "source": "new"
+  }
+ ],
+ "grid_parquet_scope": "new runs only (2,300 rows); reused-cell rows remain in their source artifacts, provenance per cell in cells[].source"
+}

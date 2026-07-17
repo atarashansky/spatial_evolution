@@ -1,0 +1,287 @@
+{
+ "test": "Clone-area intensivity of the fixed-s_d Muller-ratchet-stall crossing mu_d* (s_d = 0.01, mu_b = 0), extended to a 16x range in N = L_long x L_short",
+ "protocol": "Verbatim replication of the ridge-campaign T3/N-anchor protocol from ridge_law.parquet: dB Moran strip kernel evolution_strip.py (moore=True, periodic_y=True), dt=2400, sb=0.1, mub=0, avg=1.16e-5, sampling=10000, prof_halfwidth=64, ben_cap=1024, com_stride=0; loaded ladders sd=0.01 with mud in {0.002,0.004,0.006,0.008,0.012}; neutral anchors sd=mud=0; frame caps 40e6 (49k-cell) / 60e6 (98k-cell) -> zero censoring. Crossing estimator = the parent's prior code, verbatim: log-linear interpolation of median T_fix(load)/median T_fix(neutral) between the rungs bracketing 0.5; 95% CI from 1000 bootstrap resamples of the runs within EVERY rung AND of the neutral anchor (numpy default_rng(1)).",
+ "estimator_check": "reproduces the three prior crossings exactly (0.0043/0.0046/0.0037 with matching CIs)",
+ "primary_axis_note": "N varied along L_short at fixed L_long=192 (the axis of the prior three points 192x32/64/128). The brief's literal 384x128/768x128 would extend L_long; ridge_law.parquet has no L_long!=192 rows, so 384x128 was run as an aspect-ratio control at N=49,152 instead of as a primary point.",
+ "mud_star_by_N": [
+  {
+   "N": 6144,
+   "geometry": "192x32",
+   "kind": "prior",
+   "mud_star": 0.0043,
+   "ci_low": 0.0032,
+   "ci_high": 0.0054,
+   "mud_star_over_sd": 0.43,
+   "ratio_ci": [
+    0.32,
+    0.54
+   ],
+   "n_runs_per_rung": 150,
+   "n_neutral": 150
+  },
+  {
+   "N": 12288,
+   "geometry": "192x64",
+   "kind": "prior",
+   "mud_star": 0.0046,
+   "ci_low": 0.0041,
+   "ci_high": 0.005200000000000001,
+   "mud_star_over_sd": 0.45999999999999996,
+   "ratio_ci": [
+    0.41000000000000003,
+    0.52
+   ],
+   "n_runs_per_rung": 150,
+   "n_neutral": 150
+  },
+  {
+   "N": 24576,
+   "geometry": "192x128",
+   "kind": "prior",
+   "mud_star": 0.0037,
+   "ci_low": 0.0023,
+   "ci_high": 0.0053,
+   "mud_star_over_sd": 0.37,
+   "ratio_ci": [
+    0.22999999999999998,
+    0.53
+   ],
+   "n_runs_per_rung": 150,
+   "n_neutral": 150
+  },
+  {
+   "N": 49152,
+   "geometry": "192x256",
+   "kind": "new",
+   "mud_star": 0.003909427083329764,
+   "ci_low": 0.003157653719586654,
+   "ci_high": 0.005335176439237538,
+   "mud_star_over_sd": 0.3909427083329764,
+   "ratio_ci": [
+    0.3157653719586654,
+    0.5335176439237538
+   ],
+   "n_runs_per_rung": 150,
+   "n_neutral": 150
+  },
+  {
+   "N": 98304,
+   "geometry": "192x512",
+   "kind": "new",
+   "mud_star": 0.005083230312570167,
+   "ci_low": 0.00341280929873966,
+   "ci_high": 0.006752379182881961,
+   "mud_star_over_sd": 0.5083230312570167,
+   "ratio_ci": [
+    0.34128092987396597,
+    0.675237918288196
+   ],
+   "n_runs_per_rung": 60,
+   "n_neutral": 60
+  }
+ ],
+ "neutral_anchor_medians": {
+  "192x32": 540332,
+  "192x64": 911888,
+  "192x128": 1636165,
+  "192x256": 2833296.0,
+  "192x512": 5538820.0
+ },
+ "weighted_fit_mudstar_over_sd_vs_log10N": {
+  "slope": -0.01743131337816274,
+  "intercept": 0.5151533707705332,
+  "se_slope": 0.06455947938196156,
+  "ci_slope_t": [
+   -0.222888390008326,
+   0.18802576325200054
+  ],
+  "ci_slope_z": [
+   -0.1439678929668074,
+   0.10910526621048193
+  ],
+  "ci_slope_boot": [
+   -0.14513039022935204,
+   0.1108243945307081
+  ],
+  "weighted_mean": 0.44170621525519976,
+  "chi2_flat": 2.792977319230248,
+  "dof_flat": 4,
+  "p_flat_consistent": 0.5930455607033557,
+  "chi2_linear": 2.720075195122075,
+  "tcrit": 3.1824463052837078
+ },
+ "weighted_mean_ci": [
+  0.4001078434876951,
+  0.4833045870227044
+ ],
+ "rung_tables": {
+  "192x256": [
+   {
+    "mud": 0.002,
+    "n": 150,
+    "median_ratio": 0.703983276014931,
+    "ratio_ci_low": 0.6216748033662429,
+    "ratio_ci_high": 0.8619077166854567,
+    "median_tfix": 1994593.0,
+    "censored": 0
+   },
+   {
+    "mud": 0.004,
+    "n": 150,
+    "median_ratio": 0.4930294963886583,
+    "ratio_ci_low": 0.4203719815081507,
+    "ratio_ci_high": 0.5893021602443221,
+    "median_tfix": 1396898.5,
+    "censored": 0
+   },
+   {
+    "mud": 0.006,
+    "n": 150,
+    "median_ratio": 0.4037029664390872,
+    "ratio_ci_low": 0.34476617648247115,
+    "ratio_ci_high": 0.47169810015974706,
+    "median_tfix": 1143810.0,
+    "censored": 0
+   },
+   {
+    "mud": 0.008,
+    "n": 150,
+    "median_ratio": 0.24356738582908385,
+    "ratio_ci_low": 0.204260309686911,
+    "ratio_ci_high": 0.2844985178292715,
+    "median_tfix": 690098.5,
+    "censored": 0
+   },
+   {
+    "mud": 0.012,
+    "n": 150,
+    "median_ratio": 0.10345106900232097,
+    "ratio_ci_low": 0.09181836380615682,
+    "ratio_ci_high": 0.11955823720744187,
+    "median_tfix": 293107.5,
+    "censored": 0
+   }
+  ],
+  "192x512": [
+   {
+    "mud": 0.002,
+    "n": 60,
+    "median_ratio": 0.9878886658169068,
+    "ratio_ci_low": 0.6450246260143603,
+    "ratio_ci_high": 1.2550593208246263,
+    "median_tfix": 5471737.5,
+    "censored": 0
+   },
+   {
+    "mud": 0.004,
+    "n": 60,
+    "median_ratio": 0.6295226239523942,
+    "ratio_ci_low": 0.42489385908376215,
+    "ratio_ci_high": 0.7532035132565602,
+    "median_tfix": 3486812.5,
+    "censored": 0
+   },
+   {
+    "mud": 0.006,
+    "n": 60,
+    "median_ratio": 0.41038497369475807,
+    "ratio_ci_low": 0.2806216443037967,
+    "ratio_ci_high": 0.6162653205385346,
+    "median_tfix": 2273048.5,
+    "censored": 0
+   },
+   {
+    "mud": 0.008,
+    "n": 60,
+    "median_ratio": 0.31202503421306343,
+    "ratio_ci_low": 0.20583095843917118,
+    "ratio_ci_high": 0.4293514252139981,
+    "median_tfix": 1728250.5,
+    "censored": 0
+   },
+   {
+    "mud": 0.012,
+    "n": 60,
+    "median_ratio": 0.07811871481651327,
+    "ratio_ci_low": 0.05501046866817811,
+    "ratio_ci_high": 0.09320818367398852,
+    "median_tfix": 432685.5,
+    "censored": 0
+   }
+  ],
+  "384x128": [
+   {
+    "mud": 0.002,
+    "n": 150,
+    "median_ratio": 0.8002274412359979,
+    "ratio_ci_low": 0.6051412377969467,
+    "ratio_ci_high": 0.9957834313251275,
+    "median_tfix": 2715495.0,
+    "censored": 0
+   },
+   {
+    "mud": 0.004,
+    "n": 150,
+    "median_ratio": 0.7443686339734379,
+    "ratio_ci_low": 0.6143404700839614,
+    "ratio_ci_high": 0.9085711196498939,
+    "median_tfix": 2525943.5,
+    "censored": 0
+   },
+   {
+    "mud": 0.006,
+    "n": 150,
+    "median_ratio": 0.47313243574888225,
+    "ratio_ci_low": 0.3492733739000598,
+    "ratio_ci_high": 0.5890746090134481,
+    "median_tfix": 1605529.5,
+    "censored": 0
+   },
+   {
+    "mud": 0.008,
+    "n": 150,
+    "median_ratio": 0.27520743182951396,
+    "ratio_ci_low": 0.21707465461428183,
+    "ratio_ci_high": 0.3467659254999927,
+    "median_tfix": 933890.0,
+    "censored": 0
+   },
+   {
+    "mud": 0.012,
+    "n": 150,
+    "median_ratio": 0.12584649514175147,
+    "ratio_ci_low": 0.09681471312121918,
+    "ratio_ci_high": 0.15257955697047118,
+    "median_tfix": 427048.0,
+    "censored": 0
+   }
+  ]
+ },
+ "aspect_control_384x128": {
+  "N": 49152,
+  "mud_star": 0.005763792800595147,
+  "ci_low": 0.004763664766101683,
+  "ci_high": 0.006547212006599828,
+  "ratio": 0.5763792800595147,
+  "ratio_ci": [
+   0.4763664766101683,
+   0.6547212006599827
+  ],
+  "n_neutral": 149,
+  "neutral_median": 3393404.0,
+  "status": "complete (150 runs/rung, 149 neutral)",
+  "same_N_contrast": {
+   "delta_mud_star": 0.0018543657172653827,
+   "boot_ci": [
+    4.791422978451121e-05,
+    0.003034809915236434
+   ],
+   "p_diff_le_0": 0.0235
+  }
+ },
+ "runs_completed_new": 2159,
+ "censored": 0,
+ "errors": 0,
+ "verdict": "Intensive over the full 16x range in clone area (N = 6,144 to 98,304 cells): weighted slope of mu_d*/s_d vs log10(N) = -0.017 per decade, 95% CI [-0.223, +0.188], consistent with 0; all five points are consistent with a single flat value (chi2 = 2.79 on 4 dof, p = 0.59); weighted mean mu_d*/s_d = 0.442 [95% CI 0.400, 0.483]. Bound: the reduced-power N = 98,304 arm limits the excluded drift to |slope| >~ 0.2 per decade. Caveat (aspect control): at fixed N = 49,152 the wide-aspect geometry 384x128 gives mu_d*/s_d = 0.58 [0.48, 0.65] versus 0.39 [0.32, 0.53] at 192x256 (bootstrap difference in mu_d* = +0.0019 [+0.0000, +0.0030], P(diff<=0) = 0.024): the threshold is intensive in clone AREA along the paper's fixed-L_long axis but is not aspect-invariant, so N alone does not fully parameterize it.",
+ "data": "intensivity_ext.parquet (this campaign; groups N49k/T3_49k=192x256, N98k/T3_98k=192x512, N49kW/T3_49kW=384x128 control) + prior three points from ridge_law.parquet"
+}

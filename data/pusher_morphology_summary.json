@@ -1,0 +1,62 @@
+{
+ "porosity": {
+  "fitness_loaded": [
+   0.0160033616570737,
+   0.014733767773740147,
+   0.019322342954260198,
+   24
+  ],
+  "neutral": [
+   0.026210074038285507,
+   0.02278157321446412,
+   0.029374094343387794,
+   24
+  ],
+  "pusher_loaded": [
+   0.4270370120228889,
+   0.4227618243243243,
+   0.430345938612854,
+   24
+  ],
+  "pusher_neutral": [
+   0.4003107397097372,
+   0.4001181378521062,
+   0.4005305039787798,
+   24
+  ]
+ },
+ "porosity_ratio_pusher_over_fitness_loaded": [
+  26.6,
+  22.2,
+  29.0
+ ],
+ "pusher_porosity_load_dependence": [
+  0.027,
+  0.022,
+  0.03
+ ],
+ "late_width_exponent": {
+  "pusher_loaded": 0.03,
+  "pusher_neutral": -0.45,
+  "fitness_loaded": -1.09,
+  "neutral": 0.03
+ },
+ "n_runs": {
+  "invasion_window_ensemble": 96,
+  "coarse_ensemble": 160,
+  "geometry": "768x64 (fine) and 384x64 (coarse)",
+  "runs_total_new": 258
+ },
+ "params": {
+  "b_rate": 0.075,
+  "b_over_bstar": 1.8,
+  "sd": 0.04,
+  "mud": 0.1,
+  "Lambda_loaded": 0.004,
+  "pusher_cols": [
+   1,
+   12
+  ],
+  "snap_stride_fine": 250
+ }
+}

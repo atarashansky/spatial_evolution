@@ -1,0 +1,572 @@
+{
+ "campaign": "Track B finite-size scaling",
+ "kernel": "evolution_strip_fs.py (bit-exact vs evolution_strip.py, validated 3 seeds)",
+ "load": {
+  "mud": 0.1,
+  "sd": 0.01,
+  "Lambda": 0.001
+ },
+ "neutral": {
+  "mud": 0.0
+ },
+ "p_die": 0.02745603861282997,
+ "frame_cap": 40000000,
+ "total_censored": 0,
+ "n_runs": 1870,
+ "n_errors": 0,
+ "arms": [
+  {
+   "regime": "loaded",
+   "L_long": 96,
+   "L_short": 32,
+   "n": 200,
+   "n_censored": 0,
+   "median_t_fix_frames": 38504.5,
+   "ci95_frames": [
+    35783.0,
+    42176.0
+   ],
+   "divisions_per_site": 1057.1810387677115,
+   "mean_wall_s": 0.27212206352036444
+  },
+  {
+   "regime": "loaded",
+   "L_long": 192,
+   "L_short": 32,
+   "n": 200,
+   "n_censored": 0,
+   "median_t_fix_frames": 84393.0,
+   "ci95_frames": [
+    76976.0,
+    93487.0
+   ],
+   "divisions_per_site": 2317.0974666525594,
+   "mean_wall_s": 1.1429820567835123
+  },
+  {
+   "regime": "loaded",
+   "L_long": 384,
+   "L_short": 32,
+   "n": 200,
+   "n_censored": 0,
+   "median_t_fix_frames": 189946.5,
+   "ci95_frames": [
+    176927.0,
+    204705.5
+   ],
+   "divisions_per_site": 5215.178438371908,
+   "mean_wall_s": 5.064918803642504
+  },
+  {
+   "regime": "loaded",
+   "L_long": 768,
+   "L_short": 32,
+   "n": 200,
+   "n_censored": 0,
+   "median_t_fix_frames": 435221.5,
+   "ci95_frames": [
+    400721.0,
+    482111.0
+   ],
+   "divisions_per_site": 11949.458309133779,
+   "mean_wall_s": 22.082836802131496
+  },
+  {
+   "regime": "loaded",
+   "L_long": 192,
+   "L_short": 128,
+   "n": 200,
+   "n_censored": 0,
+   "median_t_fix_frames": 105212.0,
+   "ci95_frames": [
+    100237.5,
+    113083.0
+   ],
+   "divisions_per_site": 2888.7047345330666,
+   "mean_wall_s": 5.517333415769972
+  },
+  {
+   "regime": "loaded",
+   "L_long": 384,
+   "L_short": 128,
+   "n": 200,
+   "n_censored": 0,
+   "median_t_fix_frames": 218806.5,
+   "ci95_frames": [
+    201615.0,
+    232655.61250000002
+   ],
+   "divisions_per_site": 6007.559712738181,
+   "mean_wall_s": 23.153745465129614
+  },
+  {
+   "regime": "neutral",
+   "L_long": 96,
+   "L_short": 32,
+   "n": 150,
+   "n_censored": 0,
+   "median_t_fix_frames": 199390.0,
+   "ci95_frames": [
+    180929.45,
+    235440.5
+   ],
+   "divisions_per_site": 5474.459539012168,
+   "mean_wall_s": 1.4844538142097492
+  },
+  {
+   "regime": "neutral",
+   "L_long": 192,
+   "L_short": 32,
+   "n": 150,
+   "n_censored": 0,
+   "median_t_fix_frames": 607064.5,
+   "ci95_frames": [
+    488213.0,
+    709287.5
+   ],
+   "divisions_per_site": 16667.58635247832,
+   "mean_wall_s": 8.4965730487369
+  },
+  {
+   "regime": "neutral",
+   "L_long": 384,
+   "L_short": 32,
+   "n": 150,
+   "n_censored": 0,
+   "median_t_fix_frames": 1965205.5,
+   "ci95_frames": [
+    1661580.0,
+    2245841.4375
+   ],
+   "divisions_per_site": 53956.75809014583,
+   "mean_wall_s": 52.85692438429221
+  },
+  {
+   "regime": "neutral",
+   "L_long": 768,
+   "L_short": 32,
+   "n": 60,
+   "n_censored": 0,
+   "median_t_fix_frames": 7258605.5,
+   "ci95_frames": [
+    5712007.5,
+    10375540.062500019
+   ],
+   "divisions_per_site": 199292.5528833,
+   "mean_wall_s": 392.8972825384233
+  },
+  {
+   "regime": "neutral",
+   "L_long": 192,
+   "L_short": 128,
+   "n": 100,
+   "n_censored": 0,
+   "median_t_fix_frames": 1562189.5,
+   "ci95_frames": [
+    1288067.0,
+    1843900.5
+   ],
+   "divisions_per_site": 42891.535232557544,
+   "mean_wall_s": 90.47529318097048
+  },
+  {
+   "regime": "neutral",
+   "L_long": 384,
+   "L_short": 128,
+   "n": 60,
+   "n_censored": 0,
+   "median_t_fix_frames": 3436415.0,
+   "ci95_frames": [
+    2908368.0,
+    5122745.5
+   ],
+   "divisions_per_site": 94350.3429297081,
+   "mean_wall_s": 560.2347177130171
+  }
+ ],
+ "powerlaw_fits": {
+  "neutral_Lshort32": {
+   "zeta": 1.7252840810227394,
+   "zeta_ci95": [
+    1.5993803202635828,
+    1.9039504582331679
+   ],
+   "r2": 0.9986617548074134,
+   "prefactor": 72.48955803310623,
+   "L_long_values": [
+    96,
+    192,
+    384,
+    768
+   ],
+   "note": "4 points"
+  },
+  "neutral_Lshort128": {
+   "zeta": 1.1373348057011219,
+   "zeta_ci95": [
+    0.8187134059430682,
+    1.797441839001033
+   ],
+   "r2": 1.0,
+   "prefactor": 3952.3532635600964,
+   "L_long_values": [
+    192,
+    384
+   ],
+   "note": "2 points only, exponent is a slope not a fit"
+  },
+  "loaded_Lshort32": {
+   "zeta": 1.1654938971019373,
+   "zeta_ci95": [
+    1.110842606780438,
+    1.2254103254744757
+   ],
+   "r2": 0.9998644042747149,
+   "prefactor": 186.3827272013887,
+   "L_long_values": [
+    96,
+    192,
+    384,
+    768
+   ],
+   "note": "4 points"
+  },
+  "loaded_Lshort128": {
+   "zeta": 1.0559837557256826,
+   "zeta_ci95": [
+    0.8975912891187418,
+    1.1737447633818938
+   ],
+   "r2": 1.0,
+   "prefactor": 408.25947179836015,
+   "L_long_values": [
+    192,
+    384
+   ],
+   "note": "2 points only, exponent is a slope not a fit"
+  }
+ },
+ "acceleration_ratios": [
+  {
+   "L_short": 32,
+   "L_long": 96,
+   "ratio": 5.178355776597541,
+   "ci95": [
+    4.453362060714993,
+    6.192845632616644
+   ]
+  },
+  {
+   "L_short": 32,
+   "L_long": 192,
+   "ratio": 7.193303947009823,
+   "ci95": [
+    5.662597665400315,
+    8.663497115063702
+   ]
+  },
+  {
+   "L_short": 32,
+   "L_long": 384,
+   "ratio": 10.346100086076868,
+   "ci95": [
+    8.614236511691281,
+    12.060588048473006
+   ]
+  },
+  {
+   "L_short": 32,
+   "L_long": 768,
+   "ratio": 16.677957086219315,
+   "ci95": [
+    12.84161241410688,
+    24.526918210899645
+   ]
+  },
+  {
+   "L_short": 128,
+   "L_long": 192,
+   "ratio": 14.848016385963579,
+   "ci95": [
+    12.174200101011841,
+    17.71499307862281
+   ]
+  },
+  {
+   "L_short": 128,
+   "L_long": 384,
+   "ratio": 15.705269267594884,
+   "ci95": [
+    13.395818512943784,
+    23.680905072688127
+   ]
+  }
+ ],
+ "ratio_scaling": {
+  "L_short": 32,
+  "d_zeta": 0.5651796765374181,
+  "d_zeta_ci95": [
+   0.4180283092742069,
+   0.7430556914213343
+  ],
+  "r2": 0.9920597255395601,
+  "statement": "acceleration ratio grows as L_long^0.57 [0.42,0.74]; not intensive"
+ },
+ "gap_process": {
+  "growth_exponent_alpha_Var_g": {
+   "96x32": 1.89,
+   "192x32": 1.9,
+   "384x32": 1.75,
+   "768x32": 1.47,
+   "192x128": 2.12,
+   "384x128": 2.09
+  },
+  "interpretation": "Var[g](t) ~ t^2 (alpha~1.9-2.1): gap is a random linear drift g=dR*t (per-run ratchet-rate difference), NOT a diffusion; D_g is ill-defined",
+  "sigma_dR_per_frame": {
+   "96x32": {
+    "sigma_dR": 2.4935185480319614e-06,
+    "ci95": [
+     2.2559009622670476e-06,
+     2.7351695602196032e-06
+    ],
+    "N": 1536
+   },
+   "192x32": {
+    "sigma_dR": 1.6537001767711226e-06,
+    "ci95": [
+     1.4688744069542323e-06,
+     1.8142259489977553e-06
+    ],
+    "N": 3072
+   },
+   "384x32": {
+    "sigma_dR": 9.638049474849529e-07,
+    "ci95": [
+     8.628459799375709e-07,
+     1.0591296794861579e-06
+    ],
+    "N": 6144
+   },
+   "768x32": {
+    "sigma_dR": 5.137447194237976e-07,
+    "ci95": [
+     4.628746706255182e-07,
+     5.667968273501203e-07
+    ],
+    "N": 12288
+   },
+   "192x128": {
+    "sigma_dR": 9.92660485607606e-07,
+    "ci95": [
+     8.913699814165191e-07,
+     1.0965052239740193e-06
+    ],
+    "N": 12288
+   },
+   "384x128": {
+    "sigma_dR": 6.994343132397494e-07,
+    "ci95": [
+     6.292741088084512e-07,
+     7.734798600358342e-07
+    ],
+    "N": 24576
+   }
+  },
+  "sigma_dR_vs_N": {
+   "eta": 0.5032845758256415,
+   "eta_ci95": [
+    0.45913474773229784,
+    0.5460420050294159
+   ],
+   "r2": 0.8026076329387106,
+   "note": "sigma_dR ~ N^-0.50: variance of the rate difference ~ 1/(clone area); same-N geometries differ x2 => not area alone"
+  },
+  "sigma_dR_two_scale": {
+   "a_Llong": -0.7382885889053478,
+   "a_ci95": [
+    -0.7996797751202389,
+    -0.6789706309704907
+   ],
+   "b_Lshort": -0.2603189755114433,
+   "b_ci95": [
+    -0.3254251687986094,
+    -0.1962638839385879
+   ],
+   "max_abs_log_resid": 0.0808129201982819
+  },
+  "apparent_Dg_early_window": {
+   "96x32": {
+    "D_g": 2.2462732256964972e-08,
+    "ci95": [
+     1.7979588376730282e-08,
+     2.6421172524734562e-08
+    ],
+    "N": 1536
+   },
+   "192x32": {
+    "D_g": 2.1204093284918864e-08,
+    "ci95": [
+     1.7415728805267623e-08,
+     2.5811900189982334e-08
+    ],
+    "N": 3072
+   },
+   "384x32": {
+    "D_g": 1.6172099349050392e-08,
+    "ci95": [
+     1.3166268355759651e-08,
+     1.9800360947190683e-08
+    ],
+    "N": 6144
+   },
+   "768x32": {
+    "D_g": 1.0573210732265797e-08,
+    "ci95": [
+     8.364474217638282e-09,
+     1.2852424345266113e-08
+    ],
+    "N": 12288
+   },
+   "192x128": {
+    "D_g": 9.11054251799495e-09,
+    "ci95": [
+     7.206388397764296e-09,
+     1.1092900605048206e-08
+    ],
+    "N": 12288
+   },
+   "384x128": {
+    "D_g": 9.633164352814745e-09,
+    "ci95": [
+     7.94866723156497e-09,
+     1.1319026978154427e-08
+    ],
+    "N": 24576
+   }
+  },
+  "apparent_Dg_vs_N": {
+   "gamma": -0.37318836831637014,
+   "gamma_ci95": [
+    -0.47271135269596026,
+    -0.2832547990894033
+   ],
+   "r2": 0.8858641305366932,
+   "note": "D_g falls only 2.3x over 16x in N (gamma=-0.37, not -1); reported for the record but D_g is not the right object"
+  },
+  "front_response_beta": {
+   "96x32": {
+    "beta": 0.07313080959556292,
+    "ci95": [
+     0.06340259702086219,
+     0.0827012108761911
+    ]
+   },
+   "192x32": {
+    "beta": 0.04117790933372158,
+    "ci95": [
+     0.036263564209410105,
+     0.04582590545201103
+    ]
+   },
+   "384x32": {
+    "beta": 0.02839454124856189,
+    "ci95": [
+     0.025939837580986908,
+     0.03092663821638868
+    ]
+   },
+   "768x32": {
+    "beta": 0.016858379809104988,
+    "ci95": [
+     0.014910719433151493,
+     0.018662500115845172
+    ]
+   },
+   "192x128": {
+    "beta": 0.05438064286072549,
+    "ci95": [
+     0.05054087835850445,
+     0.05778309015034176
+    ]
+   },
+   "384x128": {
+    "beta": 0.034799596653598365,
+    "ci95": [
+     0.032447892488688304,
+     0.03706705346900034
+    ]
+   }
+  }
+ },
+ "intensive_law": {
+  "form": "T_fix = C * sqrt(L_long / (beta * sigma_dR))  (ballistic parabolic sweep h ~ beta*dR*t^2/2)",
+  "C_values": {
+   "96x32": 1.678,
+   "192x32": 1.589,
+   "384x32": 1.604,
+   "768x32": 1.462,
+   "192x128": 1.764,
+   "384x128": 1.742
+  },
+  "C_mean": 1.6397922977240895,
+  "C_sd": 0.11227113288999765,
+  "C_cv": 0.06846667900917798,
+  "statement": "loaded T_fix collapses across all 6 geometries with C=1.64+-0.11 (CV 6.8%); combined with beta~L_long^-0.7..-1 and sigma_dR~L_long^-0.74 L_short^-0.26 this predicts zeta_loaded~1.1-1.2 (measured 1.17); NOT the L^(2/3) sqrt-diffusion prediction"
+ },
+ "two_clocks": {
+  "divisions_per_site": {
+   "neutral|32|96": 5474.459539012168,
+   "neutral|32|192": 16667.58635247832,
+   "neutral|32|384": 53956.75809014583,
+   "neutral|32|768": 199292.5528833,
+   "neutral|128|192": 42891.535232557544,
+   "neutral|128|384": 94350.3429297081,
+   "loaded|32|96": 1057.1810387677115,
+   "loaded|32|192": 2317.0974666525594,
+   "loaded|32|384": 5215.178438371908,
+   "loaded|32|768": 11949.458309133779,
+   "loaded|128|192": 2888.7047345330666,
+   "loaded|128|384": 6007.559712738181
+  },
+  "per_site_clock_range_across_Llong_sweep": {
+   "neutral": 36.40405988264206,
+   "loaded": 11.30313339999221
+  },
+  "manuscript_anchor_geometry": "192x128",
+  "neutral_192x128_divs_per_site": 42891.535232557544,
+  "scaling_of_neutral_clock_with_domain_length": {
+   "exponent": 1.7252840810227394,
+   "x2": 3.3064522819060844,
+   "x4": 10.932626692521954,
+   "x8": 36.14820847471658
+  },
+  "scaling_of_loaded_clock_with_domain_length": {
+   "exponent": 1.1654938971019373,
+   "x2": 2.24309993504922,
+   "x4": 5.031497318617814,
+   "x8": 11.286151308591943
+  },
+  "statement": "the divisions-per-site clock is NOT intensive: T_fix per site grows ~L_long^1.73 (neutral) / L_long^1.17 (loaded); the calendar numbers are properties of the 192x128 lattice"
+ },
+ "deviations": [
+  "Worker pool capped at 12 processes per parent resource note (five sibling tracks share the 64-core host); seeds re-planned against a 12-worker budget under measured host contention.",
+  "Neutral 768x32 run at 60 seeds instead of 150 (parent directive to keep the 768 point but cut to 60 if wall time was tight); median CI [5.71M, 10.38M] (asymmetric: -21% / +43% half-widths); point consistent with the four-point fit (fit-predicted 6.89M vs measured 7.26M).",
+  "Neutral 192x128 at 100 seeds (spec 150) and neutral 384x128 at 60 seeds (spec allowed fewer if wall time bites): the 384x128 neutral tail is heavy (single runs to 728 s). No arm below 60 seeds.",
+  "Frame cap 40M as specified (campaign's earlier ensembles used 5M); zero censoring resulted, so no lower-bound reporting was needed.",
+  "Task 3 as posed (D_g and its ~1/N law) was falsified rather than measured: Var[g] ~ t^2 (random-slope drift, not diffusion), so D_g is ill-defined. Reported the correct statistic sigma_dR, which obeys the intended N^-1/2 CLT law; apparent D_g values retained in the JSON for the record."
+ ],
+ "neutral_law": {
+  "zeta_Lshort32": 1.7252840810227394,
+  "ci": [
+   1.5993803202635828,
+   1.9039504582331679
+  ],
+  "medians_over_L2": {
+   "96": 21.63519965277778,
+   "192": 16.46767849392361,
+   "384": 13.327402750651041,
+   "768": 12.306392245822483
+  },
+  "statement": "neutral T_fix ~ L_long^1.73 [1.60,1.90], sub-diffusive at these L but med/L_long^2 still falling (21.6->12.3): approaching diffusive L^2 from below; no intensive collapse"
+ }
+}

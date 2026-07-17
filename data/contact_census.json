@@ -1,0 +1,33 @@
+{
+ "protocol": "192x64 strip, sd=0.01, mud=0.004 (near ridge), mub=0, 4 seeds/stencil, census of the interface configuration at 3e5 frames (well before fixation); boundary cell = live cell with >=1 opposite-clone contact; reports mean same-clone / opposite-clone contact counts.",
+ "evolved": {
+  "moore": {
+   "same": 5.097255943641648,
+   "opp": 2.8964940563583514,
+   "live": 7.9937499999999995,
+   "n_bcell": 2178.5,
+   "wall_s": 97.0
+  },
+  "vonN": {
+   "same": 2.3664917612135876,
+   "opp": 1.6316220532676384,
+   "live": 3.998113814481226,
+   "n_bcell": 2085.75,
+   "wall_s": 66.1
+  }
+ },
+ "flat": {
+  "moore": {
+   "same": 5.0,
+   "opp": 3.0,
+   "live": 8.0,
+   "n_bcell": 128
+  },
+  "vonN": {
+   "same": 3.0,
+   "opp": 1.0,
+   "live": 4.0,
+   "n_bcell": 128
+  }
+ }
+}

@@ -1,0 +1,82 @@
+[
+ {
+  "tissue": "Colonic crypt",
+  "snv_per_div": [
+   0.8,
+   2.0
+  ],
+  "mu_d": [
+   0.016,
+   0.2
+  ],
+  "sd": [
+   0.0005,
+   0.01
+  ],
+  "Lambda": [
+   8e-06,
+   0.002
+  ],
+  "note": "~50 SBS/yr / 25-50 div/yr"
+ },
+ {
+  "tissue": "Epidermis (sun-exp.)",
+  "snv_per_div": [
+   5.0,
+   30.0
+  ],
+  "mu_d": [
+   0.1,
+   0.8
+  ],
+  "sd": [
+   0.0005,
+   0.01
+  ],
+  "Lambda": [
+   5e-05,
+   0.008
+  ],
+  "note": "2-6 mut/Mb burden / ~2.6k divisions"
+ },
+ {
+  "tissue": "HSC (blood)",
+  "snv_per_div": [
+   7.0,
+   16.0
+  ],
+  "mu_d": [
+   0.14,
+   0.8
+  ],
+  "sd": [
+   0.0005,
+   0.01
+  ],
+  "Lambda": [
+   7e-05,
+   0.008
+  ],
+  "note": "~14-17 SBS/yr / one division per 25-50 wk (1.04-2.09 div/yr)"
+ },
+ {
+  "tissue": "Hypermutator tumor",
+  "snv_per_div": [
+   20.0,
+   150.0
+  ],
+  "mu_d": [
+   0.4,
+   0.8
+  ],
+  "sd": [
+   0.001,
+   0.03
+  ],
+  "Lambda": [
+   0.0004,
+   0.024
+  ],
+  "note": "4-100x normal per-division rate"
+ }
+]

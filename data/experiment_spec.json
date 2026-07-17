@@ -1,0 +1,326 @@
+{
+ "source_files": {
+  "reduced_npz": "/root/src/.operon/orgs/01582c35-9930-414e-93b9-0dd852675b4d/artifacts/proj_bcf0e7b390f2/c869a947-9c93-47bb-b6b2-86a10056141e/v07c5f5a6_reduced_model_series.npz",
+  "reduced_runs": "/root/src/.operon/orgs/01582c35-9930-414e-93b9-0dd852675b4d/artifacts/proj_bcf0e7b390f2/b8a1cac2-6168-4e84-924f-7e9eb3411599/v41dbc98f_reduced_model_runs.parquet",
+  "reduced_summary": "/root/src/.operon/orgs/01582c35-9930-414e-93b9-0dd852675b4d/artifacts/proj_bcf0e7b390f2/f1ee5b77-c5b9-4184-8299-c23d36afaf36/vb5c3de2c_reduced_model_summary.json"
+ },
+ "definitions": {
+  "MSD": "ensemble mean-squared displacement of the interface (clone-boundary) centre position, lattice cells^2 (= cell diameters^2)",
+  "t_x": "first frame at which the loaded ensemble MSD reaches 2x the neutral ensemble MSD at matched L_short (reproduces reduced_model_summary.msd_crossover.t_x_frames exactly: 16440/6440/6000 frames)",
+  "frames_to_divisions": "divisions per site = frames * p_die, p_die = 0.02746 (reduced_model_summary.units)"
+ },
+ "crossover_all_conditions": {
+  "Lam2.5e-4": {
+   "neutral_ref": "neu_L32",
+   "t_x_frames": 16440.0,
+   "t_x_div_per_site": 451.38
+  },
+  "Lam1e-3": {
+   "neutral_ref": "neu_L32",
+   "t_x_frames": 6440.0,
+   "t_x_div_per_site": 176.82
+  },
+  "Lam4e-3": {
+   "neutral_ref": "neu_L32",
+   "t_x_frames": 6000.0,
+   "t_x_div_per_site": 164.74
+  },
+  "Lam1e-3_L16": {
+   "neutral_ref": "neu_L16",
+   "t_x_frames": 14540.0,
+   "t_x_div_per_site": 399.21
+  },
+  "Lam1e-3_L64": {
+   "neutral_ref": "neu_L64",
+   "t_x_frames": 3480.0,
+   "t_x_div_per_site": 95.55
+  },
+  "Lam1e-3_L128": {
+   "neutral_ref": "neu_L128",
+   "t_x_frames": 10140.0,
+   "t_x_div_per_site": 278.4
+  },
+  "Lam1e-3_L256": {
+   "neutral_ref": "neu_L256",
+   "t_x_frames": 7900.0,
+   "t_x_div_per_site": 216.9
+  }
+ },
+ "canonical_192x32_Lambda1e-3_mud0.1": {
+  "t_x": {
+   "frames": 6440.0,
+   "divisions_per_site": 176.8,
+   "analytic_check_frames": 6447.7
+  },
+  "separation_vs_time": {
+   "0.25tx": {
+    "t_frames": 1610.0,
+    "t_div": 44.2,
+    "msd_load": 4.74,
+    "msd_neu": 4.91,
+    "ratio": 0.97,
+    "rms_load_cells": 2.18,
+    "rms_neu_cells": 2.22
+   },
+   "0.5tx": {
+    "t_frames": 3220.0,
+    "t_div": 88.41,
+    "msd_load": 13.44,
+    "msd_neu": 10.48,
+    "ratio": 1.28,
+    "rms_load_cells": 3.67,
+    "rms_neu_cells": 3.24
+   },
+   "1tx": {
+    "t_frames": 6440.0,
+    "t_div": 176.82,
+    "msd_load": 47.94,
+    "msd_neu": 23.66,
+    "ratio": 2.03,
+    "rms_load_cells": 6.92,
+    "rms_neu_cells": 4.86
+   },
+   "2tx": {
+    "t_frames": 12880.0,
+    "t_div": 353.63,
+    "msd_load": 204.29,
+    "msd_neu": 67.02,
+    "ratio": 3.05,
+    "rms_load_cells": 14.29,
+    "rms_neu_cells": 8.19
+   },
+   "3tx": {
+    "t_frames": 19320.0,
+    "t_div": 530.45,
+    "msd_load": 503.41,
+    "msd_neu": 104.0,
+    "ratio": 4.84,
+    "rms_load_cells": 22.44,
+    "rms_neu_cells": 10.2
+   }
+  },
+  "predicted_ratio_at": {
+   "1t_x": 2.03,
+   "2t_x": 3.05,
+   "3t_x": 4.84
+  },
+  "rms_excursion_cell_diameters": {
+   "loaded_1t_x": 6.9,
+   "neutral_1t_x": 4.9,
+   "loaded_2t_x": 14.3,
+   "neutral_2t_x": 8.2,
+   "loaded_3t_x": 22.4,
+   "neutral_3t_x": 10.2
+  },
+  "local_logslopes_of_MSD": {
+   "loaded_0.25-1tx": 1.56,
+   "neutral_0.25-1tx": 1.13,
+   "loaded_1-3tx": 2.13,
+   "neutral_1-3tx": 1.43,
+   "store_reference": {
+    "load": {
+     "t=30div": 1.66,
+     "t=100div": 1.48,
+     "t=300div": 2.1,
+     "t=1000div": 1.42
+    },
+    "neutral": {
+     "t=30div": 1.88,
+     "t=100div": 1.09,
+     "t=300div": 1.54,
+     "t=1000div": 1.97
+    }
+   }
+  }
+ },
+ "variance_and_test": {
+  "test": "two-sample comparison of arm-mean MSD via the log of the ratio of arm means (delta method): Var[ln ratio] = CV^2/n_L + CV^2/n_N; equal arms; two-sided alpha=0.05, power 0.80",
+  "primary_CV_model": {
+   "CV_single_segment_squared_displacement": 1.414,
+   "basis": "boundary-normal displacement of one segment is a mean-zero Gaussian coordinate, so its squared displacement is chi^2_1: variance = 2*mean^2 (a modelling choice - the store logs ensemble-mean MSD curves only, not per-run trajectories)"
+  },
+  "empirical_cross_check": {
+   "per_condition_CV_of_end_of_run_interface_variance_w2_end": {
+    "Lam1e-3": {
+     "n": 119,
+     "cv": 1.29,
+     "sd_ln": 1.17,
+     "skew": 2.84
+    },
+    "Lam1e-3_L128": {
+     "n": 120,
+     "cv": 1.26,
+     "sd_ln": 1.23,
+     "skew": 2.18
+    },
+    "Lam1e-3_L16": {
+     "n": 120,
+     "cv": 1.13,
+     "sd_ln": 1.07,
+     "skew": 2.5
+    },
+    "Lam1e-3_L256": {
+     "n": 120,
+     "cv": 1.1,
+     "sd_ln": 1.13,
+     "skew": 1.72
+    },
+    "Lam1e-3_L64": {
+     "n": 120,
+     "cv": 1.16,
+     "sd_ln": 1.17,
+     "skew": 2.75
+    },
+    "Lam2.5e-4": {
+     "n": 119,
+     "cv": 1.09,
+     "sd_ln": 1.12,
+     "skew": 1.95
+    },
+    "Lam4e-3": {
+     "n": 120,
+     "cv": 1.26,
+     "sd_ln": 1.2,
+     "skew": 2.63
+    }
+   },
+   "mean_CV": 1.186,
+   "note": "CV ~1.1-1.3 across 840 reduced-model loaded runs - broad, single-segment kinematics are as noisy as their mean; the primary sqrt(2) is slightly conservative relative to this"
+  },
+  "n_segments_per_arm": {
+   "gaussian_coordinate_chi2_1 (primary)": {
+    "ratio2": 66,
+    "ratio3": 27,
+    "CV": 1.414
+   },
+   "empirical_width_diagnostic_proxy": {
+    "ratio2": 46,
+    "ratio3": 19,
+    "CV": 1.186
+   },
+   "rayleigh_2d_benchmark": {
+    "ratio2": 33,
+    "ratio3": 14,
+    "CV": 1.0
+   }
+  },
+  "primary_recommendation": {
+   "ratio2": {
+    "n_per_arm": 66,
+    "power": 0.804,
+    "total_segments": 132
+   },
+   "ratio3": {
+    "n_per_arm": 27,
+    "power": 0.814,
+    "total_segments": 54,
+    "note": "26 gives exactly 0.800"
+   },
+   "with_25pct_dropout": {
+    "ratio2_per_arm": 88,
+    "ratio3_per_arm": 36
+   }
+  },
+  "why_not_per_segment_log_test": {
+   "n_per_arm_needed": {
+    "2": 162,
+    "3": 65
+   },
+   "reason": "t-test on per-segment log squared-displacement (log chi^2_1, SD 2.22) tests the geometric mean, which the theory does not predict; use the ratio of arm means"
+  }
+ },
+ "cadence": {
+  "requirement": "resolve t_x with >=15 pre-crossover snapshots and continue to >=3 t_x",
+  "canonical_t_x_divisions": 176.8,
+  "recommended_interval_divisions_per_site": 10,
+  "snapshots_by_t_x_at_10div": 17.7,
+  "snapshots_by_3t_x_at_10div": 53.0,
+  "table_divisions_per_snapshot": {
+   "5": {
+    "frames_per_snapshot": 182.1,
+    "snapshots_by_tx": 35.4,
+    "snapshots_by_3tx": 106.1
+   },
+   "10": {
+    "frames_per_snapshot": 364.2,
+    "snapshots_by_tx": 17.7,
+    "snapshots_by_3tx": 53.0
+   },
+   "20": {
+    "frames_per_snapshot": 728.4,
+    "snapshots_by_tx": 8.8,
+    "snapshots_by_3tx": 26.5
+   },
+   "44": {
+    "frames_per_snapshot": 1602.6,
+    "snapshots_by_tx": 4.0,
+    "snapshots_by_3tx": 12.1
+   }
+  },
+  "snapshots_pre_tx_at_20div": 8.8
+ },
+ "calendar_conversions_ILLUSTRATIVE_ASSUMPTIONS": {
+  "assumed_rates": {
+   "mouse tail epidermis": "1 division per basal site per 3.5 days (ASSUMED)",
+   "mouse esophagus": "1 division per basal site per 2 days (ASSUMED)"
+  },
+  "mouse_tail_epidermis": {
+   "t_x_days": 619.0,
+   "t_x_years": 1.7,
+   "duration_3t_x_days": 1857.0,
+   "duration_3t_x_years": 5.1,
+   "cadence_10div_days": 35
+  },
+  "mouse_esophagus": {
+   "t_x_days": 354.0,
+   "t_x_years": 0.97,
+   "duration_3t_x_days": 1061.0,
+   "duration_3t_x_years": 2.9,
+   "cadence_10div_days": 20
+  },
+  "feasibility_verdict": "NOT feasible as literally posed: 3*t_x is ~5.1 years (tail) or ~2.9 years (esophagus) - the crossover is inaccessible within a mouse lifespan at the canonical load. The experiment must therefore (i) target a proliferating system with an effective divisions-per-site clock >= 20x faster (organoid / regenerating epithelium / rapidly renewing niche), or (ii) test the pre-crossover kinematic prediction (local MSD exponent of loaded vs neutral segments over 0.25-1 t_x: predicted log-slopes 1.56 vs 1.13, i.e. loaded segments diffuse anomalously fast BEFORE their MSD separates in amplitude), which needs only ~1 t_x of imaging (0.9-1.7 yr in these tissues, still long) or a scaled-down excursion amplitude readout (7 vs 5 cell diameters rms at 1 t_x)."
+ },
+ "numbered_experimental_spec": [
+  {
+   "item": 1,
+   "system": "a two-dimensional stratified/columnar epithelium in which independent neutral clone boundaries and boundaries between a fitter (biased-fate / driver) clone and its neutral neighbour can BOTH be imaged longitudinally; the falsification requires the same tissue and imaging pipeline for both arms. Mouse tail epidermis or esophagus give the strongest genetic tools but, on the illustrative clock (1 division/site per 3.5 or 2 days), place t_x = 177 divisions/site at ~1.7 yr / ~1.0 yr - see feasibility_verdict.",
+   "sourced_numbers": "t_x = 176.8 divisions/site (6440 frames x p_die 0.02746, reduced_model_summary.msd_crossover)"
+  },
+  {
+   "item": 2,
+   "primary_observable": "MSD(t) of the local boundary (interface) centre position, in cell diameters^2, for n independently tracked, non-adjacent boundary segments per arm (segment = one clonal interface followed over time; segments from the same clone edge separated by >= 3x the correlation length of the front, otherwise counted as one)",
+   "sourced_numbers": "rms boundary excursion predicted 6.9 cell diameters (loaded) vs 4.9 (neutral) at t_x; 14.3 vs 8.2 at 2 t_x; 22.4 vs 10.2 at 3 t_x (192x32 canonical curves)"
+  },
+  {
+   "item": 3,
+   "sample_size": "n = 66 independent boundary segments per arm (132 total) to detect the predicted ratio-2 separation with 80% power at two-sided alpha = 0.05; n = 27 per arm (54 total) if the design waits for the ratio-3 separation predicted by 3 t_x (26/arm gives exactly 80%). Inflate for 25% tracking dropout: 88 and 36 per arm.",
+   "sourced_numbers": "delta-method test on ln(ratio of arm-mean MSD) with per-segment CV = sqrt(2) (Gaussian-coordinate assumption; empirical run-to-run CV of the end-of-run width diagnostic across 840 reduced-model runs is 1.19, so sqrt(2) is conservative). z = 1.960 + 0.842."
+  },
+  {
+   "item": 4,
+   "cadence": "one snapshot every ~10 divisions per site (>= 15 snapshots before t_x, 53 by 3 t_x); in calendar terms 5 weeks (tail, assumed) or 3 weeks (esophagus, assumed). A coarser 20-division cadence still resolves t_x with 9 pre-crossover snapshots.",
+   "sourced_numbers": "t_x / 10 divisions = 17.7 snapshots; 3 t_x / 10 = 53.0"
+  },
+  {
+   "item": 5,
+   "duration": ">= 2 t_x = 354 divisions per site for the ratio-2 endpoint (ratio predicted 3.05 there, so ratio 2 is conservative); 3 t_x = 530 divisions per site for the ratio-3 endpoint (ratio predicted 4.84). Illustrative calendar: 2 t_x = 1,238 d (~3.4 yr, tail) / 707 d (~1.9 yr, esophagus); 3 t_x = 1,857 d / 1,061 d. Since t_x is not directly observable in the neutral arm alone, define the analysis window a priori in divisions/site from an independently measured tissue division rate.",
+   "sourced_numbers": "MSD ratios at 2 t_x and 3 t_x from the canonical curve pair (loaded 204.3 vs neutral 67.0 cells^2; 503.4 vs 104.0)"
+  },
+  {
+   "item": 6,
+   "decision_rule": "compute R = mean MSD(loaded segments) / mean MSD(neutral segments) at the pre-registered time (in divisions per site) with a delta-method 95% CI on ln R. Prediction for the canonical 192x32, mud=0.1 condition: R = 3.0 at 2 t_x and R = 4.8 at 3 t_x. The simulated geometries/drives spread widely (1.72-5.16 at 2 t_x across 7 conditions; 2.19-9.39 at 3 t_x across 7), so the corroboration band must be pre-registered from the reduced-model curve matched to the tissue's geometry and load, not treated as universal. The theory is corroborated if the CI on R excludes 1 and covers the matched-condition prediction.",
+   "sourced_numbers": "R at 2 t_x across simulated conditions: [1.72, 3.05, 3.64, 3.97, 4.54, 4.77, 5.16]; at 3 t_x: [2.19, 3.67, 3.77, 4.84, 6.72, 6.97, 9.39] (canonical 3.05 and 4.84)"
+  },
+  {
+   "item": 7,
+   "falsifying_outcome": "R statistically indistinguishable from 1 (95% CI of ln R containing 0) at >= 2 t_x with the pre-registered n - i.e., boundaries adjacent to fitter clones do not diffuse faster than neutral boundaries once the crossover time has elapsed. A ratio R < 2 at 2 t_x with a CI excluding 3 also refutes the quantitative prediction. Note the theory itself predicts NO separation before ~0.5 t_x (R = 0.97-1.28 at 0.25-0.5 t_x), so an early null is not falsifying: the pre-registered window must be past t_x.",
+   "sourced_numbers": "R at 0.25 t_x = 0.97, at 0.5 t_x = 1.28 (canonical curves)"
+  },
+  {
+   "item": 8,
+   "control_and_confound": "segment independence is the load-bearing assumption of the sample-size calculation (adjacent stretches of one front are correlated and count once); the neutral arm must be imaged with identical cadence and depth, because MSD estimates are cadence-dependent at short times (local log-slopes 1.1-1.6, i.e. neither arm is purely diffusive over the design window).",
+   "sourced_numbers": "local logslopes reduced_model_summary.msd_crossover.local_logslopes_lattice"
+  }
+ ],
+ "not_established": "The calendar durations are illustrative: the division-rate constants are assumptions supplied for scale, not measurements in these files; the per-segment variance is a Gaussian-coordinate model (the store holds ensemble-mean MSD only); segment independence and the correlation length of a real clonal front are unmeasured. On the illustrative clocks the crossover lies beyond a mouse lifespan, so the specification as posed (2-3 t_x) requires a faster-cycling system - this is a genuine constraint the manuscript must state, not a solvable design detail."
+}

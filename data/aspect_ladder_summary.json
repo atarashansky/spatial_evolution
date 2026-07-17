@@ -1,0 +1,1064 @@
+{
+ "test": "Aspect-ratio dependence of the freeze/flow threshold U_d*/s_d at matched clone area N = L_long x L_short (two areas), s_d = 0.01, mu_b = 0",
+ "protocol": "dB Moran strip kernel evolution_strip.py (moore=True, periodic_y=True), dt=2400, s_b=0.1, mu_b=0, avg=1.16e-5, sampling=1e4, prof_halfwidth=64, ben_cap=1024, com_stride=0; loaded arm s_d=0.01 with mu_d rungs; neutral anchor s_d=mu_d=0 at each geometry; zero censoring. Threshold = mu_d/s_d at which median T_fix(load)/median T_fix(neutral) crosses 0.5, log-linear interpolation between bracketing rungs; 95% CI from a run-level bootstrap resampling the runs within EVERY rung and the neutral anchor (manuscript estimator, verbatim). Cross-geometry statistics use a JOINT bootstrap (all seven ladders resampled per replicate).",
+ "thresholds": [
+  {
+   "geometry": "96x256",
+   "L_long": 96,
+   "L_short": 256,
+   "N": 24576,
+   "aspect": 0.375,
+   "log2_aspect": -1.415037499278844,
+   "U_over_s_star": 0.5368482913673424,
+   "ci": [
+    0.3374228776865978,
+    0.6884338524141128
+   ],
+   "se_boot": 0.09788338870971042,
+   "boot_valid": 4000,
+   "n_neutral": 62,
+   "neutral_anchor": "own-geometry neutral ensemble",
+   "neutral_median": 1300561.5,
+   "runs_per_rung": {
+    "0.002": 30,
+    "0.003": 40,
+    "0.004": 8,
+    "0.005": 40,
+    "0.008": 38,
+    "0.012": 24
+   },
+   "rungs": [
+    {
+     "mud": 0.002,
+     "U_over_s": 0.2,
+     "n": 30,
+     "median_ratio": 1.041370977074133,
+     "ratio_ci": [
+      0.5974409592443263,
+      1.4883070996732475
+     ],
+     "median_tfix": 1354367.0
+    },
+    {
+     "mud": 0.003,
+     "U_over_s": 0.3,
+     "n": 40,
+     "median_ratio": 0.7876936231004839,
+     "ratio_ci": [
+      0.5515905522127215,
+      1.3575175187700708
+     ],
+     "median_tfix": 1024444.0
+    },
+    {
+     "mud": 0.004,
+     "U_over_s": 0.4,
+     "n": 8,
+     "median_ratio": 0.6989907820583648,
+     "ratio_ci": [
+      0.3384800363598697,
+      1.2952344197463448
+     ],
+     "median_tfix": 909080.5
+    },
+    {
+     "mud": 0.005,
+     "U_over_s": 0.5,
+     "n": 40,
+     "median_ratio": 0.5397760890200117,
+     "ratio_ci": [
+      0.34806925152843576,
+      0.8344720543170177
+     ],
+     "median_tfix": 702012.0
+    },
+    {
+     "mud": 0.008,
+     "U_over_s": 0.8,
+     "n": 38,
+     "median_ratio": 0.27686541543787047,
+     "ratio_ci": [
+      0.17471768247399147,
+      0.38505692827238575
+     ],
+     "median_tfix": 360080.5
+    },
+    {
+     "mud": 0.012,
+     "U_over_s": 1.2,
+     "n": 24,
+     "median_ratio": 0.14210131547027957,
+     "ratio_ci": [
+      0.0958340251278211,
+      0.2030764469875464
+     ],
+     "median_tfix": 184811.5
+    }
+   ],
+   "provenance": "this campaign (round 5)"
+  },
+  {
+   "geometry": "192x128",
+   "L_long": 192,
+   "L_short": 128,
+   "N": 24576,
+   "aspect": 1.5,
+   "log2_aspect": 0.5849625007211562,
+   "U_over_s_star": 0.3700293224909367,
+   "ci": [
+    0.2350797285716131,
+    0.5346741179735859
+   ],
+   "se_boot": 0.07454170229842916,
+   "boot_valid": 4000,
+   "n_neutral": 150,
+   "neutral_anchor": "own-geometry neutral ensemble",
+   "neutral_median": 1636165.0,
+   "runs_per_rung": {
+    "0.001": 150,
+    "0.002": 150,
+    "0.004": 150,
+    "0.006": 150,
+    "0.008": 150,
+    "0.012": 150,
+    "0.02": 150,
+    "0.05": 150
+   },
+   "rungs": [
+    {
+     "mud": 0.001,
+     "U_over_s": 0.1,
+     "n": 150,
+     "median_ratio": 0.8370677773940892,
+     "ratio_ci": [
+      0.6243567982921773,
+      1.0897823682452394
+     ],
+     "median_tfix": 1369581.0
+    },
+    {
+     "mud": 0.002,
+     "U_over_s": 0.2,
+     "n": 150,
+     "median_ratio": 0.7259824039751492,
+     "ratio_ci": [
+      0.5287032221436043,
+      0.9763309677691961
+     ],
+     "median_tfix": 1187827.0
+    },
+    {
+     "mud": 0.004,
+     "U_over_s": 0.4,
+     "n": 150,
+     "median_ratio": 0.47139438870774036,
+     "ratio_ci": [
+      0.36673787060456603,
+      0.6285638426778272
+     ],
+     "median_tfix": 771279.0
+    },
+    {
+     "mud": 0.006,
+     "U_over_s": 0.6,
+     "n": 150,
+     "median_ratio": 0.351377458874869,
+     "ratio_ci": [
+      0.2780807746472382,
+      0.4571498271835858
+     ],
+     "median_tfix": 574911.5
+    },
+    {
+     "mud": 0.008,
+     "U_over_s": 0.8,
+     "n": 150,
+     "median_ratio": 0.23886985725767268,
+     "ratio_ci": [
+      0.18158559644979783,
+      0.33049580124408645
+     ],
+     "median_tfix": 390830.5
+    },
+    {
+     "mud": 0.012,
+     "U_over_s": 1.2,
+     "n": 150,
+     "median_ratio": 0.11963402224103314,
+     "ratio_ci": [
+      0.09711516441518069,
+      0.15917781890608174
+     ],
+     "median_tfix": 195741.0
+    },
+    {
+     "mud": 0.02,
+     "U_over_s": 2.0,
+     "n": 150,
+     "median_ratio": 0.09940134399647957,
+     "ratio_ci": [
+      0.07820155378058136,
+      0.1263204345778082
+     ],
+     "median_tfix": 162637.0
+    },
+    {
+     "mud": 0.05,
+     "U_over_s": 5.0,
+     "n": 150,
+     "median_ratio": 0.07257153159980809,
+     "ratio_ci": [
+      0.05765819915927483,
+      0.09254947531112688
+     ],
+     "median_tfix": 118739.0
+    }
+   ],
+   "provenance": "reused, ridge_law.parquet (T3_128 ladder + N128 anchor)"
+  },
+  {
+   "geometry": "384x64",
+   "L_long": 384,
+   "L_short": 64,
+   "N": 24576,
+   "aspect": 6.0,
+   "log2_aspect": 2.584962500721156,
+   "U_over_s_star": 0.5675216275554359,
+   "ci": [
+    0.4476883075455996,
+    0.663559415910517
+   ],
+   "se_boot": 0.05758422112226941,
+   "boot_valid": 3987,
+   "n_neutral": 88,
+   "neutral_anchor": "own-geometry neutral ensemble",
+   "neutral_median": 2357938.5,
+   "runs_per_rung": {
+    "0.004": 8,
+    "0.005": 40,
+    "0.007": 60,
+    "0.008": 8,
+    "0.01": 60,
+    "0.014": 20,
+    "0.02": 24
+   },
+   "rungs": [
+    {
+     "mud": 0.004,
+     "U_over_s": 0.4,
+     "n": 8,
+     "median_ratio": 1.1540650869392903,
+     "ratio_ci": [
+      0.5276327106783101,
+      2.195828495854024
+     ],
+     "median_tfix": 2721214.5
+    },
+    {
+     "mud": 0.005,
+     "U_over_s": 0.5,
+     "n": 40,
+     "median_ratio": 0.626495559574603,
+     "ratio_ci": [
+      0.3619132768698545,
+      0.952823806879854
+     ],
+     "median_tfix": 1477238.0
+    },
+    {
+     "mud": 0.007,
+     "U_over_s": 0.7,
+     "n": 60,
+     "median_ratio": 0.29048870443397906,
+     "ratio_ci": [
+      0.22352270618503475,
+      0.44320856067183945
+     ],
+     "median_tfix": 684954.5
+    },
+    {
+     "mud": 0.008,
+     "U_over_s": 0.8,
+     "n": 8,
+     "median_ratio": 0.21593650555347393,
+     "ratio_ci": [
+      0.16034885067821875,
+      0.2938654188456413
+     ],
+     "median_tfix": 509165.0
+    },
+    {
+     "mud": 0.01,
+     "U_over_s": 1.0,
+     "n": 60,
+     "median_ratio": 0.16301464181529757,
+     "ratio_ci": [
+      0.1286697688165494,
+      0.23340104653121185
+     ],
+     "median_tfix": 384378.5
+    },
+    {
+     "mud": 0.014,
+     "U_over_s": 1.4,
+     "n": 20,
+     "median_ratio": 0.1378577091811343,
+     "ratio_ci": [
+      0.09578409608448789,
+      0.1855493389374416
+     ],
+     "median_tfix": 325060.0
+    },
+    {
+     "mud": 0.02,
+     "U_over_s": 2.0,
+     "n": 24,
+     "median_ratio": 0.12141007918569548,
+     "ratio_ci": [
+      0.09985213360471655,
+      0.1762286969065176
+     ],
+     "median_tfix": 286277.5
+    }
+   ],
+   "provenance": "this campaign (round 5)"
+  },
+  {
+   "geometry": "96x512",
+   "L_long": 96,
+   "L_short": 512,
+   "N": 49152,
+   "aspect": 0.1875,
+   "log2_aspect": -2.415037499278844,
+   "U_over_s_star": 0.3994978503002686,
+   "ci": [
+    0.30558820448889756,
+    0.6561434656843711
+   ],
+   "se_boot": 0.09699497878522807,
+   "boot_valid": 3994,
+   "n_neutral": 38,
+   "neutral_anchor": "own-geometry neutral ensemble",
+   "neutral_median": 2046763.5,
+   "runs_per_rung": {
+    "0.002": 30,
+    "0.003": 30,
+    "0.004": 8,
+    "0.005": 23,
+    "0.008": 32,
+    "0.012": 20
+   },
+   "rungs": [
+    {
+     "mud": 0.002,
+     "U_over_s": 0.2,
+     "n": 30,
+     "median_ratio": 1.1426432511621396,
+     "ratio_ci": [
+      0.5308110265461194,
+      1.9171407282981707
+     ],
+     "median_tfix": 2338720.5
+    },
+    {
+     "mud": 0.003,
+     "U_over_s": 0.3,
+     "n": 30,
+     "median_ratio": 0.9396259020644055,
+     "ratio_ci": [
+      0.5325558148703196,
+      1.4133384972786933
+     ],
+     "median_tfix": 1923192.0
+    },
+    {
+     "mud": 0.004,
+     "U_over_s": 0.4,
+     "n": 8,
+     "median_ratio": 0.4980719560418192,
+     "ratio_ci": [
+      0.2588311555672058,
+      2.7754649867599634
+     ],
+     "median_tfix": 1019435.5
+    },
+    {
+     "mud": 0.005,
+     "U_over_s": 0.5,
+     "n": 23,
+     "median_ratio": 0.4738446821042099,
+     "ratio_ci": [
+      0.2725253621040505,
+      0.7352470496213263
+     ],
+     "median_tfix": 969848.0
+    },
+    {
+     "mud": 0.008,
+     "U_over_s": 0.8,
+     "n": 32,
+     "median_ratio": 0.25272020924742894,
+     "ratio_ci": [
+      0.14166786433719084,
+      0.40564942322679637
+     ],
+     "median_tfix": 517258.5
+    },
+    {
+     "mud": 0.012,
+     "U_over_s": 1.2,
+     "n": 20,
+     "median_ratio": 0.18864416919688085,
+     "ratio_ci": [
+      0.10059795392876533,
+      0.2686233159977966
+     ],
+     "median_tfix": 386110.0
+    }
+   ],
+   "provenance": "this campaign (round 5)"
+  },
+  {
+   "geometry": "192x256",
+   "L_long": 192,
+   "L_short": 256,
+   "N": 49152,
+   "aspect": 0.75,
+   "log2_aspect": -0.4150374992788438,
+   "U_over_s_star": 0.3909427083329764,
+   "ci": [
+    0.3139737078057069,
+    0.5224325102903394
+   ],
+   "se_boot": 0.055685913517675475,
+   "boot_valid": 4000,
+   "n_neutral": 150,
+   "neutral_anchor": "own-geometry neutral ensemble",
+   "neutral_median": 2833296.0,
+   "runs_per_rung": {
+    "0.002": 150,
+    "0.004": 150,
+    "0.006": 150,
+    "0.008": 150,
+    "0.012": 150
+   },
+   "rungs": [
+    {
+     "mud": 0.002,
+     "U_over_s": 0.2,
+     "n": 150,
+     "median_ratio": 0.703983276014931,
+     "ratio_ci": [
+      0.6216748033662429,
+      0.8619077166854567
+     ],
+     "median_tfix": 1994593.0
+    },
+    {
+     "mud": 0.004,
+     "U_over_s": 0.4,
+     "n": 150,
+     "median_ratio": 0.4930294963886583,
+     "ratio_ci": [
+      0.4203719815081507,
+      0.5893021602443221
+     ],
+     "median_tfix": 1396898.5
+    },
+    {
+     "mud": 0.006,
+     "U_over_s": 0.6,
+     "n": 150,
+     "median_ratio": 0.4037029664390872,
+     "ratio_ci": [
+      0.34476617648247115,
+      0.47169810015974706
+     ],
+     "median_tfix": 1143810.0
+    },
+    {
+     "mud": 0.008,
+     "U_over_s": 0.8,
+     "n": 150,
+     "median_ratio": 0.24356738582908385,
+     "ratio_ci": [
+      0.204260309686911,
+      0.2844985178292715
+     ],
+     "median_tfix": 690098.5
+    },
+    {
+     "mud": 0.012,
+     "U_over_s": 1.2,
+     "n": 150,
+     "median_ratio": 0.10345106900232097,
+     "ratio_ci": [
+      0.09181836380615682,
+      0.11955823720744187
+     ],
+     "median_tfix": 293107.5
+    }
+   ],
+   "provenance": "reused, intensivity_ext.parquet (round 3 Track A)"
+  },
+  {
+   "geometry": "384x128",
+   "L_long": 384,
+   "L_short": 128,
+   "N": 49152,
+   "aspect": 3.0,
+   "log2_aspect": 1.584962500721156,
+   "U_over_s_star": 0.5763792800595147,
+   "ci": [
+    0.47243963664813793,
+    0.6574233479506908
+   ],
+   "se_boot": 0.04782623753991507,
+   "boot_valid": 4000,
+   "n_neutral": 149,
+   "neutral_anchor": "own-geometry neutral ensemble",
+   "neutral_median": 3393404.0,
+   "runs_per_rung": {
+    "0.002": 150,
+    "0.004": 150,
+    "0.006": 150,
+    "0.008": 150,
+    "0.012": 150
+   },
+   "rungs": [
+    {
+     "mud": 0.002,
+     "U_over_s": 0.2,
+     "n": 150,
+     "median_ratio": 0.8002274412359979,
+     "ratio_ci": [
+      0.6051412377969467,
+      0.9957834313251275
+     ],
+     "median_tfix": 2715495.0
+    },
+    {
+     "mud": 0.004,
+     "U_over_s": 0.4,
+     "n": 150,
+     "median_ratio": 0.7443686339734379,
+     "ratio_ci": [
+      0.6143404700839614,
+      0.9085711196498939
+     ],
+     "median_tfix": 2525943.5
+    },
+    {
+     "mud": 0.006,
+     "U_over_s": 0.6,
+     "n": 150,
+     "median_ratio": 0.47313243574888225,
+     "ratio_ci": [
+      0.3492733739000598,
+      0.5890746090134481
+     ],
+     "median_tfix": 1605529.5
+    },
+    {
+     "mud": 0.008,
+     "U_over_s": 0.8,
+     "n": 150,
+     "median_ratio": 0.27520743182951396,
+     "ratio_ci": [
+      0.21707465461428183,
+      0.3467659254999927
+     ],
+     "median_tfix": 933890.0
+    },
+    {
+     "mud": 0.012,
+     "U_over_s": 1.2,
+     "n": 150,
+     "median_ratio": 0.12584649514175147,
+     "ratio_ci": [
+      0.09681471312121918,
+      0.15257955697047118
+     ],
+     "median_tfix": 427048.0
+    }
+   ],
+   "provenance": "reused, intensivity_ext.parquet (round 3 Track A)"
+  },
+  {
+   "geometry": "768x64",
+   "L_long": 768,
+   "L_short": 64,
+   "N": 49152,
+   "aspect": 12.0,
+   "log2_aspect": 3.584962500721156,
+   "U_over_s_star": 0.6796977676984524,
+   "ci": [
+    0.5512336652428677,
+    0.8922618232840135
+   ],
+   "se_boot": 0.08477355766015374,
+   "boot_valid": 3999,
+   "n_neutral": 77,
+   "neutral_anchor": "own-geometry neutral ensemble",
+   "neutral_median": 5884418.0,
+   "runs_per_rung": {
+    "0.004": 8,
+    "0.005": 39,
+    "0.007": 46,
+    "0.008": 8,
+    "0.01": 50,
+    "0.014": 40,
+    "0.02": 30
+   },
+   "rungs": [
+    {
+     "mud": 0.004,
+     "U_over_s": 0.4,
+     "n": 8,
+     "median_ratio": 1.3494518064488281,
+     "ratio_ci": [
+      0.5716751339615141,
+      2.453383880983239
+     ],
+     "median_tfix": 7940738.5
+    },
+    {
+     "mud": 0.005,
+     "U_over_s": 0.5,
+     "n": 39,
+     "median_ratio": 0.7780856152639054,
+     "ratio_ci": [
+      0.5610312041838827,
+      1.1953268576494362
+     ],
+     "median_tfix": 4578581.0
+    },
+    {
+     "mud": 0.007,
+     "U_over_s": 0.7,
+     "n": 46,
+     "median_ratio": 0.47334341306141064,
+     "ratio_ci": [
+      0.3294707614734213,
+      0.7902692411798852
+     ],
+     "median_tfix": 2785350.5
+    },
+    {
+     "mud": 0.008,
+     "U_over_s": 0.8,
+     "n": 8,
+     "median_ratio": 0.3110463090827334,
+     "ratio_ci": [
+      0.16224863534980674,
+      0.7413426198031267
+     ],
+     "median_tfix": 1830326.5
+    },
+    {
+     "mud": 0.01,
+     "U_over_s": 1.0,
+     "n": 50,
+     "median_ratio": 0.1885841556463188,
+     "ratio_ci": [
+      0.14316533701085588,
+      0.28483696536701913
+     ],
+     "median_tfix": 1109708.0
+    },
+    {
+     "mud": 0.014,
+     "U_over_s": 1.4,
+     "n": 40,
+     "median_ratio": 0.1479533744883521,
+     "ratio_ci": [
+      0.1092586915655329,
+      0.22014140221695067
+     ],
+     "median_tfix": 870619.5
+    },
+    {
+     "mud": 0.02,
+     "U_over_s": 2.0,
+     "n": 30,
+     "median_ratio": 0.14059291845004893,
+     "ratio_ci": [
+      0.09479936049224348,
+      0.21411817649291642
+     ],
+     "median_tfix": 827307.5
+    }
+   ],
+   "provenance": "this campaign (round 5)"
+  }
+ ],
+ "tests": {
+  "pooled_slope_per_doubling": {
+   "slope": 0.04798227543724097,
+   "ci": [
+    0.01338018709980085,
+    0.0722501461995518
+   ],
+   "slope_per_decade": 0.15939366883159456,
+   "ci_per_decade": [
+    0.044448019441677894,
+    0.24000979052001054
+   ],
+   "p_slope_le_0": 0.002763819095477387,
+   "n_boot": 3980,
+   "note": "threshold(U/s) = a_area + slope*log2(aspect); WLS with bootstrap SEs; CI/P from joint run-level bootstrap over all seven ladders"
+  },
+  "per_area": {
+   "24576": {
+    "geometries": [
+     "384x64",
+     "96x256",
+     "192x128"
+    ],
+    "aspects": [
+     6.0,
+     0.375,
+     1.5
+    ],
+    "thresholds": [
+     0.5675216275554359,
+     0.5368482913673424,
+     0.3700293224909367
+    ],
+    "slope_per_doubling": 0.023914746897934772,
+    "ci": [
+     -0.028815592299044065,
+     0.07795849782894203
+    ],
+    "p_slope_le_0": 0.19362929520943065,
+    "spearman_rho": 0.5,
+    "spearman_p_two_sided": 0.6666666666666666,
+    "n_points": 3,
+    "bootstrap_frac_monotone_increasing": 0.10509154752947078
+   },
+   "49152": {
+    "geometries": [
+     "768x64",
+     "96x512",
+     "192x256",
+     "384x128"
+    ],
+    "aspects": [
+     12.0,
+     0.1875,
+     0.75,
+     3.0
+    ],
+    "thresholds": [
+     0.6796977676984524,
+     0.3994978503002686,
+     0.3909427083329764,
+     0.5763792800595147
+    ],
+    "slope_per_doubling": 0.05916474615077203,
+    "ci": [
+     0.015807781718034427,
+     0.08881100284328863
+    ],
+    "p_slope_le_0": 0.004257450538442274,
+    "spearman_rho": 0.7999999999999999,
+    "spearman_p_two_sided": 0.2000000000000001,
+    "n_points": 4,
+    "bootstrap_frac_monotone_increasing": 0.30252942649636866
+   }
+  },
+  "pairwise_contrasts": [
+   {
+    "N": 24576,
+    "lo_aspect": "96x256",
+    "hi_aspect": "192x128",
+    "delta": -0.16681896887640568,
+    "ci": [
+     -0.3639000238893106,
+     0.10862032450365287
+    ],
+    "p_delta_le_0": 0.8745
+   },
+   {
+    "N": 24576,
+    "lo_aspect": "96x256",
+    "hi_aspect": "384x64",
+    "delta": 0.030673336188093536,
+    "ci": [
+     -0.1718534696605394,
+     0.260717023220572
+    ],
+    "p_delta_le_0": 0.3804865813895159
+   },
+   {
+    "N": 24576,
+    "lo_aspect": "192x128",
+    "hi_aspect": "384x64",
+    "delta": 0.19749230506449922,
+    "ci": [
+     -0.013852346245225465,
+     0.3581812176087346
+    ],
+    "p_delta_le_0": 0.03561575119137196
+   },
+   {
+    "N": 49152,
+    "lo_aspect": "96x512",
+    "hi_aspect": "192x256",
+    "delta": -0.008555141967292179,
+    "ci": [
+     -0.2885014869124938,
+     0.14666069586136002
+    ],
+    "p_delta_le_0": 0.6582373560340511
+   },
+   {
+    "N": 49152,
+    "lo_aspect": "96x512",
+    "hi_aspect": "384x128",
+    "delta": 0.1768814297592461,
+    "ci": [
+     -0.10979908858837745,
+     0.2954141431837493
+    ],
+    "p_delta_le_0": 0.14496745117676516
+   },
+   {
+    "N": 49152,
+    "lo_aspect": "96x512",
+    "hi_aspect": "768x64",
+    "delta": 0.2801999173981838,
+    "ci": [
+     -0.013012450332305948,
+     0.4898984636998734
+    ],
+    "p_delta_le_0": 0.032556974705735035
+   },
+   {
+    "N": 49152,
+    "lo_aspect": "192x256",
+    "hi_aspect": "384x128",
+    "delta": 0.18543657172653827,
+    "ci": [
+     0.01566865179946716,
+     0.30427504830875735
+    ],
+    "p_delta_le_0": 0.01675
+   },
+   {
+    "N": 49152,
+    "lo_aspect": "192x256",
+    "hi_aspect": "768x64",
+    "delta": 0.28875505936547596,
+    "ci": [
+     0.09706456086033342,
+     0.5104105025692687
+    ],
+    "p_delta_le_0": 0.00450112528132033
+   },
+   {
+    "N": 49152,
+    "lo_aspect": "384x128",
+    "hi_aspect": "768x64",
+    "delta": 0.1033184876389377,
+    "ci": [
+     -0.05069980854994804,
+     0.3397004739818804
+    ],
+    "p_delta_le_0": 0.07901975493873468
+   }
+  ]
+ },
+ "run_counts_by_source": {
+  "reused_intensivity_ext": 2159,
+  "reused_ridge_law": 1350,
+  "trackAspect_round5": 1029
+ },
+ "n_runs_total": 4538,
+ "n_new_runs": 1029,
+ "n_censored_new": 0,
+ "n_error_new": 0,
+ "bootstrap_replicates": 4000,
+ "decomposition_common_anchor": {
+  "note": "Sensitivity analysis: thresholds recomputed with a COMMON matched-area neutral anchor (all neutral runs at that N pooled). Separates the loaded-arm response from the aspect dependence of the neutral fixation time itself (T_fix_neutral ~ L_long^1.73). The manuscript estimator uses the own-geometry anchor; these values are diagnostic.",
+  "per_geometry": {
+   "384x64": {
+    "threshold_common_anchor": 0.65,
+    "ci_common_anchor": [
+     0.502,
+     0.711
+    ],
+    "neutral_median_own": 2357938.5,
+    "loaded_median_by_U_over_s": {
+     "0.4": 2721214.5,
+     "0.5": 1477238.0,
+     "0.7": 684954.5,
+     "0.8": 509165.0,
+     "1": 384378.5,
+     "1.4": 325060.0,
+     "2": 286277.5
+    }
+   },
+   "768x64": {
+    "threshold_common_anchor": 0.845,
+    "ci_common_anchor": [
+     0.757,
+     0.971
+    ],
+    "neutral_median_own": 5884418.0,
+    "loaded_median_by_U_over_s": {
+     "0.4": 7940738.5,
+     "0.5": 4578581.0,
+     "0.7": 2785350.5,
+     "0.8": 1830326.5,
+     "1": 1109708.0,
+     "1.4": 870619.5,
+     "2": 827307.5
+    }
+   },
+   "96x256": {
+    "threshold_common_anchor": 0.421,
+    "ci_common_anchor": [
+     0.252,
+     0.52
+    ],
+    "neutral_median_own": 1300561.5,
+    "loaded_median_by_U_over_s": {
+     "0.2": 1354367.0,
+     "0.3": 1024444.0,
+     "0.4": 909080.5,
+     "0.5": 702012.0,
+     "0.8": 360080.5,
+     "1.2": 184811.5
+    }
+   },
+   "96x512": {
+    "threshold_common_anchor": 0.327,
+    "ci_common_anchor": [
+     0.206,
+     0.486
+    ],
+    "neutral_median_own": 2046763.5,
+    "loaded_median_by_U_over_s": {
+     "0.2": 2338720.5,
+     "0.3": 1923192.0,
+     "0.4": 1019435.5,
+     "0.5": 969848.0,
+     "0.8": 517258.5,
+     "1.2": 386110.0
+    }
+   },
+   "192x256": {
+    "threshold_common_anchor": 0.297,
+    "ci_common_anchor": [
+     0.24,
+     0.381
+    ],
+    "neutral_median_own": 2833296.0,
+    "loaded_median_by_U_over_s": {
+     "0.2": 1994593.0,
+     "0.4": 1396898.5,
+     "0.6": 1143810.0,
+     "0.8": 690098.5,
+     "1.2": 293107.5
+    }
+   },
+   "384x128": {
+    "threshold_common_anchor": 0.587,
+    "ci_common_anchor": [
+     0.532,
+     0.648
+    ],
+    "neutral_median_own": 3393404.0,
+    "loaded_median_by_U_over_s": {
+     "0.2": 2715495.0,
+     "0.4": 2525943.5,
+     "0.6": 1605529.5,
+     "0.8": 933890.0,
+     "1.2": 427048.0
+    }
+   },
+   "192x128": {
+    "threshold_common_anchor": 0.345,
+    "ci_common_anchor": [
+     0.243,
+     0.435
+    ],
+    "neutral_median_own": 1636165.0,
+    "loaded_median_by_U_over_s": {
+     "0.1": 1369581.0,
+     "0.2": 1187827.0,
+     "0.4": 771279.0,
+     "0.6": 574911.5,
+     "0.8": 390830.5,
+     "1.2": 195741.0,
+     "2": 162637.0,
+     "5": 118739.0
+    }
+   }
+  },
+  "neutral_median_scaling": {
+   "N24576_factor_per_aspect_doubling": 1.16,
+   "N49152_factor_per_aspect_doubling": 1.18,
+   "note": "neutral median T_fix increases with aspect ratio at fixed area (log-log slope 0.149 / 0.167)"
+  },
+  "neutral_medians_with_ci": {
+   "384x64": {
+    "n": 88,
+    "median": 2357938.5,
+    "ci": [
+     1804349.5,
+     2724970.0
+    ]
+   },
+   "768x64": {
+    "n": 77,
+    "median": 5884418.0,
+    "ci": [
+     4032115.0,
+     7391912.0
+    ]
+   },
+   "96x256": {
+    "n": 62,
+    "median": 1300561.5,
+    "ci": [
+     995330.0,
+     1684709.0
+    ]
+   },
+   "96x512": {
+    "n": 38,
+    "median": 2046763.5,
+    "ci": [
+     1514346.0,
+     3161348.0
+    ]
+   },
+   "192x256": {
+    "n": 150,
+    "median": 2833296.0,
+    "ci": [
+     2484758.5,
+     3122758.0
+    ]
+   },
+   "384x128": {
+    "n": 149,
+    "median": 3393404.0,
+    "ci": [
+     2904492.0,
+     4481694.0
+    ]
+   },
+   "192x128": {
+    "n": 150,
+    "median": 1636165.0,
+    "ci": [
+     1311468.5,
+     2007475.1624999985
+    ]
+   }
+  }
+ }
+}

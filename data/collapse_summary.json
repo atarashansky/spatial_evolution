@@ -1,0 +1,241 @@
+{
+ "data": {
+  "file": "finite_size.parquet (v43b435f4)",
+  "runs": 1870,
+  "censored": 0,
+  "geometries_neutral_Lshort32": [
+   96,
+   192,
+   384,
+   768
+  ],
+  "n_neutral": [
+   150,
+   150,
+   150,
+   60
+  ],
+  "geometries_loaded_Lshort32": [
+   96,
+   192,
+   384,
+   768
+  ],
+  "n_loaded": [
+   200,
+   200,
+   200,
+   200
+  ],
+  "medians_frames": {
+   "loaded|96x32": 38504.5,
+   "loaded|192x32": 84393.0,
+   "loaded|192x128": 105212.0,
+   "loaded|384x32": 189946.5,
+   "loaded|384x128": 218806.5,
+   "loaded|768x32": 435221.5,
+   "neutral|96x32": 199390.0,
+   "neutral|192x32": 607064.5,
+   "neutral|192x128": 1562189.5,
+   "neutral|384x32": 1965205.5,
+   "neutral|384x128": 3436415.0,
+   "neutral|768x32": 7258605.5
+  },
+  "median_ci95": {
+   "loaded|96x32": [
+    35854.0,
+    42176.0
+   ],
+   "loaded|192x32": [
+    76976.0,
+    93487.0
+   ],
+   "loaded|192x128": [
+    100237.5,
+    113083.0
+   ],
+   "loaded|384x32": [
+    176695.5,
+    204855.5
+   ],
+   "loaded|384x128": [
+    202503.7125,
+    232913.5
+   ],
+   "loaded|768x32": [
+    400322.0,
+    482111.0
+   ],
+   "neutral|96x32": [
+    181280.0,
+    235440.5
+   ],
+   "neutral|192x32": [
+    484328.0,
+    711327.0
+   ],
+   "neutral|192x128": [
+    1301304.0,
+    1832750.0
+   ],
+   "neutral|384x32": [
+    1647578.5,
+    2246034.0
+   ],
+   "neutral|384x128": [
+    2908368.0,
+    5122745.5
+   ],
+   "neutral|768x32": [
+    5711283.6125,
+    10348599.0
+   ]
+  },
+  "method": "run-level bootstrap of the median (4,000 resamples of runs within arm); WLS in log-log weighted by bootstrap SE"
+ },
+ "neutral": {
+  "pure_power_law": {
+   "zeta": 1.685,
+   "chi2": 0.83,
+   "dof": 2,
+   "p": 0.66,
+   "verdict": "a single power law T ~ L^1.69 fits the four geometries adequately (p = 0.66)"
+  },
+  "diffusive_L2_over_full_range": {
+   "chi2": 26.45,
+   "dof": 3,
+   "p": 7.666025012849541e-06,
+   "verdict": "REJECTED - the neutral arm is not diffusive over 96-768"
+  },
+  "pure_L1p5": {
+   "chi2": 9.68,
+   "dof": 3,
+   "p": 0.0215,
+   "verdict": "rejected at p = 0.02"
+  },
+  "crossover_form": "T = A L^z0 [1+(L/L_c)^p]^((2-z0)/p), p = 2 (smooth), asymptote z = 2 (diffusive) imposed",
+  "crossover_vs_powerlaw_LR": {
+   "dchi2": 0.816,
+   "dof": 1,
+   "p": 0.366,
+   "verdict": "a crossover to L^2 is NOT required by the data (p = 0.37); adding L_c does not improve the fit significantly"
+  },
+  "profile_likelihood_free_z0": {
+   "best_L_c": 20.79994930194126,
+   "best_z0": 0.5,
+   "dchi2_at_landmarks": {
+    "30": -3.286,
+    "50": -11.628,
+    "100": -22.293,
+    "198": -22.864,
+    "402": -23.056,
+    "767": -22.776,
+    "1495": -22.46,
+    "5042": -22.273,
+    "19894": -22.254
+   },
+   "confidence_set_L_c_95": [
+    72.96175305491532,
+    null
+   ],
+   "note": "profile is flat (dchi2 < 1) from L_c ~ 100 to infinity; only L_c below ~70-90 is excluded when z0 is free"
+  },
+  "fixed_z0_scans": {
+   "z0=1.0": {
+    "best_L_c": 133.99716555071106,
+    "chi2": 0.544,
+    "L_c_95pct_lower": 92.31854364467081,
+    "L_c_excluded_below": 90.52589023016453
+   },
+   "z0=1.3333333333333333": {
+    "best_L_c": 206.27694937194707,
+    "chi2": 0.2,
+    "L_c_95pct_lower": 128.84374245874258,
+    "L_c_excluded_below": 126.34183801205383
+   },
+   "z0=1.5": {
+    "best_L_c": 311.37923535980167,
+    "chi2": 0.023,
+    "L_c_95pct_lower": 169.54668244943056,
+    "L_c_excluded_below": 166.25440305233553
+   },
+   "z0=1.6": {
+    "best_L_c": 479.3411748958339,
+    "chi2": 0.085,
+    "L_c_95pct_lower": 214.5275044547801,
+    "L_c_excluded_below": 210.36178164131636
+   }
+  },
+  "collapse_found": false,
+  "L_c": "NOT IDENTIFIED. Best-fit L_c depends entirely on the assumed sub-diffusive small-L exponent z0 (L_c ~ 130 for z0 = 1, ~200 for z0 = 4/3, ~310 for z0 = 1.5, ~480 for z0 = 1.6) and is unbounded above; a pure power law fits equally well.",
+  "excluded_range": "Any crossover to diffusive L^2 scaling with L_c below the sampled range is excluded (L_c < ~90-210 depending on z0, i.e. L_c below the smallest measured length): the neutral arm is nowhere on the L^2 branch, so the crossover, if it exists, lies at or above the top of the measured range (L_c >~ 200-800) or beyond it.",
+  "T_over_L2_diagnostic": {
+   "neutral": {
+    "96": 21.635,
+    "192": 16.468,
+    "384": 13.327,
+    "768": 12.306
+   },
+   "verdict": "T/L^2 falls monotonically 21.6 -> 12.3 with no plateau: the diffusive asymptote is not reached by L = 768"
+  },
+  "statement": "No data collapse: with four geometries spanning a factor 8 in L_long, the neutral fixation time is fit by a single apparent power law T ~ L^1.69, and neither the T/L^2 nor the T/L^1.73 rescaling produces a plateau. A Family-Vicsek-style crossover to the diffusive L^2 law fits no better than the pure power law (likelihood-ratio p = 0.37), and its crossover scale L_c is unidentifiable - the profile likelihood is flat from L_c ~ 100 out to infinity, and the fitted L_c tracks whatever small-L exponent is assumed. What the data DO establish: (i) the neutral arm is not diffusive within the measured range (T ~ L^2 rejected, chi2 = 26.4 on 3 dof, p < 1e-5), and (ii) T/L^2 is still falling at L = 768, so any crossover to L^2 lies at or beyond the top of the sampled range - crossover scales L_c below roughly the smallest measured length (~90-210, depending on the assumed small-L exponent) are excluded, but no upper bound can be placed. Identifying L_c would require the neutral arm to reach the L^2 plateau, i.e. lengths at least a factor of a few beyond 768."
+ },
+ "loaded": {
+  "power_law": {
+   "zeta": 1.165,
+   "chi2": 0.256,
+   "dof": 2,
+   "p": 0.88
+  },
+  "hypotheses": {
+   "constant_velocity_ballistic_T_prop_L": {
+    "chi2": 32.64,
+    "dof": 3,
+    "p": 3.835933572049749e-07,
+    "verdict": "DECISIVELY REJECTED (dchi2 = 32 vs free fit): fixation is not a constant-speed sweep, so 'T = L / v_eff' with a geometry-independent v_eff is falsified"
+   },
+   "diffusive_T_prop_L2": {
+    "chi2": 835.6,
+    "dof": 3,
+    "verdict": "rejected"
+   },
+   "random_slope_ballistic_sweep_T_prop_sqrt_L_over_kappa_sigma": {
+    "predicted_zeta_from_measured_scalings": 1.225,
+    "inputs": "kappa ~ L^-0.69, sigma_dR ~ L^-0.76 (fitted to the four L_short=32 geometries)",
+    "measured_zeta": 1.165,
+    "verdict": "CONSISTENT: the loaded arm collapses in the scaling variable L/(kappa sigma_dR), not L/v"
+   }
+  },
+  "collapse": {
+   "form": "T_fix = C sqrt(L_long/(kappa sigma_dR))",
+   "C_per_geometry": {
+    "96x32": 1.678,
+    "192x32": 1.589,
+    "384x32": 1.604,
+    "768x32": 1.462,
+    "192x128": 1.764,
+    "384x128": 1.742
+   },
+   "C_mean": 1.64,
+   "C_ci95_bootstrap": [
+    1.574,
+    1.722
+   ],
+   "CV_percent": 6.8,
+   "CV_ci95_bootstrap_percent": [
+    4.3,
+    12.5
+   ],
+   "homogeneity_test": {
+    "chi2": 8.35,
+    "dof": 5,
+    "p": 0.138,
+    "verdict": "the six C values are statistically consistent with a single constant (p = 0.14)"
+   },
+   "circularity": "kappa and sigma_dR are measured from the SAME loaded fixation runs whose medians they collapse, and C is fitted; this is a one-constant organising relation (internal consistency of the random-slope form), not an independent prediction",
+   "v_eff": "the effective drift velocity is not a constant: v(t) = kappa*sigma_dR*t grows linearly (random-slope gap g = dR*t drives the front at speed kappa*g), giving the parabolic sweep h ~ kappa*dR*t^2/2 and hence T ~ sqrt(L/(kappa*sigma_dR)); v_eff at fixation ranges 0.002-0.004 sites/frame across geometries and is set by the drift response kappa and the rate scatter sigma_dR, as the panel anticipated"
+  },
+  "collapse_found": true
+ },
+ "answer_to_charge": "Neutral arm: NO collapse and NO identified L_c - reported honestly as a null result with an exclusion (L_c below ~the smallest measured length is excluded; L_c is unbounded above). Loaded arm: YES, a one-constant scaling collapse in the ballistic-sweep variable sqrt(L/(kappa sigma_dR)) (C = 1.64 +/- 0.11, CV 6.8%, homogeneous across six geometries, p = 0.14), with the constant-velocity ballistic prediction T ~ L decisively rejected; the collapse is internally consistent but not an independent test because its inputs come from the same runs."
+}

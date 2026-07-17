@@ -1,0 +1,95 @@
+{
+ "moore|64": {
+  "beta": 0.12131802339686347,
+  "ci": [
+   0.051013188791945066,
+   0.19206747168958954
+  ],
+  "n_runs": 32,
+  "n_fit": 69,
+  "n_fixed_in_window": 29,
+  "frac_A_wins": 0.3793103448275862
+ },
+ "moore|128": {
+  "beta": 0.18167010054569366,
+  "ci": [
+   0.11433969527295562,
+   0.2491277949393208
+  ],
+  "n_runs": 24,
+  "n_fit": 67,
+  "n_fixed_in_window": 15,
+  "frac_A_wins": 0.5333333333333333
+ },
+ "vonN|64": {
+  "beta": 0.14956632555107222,
+  "ci": [
+   0.07964892860491377,
+   0.21597316538801187
+  ],
+  "n_runs": 32,
+  "n_fit": 64,
+  "n_fixed_in_window": 24,
+  "frac_A_wins": 0.5
+ },
+ "vonN|128": {
+  "beta": 0.1290961583739478,
+  "ci": [
+   0.05619071199826089,
+   0.19441074485845725
+  ],
+  "n_runs": 24,
+  "n_fit": 141,
+  "n_fixed_in_window": 12,
+  "frac_A_wins": 0.5
+ },
+ "stencil_comparison": {
+  "64": {
+   "beta_moore": 0.13741697420858334,
+   "beta_vonN": 0.14956632555107222,
+   "beta_diff_M_minus_V": -0.012149351342488873,
+   "beta_diff_ci": [
+    -0.11150570476578142,
+    0.08454103585177594
+   ],
+   "W2_ratio_vN_over_moore_at_t3e5": 1.1753203850127676,
+   "W2_ratio_ci": [
+    0.7818087814386567,
+    1.737945404515733
+   ],
+   "n_moore": 32,
+   "n_vonN": 32,
+   "t_probe": 292000.0
+  },
+  "128": {
+   "beta_moore": 0.18167010054569366,
+   "beta_vonN": 0.15535574889038686,
+   "beta_diff_M_minus_V": 0.026314351655306795,
+   "beta_diff_ci": [
+    -0.08452367902239419,
+    0.13212412164200804
+   ],
+   "W2_ratio_vN_over_moore_at_t3e5": 0.9865766648737369,
+   "W2_ratio_ci": [
+    0.7112077002517676,
+    1.390719631337672
+   ],
+   "n_moore": 24,
+   "n_vonN": 24,
+   "t_probe": 300000.0
+  },
+  "wins_moore": {
+   "A_wins": 19,
+   "n_fixed": 44,
+   "frac": 0.4318181818181818,
+   "p_two_sided": 0.4513808323961257
+  },
+  "wins_vonN": {
+   "A_wins": 18,
+   "n_fixed": 36,
+   "frac": 0.5,
+   "p_two_sided": 1.0
+  }
+ },
+ "note": "Absolute beta here is a short-window, row-count-std proxy including the early lattice transient (fit window 4e4-6e5 frames, L_perp<=128) and is NOT the manuscript's dedicated width-control protocol (L_perp=256, wall-free); the meaningful validation quantity is the LIKE-FOR-LIKE Moore-vs-von-Neumann difference/ratio under an identical protocol."
+}
