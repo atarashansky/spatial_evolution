@@ -1,0 +1,102 @@
+{
+ "Colonic crypt": {
+  "anticorrelated_mud_sd": {
+   "p_fluid": 0.998865,
+   "margin_median": 1.4329653087654795,
+   "margin_p5": 0.3318124484335676
+  },
+  "comonotone_mud_sd": {
+   "p_fluid": 1.0,
+   "margin_median": 1.4311754438611684,
+   "margin_p5": 1.1726643599777788
+  },
+  "shape_up_to_5x": {
+   "p_fluid": 0.997975,
+   "margin_median": 1.3236385109495432,
+   "margin_p5": 0.4454204212652949
+  },
+  "legacy_profile_interp": {
+   "p_fluid": 1.0,
+   "margin_median": 1.3253622757082968
+  },
+  "barrier_multiplier_to_reach": {
+   "0.9": 5.594833046333733,
+   "0.75": 11.668256464616656
+  }
+ },
+ "Epidermis (sun-exp.)": {
+  "anticorrelated_mud_sd": {
+   "p_fluid": 1.0,
+   "margin_median": 2.132125015971666,
+   "margin_p5": 1.111572071723674
+  },
+  "comonotone_mud_sd": {
+   "p_fluid": 1.0,
+   "margin_median": 2.1294458953242072,
+   "margin_p5": 1.8235457342394745
+  },
+  "shape_up_to_5x": {
+   "p_fluid": 1.0,
+   "margin_median": 2.017242672686141,
+   "margin_p5": 1.201007052329515
+  },
+  "legacy_profile_interp": {
+   "p_fluid": 1.0,
+   "margin_median": 2.016784115428681
+  },
+  "barrier_multiplier_to_reach": {
+   "0.9": 31.078708135716507,
+   "0.75": 60.39670520241403
+  }
+ },
+ "HSC (blood)": {
+  "anticorrelated_mud_sd": {
+   "p_fluid": 1.0,
+   "margin_median": 2.19958124443969,
+   "margin_p5": 1.2496385048493088
+  },
+  "comonotone_mud_sd": {
+   "p_fluid": 1.0,
+   "margin_median": 2.203042632309339,
+   "margin_p5": 1.8498744244437346
+  },
+  "shape_up_to_5x": {
+   "p_fluid": 1.0,
+   "margin_median": 2.0932194435729707,
+   "margin_p5": 1.3107737534858979
+  },
+  "legacy_profile_interp": {
+   "p_fluid": 1.0,
+   "margin_median": 2.088072293952882
+  },
+  "barrier_multiplier_to_reach": {
+   "0.9": 39.22355524554605,
+   "0.75": 73.38023379966651
+  }
+ },
+ "Hypermutator tumour": {
+  "anticorrelated_mud_sd": {
+   "p_fluid": 1.0,
+   "margin_median": 2.0404500050512855,
+   "margin_p5": 1.2063721623774697
+  },
+  "comonotone_mud_sd": {
+   "p_fluid": 1.0,
+   "margin_median": 2.042698342625508,
+   "margin_p5": 1.4537784366741322
+  },
+  "shape_up_to_5x": {
+   "p_fluid": 1.0,
+   "margin_median": 1.931444818536784,
+   "margin_p5": 1.161941727371954
+  },
+  "legacy_profile_interp": {
+   "p_fluid": 1.0,
+   "margin_median": 2.056521136806527
+  },
+  "barrier_multiplier_to_reach": {
+   "0.9": 26.941099717222205,
+   "0.75": 47.14385098771204
+  }
+ }
+}

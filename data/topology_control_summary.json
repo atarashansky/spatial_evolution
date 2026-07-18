@@ -1,0 +1,846 @@
+{
+ "tag": "ROUND 8 - topology control track: hexagonal (6-nbr) and randomised-coordination (5-7) stencils, 192x32-equivalent strip (6144 sites)",
+ "question": "Is the order-unity U_d/s_d freeze bar an artefact of the square lattice, or does it survive on 6-neighbour hexagonal and random-coordination lattices?",
+ "verdict": "FOR",
+ "against_hypothesis": false,
+ "load_axis_convention": "theta = U_d/s_d = mud/sd; U_d = mud with NO factor of 2. Ridge = theta at which median T_fix / OWN neutral (mud=0) median crosses one-half; each stencil normalised by its own fresh 600-run pooled neutral anchor.",
+ "protocol": {
+  "kernel": "production evolution_strip._run_strip event loop UNCHANGED (death: alias-geometric exponential waiting per site at rate avg*dt; birth: fitness-weighted choice among the stencil's live neighbours; mutation of source and daughter after every division, mud per division split 1/2 source 1/2 daughter, multiplicative (1-sd) per hit); only the neighbour index table differs per stencil (kernels/topo_strip.py).",
+  "lattice": "W=194 x H=32 (192x32 interior, 6144 interior sites), x-walls, y-periodic; hexagonal = triangular lattice via offset rows (6 nbrs; even rows: (x\u00b11,y),(x-1,y\u00b11),(x,y\u00b11); odd rows: (x\u00b11,y),(x,y\u00b11),(x+1,y\u00b11)); random-coordination = per-site random subset of the 8 Moore neighbours with size ~ Uniform{5,6,7}, drawn once per run from a topology RNG (seed+1,000,000,007) and fixed for the run.",
+  "tfix": {
+   "numgen_cap": 20000000,
+   "dt": 2400.0,
+   "avg": 1.16e-05,
+   "sb": 0.1,
+   "mub": 0.0,
+   "sampling": 10000,
+   "s_d": 0.01,
+   "theta_ladder": [
+    0.05,
+    0.0744,
+    0.1107,
+    0.1646,
+    0.2449,
+    0.3644,
+    0.5422,
+    0.8066,
+    1.2
+   ],
+   "runs_per_rung": 96,
+   "neutral_anchor_runs_per_stencil": 600
+  },
+  "census": {
+   "kernel": "census2._run_census2 UNCHANGED",
+   "numgen_cap": 1200000,
+   "sampling": 2000,
+   "s_d": 0.01,
+   "thetas": [
+    0.05,
+    0.2,
+    0.5,
+    1.0
+   ],
+   "runs_per_stencil": 64,
+   "moore_control_runs": 16,
+   "window": "0.10 < t/T_fix < 0.60",
+   "N_eff": "mean over runs of (opposite-clone contacts summed over boundary cells of both sides) / (number of boundary cells), boundary cell = live cell with >=1 live opposite-clone neighbour in the run's stencil"
+  },
+  "estimator": "cross_loglin: first crossing of the median-ratio ladder through 1/2, interpolated linearly in log(theta); run-level bootstrap (n_boot=4000) resampling runs within every rung AND within the neutral anchor; percentile 95% CI. Isotonic (PAVA) and log-log crossings reported as scheme sensitivity."
+ },
+ "seeds": {
+  "block": [
+   13500000,
+   13519999
+  ],
+  "used_min": 13500000,
+  "used_max": 13504015,
+  "n_unique": 3072,
+  "per_arm": {
+   "hex_anchor": {
+    "start": 13500000,
+    "n": 600
+   },
+   "hex_rung0_theta0.05": {
+    "start": 13501000,
+    "n": 96
+   },
+   "hex_rung1_theta0.0744": {
+    "start": 13501100,
+    "n": 96
+   },
+   "hex_rung2_theta0.1107": {
+    "start": 13501200,
+    "n": 96
+   },
+   "hex_rung3_theta0.1646": {
+    "start": 13501300,
+    "n": 96
+   },
+   "hex_rung4_theta0.2449": {
+    "start": 13501400,
+    "n": 96
+   },
+   "hex_rung5_theta0.3644": {
+    "start": 13501500,
+    "n": 96
+   },
+   "hex_rung6_theta0.5422": {
+    "start": 13501600,
+    "n": 96
+   },
+   "hex_rung7_theta0.8066": {
+    "start": 13501700,
+    "n": 96
+   },
+   "hex_rung8_theta1.2": {
+    "start": 13501800,
+    "n": 96
+   },
+   "hex_census": {
+    "start": 13501900,
+    "n": 64
+   },
+   "rand_anchor": {
+    "start": 13502000,
+    "n": 600
+   },
+   "rand_rung0_theta0.05": {
+    "start": 13503000,
+    "n": 96
+   },
+   "rand_rung1_theta0.0744": {
+    "start": 13503100,
+    "n": 96
+   },
+   "rand_rung2_theta0.1107": {
+    "start": 13503200,
+    "n": 96
+   },
+   "rand_rung3_theta0.1646": {
+    "start": 13503300,
+    "n": 96
+   },
+   "rand_rung4_theta0.2449": {
+    "start": 13503400,
+    "n": 96
+   },
+   "rand_rung5_theta0.3644": {
+    "start": 13503500,
+    "n": 96
+   },
+   "rand_rung6_theta0.5422": {
+    "start": 13503600,
+    "n": 96
+   },
+   "rand_rung7_theta0.8066": {
+    "start": 13503700,
+    "n": 96
+   },
+   "rand_rung8_theta1.2": {
+    "start": 13503800,
+    "n": 96
+   },
+   "rand_census": {
+    "start": 13503900,
+    "n": 64
+   },
+   "moore_census_ctrl": {
+    "start": 13504000,
+    "n": 16
+   },
+   "smoke_probes": {
+    "start": 13519000,
+    "n": 300
+   }
+  },
+  "disjoint_from_SEEDS_md": true,
+  "note": "All seeds in [13,500,000, 13,504,015]; SEEDS.md tables span at most base 12,900,000 + rounds<=7 (max used 12,900,000-ledger and legacy campaigns < 13.5M). Smoke/timing probes at 13,519,000-13,519,299 are NOT deposited."
+ },
+ "runs_executed": {
+  "total": 3072,
+  "tfix": 2928,
+  "census": 144,
+  "tfix_errors": 0,
+  "tfix_censored_at_cap": 0,
+  "census_errors": 0,
+  "census_runs_reaching_census_cap": 6,
+  "core_hours": 21.5
+ },
+ "ridge": {
+  "hex": {
+   "theta_star": 0.3294186429786438,
+   "ci": [
+    0.2412454584557002,
+    0.3799175393097484
+   ],
+   "boot_frac_valid": 1.0,
+   "boot_median": 0.32951285715413015,
+   "var_log": 0.011117817807774757,
+   "theta_star_isotonic": 0.3294186429786438,
+   "ci_isotonic": [
+    0.24120680259156801,
+    0.3798906571084929
+   ],
+   "boot_frac_valid_isotonic": 1.0,
+   "boot_median_isotonic": 0.3285375796249168,
+   "theta_star_loglog": 0.3253864158586468,
+   "anchor_median": 733865.5,
+   "n_anchor": 600,
+   "rungs": [
+    {
+     "theta": 0.05,
+     "n": 96,
+     "median_tfix": 644518.0,
+     "ratio": 0.8782508511437042,
+     "ratio_ci": [
+      0.7352278319593047,
+      1.058085849043656
+     ]
+    },
+    {
+     "theta": 0.0744,
+     "n": 96,
+     "median_tfix": 618275.5,
+     "ratio": 0.8424915737284284,
+     "ratio_ci": [
+      0.7190838782336425,
+      1.1189515278817639
+     ]
+    },
+    {
+     "theta": 0.1107,
+     "n": 96,
+     "median_tfix": 586501.5,
+     "ratio": 0.7991948115833215,
+     "ratio_ci": [
+      0.7015351706581783,
+      0.9836145168135615
+     ]
+    },
+    {
+     "theta": 0.1646,
+     "n": 96,
+     "median_tfix": 528743.5,
+     "ratio": 0.7204910164055948,
+     "ratio_ci": [
+      0.5953869084508816,
+      0.8308998859422991
+     ]
+    },
+    {
+     "theta": 0.2449,
+     "n": 96,
+     "median_tfix": 458533.5,
+     "ratio": 0.6248195343697176,
+     "ratio_ci": [
+      0.49273071829521514,
+      0.7779987153586715
+     ]
+    },
+    {
+     "theta": 0.3644,
+     "n": 96,
+     "median_tfix": 335751.5,
+     "ratio": 0.4575109471694745,
+     "ratio_ci": [
+      0.38573304717461154,
+      0.5155239583784222
+     ]
+    },
+    {
+     "theta": 0.5422,
+     "n": 96,
+     "median_tfix": 252099.0,
+     "ratio": 0.3435220759117304,
+     "ratio_ci": [
+      0.305498013358795,
+      0.39361624809308593
+     ]
+    },
+    {
+     "theta": 0.8066,
+     "n": 96,
+     "median_tfix": 211684.0,
+     "ratio": 0.28845067658855744,
+     "ratio_ci": [
+      0.252706396544966,
+      0.3280007002875273
+     ]
+    },
+    {
+     "theta": 1.2,
+     "n": 96,
+     "median_tfix": 174585.5,
+     "ratio": 0.23789849774924696,
+     "ratio_ci": [
+      0.20887735669875004,
+      0.2699231659671468
+     ]
+    }
+   ],
+   "n_anchor_censored": 0,
+   "n_ladder_censored": 0,
+   "n_ladder": 864,
+   "n_errors": 0,
+   "anchor_seed_range": [
+    13500000,
+    13500599
+   ],
+   "ladder_seed_range": [
+    13501000,
+    13501895
+   ],
+   "anchor_median_ci": [
+    688860.5375,
+    797648.0
+   ]
+  },
+  "rand": {
+   "theta_star": 0.34362823642399,
+   "ci": [
+    0.2859937779495282,
+    0.43880768803884385
+   ],
+   "boot_frac_valid": 1.0,
+   "boot_median": 0.3462218592352093,
+   "var_log": 0.012638972805655374,
+   "theta_star_isotonic": 0.34362823642399,
+   "ci_isotonic": [
+    0.2867859365161173,
+    0.4388864866162345
+   ],
+   "boot_frac_valid_isotonic": 1.0,
+   "boot_median_isotonic": 0.34643698160819775,
+   "theta_star_loglog": 0.34056367071615146,
+   "anchor_median": 522634.0,
+   "n_anchor": 600,
+   "rungs": [
+    {
+     "theta": 0.05,
+     "n": 96,
+     "median_tfix": 553985.0,
+     "ratio": 1.0599865297703555,
+     "ratio_ci": [
+      0.9124121007317532,
+      1.2987578091751169
+     ]
+    },
+    {
+     "theta": 0.0744,
+     "n": 96,
+     "median_tfix": 443627.0,
+     "ratio": 0.8488291997841702,
+     "ratio_ci": [
+      0.676759434653762,
+      1.0727919038506293
+     ]
+    },
+    {
+     "theta": 0.1107,
+     "n": 96,
+     "median_tfix": 426214.0,
+     "ratio": 0.815511428647964,
+     "ratio_ci": [
+      0.7218248537326799,
+      0.9757168634322759
+     ]
+    },
+    {
+     "theta": 0.1646,
+     "n": 96,
+     "median_tfix": 452320.5,
+     "ratio": 0.8654632113486684,
+     "ratio_ci": [
+      0.6694758171924713,
+      1.0553979162337495
+     ]
+    },
+    {
+     "theta": 0.2449,
+     "n": 96,
+     "median_tfix": 344102.0,
+     "ratio": 0.6583995683403682,
+     "ratio_ci": [
+      0.5349672743176344,
+      0.7809378867831697
+     ]
+    },
+    {
+     "theta": 0.3644,
+     "n": 96,
+     "median_tfix": 246972.0,
+     "ratio": 0.4725524937145306,
+     "ratio_ci": [
+      0.4053300193543565,
+      0.5880931726709763
+     ]
+    },
+    {
+     "theta": 0.5422,
+     "n": 96,
+     "median_tfix": 194565.5,
+     "ratio": 0.3722786883363884,
+     "ratio_ci": [
+      0.29872012418160515,
+      0.4488420744599013
+     ]
+    },
+    {
+     "theta": 0.8066,
+     "n": 96,
+     "median_tfix": 141973.0,
+     "ratio": 0.27164899336820797,
+     "ratio_ci": [
+      0.24271998396931094,
+      0.3081707745376314
+     ]
+    },
+    {
+     "theta": 1.2,
+     "n": 96,
+     "median_tfix": 157421.5,
+     "ratio": 0.30120791988274775,
+     "ratio_ci": [
+      0.24779901117580438,
+      0.33180439445839754
+     ]
+    }
+   ],
+   "n_anchor_censored": 0,
+   "n_ladder_censored": 0,
+   "n_ladder": 864,
+   "n_errors": 0,
+   "anchor_seed_range": [
+    13502000,
+    13502599
+   ],
+   "ladder_seed_range": [
+    13503000,
+    13503895
+   ],
+   "anchor_median_ci": [
+    491484.5,
+    575282.0
+   ]
+  },
+  "moore_reference_replicated": {
+   "theta_star": 0.3725154110229679,
+   "ci": [
+    0.3239241932173188,
+    0.429788498035229
+   ],
+   "boot_frac_valid": 1.0,
+   "boot_median": 0.37190525994572055,
+   "var_log": 0.0043248097625269225,
+   "theta_star_isotonic": 0.3725154110229679,
+   "ci_isotonic": [
+    0.3252542081286756,
+    0.4299728055621185
+   ],
+   "boot_frac_valid_isotonic": 1.0,
+   "boot_median_isotonic": 0.3728026903072755,
+   "theta_star_loglog": 0.3699244986149474,
+   "anchor_median": 572583.5,
+   "n_anchor": 2856,
+   "rungs": [
+    {
+     "theta": 0.05,
+     "n": 96,
+     "median_tfix": 593171.5,
+     "ratio": 1.0359563277670418,
+     "ratio_ci": [
+      0.7614131357229951,
+      1.2134537199776678
+     ]
+    },
+    {
+     "theta": 0.1,
+     "n": 246,
+     "median_tfix": 524087.5,
+     "ratio": 0.9153031828545531,
+     "ratio_ci": [
+      0.773788463816992,
+      0.9990818062646895
+     ]
+    },
+    {
+     "theta": 0.15,
+     "n": 96,
+     "median_tfix": 501612.0,
+     "ratio": 0.8760503926501549,
+     "ratio_ci": [
+      0.7740980992558412,
+      1.0279786872455285
+     ]
+    },
+    {
+     "theta": 0.2,
+     "n": 246,
+     "median_tfix": 428507.5,
+     "ratio": 0.7483755644373266,
+     "ratio_ci": [
+      0.6764333961859352,
+      0.8387301912226846
+     ]
+    },
+    {
+     "theta": 0.3,
+     "n": 246,
+     "median_tfix": 343520.0,
+     "ratio": 0.5999474312480189,
+     "ratio_ci": [
+      0.5161917022406936,
+      0.6711131988865852
+     ]
+    },
+    {
+     "theta": 0.4,
+     "n": 246,
+     "median_tfix": 267474.5,
+     "ratio": 0.4671362342784939,
+     "ratio_ci": [
+      0.4275437471340961,
+      0.5286820761006135
+     ]
+    },
+    {
+     "theta": 0.5,
+     "n": 96,
+     "median_tfix": 245224.0,
+     "ratio": 0.42827639986133026,
+     "ratio_ci": [
+      0.3721057466087775,
+      0.4819671173706435
+     ]
+    },
+    {
+     "theta": 0.6,
+     "n": 246,
+     "median_tfix": 204325.0,
+     "ratio": 0.35684751656308644,
+     "ratio_ci": [
+      0.3210256783001447,
+      0.38375198713099057
+     ]
+    },
+    {
+     "theta": 0.8,
+     "n": 246,
+     "median_tfix": 164886.0,
+     "ratio": 0.2879684797064533,
+     "ratio_ci": [
+      0.26150495539754554,
+      0.31167795310845975
+     ]
+    },
+    {
+     "theta": 1.0,
+     "n": 246,
+     "median_tfix": 152904.5,
+     "ratio": 0.2670431474186734,
+     "ratio_ci": [
+      0.23447752836640967,
+      0.29659349117718964
+     ]
+    },
+    {
+     "theta": 1.2,
+     "n": 150,
+     "median_tfix": 143501.5,
+     "ratio": 0.2506210884526012,
+     "ratio_ci": [
+      0.2216698469194065,
+      0.27738716982314365
+     ]
+    },
+    {
+     "theta": 2.0,
+     "n": 246,
+     "median_tfix": 120328.0,
+     "ratio": 0.21014926207269333,
+     "ratio_ci": [
+      0.18471630290578728,
+      0.2307477006711133
+     ]
+    },
+    {
+     "theta": 5.0,
+     "n": 246,
+     "median_tfix": 88902.5,
+     "ratio": 0.1552655638871885,
+     "ratio_ci": [
+      0.14509241752171317,
+      0.175683193544531
+     ]
+    },
+    {
+     "theta": 10.0,
+     "n": 150,
+     "median_tfix": 86058.0,
+     "ratio": 0.15029772950146136,
+     "ratio_ci": [
+      0.13305206235882816,
+      0.16898907634108287
+     ]
+    }
+   ],
+   "n_ladder": 2802
+  }
+ },
+ "envelope": {
+  "moore_ridge_deposited": {
+   "theta_star": 0.37,
+   "ci": [
+    0.32,
+    0.43
+   ]
+  },
+  "moore_ridge_replicated_from_pool": {
+   "theta_star": 0.3725154110229679,
+   "ci": [
+    0.3239241932173188,
+    0.429788498035229
+   ],
+   "n_ladder": 2802,
+   "n_anchor": 2856
+  },
+  "vn_ridge_deposited": {
+   "theta_star_range": [
+    0.302,
+    0.316
+   ],
+   "own_anchor_ci": [
+    0.2555,
+    0.3873
+   ],
+   "target_ci": [
+    0.2651,
+    0.4003
+   ]
+  },
+  "Neff_deposited": {
+   "moore": 2.9004,
+   "vn": 1.625
+  }
+ },
+ "factor2_tests": {
+  "hex": {
+   "ratio_to_moore_point": 0.8903206566990374,
+   "ratio_to_moore_boot": {
+    "ratio_median": 0.8809826149476677,
+    "ratio_ci": [
+     0.6425666804570552,
+     1.0663951401476794
+    ],
+    "diff_median": -0.044402073020045035,
+    "diff_ci": [
+     -0.1386787882303898,
+     0.02264721976084182
+    ],
+    "p_ratio_gt_2": 0.0,
+    "p_ratio_lt_half": 0.00025,
+    "n_valid": 4000
+   },
+   "ratio_to_vn_point": 1.0660797507399475,
+   "within_factor2_of_both": true,
+   "point_inside_moore_vn_envelope": true,
+   "ci_overlaps_moore_ci": true
+  },
+  "rand": {
+   "ratio_to_moore_point": 0.9287249633080811,
+   "ratio_to_moore_boot": {
+    "ratio_median": 0.9352115713924221,
+    "ratio_ci": [
+     0.7386193741282062,
+     1.2238634467546219
+    ],
+    "diff_median": -0.023581503702055195,
+    "diff_ci": [
+     -0.10525527451577865,
+     0.07931598310041237
+    ],
+    "p_ratio_gt_2": 0.0,
+    "p_ratio_lt_half": 0.0,
+    "n_valid": 4000
+   },
+   "ratio_to_vn_point": 1.112065490045275,
+   "within_factor2_of_both": true,
+   "point_inside_moore_vn_envelope": true,
+   "ci_overlaps_moore_ci": true
+  }
+ },
+ "hex_vs_rand": {
+  "ratio_median": 0.9334826580552715,
+  "ratio_ci": [
+   0.6543623468842265,
+   1.1768324155950491
+  ],
+  "diff_median": -0.02328760650575437,
+  "diff_ci": [
+   -0.13852979169904572,
+   0.053007437244492105
+  ],
+  "p_ratio_gt_2": 0.0,
+  "p_ratio_lt_half": 0.00025,
+  "n_valid": 4000
+ },
+ "Neff": {
+  "hex": {
+   "N_eff_opp": 2.297192692347075,
+   "ci": [
+    2.2954533492007694,
+    2.298869208493591
+   ],
+   "N_eff_same": 3.702107347811623,
+   "ci_same": [
+    3.7003237933461492,
+    3.70393791035179
+   ],
+   "n": 64,
+   "per_theta": {
+    "0.05": 2.3018,
+    "0.2": 2.2962,
+    "0.5": 2.2952,
+    "1.0": 2.2955
+   },
+   "wall_pc": 0.0006999598413020508,
+   "nbd": 366.28298272976247,
+   "n_censored": 3
+  },
+  "rand": {
+   "N_eff_opp": 2.3375735119925505,
+   "ci": [
+    2.3351200034609,
+    2.3400854691741078
+   ],
+   "N_eff_same": 3.7029744780914173,
+   "ci_same": [
+    3.6995441739445174,
+    3.7066618679430716
+   ],
+   "n": 64,
+   "per_theta": {
+    "0.05": 2.3429,
+    "0.2": 2.3393,
+    "0.5": 2.3362,
+    "1.0": 2.332
+   },
+   "wall_pc": 0.9594520099160322,
+   "nbd": 455.8331371004248,
+   "n_censored": 2
+  },
+  "moore_control_this_work": {
+   "N_eff_opp": 2.933249266768233,
+   "ci": [
+    2.9297500683286595,
+    2.9372328303230173
+   ],
+   "N_eff_same": 5.063183272199867,
+   "ci_same": [
+    5.057955212771309,
+    5.067751384290651
+   ],
+   "n": 16,
+   "per_theta": {
+    "0.05": 2.9316,
+    "0.2": 2.9395,
+    "0.5": 2.9339,
+    "1.0": 2.928
+   },
+   "wall_pc": 0.0035674610319005083,
+   "nbd": 565.4548218490954,
+   "n_censored": 1
+  },
+  "deposited": {
+   "moore": 2.9004,
+   "vn": 1.625
+  },
+  "mean_interior_degree": {
+   "moore": 7.96875,
+   "vn": 3.9895833333333335,
+   "hex": 5.979166666666667,
+   "rand": 5.986783854166667
+  }
+ },
+ "ordering": {
+  "table": [
+   {
+    "stencil": "von Neumann 4-nbr (deposited)",
+    "N_eff": 1.625,
+    "theta_star": 0.309
+   },
+   {
+    "stencil": "hexagonal 6-nbr",
+    "N_eff": 2.297192692347075,
+    "theta_star": 0.3294186429786438
+   },
+   {
+    "stencil": "random coordination 5-7",
+    "N_eff": 2.3375735119925505,
+    "theta_star": 0.34362823642399
+   },
+   {
+    "stencil": "square Moore 8-nbr (deposited)",
+    "N_eff": 2.9004,
+    "theta_star": 0.3725154110229679
+   }
+  ],
+  "spearman_rho": 1.0,
+  "n_points": 4,
+  "hex_rand_order_resolved": false,
+  "note": "Ridge ordering vN < hex < rand < Moore matches the N_eff ordering exactly (rho=1 on 4 points); the hex/rand ordering is NOT statistically resolved (bootstrap ratio rand/hex includes 1), so the monotone claim rests on the vN/hex-rand/Moore separation."
+ },
+ "sensitivity": {
+  "hex": {
+   "cross_level_0.4": 0.44529820888502203,
+   "cross_level_0.5": 0.3294186429786438,
+   "cross_level_0.6": 0.2597716382946128,
+   "loo_range": [
+    0.32048931515541357,
+    0.34845818659005745
+   ],
+   "scheme_spread": [
+    0.3294186429786438,
+    0.3294186429786438,
+    0.3253864158586468
+   ],
+   "monotone_violations": 0
+  },
+  "rand": {
+   "cross_level_0.4": 0.4857898000001302,
+   "cross_level_0.5": 0.34362823642399,
+   "cross_level_0.6": 0.2774740619474906,
+   "loo_range": [
+    0.34362823642399,
+    0.3802585419932339
+   ],
+   "scheme_spread": [
+    0.34362823642399,
+    0.34362823642399,
+    0.34056367071615146
+   ],
+   "monotone_violations": 2
+  }
+ },
+ "anchor_check": {
+  "hex_neutral_median": 733865.5,
+  "hex_neutral_median_ci": [
+   688860.5375,
+   797648.0
+  ],
+  "rand_neutral_median": 522634.0,
+  "rand_neutral_median_ci": [
+   491484.5,
+   575282.0
+  ],
+  "moore_pooled_neutral_median": 572583.5,
+  "note": "Hex neutral T_fix median is 28% larger and rand 9% smaller than the square strip, so per-stencil anchors are load-bearing: normalising hex by the square anchor would give a spurious theta*=0.46."
+ },
+ "acceptance_tests": {
+  "bit_exact_reproduction_of_deposited_runs": true,
+  "detail": "Reconstituted evolution_fast4 + evolve_topo(stencil='moore') reproduce deposited ridge_profile_runs seeds 12900000-12900002 T_fix 1129978/1325918/845779 bit-for-bit; matched-protocol Moore census control reproduces deposited N_eff (2.933 vs 2.900)."
+ },
+ "figure": "fig_topology_control.png",
+ "memo": "topology_control_memo.md",
+ "runs_table": "topology_control_runs.parquet"
+}

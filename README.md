@@ -58,3 +58,8 @@ Round 7 was governed by a pre-registration deposited in this repository (`prereg
 - **Provenance audits added**: `data/onset_seed_dependence_check.json` (seed-reuse audit of the click-onset ensemble; the anti-tracking slope survives a seed-cluster bootstrap, 0.70 [0.41, 0.79]); `data/fitness_underflow_check.json` (float32 precision: smallest living-cell fitness 9.7e-5); `data/tissue_placement_joint.csv` (joint worst-case tissue placements — colon corner-dependent).
 
 Run total after round 7: 113,663 runs across 36 ensembles, zero censored, zero unexplained failures.
+
+
+## Round 8 additions
+
+Kernels `kernels/evolution_open.py` (open-system, bit-identical to `evolution_strip.py` in two-clone mode) and `kernels/topo_strip.py` (hexagonal / random-coordination neighbour graphs); drivers under `drivers/round8/`; data for Supplementary Figs S27–S30 in `data/`; revision memo `manuscript/revision_memo_r8.md`. Simulation total 135,999 runs across 40 ensembles (Supplementary Table 1).

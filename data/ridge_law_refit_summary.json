@@ -1,0 +1,510 @@
+{
+ "track": "round-8 ridge-law refit and criterion characterisation",
+ "convention": "theta = U_d/s_d = mud/sd (U_d = mud, no factor of 2); ridge = load at which the LOADED median T_fix crosses `level` (canonical 1/2) x the matched NEUTRAL (mud=0) median; every geometry normalised by its own pooled anchor. Traced law: s* ~ Lambda^gamma with gamma = 1/(k+1): k=0<->gamma=1 (pure rate), k=1<->gamma=1/2 (Haigh U_d/s_d const), k=2<->gamma=1/3.",
+ "data_substitution_note": "ridge_law.parquet and ridge_law_summary.json are NOT inside the round-8 kernel .tgz; the deposited artifact-store copies (artifact ids 136daa15, fdc51a8d) were used. All other inputs are from the bundle.",
+ "reproduction_of_deposit": {
+  "legacy_anchors": {
+   "T1_fixed_Lambda_ladders": {
+    "anchor": "N32 group in ridge_law.parquet",
+    "n": 200,
+    "median": 540332.0
+   },
+   "regime_grid": {
+    "anchor": "grid's own 'new' neutral (regime_map_grid.parquet Lambda=0)",
+    "n": 200,
+    "median": 580331.5
+   }
+  },
+  "eight_points_reproduced": true,
+  "legacy_fit": {
+   "gamma": 0.47986481724172914,
+   "gamma_se": 0.026346005512589952,
+   "k": 1.0839202293429562,
+   "k_se": 0.11441341785724246,
+   "r2": 0.982235273951364,
+   "models_dAIC_vs_free": {
+    "k0_pure_rate": 31.512490279496813,
+    "k1_Haigh": -1.2568237107027826,
+    "k2": 12.538926793689676,
+    "sstar_const": 30.244323763808083
+   },
+   "matches_deposited": "gamma 0.4799 vs deposited 0.48+-0.026; dAIC k1 -1.26 vs -1.3, k2 +12.54 vs +12.5, gamma=0 +30.24 vs +30.2"
+  }
+ },
+ "pooled_anchor": {
+  "composition": "deposited 2,856-run 192x32 Moore neutral pool (ladderN32 200 + tfixexp1 150 + tfixexp2 250 + census 256 + new 2000) extended with the regime grid's 200-run neutral (Kruskal-Wallis across all 6 components p=0.965; grid vs pool MWU p=0.962) -> 3,056 runs",
+  "n": 3056,
+  "median": 573328.0,
+  "legacy_offsets_vs_pooled": {
+   "T1_N32": 0.057551698155331676,
+   "grid_new": -0.012215520609494046
+  }
+ },
+ "refit_pooled_anchor": {
+  "n_points": 8,
+  "gamma": 0.4643822687345783,
+  "gamma_se": 0.028451609233313704,
+  "gamma_ci95_ols": [
+   0.39476368891743707,
+   0.5340008485517195
+  ],
+  "k": 1.1533983257477876,
+  "k_se": 0.13193364995351725,
+  "k_ci95_ols": [
+   0.8726562002890661,
+   1.5331610481762046
+  ],
+  "r2": 0.9779737352782111,
+  "prefactor": 1.0369254078914767,
+  "models_vs_free": {
+   "k0_pure_rate": {
+    "gamma0": 1.0,
+    "dAIC": 30.763685871804068,
+    "F": 354.4020461657734,
+    "p": 1.4510158021997444e-06
+   },
+   "k1_Haigh": {
+    "gamma0": 0.5,
+    "dAIC": -0.14351212801842905,
+    "F": 1.5671798357765852,
+    "p": 0.25720754720250316
+   },
+   "k2": {
+    "gamma0": 0.3333333333333333,
+    "dAIC": 10.096218309680829,
+    "F": 21.21550255824517,
+    "p": 0.003668717581991958
+   },
+   "sstar_const": {
+    "gamma0": 0.0,
+    "dAIC": 28.524157493654613,
+    "F": 266.4020652518835,
+    "p": 3.3673852573825713e-06
+   }
+  },
+  "run_level_bootstrap": {
+   "B": 3000,
+   "shared_anchor_draw_per_replicate": true,
+   "gamma_median": 0.4631210377636056,
+   "gamma_ci95": [
+    0.43935216998433113,
+    0.4856756126654599
+   ],
+   "k_median": 1.1592627392269297,
+   "k_ci95": [
+    1.0589874681639937,
+    1.2760784433483754
+   ],
+   "frac_replicates_k1_over_k2_by_AIC": 0.9996664442961974,
+   "P_gamma_lt_half": 0.9969979986657772,
+   "note": "run-level bootstrap resamples ONLY simulation noise; it excludes the residual scatter of the 8 points about the line, which the OLS interval carries. The bootstrap CI on k [1.06,1.28] therefore excludes 1.0 while the OLS 95% CI [0.87,1.53] includes it; the OLS interval is the appropriate error currency for the exponent, the bootstrap quantifies simulation noise."
+  },
+  "points": {
+   "1e-05": 0.005464283435345928,
+   "3e-05": 0.008584809561836913,
+   "0.0001": 0.014292223044941092,
+   "0.00025": 0.01928941177804808,
+   "0.0005": 0.024643600426071922,
+   "0.001": 0.03782747380623552,
+   "0.002": 0.07338141427346123,
+   "0.004": 0.08583823084973825
+  }
+ },
+ "point_shifts_legacy_to_pooled": {
+  "1e-05": 1.0487731033668766,
+  "3e-05": 1.0803730006065329,
+  "0.0001": 1.0460264076884405,
+  "0.00025": 0.9869892272113662,
+  "0.0005": 0.9831391619238309,
+  "0.001": 0.9775064449922654,
+  "0.002": 0.9894979971725715,
+  "0.004": 0.9879513066668023
+ },
+ "family_heterogeneity": {
+  "slope_T1": 0.41765900680875045,
+  "slope_grid": 0.5881824045495612,
+  "family_F": 3.1463717533974256,
+  "family_p": 0.1510280732549784,
+  "dAIC_separate_minus_common": -3.5611581754059642,
+  "curvature": 0.027567162955473845,
+  "curvature_F": 4.513598062035765,
+  "curvature_p": 0.08700556773368544,
+  "dAIC_quad_minus_lin": -3.146273901463239,
+  "interpretation": "the fixed-Lambda T1 ladders (low Lambda) and the regime grid (high Lambda) have different local slopes (0.418 vs 0.588) under BOTH anchor conventions (legacy 0.419 vs 0.587) -> a family/curvature property, not an artefact of re-anchoring; with n=8 the split is not significant (family p=0.15, curvature p=0.087) though dAIC mildly favours two slopes (-3.6). The single-power-law k=1 selection is a compromise between these two internally-consistent subsets."
+ },
+ "anchor_sensitivity": {
+  "common_anchor_dgamma_dlna_numeric": 0.03296755662875555,
+  "common_anchor_dgamma_dlna_analytic": 0.036447414403139484,
+  "mean_crossing_elasticity": 1.1419678145845318,
+  "per_point_elasticity": {
+   "1e-05": 0.8274474866088086,
+   "3e-05": 1.3432505889338258,
+   "0.0001": 0.7818815625328513,
+   "0.00025": 1.0720913750912442,
+   "0.0005": 1.3920487557265937,
+   "0.001": 1.8624170454265523,
+   "0.002": 0.8642724579115313,
+   "0.004": 0.9923332444448467
+  },
+  "delta_gamma_over_5p6pct_common_shift": 0.001796342333950695,
+  "delta_k_over_5p6pct_common_shift": 0.008329862776501112,
+  "observed_refit_delta": {
+   "delta_gamma": -0.015482548507150862,
+   "delta_k": 0.06947809640483138
+  },
+  "verdict": "first-order INSENSITIVE to a COMMON anchor level (d gamma/d ln a = 0.033: a 5.6% common shift moves gamma by 0.0018, k by 0.008, i.e. it slides all points along the fit and changes only the prefactor by ~+6.4%). The observed refit shift (delta gamma -0.016, delta k +0.07) is ~9x larger because the two legacy anchors were mutually INCONSISTENT (T1 anchored 5.8% low, grid 1.2% high): a DIFFERENTIAL anchor shift rotates the line. The exponent is anchor-consistency sensitive, not anchor-level sensitive."
+ },
+ "crossing_level_envelope": {
+  "definition": "at each crossing level L, theta* = load at which the loaded/neutral MEDIAN ratio crosses L; canonical L=0.5 (half the neutral median). Pooled 2,856-run anchor (deposited round-7 pool), loglin scheme, run-level bootstrap with a shared anchor draw.",
+  "sd0p01_ridge_by_level": {
+   "0.25": {
+    "theta_star": 1.2094440428829387,
+    "ci95": [
+     0.923817745635488,
+     1.5049779959136065
+    ]
+   },
+   "0.30": {
+    "theta_star": 0.7607924218189743,
+    "ci95": [
+     0.6906255307902116,
+     0.8628146787707207
+    ]
+   },
+   "0.40": {
+    "theta_star": 0.5374218449567254,
+    "ci95": [
+     0.4630539236938246,
+     0.570869013294503
+    ]
+   },
+   "0.50": {
+    "theta_star": 0.3725154110229679,
+    "ci95": [
+     0.3271733139277371,
+     0.4309289439985957
+    ]
+   },
+   "0.60": {
+    "theta_star": 0.2999569220526838,
+    "ci95": [
+     0.253911988986059,
+     0.3351580967158032
+    ]
+   },
+   "0.70": {
+    "theta_star": 0.2282556315723315,
+    "ci95": [
+     0.1914803387570734,
+     0.264447383371715
+    ]
+   },
+   "0.75": {
+    "theta_star": 0.1992692893596498,
+    "ci95": [
+     0.1653740389304685,
+     0.2335618431685252
+    ]
+   }
+  },
+  "RE_pooled_constant_by_level_5sd": {
+   "0.25": {
+    "theta_star": 2.050002982813218,
+    "ci95": [
+     0.7697159621410037,
+     5.459822111332591
+    ],
+    "note": "RE_pooled_5sd (I2=1.00, Q_p=1.35e-288)"
+   },
+   "0.30": {
+    "theta_star": 1.2414605417673747,
+    "ci95": [
+     0.8906232607575595,
+     1.7305008129412498
+    ],
+    "note": "RE_pooled_5sd (I2=0.98, Q_p=2.09e-37)"
+   },
+   "0.40": {
+    "theta_star": 0.7394012689418781,
+    "ci95": [
+     0.5956733058081953,
+     0.9178088579462038
+    ],
+    "note": "RE_pooled_5sd (I2=0.95, Q_p=2.4e-15)"
+   },
+   "0.50": {
+    "theta_star": 0.4754322235931485,
+    "ci95": [
+     0.3789847641209326,
+     0.5964245020641473
+    ],
+    "note": "RE_pooled_5sd (I2=0.91, Q_p=6.83e-09)"
+   },
+   "0.60": {
+    "theta_star": 0.3434963127752743,
+    "ci95": [
+     0.2650713623553732,
+     0.4451243462959376
+    ],
+    "note": "RE_pooled_5sd (I2=0.85, Q_p=2.6e-05)"
+   },
+   "0.70": {
+    "theta_star": 0.2219540211116608,
+    "ci95": [
+     0.1934204280325905,
+     0.2546969210477336
+    ],
+    "note": "RE_pooled_5sd (I2=0.00, Q_p=0.661)"
+   },
+   "0.75": {
+    "theta_star": 0.167236880405747,
+    "ci95": [
+     0.1276305123781589,
+     0.2191339174834516
+    ],
+    "note": "RE_pooled_5sd (I2=0.35, Q_p=0.19)"
+   }
+  },
+  "RE_pooled_constant_by_level_4sd_excluding_sd0p0025_shelf": {
+   "0.25": {
+    "theta_star": 1.2195856652261974,
+    "ci95": [
+     0.87176625414043,
+     1.7061789072023743
+    ]
+   },
+   "0.30": {
+    "theta_star": 0.785136560351818,
+    "ci95": [
+     0.7076377678407043,
+     0.8711228348962996
+    ]
+   },
+   "0.40": {
+    "theta_star": 0.6179639005918371,
+    "ci95": [
+     0.5383145428338563,
+     0.7093982273344229
+    ]
+   },
+   "0.50": {
+    "theta_star": 0.4571387757520404,
+    "ci95": [
+     0.3582644459576793,
+     0.5833005832813227
+    ]
+   },
+   "0.60": {
+    "theta_star": 0.3541985200060676,
+    "ci95": [
+     0.2640169574464193,
+     0.4751838396590467
+    ]
+   },
+   "0.70": {
+    "theta_star": 0.2217004113219196,
+    "ci95": [
+     0.1926014971970391,
+     0.2551956921187627
+    ]
+   },
+   "0.75": {
+    "theta_star": 0.1816038225424596,
+    "ci95": [
+     0.147971572591499,
+     0.2228802991306984
+    ]
+   }
+  },
+  "envelope_sd0p01": {
+   "levels_0.25_0.5_0.75": [
+    1.2094440428829387,
+    0.3725154110229679,
+    0.1992692893596498
+   ],
+   "levels_0.30_0.5_0.70_reviewer_convention": [
+    0.7607924218189743,
+    0.3725154110229679,
+    0.2282556315723315
+   ],
+   "note": "the reviewer-cited 0.23-0.76 envelope corresponds to crossing levels 0.7 (0.228) and 0.3 (0.761) at s_d=0.01; the 0.75/0.25 pair is 0.199/1.209. At level 0.25 the pooled RE constant is dominated by the s_d=0.0025 rung whose median-ratio curve reaches 0.241 only at theta=16 (crossing 14.5, 71% of bootstraps defined) -> the low-level end of the RE envelope is not data-supported; quote the s_d=0.01 rung envelope, or the RE constant excluding the shelf."
+  },
+  "envelope_RE": {
+   "levels_0.25_0.5_0.75_5sd": [
+    2.050002982813218,
+    0.4754322235931485,
+    0.167236880405747
+   ],
+   "levels_0.25_0.5_0.75_4sd": [
+    1.2195856652261974,
+    0.4571387757520404,
+    0.1816038225424596
+   ]
+  },
+  "heterogeneity_I2_canonical": 0.91,
+  "crossing_softness_csv": "crossing_softness.csv (theta-decades over which the median-ratio sits within +/-0.05 of the level, per rung)",
+  "reproduction_check": "level-0.5 per-sd values match the deposited per_sd (0.6325/0.3582/0.3725/0.5288/0.6215); RE pooled 0.4754 vs deposited 0.4748; levels 0.3-0.7 match the deposited crossing_level_table exactly."
+ },
+ "low_sd_extension": {
+  "design": {
+   "sd": 0.00125,
+   "theta_rungs": [
+    0.1,
+    0.1414,
+    0.2,
+    0.2828,
+    0.4,
+    0.5657,
+    0.8,
+    1.1314,
+    1.6
+   ],
+   "runs_per_rung": 96,
+   "n_loaded": 864,
+   "geometry": "192x32 Moore, dt=2400, avg=1.16e-5 (p_die=0.02746), sb=0.1, mub=0, sampling=1e4, prof_halfwidth=64, ben_cap=1024",
+   "frame_cap": 40000000,
+   "censored": 0,
+   "errors": 0,
+   "max_tfix_over_cap": 0.083138975,
+   "fresh_anchor": {
+    "n": 600,
+    "seeds": "13570000-13570599",
+    "median": 536336.5,
+    "median_ci95": [
+     493538.0,
+     577720.0
+    ],
+    "vs_pooled2856": {
+     "ratio": 0.9366956959116006,
+     "MWU_p": 0.06762273738716178,
+     "KW_all7_p": 0.6313164296180629
+    },
+    "note": "the fresh 600-run anchor came out 6.3% below the 2,856-run pool - statistically consistent (MWU p=0.068, KW p=0.63) but the same magnitude/sign as the legacy N32 offset. A 600-run anchor at this geometry has ~+/-7% median scatter (T_fix is heavy tailed, mean/median 1.27); pooling to thousands, not a 600-run floor, is what removes ~6% anchor systematics."
+   },
+   "ladder_seeds": "rung j: 13575000 + 200*j + [0..95] (13575000-13576695); all 1,464 seeds unique, inside the track block 13,570,000-13,609,999, disjoint from every deposited seed set (checked against exact seed sets, incl. bd_results and tail_ensemble)"
+  },
+  "rung_table": [
+   {
+    "theta": 0.1,
+    "n": 96,
+    "median_tfix": 487819.0,
+    "ratio_own_anchor": 0.9095390673578994,
+    "ratio_pooled_anchor": 0.8519613296575957
+   },
+   {
+    "theta": 0.1414,
+    "n": 96,
+    "median_tfix": 552201.5,
+    "ratio_own_anchor": 1.0295803101224699,
+    "ratio_pooled_anchor": 0.9644034450870484
+   },
+   {
+    "theta": 0.2,
+    "n": 96,
+    "median_tfix": 545515.5,
+    "ratio_own_anchor": 1.017114255695818,
+    "ratio_pooled_anchor": 0.9527265455606039
+   },
+   {
+    "theta": 0.2828,
+    "n": 96,
+    "median_tfix": 465328.0,
+    "ratio_own_anchor": 0.8676045728754243,
+    "ratio_pooled_anchor": 0.8126814691656327
+   },
+   {
+    "theta": 0.4,
+    "n": 96,
+    "median_tfix": 398763.0,
+    "ratio_own_anchor": 0.7434940564365842,
+    "ratio_pooled_anchor": 0.6964276826000051
+   },
+   {
+    "theta": 0.5657,
+    "n": 96,
+    "median_tfix": 422274.5,
+    "ratio_own_anchor": 0.7873312743026066,
+    "ratio_pooled_anchor": 0.7374898158958475
+   },
+   {
+    "theta": 0.8,
+    "n": 96,
+    "median_tfix": 365167.0,
+    "ratio_own_anchor": 0.6808542771189356,
+    "ratio_pooled_anchor": 0.6377532709203112
+   },
+   {
+    "theta": 1.1314,
+    "n": 96,
+    "median_tfix": 320057.5,
+    "ratio_own_anchor": 0.5967475642623614,
+    "ratio_pooled_anchor": 0.5589708749902853
+   },
+   {
+    "theta": 1.6,
+    "n": 96,
+    "median_tfix": 296978.5,
+    "ratio_own_anchor": 0.5537167431267497,
+    "ratio_pooled_anchor": 0.5186640900410159
+   }
+  ],
+  "monotone_trend": {
+   "spearman_rho": -0.9333333333333332,
+   "spearman_p": 0.00023589981215941651,
+   "dlnratio_dlntheta": -0.21741862575786214,
+   "se": 0.03201587611520941
+  },
+  "theta_star_0p00125": {
+   "own600_anchor": {
+    "loglin": null,
+    "isotonic": null,
+    "logistic": null,
+    "min_ratio_in_range": 0.5537167431267497,
+    "extrapolated_loglin_trend": 3.1213407441721706
+   },
+   "pooled_anchor": {
+    "loglin": null,
+    "isotonic": null,
+    "logistic": 2.51,
+    "min_ratio_in_range": 0.517990574330924,
+    "extrapolated_loglin_trend": 2.2967580714282763
+   },
+   "bootstrap": [
+    {
+     "anchor": "own600",
+     "p_no_cross": 0.9645,
+     "p_minratio_gt_half": 0.9645,
+     "extrap_med": 3.530905876284636,
+     "extrap_lo": 1.9861722272911455,
+     "extrap_hi": 10.275857444830391,
+     "p_extrap_gt_1p6": 0.9992498124531133,
+     "p_gt_0p63": 1.0
+    },
+    {
+     "anchor": "pooled3056",
+     "p_no_cross": 0.785,
+     "p_minratio_gt_half": 0.785,
+     "extrap_med": 2.608906405186621,
+     "extrap_lo": 1.7048324574462574,
+     "extrap_hi": 6.283988847600255,
+     "p_extrap_gt_1p6": 0.991,
+     "p_gt_0p63": 1.0
+    }
+   ],
+   "statement": "no half-neutral-median crossing exists within the sampled theta<=1.6 under any anchor or estimator (min median-ratio 0.52-0.55 at theta=1.6); crossing lies at theta>1.6 (extrapolated 2.3-3.5, own-anchor bootstrap [2.0,10.3]); P(theta*(0.00125) > theta*(0.0025)=0.63) = 1.00 under both anchors."
+  },
+  "comparison_to_sd0p0025": {
+   "theta_star_0p0025": 0.6325,
+   "ci": [
+    0.2935,
+    0.7907
+   ],
+   "isotonic": 0.637,
+   "verdict": "left arm CONTINUES RISING: 0.36-0.37 (sd 0.005-0.01) -> 0.63 (sd 0.0025) -> >1.6 (sd 0.00125). Not a flattening, not a turn-over."
+  },
+  "runs_executed_new": 1464,
+  "simulation_wall_time_s_sum": 25448.62246237509,
+  "ensemble_wall_s": 452.5
+ },
+ "headline_verdict": "(A) k=1 (Haigh U_d/s_d = const) survives re-anchoring: pooled-anchor free fit gamma=0.464+-0.028 (OLS 95% CI [0.395,0.534]), k=1.15+-0.13 (CI [0.87,1.53]); dAIC vs free: k=1 -0.14 (accepted, F=1.57 p=0.26), k=2 +10.1 (rejected), gamma=0 s*=const +28.5, k=0 pure-rate +30.8 (both decisively rejected). Exponent is first-order insensitive to a common anchor (d gamma/d ln a=0.033) but the two legacy anchors were mutually inconsistent (+5.8%/-1.2%), which rotated the deposited fit by delta k=+0.07. (B) Level envelope at s_d=0.01: 1.21 / 0.37 / 0.20 for levels 0.25/0.5/0.75 (0.76/0.37/0.23 for 0.3/0.5/0.7); RE constant 2.05/0.48/0.17 (the level-0.25 RE is shelf-dominated and not data-supported). (C) New s_d=0.00125 rung: NO crossing within theta<=1.6; left arm continues rising (theta*>1.6, extrapolated ~2.3-3.5), P(exceeds the 0.63 shelf)=1.00."
+}

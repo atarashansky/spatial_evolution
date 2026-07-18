@@ -1,0 +1,42 @@
+figure,ensemble,runs,purpose
+"S1, S8",Neutral controls: width growth + tilt null + plateau ext,7900,controls & validation
+"S8, S2",Tension spectra (dB),479,mechanism & reduced model
+S2,Collapse replication arms,288,controls & validation
+"2a–c, 1c",T_fix scaling (neutral / load / load+jackpot x L_short),4250,headline scaling & takeover
+3a–d,"Mechanism: arrest, deposition, excursions",320,mechanism & reduced model
+"4a–b, S3",Effect-size (s_d) sweep,1580,criterion mapping
+4c,Tail ensemble (Hill alpha vs s_d),1600,criterion mapping
+S6,"alpha(s_d, L_short) map",9200,criterion mapping
+S3,Bd vs dB battery,2900,robustness & model perturbation
+S4,k-clone tournaments (k=2-16),960,robustness & model perturbation
+S5,Beneficial-supply arms,1500,robustness & model perturbation
+5,DFE composition: ladder + anchors + sigma-sensitivity + tissue DFEs,12300,robustness & model perturbation
+5 (pilot),DFE pilot + point-mass validation,1700,controls & validation
+S16,Frequency-dependent selection (phases 1-3),5600,robustness & model perturbation
+"S16 (pilot), S7",FD pilot + width-invariance supplement,3336,controls & validation
+6,"Regime-map (Lambda, s_d) grid + neutral anchor",2300,headline scaling & takeover
+7 (lineage kernels),"Lineage-tracing kernels (neutral, loaded x2)",144,headline scaling & takeover
+"2d–e, S9, S14 ‡","Finite-size L_long sweep (neutral + loaded, gap statistics)",1870,mechanism & reduced model
+"3e–f, S10 ‡","Reduced-model inputs: drift response v(g), zero-mode D0, MSD crossover",1560,mechanism & reduced model
+"S15, S8 (methods) ‡",Stiffness / noise / Laplace / tilt / controls (tension tests),2520,mechanism & reduced model
+S15 (audit) ‡,"Independent stiffness re-measurement (k=8, 48 seeds x 4 loads + checks)",312,criterion tests (pre-registered / falsification)
+"4d–f, S11 ‡","Ridge tracing: low-Lambda ladders, fixed-s_d rate sweeps, N-crossing, neutral anchors",7400,criterion mapping
+7 ‡,"Confrontation kernel ensembles (age-matched, layered; power surface)",12000,empirical confrontation (clone-size data)
+4f ‡,Intensivity extension: 192x256 & 192x512 rate ladders + neutral anchors; 384x128 aspect-ratio control,2159,criterion mapping
+"4g, 4h","Least-loaded-class census (instrumented kernel, per-cell hit counts)",306,criterion tests (pre-registered / falsification)
+S17,Ratchet-click census and rate-spread test (instrumented kernel),1984,criterion tests (pre-registered / falsification)
+S18,Loaded-ridge neighbourhood test (von Neumann stencil arm),2906,criterion mapping
+S19,Aspect-ratio replication ladder (new runs only),1029,criterion mapping
+S20 (a–c),"Pusher-switch mixed-rule ensemble (kinetic neutrality, plateau shares, incidence law)",9160,robustness & model perturbation
+"S20 (d, e)",Front-morphology ensembles (pusher vs fitness vs neutral fronts),258,robustness & model perturbation
+S25,"Ridge-profile re-anchoring (2,000-run pooled neutral anchor + shelf densification + bracket midpoints; retires the constant-ratio law)",4700,criterion mapping
+"Fig. 4h, S21",Front census functional form and contact structure (`census2.py` kernel),956,criterion tests (pre-registered / falsification)
+S22,Fixed-s_d bracketing supplement for estimator robustness (`evolution_strip.py` kernel),2100,criterion tests (pre-registered / falsification)
+S23,"Click-onset effect-size sweep (round-6 test, against hypothesis; `sdr_kernel.py` instrumented kernel)",5360,criterion tests (pre-registered / falsification)
+S24,Census across effect size (pre-registered θ₀-transfer test; against derivation),3712,criterion tests (pre-registered / falsification)
+S26,Von Neumann census stencil test (pre-registered out-of-sample prediction; against derivation),1708,criterion tests (pre-registered / falsification)
+—,Fitness-precision probes (float32 underflow check),6,controls & validation
+S27,Placement Monte Carlo and anchor leave-one-out (analysis of deposited runs; round-8),0,controls & validation
+S28,Ridge-law refit low-s_d extension rung (`evolution_strip.py` kernel; round-8),1464,criterion mapping
+S29,Lattice-topology control: hexagonal and random-coordination stencils (`topo_strip.py` neighbour graphs on the production kernel; round-8),3072,robustness & model perturbation
+S30,"Open-system ongoing-nucleation test (`evolution_open.py` kernel; round-8, against the closed-system extrapolation)",13100,robustness & model perturbation

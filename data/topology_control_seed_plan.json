@@ -1,0 +1,98 @@
+{
+ "hex_anchor": {
+  "start": 13500000,
+  "n": 600
+ },
+ "hex_rung0_theta0.05": {
+  "start": 13501000,
+  "n": 96
+ },
+ "hex_rung1_theta0.0744": {
+  "start": 13501100,
+  "n": 96
+ },
+ "hex_rung2_theta0.1107": {
+  "start": 13501200,
+  "n": 96
+ },
+ "hex_rung3_theta0.1646": {
+  "start": 13501300,
+  "n": 96
+ },
+ "hex_rung4_theta0.2449": {
+  "start": 13501400,
+  "n": 96
+ },
+ "hex_rung5_theta0.3644": {
+  "start": 13501500,
+  "n": 96
+ },
+ "hex_rung6_theta0.5422": {
+  "start": 13501600,
+  "n": 96
+ },
+ "hex_rung7_theta0.8066": {
+  "start": 13501700,
+  "n": 96
+ },
+ "hex_rung8_theta1.2": {
+  "start": 13501800,
+  "n": 96
+ },
+ "hex_census": {
+  "start": 13501900,
+  "n": 64
+ },
+ "rand_anchor": {
+  "start": 13502000,
+  "n": 600
+ },
+ "rand_rung0_theta0.05": {
+  "start": 13503000,
+  "n": 96
+ },
+ "rand_rung1_theta0.0744": {
+  "start": 13503100,
+  "n": 96
+ },
+ "rand_rung2_theta0.1107": {
+  "start": 13503200,
+  "n": 96
+ },
+ "rand_rung3_theta0.1646": {
+  "start": 13503300,
+  "n": 96
+ },
+ "rand_rung4_theta0.2449": {
+  "start": 13503400,
+  "n": 96
+ },
+ "rand_rung5_theta0.3644": {
+  "start": 13503500,
+  "n": 96
+ },
+ "rand_rung6_theta0.5422": {
+  "start": 13503600,
+  "n": 96
+ },
+ "rand_rung7_theta0.8066": {
+  "start": 13503700,
+  "n": 96
+ },
+ "rand_rung8_theta1.2": {
+  "start": 13503800,
+  "n": 96
+ },
+ "rand_census": {
+  "start": 13503900,
+  "n": 64
+ },
+ "moore_census_ctrl": {
+  "start": 13504000,
+  "n": 16
+ },
+ "smoke_probes": {
+  "start": 13519000,
+  "n": 300
+ }
+}

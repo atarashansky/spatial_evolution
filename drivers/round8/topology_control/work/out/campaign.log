@@ -1,0 +1,44 @@
+[tfix] 2928 tasks, 400 done, 2528 remaining, workers=60
+[tfix] 438/2928 done, 24s elapsed
+[tfix] 584/2928 done, 94s elapsed
+[tfix] 730/2928 done, 157s elapsed
+[tfix] 876/2928 done, 225s elapsed
+[tfix] 1022/2928 done, 284s elapsed
+[tfix] 1168/2928 done, 347s elapsed
+[tfix] 1314/2928 done, 400s elapsed
+[tfix] 1460/2928 done, 459s elapsed
+[tfix] 1606/2928 done, 521s elapsed
+[tfix] 1752/2928 done, 578s elapsed
+[tfix] 1898/2928 done, 642s elapsed
+[tfix] 2044/2928 done, 707s elapsed
+[tfix] 2190/2928 done, 774s elapsed
+[tfix] 2336/2928 done, 836s elapsed
+[tfix] 2482/2928 done, 899s elapsed
+[tfix] 2628/2928 done, 955s elapsed
+[tfix] 2774/2928 done, 1022s elapsed
+[tfix] 2920/2928 done, 1085s elapsed
+[tfix] 2928/2928 done, 1129s elapsed
+[tfix] DONE: 2928 rows -> /root/src/.operon/orgs/01582c35-9930-414e-93b9-0dd852675b4d/workspaces/ca881329-1cb0-4c32-a070-18cf235c9d96/work/out/tfix_runs_raw.parquet, 1130s wall, errors=0, censored=0
+[census] 144 tasks, 0 done, 144 remaining, workers=60
+[census] 7/144 done, 7s elapsed
+[census] 14/144 done, 8s elapsed
+[census] 21/144 done, 10s elapsed
+[census] 28/144 done, 12s elapsed
+[census] 35/144 done, 14s elapsed
+[census] 42/144 done, 16s elapsed
+[census] 49/144 done, 19s elapsed
+[census] 56/144 done, 21s elapsed
+[census] 63/144 done, 23s elapsed
+[census] 70/144 done, 25s elapsed
+[census] 77/144 done, 27s elapsed
+[census] 84/144 done, 29s elapsed
+[census] 91/144 done, 32s elapsed
+[census] 98/144 done, 34s elapsed
+[census] 105/144 done, 35s elapsed
+[census] 112/144 done, 36s elapsed
+[census] 119/144 done, 38s elapsed
+[census] 126/144 done, 40s elapsed
+[census] 133/144 done, 43s elapsed
+[census] 140/144 done, 48s elapsed
+[census] 144/144 done, 61s elapsed
+[census] DONE: 144 rows -> /root/src/.operon/orgs/01582c35-9930-414e-93b9-0dd852675b4d/workspaces/ca881329-1cb0-4c32-a070-18cf235c9d96/work/out/census_runs_raw.parquet, 61s wall, errors=0, censored=6
