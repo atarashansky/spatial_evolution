@@ -1,0 +1,583 @@
+{
+ "task": "onset-tracks-ridge test: does the click-onset landmark track the freeze/flow (T_fix) ridge across effect size s_d?",
+ "geometry": {
+  "L_long": 192,
+  "L_short": 32,
+  "N_clone": 3072,
+  "neighborhood": "Moore",
+  "mu_b": 0.0,
+  "p_die": 0.02745603861282997,
+  "kernel": "sdr_kernel.py (unmodified; sd and mud are free parameters)",
+  "sampling_frames": 250,
+  "cap_frames": 40000000
+ },
+ "definitions": {
+  "ridge": "U_d/s_d at which the loaded/neutral MEDIAN fixation-time ratio crosses 1/2; log-log linear interpolation between adjacent rungs; run-level bootstrap over rung runs AND neutral runs (the same operational estimator as ridge_law and the round-5 track: the half-neutral-median crossing)",
+  "onset": "U_d/s_d at which the fraction of runs whose two clones' cumulative strict-ratchet click counts differ (dkmin_A != dkmin_B over the round-5 own-life window [0.05,0.85] T_fix) crosses 1/2; log-x/linear-y interpolation; run-level bootstrap; this is the estimator that gave the reported 0.44 at s_d=0.01",
+  "ratio": "onset/ridge with a PAIRED run-level bootstrap: the same resampled ladder runs feed both crossings within each replicate",
+  "click_clock": "kmin_c(t) = minimum deleterious-hit count over all live cells of clone c (strict least-loaded / Muller class); census every 250 frames"
+ },
+ "ensemble": {
+  "total_runs": 5360,
+  "production_runs": 4896,
+  "pilot_runs": 464,
+  "production_ladder_runs": 4608,
+  "neutral_runs": 288,
+  "neutral_median_Tfix_frames": 572517.5,
+  "neutral_median_tau_div_per_site": 15719.062586520882,
+  "censored": 0,
+  "runs_per_rung_by_sd": {
+   "0.0025": {
+    "0.025": 96,
+    "0.05": 96,
+    "0.075": 96,
+    "0.1": 96,
+    "0.15": 96,
+    "0.2": 96,
+    "0.3": 96,
+    "0.4": 288,
+    "0.6": 288,
+    "0.8": 288,
+    "1.2": 288,
+    "1.8": 96,
+    "2.7": 96,
+    "4": 96,
+    "6.4": 96
+   },
+   "0.01": {
+    "0.05": 96,
+    "0.1": 96,
+    "0.15": 96,
+    "0.2": 96,
+    "0.3": 96,
+    "0.4": 96,
+    "0.5": 96,
+    "0.6": 96,
+    "0.8": 96,
+    "1.2": 96,
+    "2": 96,
+    "4": 96
+   },
+   "0.04": {
+    "0.1": 96,
+    "0.2": 96,
+    "0.3": 96,
+    "0.4": 96,
+    "0.5": 96,
+    "0.6": 96,
+    "0.7": 96,
+    "0.85": 96,
+    "1": 96,
+    "1.2": 96,
+    "1.5": 96,
+    "2": 96,
+    "3": 96
+   }
+  },
+  "wall_time_min": {
+   "pilot": 3.78,
+   "prod_sd_0p01": 6.69,
+   "prod_sd_0p0025_0p04": 8.35,
+   "dens_sd_0p0025": 2.64,
+   "total_sim": 21.5
+  }
+ },
+ "per_sd": {
+  "0.0025": {
+   "ratios": [
+    0.025,
+    0.05,
+    0.075,
+    0.1,
+    0.15,
+    0.2,
+    0.3,
+    0.4,
+    0.6,
+    0.8,
+    1.2,
+    1.8,
+    2.7,
+    4.0,
+    6.4
+   ],
+   "n_runs_per_rung": [
+    96,
+    96,
+    96,
+    96,
+    96,
+    96,
+    96,
+    288,
+    288,
+    288,
+    288,
+    96,
+    96,
+    96,
+    96
+   ],
+   "median_tfix_ratio": [
+    0.8949019025619305,
+    0.8025221936447358,
+    0.8220386276402032,
+    0.8013484303973241,
+    0.8151803219988909,
+    0.7460243573340553,
+    0.6342068146388539,
+    0.5590335666595344,
+    0.5433231298606592,
+    0.5339653373040999,
+    0.4508630740545049,
+    0.37585139318885447,
+    0.3496277406367491,
+    0.3244311309261289,
+    0.3383250293659146
+   ],
+   "frac_nonzero_diff": [
+    0.03125,
+    0.07291666666666667,
+    0.14583333333333334,
+    0.23958333333333334,
+    0.3854166666666667,
+    0.6354166666666666,
+    0.7916666666666666,
+    0.8611111111111112,
+    0.9166666666666666,
+    0.9618055555555556,
+    0.9479166666666666,
+    0.9895833333333334,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "ridge": 0.9364893696883299,
+   "ridge_lo": 0.37936479398651196,
+   "ridge_hi": 1.1818955694507516,
+   "ridge_boot_defined": 1.0,
+   "onset": 0.1711413079105153,
+   "onset_lo": 0.1554921974442116,
+   "onset_hi": 0.18691004664704694,
+   "onset_boot_defined": 1.0,
+   "onset_over_ridge": 0.18274773152787874,
+   "oor_lo": 0.14337993972011473,
+   "oor_hi": 0.46328212534939917,
+   "oor_boot_defined": 1.0,
+   "neutral_median": 572517.5,
+   "n_neutral": 288,
+   "n_boot": 4000
+  },
+  "0.01": {
+   "ratios": [
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.8,
+    1.2,
+    2.0,
+    4.0
+   ],
+   "n_runs_per_rung": [
+    96,
+    96,
+    96,
+    96,
+    96,
+    96,
+    96,
+    96,
+    96,
+    96,
+    96,
+    96
+   ],
+   "median_tfix_ratio": [
+    1.073168942434074,
+    0.8635474024811469,
+    0.8751234678415943,
+    0.6553904465802355,
+    0.6515861960551425,
+    0.49899610055587823,
+    0.4177287157161135,
+    0.3658735322501059,
+    0.32092119454863827,
+    0.2744824394014157,
+    0.2162781050360906,
+    0.1685144995567821
+   ],
+   "frac_nonzero_diff": [
+    0.0,
+    0.0,
+    0.010416666666666666,
+    0.041666666666666664,
+    0.16666666666666666,
+    0.4166666666666667,
+    0.625,
+    0.8229166666666666,
+    0.9375,
+    0.9583333333333334,
+    0.9583333333333334,
+    0.9895833333333334
+   ],
+   "ridge": 0.39913412644865504,
+   "ridge_lo": 0.33941924228982623,
+   "ridge_hi": 0.48194508531148905,
+   "ridge_boot_defined": 1.0,
+   "onset": 0.43734482957731124,
+   "onset_lo": 0.39414214577618634,
+   "onset_hi": 0.4766543633698726,
+   "onset_boot_defined": 1.0,
+   "onset_over_ridge": 1.0957339916499764,
+   "oor_lo": 0.9049209020765012,
+   "oor_hi": 1.3035979045100308,
+   "oor_boot_defined": 1.0,
+   "neutral_median": 572517.5,
+   "n_neutral": 288,
+   "n_boot": 4000
+  },
+  "0.04": {
+   "ratios": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.85,
+    1.0,
+    1.2,
+    1.5,
+    2.0,
+    3.0
+   ],
+   "n_runs_per_rung": [
+    96,
+    96,
+    96,
+    96,
+    96,
+    96,
+    96,
+    96,
+    96,
+    96,
+    96,
+    96,
+    96
+   ],
+   "median_tfix_ratio": [
+    0.775978026872541,
+    1.001758024863869,
+    0.7301471134070138,
+    0.7842948032156223,
+    0.618304243975075,
+    0.5289803368455986,
+    0.4591885837550817,
+    0.24170789539184392,
+    0.1872161112979079,
+    0.15058142327527105,
+    0.1399337138166082,
+    0.10319422550402389,
+    0.10966739007977921
+   ],
+   "frac_nonzero_diff": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.010416666666666666,
+    0.010416666666666666,
+    0.10416666666666667,
+    0.6145833333333334,
+    0.9270833333333334,
+    0.96875,
+    0.9791666666666666,
+    1.0,
+    0.96875
+   ],
+   "ridge": 0.6379847275260276,
+   "ridge_lo": 0.539085769635308,
+   "ridge_hi": 0.7210869623321295,
+   "ridge_boot_defined": 1.0,
+   "onset": 0.8137476498147929,
+   "onset_lo": 0.7940222091968845,
+   "onset_hi": 0.8423586192662846,
+   "onset_boot_defined": 1.0,
+   "onset_over_ridge": 1.2754970686686142,
+   "oor_lo": 1.1247063186865767,
+   "oor_hi": 1.5204454290269462,
+   "oor_boot_defined": 1.0,
+   "neutral_median": 572517.5,
+   "n_neutral": 288,
+   "n_boot": 4000
+  }
+ },
+ "ratio_common_value_test": {
+  "ratio_diff_004_minus_00025": {
+   "mean": 1.0918664404605516,
+   "ci95": [
+    0.791181450508603,
+    1.3391463166903284
+   ],
+   "boot_frac_le_0": 0.0
+  },
+  "ratio_diff_001_minus_00025": {
+   "mean": 0.8923267419100817,
+   "ci95": [
+    0.5928800804535334,
+    1.1162412784402813
+   ],
+   "boot_frac_le_0": 0.0
+  },
+  "ratio_diff_004_minus_001": {
+   "mean": 0.19953969855046993,
+   "ci95": [
+    -0.0758813900383872,
+    0.4994709591117056
+   ],
+   "boot_frac_le_0": 0.07925
+  },
+  "dln_ratio_dln_sd": {
+   "slope": 0.7007835450815547,
+   "ci95": [
+    0.35966441470060573,
+    0.8151456210538821
+   ],
+   "boot_frac_slope_le_0": 0.0
+  },
+  "dln_onset_dln_sd": {
+   "slope": 0.5624989374552951,
+   "ci95": [
+    0.5294078112123031,
+    0.6001468050915902
+   ]
+  },
+  "dln_ridge_dln_sd": {
+   "slope": -0.13541600351008992,
+   "ci95": [
+    -0.24402760861363768,
+    0.20558589021310295
+   ]
+  },
+  "verdict": "onset/ridge is NOT constant across s_d: 0.18 -> 1.10 -> 1.28; the s_d=0.0025 and s_d=0.04 intervals are disjoint and d ln(ratio)/d ln s_d = 0.70 excludes zero; a common ratio near 1 is rejected"
+ },
+ "reference_time_robustness_note": "onset_reference_time_robustness.csv: five reference-time conventions for 'the clones' click counts differ'. Under ALL five the onset/ridge ratio is NON-CONSTANT across s_d and rises from s_d=0.0025 to 0.04 (window 0.18->1.10->1.28; full-run-to-fixation 0.08->0.24->0.21; at-neutral-median-time 0.12->0.44->0.42; at-half-own-T_end 0.50->1.78->1.62; p_click 0.18->1.09->1.28), so 'onset tracks ridge' fails under every convention. The SIGN reversal (onset crossing to above the ridge at s_d=0.04) holds under 3 of 5 conventions (window, p_click, half-own-T_end); under the two conventions that count more accumulated clicks (full run, fixed absolute time = neutral median T_fix) the onset stays below the ridge at all three s_d, with the ratio still rising 2.6x-3.7x from s_d=0.0025 to 0.04.",
+ "ridge_law_reference_192x32": {
+  "source": "ridge_law.parquet (traced ridge law, 192x32 rows) with the same estimator",
+  "per_sd": {
+   "0.0025": {
+    "cross": NaN,
+    "cross_lo": 1.6087580542303572,
+    "cross_hi": 2.5969480898724706,
+    "rungs": [
+     1.6,
+     4.8,
+     16.0
+    ],
+    "median_ratios": [
+     0.4378400686985039,
+     0.3484478061636179,
+     0.25536336918783265
+    ],
+    "bracketed": false,
+    "boot_defined": 0.1505,
+    "n_runs_per_rung": [
+     150,
+     150,
+     150
+    ]
+   },
+   "0.005": {
+    "cross": NaN,
+    "cross_lo": 0.40282887594903966,
+    "cross_hi": 0.6205454549035749,
+    "rungs": [
+     0.4,
+     1.2,
+     4.0
+    ],
+    "median_ratios": [
+     0.4736004900690686,
+     0.31703378663488374,
+     0.24978901860337718
+    ],
+    "bracketed": false,
+    "boot_defined": 0.381,
+    "n_runs_per_rung": [
+     150,
+     150,
+     150
+    ]
+   },
+   "0.01": {
+    "cross": 0.4232313100223145,
+    "cross_lo": 0.2767242849133805,
+    "cross_hi": 0.5276190451922529,
+    "rungs": [
+     0.1,
+     0.2,
+     0.3,
+     0.4,
+     0.6,
+     0.8,
+     1.0,
+     1.2,
+     2.0,
+     5.0,
+     10.0
+    ],
+    "median_ratios": [
+     0.9180244738420082,
+     0.7900587046482533,
+     0.5908006558930435,
+     0.5243692766669381,
+     0.3725644603688103,
+     0.3044035889045994,
+     0.28820799064279,
+     0.26558023585499285,
+     0.22556409762886523,
+     0.16151181125678288,
+     0.15926874588216133
+    ],
+    "bracketed": true,
+    "boot_defined": 1.0,
+    "n_runs_per_rung": [
+     150,
+     150,
+     150,
+     150,
+     150,
+     150,
+     150,
+     150,
+     150,
+     150,
+     150
+    ]
+   },
+   "0.02": {
+    "cross": NaN,
+    "cross_lo": 0.20789202443330868,
+    "cross_hi": 0.2431186446460778,
+    "rungs": [
+     0.025,
+     0.075,
+     0.25
+    ],
+    "median_ratios": [
+     1.0164713546486235,
+     1.0101234056098842,
+     0.7585317915651858
+    ],
+    "bracketed": false,
+    "boot_defined": 0.001,
+    "n_runs_per_rung": [
+     150,
+     150,
+     150
+    ]
+   },
+   "0.04": {
+    "cross": 0.6483382357116709,
+    "cross_lo": 0.477675449797487,
+    "cross_hi": 0.7696465969334125,
+    "rungs": [
+     0.00625,
+     0.01875,
+     0.0625,
+     0.15,
+     0.3,
+     0.625,
+     1.25,
+     2.5,
+     5.0,
+     10.0
+    ],
+    "median_ratios": [
+     1.0518542303620737,
+     0.9993328176010304,
+     1.0276570700976437,
+     0.7706345358039132,
+     0.7609275408452582,
+     0.5289257345483888,
+     0.18264048770015473,
+     0.1049428869657914,
+     0.09770937127543806,
+     0.09328616480238076
+    ],
+    "bracketed": true,
+    "boot_defined": 1.0,
+    "n_runs_per_rung": [
+     150,
+     150,
+     150,
+     150,
+     150,
+     150,
+     150,
+     150,
+     150,
+     150
+    ]
+   }
+  }
+ },
+ "mechanism_diagnostic": "Diagnostics interpolated (log-x) at the FINAL crossings from the per-rung table. At the T_fix ridge: s_d=0.0025 (U/s=0.94): |Delta<k>| = 1.82 hits, s_d*|Delta<k>| = 0.0045, mean clicks/clone = 3.30, frac runs with unequal clicks = 0.96; s_d=0.01 (U/s=0.40): 0.55 hits, 0.0055, 0.21 clicks/clone, 0.41; s_d=0.04 (U/s=0.64): 0.34 hits, 0.0137, 0.02 clicks/clone, 0.05. So at weak s_d the strict ratchet has clicked ~3 times per clone and 96% of runs already differ in click count BEFORE the T_fix ridge is reached (one click costs only 0.25%), whereas at strong s_d the ridge is crossed with essentially zero clicks (5% of runs differ) on a sub-click mean-load gap (0.34 hits x 4% = 1.4% fitness gap). The window fitness gap s_d*|Delta<k>| at the ridge varies x3 (0.0045-0.0137) across a x16 range of s_d, i.e. it is less variable than the click statistic (whose crossing moves x4.8 in U_d/s_d) but is not an invariant.",
+ "mechanism_diagnostic_values": {
+  "0.0025": {
+   "ridge": 0.9364893696883299,
+   "onset": 0.1711413079105153,
+   "at_ridge": {
+    "mean_abs_dmeank": 1.8154180839403065,
+    "fitgap": 0.004538545209850766,
+    "mean_clicks": 3.302530563850186,
+    "fnz": 0.9564096109458707
+   },
+   "at_onset": {
+    "mean_abs_dmeank": 0.721906760732932,
+    "fitgap": 0.0018047669018323301,
+    "mean_clicks": 0.30750868055555564,
+    "fnz": 0.5
+   }
+  },
+  "0.01": {
+   "ridge": 0.39913412644865504,
+   "onset": 0.43734482957731124,
+   "at_ridge": {
+    "mean_abs_dmeank": 0.5481699229689909,
+    "fitgap": 0.005481699229689909,
+    "mean_clicks": 0.20739174259799836,
+    "fnz": 0.4147834851959967
+   },
+   "at_onset": {
+    "mean_abs_dmeank": 0.6267136854686566,
+    "fitgap": 0.006267136854686566,
+    "mean_clicks": 0.27499999999999997,
+    "fnz": 0.5
+   }
+  },
+  "0.04": {
+   "ridge": 0.6379847275260276,
+   "onset": 0.8137476498147929,
+   "at_ridge": {
+    "mean_abs_dmeank": 0.34189654427055266,
+    "fitgap": 0.013675861770822107,
+    "mean_clicks": 0.023874532777746222,
+    "fnz": 0.047749065555492444
+   },
+   "at_onset": {
+    "mean_abs_dmeank": 0.6332040639975152,
+    "fitgap": 0.025328162559900606,
+    "mean_clicks": 0.2661564625850341,
+    "fnz": 0.5000000000000001
+   }
+  }
+ }
+}

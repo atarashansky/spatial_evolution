@@ -1,0 +1,20 @@
+{
+ "estimator": "paired run-level bootstrap on the same 1,984-run click-census ensemble (192x32, s_d=0.01, 128 runs/rung, neutral n=352); ridge = mud/sd where median T_fix crosses the ensemble neutral median (log-linear); onset = mud/sd where fraction of runs with end-of-run click-count difference crosses 1/2 (log-linear)",
+ "ridge": 0.472,
+ "ridge_ci": [
+  0.385,
+  0.881
+ ],
+ "onset": 0.443,
+ "onset_ci": [
+  0.42,
+  0.465
+ ],
+ "onset_minus_ridge": -0.029,
+ "diff_ci": [
+  -0.442,
+  0.058
+ ],
+ "p_diff_le_0": 0.77775,
+ "n_boot": 4000
+}

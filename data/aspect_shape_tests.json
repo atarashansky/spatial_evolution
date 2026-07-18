@@ -1,0 +1,14 @@
+{
+ "frac_strictly_monotone": 0.0023333333333333335,
+ "frac_changepoint_preferred_BIC": 0.5438333333333333,
+ "point_bic_linear": 3.7859274917200563,
+ "point_bic_changepoint": 2.566235583619058,
+ "point_knot_log2aspect": 0.5849625007211562,
+ "knot_aspect": 1.5,
+ "knot_median_aspect_boot": 1.5,
+ "knot_IQR_aspect_boot": [
+  0.75,
+  1.5
+ ],
+ "n_geom": 7
+}

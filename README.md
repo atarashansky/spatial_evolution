@@ -36,3 +36,14 @@ The neutral control (Supplementary Fig. S1) and one loaded-versus-neutral fixati
 | Fig. 3 | `excursion_stats.parquet`, `panel_d_data.json`, `reduced_model_series.npz`, `scar_data.npz` |
 | Fig. 4 | `intensivity_ext.parquet`, `intensivity_ext_summary.json`, `n0_census.parquet`, `n0_census_raw.parquet`, `ridge_law.parquet`, `sdsweep_results.parquet`, `tail_ensemble.parquet` |
 | Fig. 5 | `production_dfe.parquet`, `summary_production.json` |
+
+## Round-6 additions (revision)
+
+Three new analyses, each pre-specified as a test that could fail; one did.
+
+- **Front census functional form and derivation of the ridge** — `kernels/census2.py` (instrumented, bit-for-bit identical to `strip_census.py` at equal seed); data `data/contact_census_runs.parquet` (956 runs), `data/contact_and_census_by_rung.csv`, `data/f0_functional_form_fits.csv`, `data/threshold_inversion_from_census.csv`; summary `data/n0_functional_form_and_contacts_summary.json`; figure `figures/fig_S21_census_inversion.png`. Result: f0 = exp(-(U_d/s_d)/0.404); measured-census inversion closes the ridge derivation given the competing population = opposite-clone Moore contacts (2.90, load-independent).
+- **Estimator robustness of the ridge and ridge law** — data `data/estimator_sensitivity_ladders.parquet`, `data/estimator_supplement_runs.parquet` (2,100 bracketing runs); summary `data/estimator_sensitivity_summary.json`; figure `figures/fig_S22_estimator_robustness.png`. Result: ridge and constant-ratio law robust to three estimators; pooled constant 0.55-0.56, headline 0.44 = the s_d = 0.01 crossing.
+- **Click-onset effect-size sweep (AGAINST hypothesis)** — drivers `drivers/onset_driver.py`, `drivers/run_onset_sweep.py`, `drivers/onset_analysis.py`, `drivers/assemble.py`; kernel `kernels/sdr_kernel.py`; data `data/onset_runs.parquet` (5,360 runs), `data/onset_ladder_table.csv`, `data/onset_reference_time_robustness.csv`, `data/kmin_snapshots.npz`; summary `data/onset_summary.json`; figure `figures/fig_S23_onset_vs_ridge.png`. Result: click-onset does NOT track the ridge (onset/ridge = 0.18, 1.10, 1.27 at s_d = 0.0025, 0.01, 0.04); the s_d = 0.01 coincidence is withdrawn as evidence in the revised manuscript.
+- **Gap-variance exponent, window-resolved** — data `data/gap_variance_curves.parquet`; summary `data/gap_variance_chi_summary.json`. Result: chi is a launch transient followed by load-dependent saturation below 2; 'random slope' is the fixation-timescale idealization.
+
+Run total after revision: 108,237 runs across 33 ensembles (Supplementary Table 1), zero censored, zero unexplained failures.

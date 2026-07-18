@@ -1,0 +1,10 @@
+{
+ "purged_over_neutral": 0.929,
+ "ci": [
+  0.796,
+  1.09
+ ],
+ "p_ratio_ge_1": 0.181625,
+ "n_purged": 400,
+ "n_neutral": 150
+}

@@ -1,0 +1,419 @@
+{
+  "task": "Round 6, track: functional form of f0(U_d/s_d) and load-dependence of N_eff (least-loaded-class census / boundary contacts)",
+  "runs_executed": 956,
+  "runs_censored": 0,
+  "wall_seconds_simulation": 492,
+  "ladder_192x32": {
+    "theta": [
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.8,
+      1.0,
+      1.5,
+      2.0,
+      3.0,
+      5.0
+    ],
+    "runs_per_rung": 64,
+    "s_d": 0.01,
+    "lattice": "192x32",
+    "time_window": "0.10<t/T_fix<0.60"
+  },
+  "ladder_192x128": {
+    "theta": [
+      0.1,
+      0.2,
+      0.4,
+      0.6,
+      1.0
+    ],
+    "runs_per_rung": 12
+  },
+  "kernel_modification": "census2.py: passive per-sample block added to strip_census.py counting, for each live cell with >=1 live opposite-label Moore neighbour, per side: #same/#opposite/#wall Moore neighbours; #least-loaded (global-min load) cells among same/opposite neighbours; self-in-class indicator; absence indicators over (8 nbrs, 9-patch, opposite-only, same-only); summed excess load. Dynamics untouched (bit-identical trajectories to strip_census.py at equal seed verified).",
+  "functional_form": {
+    "preferred": "exponential family (single exponential / stretched exponential with beta=1.09-1.11); power law decisively rejected",
+    "fits": [
+      {
+        "dataset": "deposited census (192x32, 9 rungs, 216 runs)",
+        "model": "exponential exp(-theta/theta0) [Haigh form, A=1]",
+        "k": 1,
+        "params": [
+          0.41151435036528067
+        ],
+        "param_se": [
+          0.006755136053920828
+        ],
+        "rss": 0.7764766655445321,
+        "n": 216,
+        "AIC": -1213.7056925936627,
+        "dAIC": 7.637738127596322
+      },
+      {
+        "dataset": "deposited census (192x32, 9 rungs, 216 runs)",
+        "model": "exponential A*exp(-theta/theta0)",
+        "k": 2,
+        "params": [
+          1.0288400388265837,
+          0.3947727207141316
+        ],
+        "param_se": [
+          0.012585021262943488,
+          0.009471688210496104
+        ],
+        "rss": 0.7573050560901509,
+        "n": 216,
+        "AIC": -1217.1057873655088,
+        "dAIC": 4.237643355750151
+      },
+      {
+        "dataset": "deposited census (192x32, 9 rungs, 216 runs)",
+        "model": "power law A*theta^-b",
+        "k": 2,
+        "params": [
+          0.21154486255689672,
+          0.5208091158983214
+        ],
+        "param_se": [
+          0.009515238978745962,
+          0.01858677257194248
+        ],
+        "rss": 3.2142201387408273,
+        "n": 216,
+        "AIC": -904.8618281878545,
+        "dAIC": 316.4816025334045
+      },
+      {
+        "dataset": "deposited census (192x32, 9 rungs, 216 runs)",
+        "model": "stretched exponential exp(-(theta/theta0)^beta)",
+        "k": 2,
+        "params": [
+          0.40566009967797884,
+          1.0857646283982365
+        ],
+        "param_se": [
+          0.006415823216502743,
+          0.028025595778557667
+        ],
+        "rss": 0.7425924935283368,
+        "n": 216,
+        "AIC": -1221.343430721259,
+        "dAIC": 0.0
+      },
+      {
+        "dataset": "deposited census (192x32, 9 rungs, 216 runs)",
+        "model": "logistic/Hill 1/(1+(theta/theta0)^beta)",
+        "k": 2,
+        "params": [
+          0.2735178698365926,
+          1.5832636437026826
+        ],
+        "param_se": [
+          0.004704546947404116,
+          0.0448936815946927
+        ],
+        "rss": 0.8713308716073626,
+        "n": 216,
+        "AIC": -1186.8105717812007,
+        "dAIC": 34.532858940058304
+      },
+      {
+        "dataset": "new census (192x32, 14 rungs, 896 runs)",
+        "model": "exponential exp(-theta/theta0) [Haigh form, A=1]",
+        "k": 1,
+        "params": [
+          0.4034858867326986
+        ],
+        "param_se": [
+          0.0031455347177836313
+        ],
+        "rss": 2.90856835733978,
+        "n": 896,
+        "AIC": -5132.330365940534,
+        "dAIC": 76.00790596922798
+      },
+      {
+        "dataset": "new census (192x32, 14 rungs, 896 runs)",
+        "model": "exponential A*exp(-theta/theta0)",
+        "k": 2,
+        "params": [
+          1.0445045824385968,
+          0.3807442467129819
+        ],
+        "param_se": [
+          0.006598150293687814,
+          0.004295940033525454
+        ],
+        "rss": 2.7608362959674277,
+        "n": 896,
+        "AIC": -5177.036468928369,
+        "dAIC": 31.30180298139294
+      },
+      {
+        "dataset": "new census (192x32, 14 rungs, 896 runs)",
+        "model": "power law A*theta^-b",
+        "k": 2,
+        "params": [
+          0.1898384542307747,
+          0.5738720808540768
+        ],
+        "param_se": [
+          0.004448974329463302,
+          0.009989027142648677
+        ],
+        "rss": 13.343215019701837,
+        "n": 896,
+        "AIC": -3765.4114264128693,
+        "dAIC": 1442.9268454968924
+      },
+      {
+        "dataset": "new census (192x32, 14 rungs, 896 runs)",
+        "model": "stretched exponential exp(-(theta/theta0)^beta)",
+        "k": 2,
+        "params": [
+          0.3998102339087039,
+          1.1132823597389228
+        ],
+        "param_se": [
+          0.002824298800235531,
+          0.012950527860707706
+        ],
+        "rss": 2.6660516406283543,
+        "n": 896,
+        "AIC": -5208.338271909762,
+        "dAIC": 0.0
+      },
+      {
+        "dataset": "new census (192x32, 14 rungs, 896 runs)",
+        "model": "logistic/Hill 1/(1+(theta/theta0)^beta)",
+        "k": 2,
+        "params": [
+          0.2697812235499941,
+          1.6577248910037965
+        ],
+        "param_se": [
+          0.002219026364990739,
+          0.02123911286097733
+        ],
+        "rss": 3.264010565881231,
+        "n": 896,
+        "AIC": -5027.025429948981,
+        "dAIC": 181.31284196078104
+      }
+    ],
+    "haigh_theta0_test": {
+      "deposited": {
+        "theta0": 0.41151447019526183,
+        "theta0_se": 0.006755138012112427,
+        "F": 2742.455576577637,
+        "p": 2.3167177266822136e-124
+      },
+      "new": {
+        "theta0": 0.4034863030608844,
+        "theta0_se": 0.0031455376231898677,
+        "F": 13976.282008524113,
+        "p": 0.0
+      }
+    },
+    "exponential_theta0_freeA_new": {
+      "A": 1.0445045824385968,
+      "theta0": 0.3807442467129819,
+      "theta0_se": 0.004295940033525454
+    },
+    "inverse_theta0_new": 2.6264349589866143,
+    "mean_excess_load_slope": {
+      "new": 2.5232849554621373,
+      "ci95": [
+        2.4773659208841248,
+        2.5730471054187487
+      ],
+      "deposited": 2.544
+    },
+    "tail_note": "rungs theta>=2 sit above the exponential (ratio 3.5x at theta=2, ~940x at theta=5 for the deposited set); there the interface class is absent most of the time (p_absent 0.80-0.94) and is transiently re-created after clicks, so f0 is a re-nucleation duty cycle rather than a stationary tail; excluding theta>=2 does not move theta0."
+  },
+  "contacts_load_dependence": {
+    "same_pc": {
+      "mean": 5.098059416794868,
+      "slope_per_decade": 0.017200011895624295,
+      "slope_se": 0.0009301949508427963,
+      "p": 6.822766901019779e-65,
+      "pct_span_over_ladder": 0.6701716824476522
+    },
+    "opp_pc": {
+      "mean": 2.9003570883822087,
+      "slope_per_decade": -0.015051712159756972,
+      "slope_se": 0.0009009884690490766,
+      "p": 9.87043464566673e-55,
+      "pct_span_over_ladder": 1.050270068208165
+    },
+    "wall_pc": {
+      "mean": 0.0015834948229234344,
+      "slope_per_decade": -0.0021482997358673052,
+      "slope_se": 0.00015856281007076744,
+      "p": 3.580948400013223e-38,
+      "pct_span_over_ladder": 244.23872704646183
+    }
+  },
+  "neff": {
+    "Neff_opp": {
+      "mean": 2.9003570883822087,
+      "min": 2.8812516113913698,
+      "max": 2.911713193761802,
+      "ln_mean": 1.064829328104781,
+      "ln_range_over_ladder": 0.010516847299820276
+    },
+    "Neff_opp_self": {
+      "mean": 3.9003570883822083,
+      "min": 3.8812516113913698,
+      "max": 3.911713193761802,
+      "ln_mean": 1.3610656031239912,
+      "ln_range_over_ladder": 0.007817753134000904
+    },
+    "Neff_same": {
+      "mean": 5.098059416794868,
+      "min": 5.084298635188633,
+      "max": 5.118464385754348,
+      "ln_mean": 1.6288580981327316,
+      "ln_range_over_ladder": 0.00669737760327016
+    },
+    "Neff_moore": {
+      "mean": 7.998416505177076,
+      "min": 7.996011828950435,
+      "max": 7.99987933654879,
+      "ln_mean": 2.0792435728579113,
+      "ln_range_over_ladder": 0.0004835626391428427
+    },
+    "Neff_patch": {
+      "mean": 8.998416505177076,
+      "min": 8.996011828950435,
+      "max": 8.99987933654879,
+      "ln_mean": 2.1970486082082243,
+      "ln_range_over_ladder": 0.0004298211877733493
+    }
+  },
+  "crossings_direct": {
+    "pabs_opp": {
+      "theta_star": 0.3548004262475445,
+      "ci95": [
+        0.3455734765388165,
+        0.36530426718943754
+      ]
+    },
+    "pabs_nbr": {
+      "theta_star": 0.5937540697109878,
+      "ci95": [
+        0.5664075760423003,
+        0.6168612679825847
+      ]
+    },
+    "pabs_pat": {
+      "theta_star": 0.5969569926365541,
+      "ci95": [
+        0.5707246245907714,
+        0.6195354747443135
+      ]
+    },
+    "pabs_band": {
+      "theta_star": 0.7321698286687227,
+      "ci95": [
+        0.7061969446135793,
+        0.7705670814170315
+      ]
+    },
+    "E_n0_opp_eq_1": {
+      "theta_star": 0.4317094535101748,
+      "ci95": [
+        0.42226098487566127,
+        0.4416281704331184
+      ]
+    },
+    "E_n0_moore8_eq_1": {
+      "theta_star": 0.7330566654450913,
+      "ci95": [
+        0.7118421530586463,
+        0.758870429500043
+      ]
+    },
+    "E_n0_column_eq_1": {
+      "theta_star": 0.7582216825251096,
+      "ci95": [
+        0.7272077790313882,
+        0.791568650169229
+      ]
+    }
+  },
+  "inversion": {
+    "census_curve": "f0 = 1.045 exp(-theta/0.381) (896-run fit); theta* = theta0 ln(A N_eff / c)",
+    "ridge_measured": [
+      0.44,
+      0.4,
+      0.48
+    ],
+    "Neff_over_c_required_by_ridge": 3.040702860302301,
+    "Neff_over_c_required_naive_Haigh": 1.552707218511336,
+    "table": [
+      {
+        "local_population": "opposite-clone Moore contacts",
+        "N_eff": 2.905,
+        "theta_star_naive_Haigh_lnN": 1.0664333903038745,
+        "theta_star_measured_census_expected_n0_eq_1": 0.42261700626496984,
+        "theta_star_measured_census_P_absent_half": 0.5621646921224106
+      },
+      {
+        "local_population": "opposite+self",
+        "N_eff": 3.905,
+        "theta_star_naive_Haigh_lnN": 1.3622577832916491,
+        "theta_star_measured_census_expected_n0_eq_1": 0.5352504419324252,
+        "theta_star_measured_census_P_absent_half": 0.6747981277898659
+      },
+      {
+        "local_population": "same-clone Moore contacts",
+        "N_eff": 5.096,
+        "theta_star_naive_Haigh_lnN": 1.6284559182698621,
+        "theta_star_measured_census_expected_n0_eq_1": 0.6366038503111057,
+        "theta_star_measured_census_P_absent_half": 0.7761515361685464
+      },
+      {
+        "local_population": "same+self",
+        "N_eff": 6.096,
+        "theta_star_naive_Haigh_lnN": 1.807632818384345,
+        "theta_star_measured_census_expected_n0_eq_1": 0.7048244241735616,
+        "theta_star_measured_census_P_absent_half": 0.8443721100310024
+      },
+      {
+        "local_population": "full Moore neighbourhood",
+        "N_eff": 8.0,
+        "theta_star_naive_Haigh_lnN": 2.0794415416798357,
+        "theta_star_measured_census_expected_n0_eq_1": 0.8083140317747206,
+        "theta_star_measured_census_P_absent_half": 0.9478617176321613
+      },
+      {
+        "local_population": "Moore patch incl self",
+        "N_eff": 9.0,
+        "theta_star_naive_Haigh_lnN": 2.1972245773362196,
+        "theta_star_measured_census_expected_n0_eq_1": 0.8531592449612785,
+        "theta_star_measured_census_P_absent_half": 0.9927069308187193
+      },
+      {
+        "local_population": "32-cell column",
+        "N_eff": 32.0,
+        "theta_star_naive_Haigh_lnN": 3.4657359027997265,
+        "theta_star_measured_census_expected_n0_eq_1": 1.3361376340217679,
+        "theta_star_measured_census_P_absent_half": 1.4756853198792086
+      },
+      {
+        "local_population": "3-column band per side",
+        "N_eff": 96.0,
+        "theta_star_naive_Haigh_lnN": 4.564348191467836,
+        "theta_star_measured_census_expected_n0_eq_1": 1.7544279423003324,
+        "theta_star_measured_census_P_absent_half": 1.8939756281577733
+      }
+    ]
+  },
+  "against_hypothesis": false
+}

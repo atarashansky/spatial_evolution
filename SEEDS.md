@@ -27,3 +27,9 @@ Every run is seeded deterministically. For per-run tables the integer `seed` col
 
 Kernel-level RNG: each kernel draws from a NumPy `RandomState`/Generator seeded once per run; the njit inner loops receive pre-drawn variates or the seed as an argument (see the `seed` parameter of each kernel's public `evolve_*` function).
 The two representative snapshots in Supplementary Fig. S20 (e, f) use `seed = 3` at the parameters given in the caption.
+
+### Round-6 ensembles
+
+- census/contact ensemble (`census2.py`): seeds recorded per run in `data/contact_census_runs.parquet` (column `seed`).
+- estimator bracketing supplement: seed base 9,400,000, disjoint from all prior campaigns; per-run seeds in `data/estimator_supplement_runs.parquet`.
+- click-onset sweep: per-run seeds in `data/onset_runs.parquet`; disjoint from the round-5 click-census seeds, so the s_d = 0.01 point is an independent replication.

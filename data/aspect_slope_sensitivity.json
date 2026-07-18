@@ -1,0 +1,38 @@
+{
+ "all seven, geometry-level bootstrap (as reported)": {
+  "slope_per_decade": 0.15939366883159456,
+  "ci": [
+   0.06062679235485573,
+   0.2573064500051239
+  ],
+  "p_slope_le_0": 0.001,
+  "n_geom": 7
+ },
+ "excluding curtailed 768x64": {
+  "slope_per_decade": 0.14286169204592755,
+  "ci": [
+   0.025374148011841163,
+   0.26570710120332497
+  ],
+  "p_slope_le_0": 0.00625,
+  "n_geom": 6
+ },
+ "all seven, area-block cluster bootstrap (n_eff = 2 blocks)": {
+  "slope_per_decade": 0.15939366883159456,
+  "ci": [
+   -0.005963212461119627,
+   0.26458209812325273
+  ],
+  "p_slope_le_0": 0.02875,
+  "n_geom": 7
+ },
+ "excluding 768x64, area-block cluster bootstrap": {
+  "slope_per_decade": 0.14286169204592755,
+  "ci": [
+   -0.009412815723668984,
+   0.2779573950471938
+  ],
+  "p_slope_le_0": 0.033,
+  "n_geom": 6
+ }
+}

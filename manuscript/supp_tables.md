@@ -6,7 +6,7 @@ All simulations use the spatial Moran strip model (Numba kernel `evolution_strip
 the 2018 reference implementation; Birth–death variant `evolution_strip_bd.py`; k-clone variant
 `evolution_kclone.py`; composition kernel `evolution_strip_dfe.py`; frequency-dependent kernel
 `evolution_strip_fd.py`; lineage-tracing kernel `evolution_lineage.py`; rule-switch kernel
-`evolution_strip_mixed.py`). Ensembles were run on a 64-core driver (`ensemble_driver.py`); zero unexplained failures across the campaign. **Itemized total: 99,827 runs** across the 30 ensembles itemized below (excluding exemplar renders); the five ensembles added in revision (stiffness/tension tests, ridge tracing, finite-size scaling, reduced-model inputs, and the confrontation ensembles) are marked ‡. A further 9,160-run rule-switch ensemble (mixed dB/Bd 'pusher' clones), not part of the present analysis, is described separately.
+`evolution_strip_mixed.py`; instrumented contact-census kernel `census2.py`, bit-for-bit identical to `strip_census.py` at equal seed). Ensembles were run on a 64-core driver (`ensemble_driver.py`); zero unexplained failures across the campaign. **Itemized total: 108,237 runs** across the 33 ensembles itemized below (excluding exemplar renders); the ensembles added or extended in revision are marked ‡ (11 table rows; some logical additions span more than one row). A further 9,160-run rule-switch ensemble (mixed dB/Bd 'pusher' clones), not part of the present analysis, is described separately.
 "Censored" = runs that reached the frame cap without fixation; censored runs enter as lower bounds where noted.
 
 | Figure | Ensemble (track) | Runs | Geometry | Cap (frames) | Censoring | Data artifacts | Notes |
@@ -26,7 +26,7 @@ the 2018 reference implementation; Birth–death variant `evolution_strip_bd.py`
 | 5 (pilot) | DFE pilot + point-mass validation | 1,700 | 192x{32,128} | - | 0 | `dfe pilot/validation parquets` |  |
 | S16 | Frequency-dependent selection (phases 1-3) | 5,600 | 128x24 (+ pilot 192x32) | 1.2M-30M | neutral arms censor at cap by design (0/1,200 fixed) | `fd_p1/2/3.parquet` |  |
 | S16 (pilot), S7 | FD pilot + width-invariance supplement | 3,336 | 128x24 | - | - | `fd_pilot_results.parquet (3,000), fd_width_summary.parquet (336)` |  |
-| 6 | Regime-map (Lambda, s_d) grid + neutral anchor | 2,300 | 192x32 | 20M | 0 | `regime_map_grid.parquet, regime_map_summary.json` |  |
+| 6 | Regime-map (Lambda, s_d) grid + neutral anchor | 2,300 | 192x32 | 20M | 0 | `regime_map_grid.parquet, regime_map_summary.json` | 14 new cells × 150 runs + neutral anchor 200 = 2,300 (this row); 5 further cells reuse `tfix_results.parquet` / `tail_ensemble.parquet` runs itemized in their own rows (n = 250–400); one cell (mud = 1.6) not run by design (mud > 0.8); per-cell sources in `regime_map_summary.json` |
 | 7 (lineage kernels) | Lineage-tracing kernels (neutral, loaded x2) | 144 | clone-labelled | - | - | `lineage_sims.pkl, evolution_lineage.py` |  |
 | 2d–e, S9, S14 ‡ | Finite-size L_long sweep (neutral + loaded, gap statistics) | 1,870 | {96–768}x32; {192,384}x128 | 40M | 0 | `finite_size.parquet, finite_size_summary.json` | zeta_neutral 1.73, zeta_loaded 1.17, Var[g]~t^alpha, collapse C=1.64 |
 | 3e–f, S10 ‡ | Reduced-model inputs: drift response v(g), zero-mode D0, MSD crossover | 1,560 | 192x{16–256} | - | 0 | `reduced_model_runs.parquet, reduced_model_series.npz, reduced_model_summary.json` | plus 3,000 SDE realizations per cell |
@@ -35,11 +35,11 @@ the 2018 reference implementation; Birth–death variant `evolution_strip_bd.py`
 | 4d–f, S11 ‡ | Ridge tracing: low-Lambda ladders, fixed-s_d rate sweeps, N-crossing, neutral anchors | 7,400 | 192x{32,64,128} | 20M | 0 | `ridge_law.parquet, ridge_law_summary.json` | groups T1, T2a/b, T3, N32/64/128 |
 | 7 ‡ | Confrontation kernel ensembles (age-matched, layered; power surface) | 12,000 | 192x32 clone-labelled | - | - | `confrontation_stats.parquet, confrontation_summary.json` | 2,000 runs/condition x 6 conditions |
 | 4f ‡ | Intensivity extension: 192x256 & 192x512 rate ladders + neutral anchors; 384x128 aspect-ratio control | 2,159 | 192x{256,512}, 384x128 | 40M/60M | 0 | `intensivity_ext.parquet, intensivity_ext_summary.json` | five-point U_d/s_d; slope vs log10N -0.02 [-0.22,+0.19] |
-| 4g, 4h | Least-loaded-class census (instrumented kernel, per-cell hit counts) | 312 | 192x32, 192x128 | to fixation | none (all runs to fixation) | `n0_census.parquet, n0_census_raw.parquet` | 192×32: nine U_d/s_d rungs × 24; 192×128: six rungs × 13–16; s_d = 0.01 |
+| 4g, 4h | Least-loaded-class census (instrumented kernel, per-cell hit counts) | 306 | 192x32, 192x128 | to fixation | none (all runs to fixation) | `n0_census.parquet, n0_census_raw.parquet` | 192×32: nine U_d/s_d rungs (0.05–5) × 24 runs = 216; 192×128: six rungs (0.1–1) at 13, 14, 15, 16, 16, 16 runs = 90; s_d = 0.01 |
 | S17 | Ratchet-click census and rate-spread test (instrumented kernel) | 1,984 | 192x32 | 4x10^7 | none (all runs to fixation) | `sigma_dR_ladder.parquet, sigma_dR_gridseries.parquet, sigma_dR_neutral_com.parquet` | 12 U_d/s_d rungs × 128 + 96 at U_d/s_d = 10; neutral arm 192; imposed-gap arm 160 (5 g0 × 32); s_d = 0.01 |
 | S18 | Loaded-ridge neighbourhood test (von Neumann stencil arm) | 2,906 | 192x32, 192x128 | 2x10^7 | none | `neighbourhood_ridge.parquet` | vN 192×32: 13 rungs × 150 + 200 neutral; vN 192×128: 8 rungs × 60–100 + 100 neutral; Moore replication 96; s_d = 0.01 |
 | S19 | Aspect-ratio replication ladder (new runs only) | 1,029 | 96x512, 768x64, 96x256, 384x64 | to fixation | none | `aspect_ladder.parquet` | 933 production + 96 pilot; pools with 3,509 reused runs booked above; 768x64 arm deadline-curtailed (n = 8–50/rung); s_d = 0.01 |
-| S20 (a–c) | Pusher-switch mixed-rule ensemble (kinetic neutrality, plateau shares, incidence law) | 9,160 | 192x64 | 7.5x10^5 (plateau); 5x10^5–1.5x10^6 (b* grids) | none | `pusher_switch.parquet` | b* logistic grid 4,440 runs; b/b* × load × 120 seeds plateau grid; absolute-clock contrast arm; μ_c × load incidence grid; kernel `evolution_strip_mixed.py`, validated bit-exact at μ_c = 0 |
+| S20 (a–c) | Pusher-switch mixed-rule ensemble (kinetic neutrality, plateau shares, incidence law) | 9,160 | 192x64 | 7.5x10^5 (plateau); 5x10^5–1.5x10^6 (b* grids) | none | `data/pusher_switch/*` (`calibration_runs.parquet`, `ensemble_main.parquet`, validation/refine tables) | b* logistic grid 4,440 runs; b/b* × load × 120 seeds plateau grid; absolute-clock contrast arm; μ_c × load incidence grid; kernel `evolution_strip_mixed.py`, validated bit-exact at μ_c = 0 |
 | S20 (d, e) | Front-morphology ensembles (pusher vs fitness vs neutral fronts) | 258 | 768x64, 384x64 | 2.4x10^4 (fine); 10^5 (coarse) | none | `rough_out/`, `rough_out2/`, `pusher_morphology_summary.json` | 40 seeds/arm × 4 arms (coarse) + 24 seeds/arm × 4 arms (fine) + 2 representative snapshots; b = 0.075 = 1.8 b*, s_d = 0.04 |
 
 ## Supplementary Table 2 | Mapping model load parameters to human tissues
@@ -64,3 +64,40 @@ effect-size sweeps) sits inside the estimated ranges for sun-exposed epidermis, 
 (HSC), and hypermutator tumors, and at the upper end of the colonic-crypt range —
 i.e., the drift-dominated ("fluid") regime characterized in the main text is the
 regime real renewing tissues occupy (main-text Fig. 5).
+
+## Supplementary Table 3 | Per-rung run counts for the ensembles reported with ranges
+
+Exact number of runs per U_d/s_d rung for every arm that a caption or the main text reports with a count range. Zero runs = rung not sampled in that arm (by design; the aspect arms sample the transition band densely and add sparse rungs elsewhere). All runs zero-censored unless noted. Deadline-curtailed rungs are marked ‡ and are reported, not filled.
+
+**Aspect and area ladder (Fig. 4f, Supplementary Fig. S19; s_d = 0.01):**
+
+| geometry (L_long×L_short) | 0.1 | 0.2 | 0.3 | 0.4 | 0.5 | 0.6 | 0.7 | 0.8 | 1 | 1.2 | 1.4 | 2 | 5 | total |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 96×256 | – | 30 | 40 | 8 | 40 | – | – | 38 | – | 24 | – | – | – | 180 |
+| 96×512 | – | 30 | 30 | 8 | 23 | – | – | 32 | – | 20 | – | – | – | 143 |
+| 192×128 | 150 | 150 | – | 150 | – | 150 | – | 150 | – | 150 | – | 150 | 150 | 1200 |
+| 192×256 | – | 150 | – | 150 | – | 150 | – | 150 | – | 150 | – | – | – | 750 |
+| 192×512 | – | 60 | – | 60 | – | 60 | – | 60 | – | 60 | – | – | – | 300 |
+| 384×64 | – | – | – | 8 | 40 | – | 60 | 8 | 60 | – | 20 | 24 | – | 220 |
+| 384×128 | – | 150 | – | 150 | – | 150 | – | 150 | – | 150 | – | – | – | 750 |
+| 768×64 ‡ | – | – | – | 8 | 39 | – | 46 | 8 | 50 | – | 40 | 30 | – | 221 |
+
+‡ 768×64 arm curtailed by the compute deadline (n = 8–50 per rung); disclosed as partial, not powered up.
+
+**Neighbourhood/stencil test (Supplementary Fig. S18; 192×L_short, s_d = 0.01):**
+
+| L_short | stencil | 0.05 | 0.1 | 0.15 | 0.2 | 0.3 | 0.4 | 0.6 | 0.8 | 1 | 1.2 | 2 | 5 | 10 | total |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 32 | von Neumann | 150 | 150 | 150 | 150 | 150 | 150 | 150 | 150 | 150 | 150 | 150 | 150 | 150 | 1950 |
+| 32 | Moore | – | – | – | 24 | – | 24 | – | 24 | – | – | – | – | – | 72 |
+| 128 | von Neumann | – | 100 | – | 100 | 60 | 60 | 60 | 60 | – | 60 | 60 | – | – | 560 |
+
+**Least-loaded-class census (Fig. 4g,h; s_d = 0.01):**
+
+| geometry | 0.05 | 0.1 | 0.2 | 0.3 | 0.4 | 0.6 | 1 | 2 | 5 | total |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 192×32 | 24 | 24 | 24 | 24 | 24 | 24 | 24 | 24 | 24 | 216 |
+| 192×128 | – | 13 | 14 | 15 | 16 | 16 | 16 | – | – | 90 |
+| Fig. 4h, Supplementary Fig. S21 ‡ | Front census functional form and contact structure | 956 (14-rung θ ladder 192×32 at 64/rung + 5-rung 192×128 at 12/rung, s_d = 0.01) | `census2.py` | 0 | `contact_census_runs.parquet` |
+| Supplementary Fig. S22 ‡ | Fixed-s_d bracketing supplement for estimator robustness | 2,100 (14 rungs × 150 runs at s_d = 0.0025, 0.005, 0.02) | `evolution_strip.py` | 0 | `estimator_supplement_runs.parquet` |
+| Supplementary Fig. S23 ‡ | Click-onset effect-size sweep (round-6 test, against hypothesis) | 5,360 (s_d = 0.0025, 0.01, 0.04 ladders at 96/rung, densified 288/rung; 288 neutral; 464 pilot) | `sdr_kernel.py` (instrumented, unmodified) | 0 | `onset_runs.parquet` |
