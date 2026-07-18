@@ -33,3 +33,11 @@ The two representative snapshots in Supplementary Fig. S20 (e, f) use `seed = 3`
 - census/contact ensemble (`census2.py`): seeds recorded per run in `data/contact_census_runs.parquet` (column `seed`).
 - estimator bracketing supplement: seed base 9,400,000, disjoint from all prior campaigns; per-run seeds in `data/estimator_supplement_runs.parquet`.
 - click-onset sweep: per-run seeds in `data/onset_runs.parquet`; disjoint from the round-5 click-census seeds, so the s_d = 0.01 point is an independent replication.
+
+### Round-7 ensembles
+
+- census-across-s_d: seed base 12,640,000, disjoint per run and per arm; per-run seeds in `data/census_sd_runs.parquet`.
+- von Neumann census: seed base 12,900,000, disjoint per arm (loaded / neutral anchors / validation); per-run seeds in `data/vn_census_runs.parquet`.
+- fitness-precision probes: seeds 12,000,001–12,000,002.
+
+**Seed audit (round 7).** A global audit of all deposited per-run tables found (i) seed integers reused across ensembles run at different parameters (distinct realisations sharing an RNG prefix, weakly outcome-correlated) and (ii) within the click-onset ensemble, identical per-rung seed lists reused between its s_d = 0.0025 and s_d = 0.04 ladders. Case (ii) is the only within-analysis reuse; the affected paired-bootstrap slope was recomputed with a seed-cluster bootstrap and on seed-independent subsets and is unchanged (0.70 [0.41, 0.79]; `data/onset_seed_dependence_check.json`). Round-7 ensembles were intended to allocate disjoint ranges per arm; the global audit (`data/seed_audit_global.json`) shows the von Neumann census and the ridge re-anchoring arms both took base 12,900,000 and share 1,556 seed integers (distinct realisations on different geometries, never compared or pooled in any statistic — disclosed, not corrected). Per-arm disjointness, verified by the audit before deposit, is the campaign convention going forward.

@@ -1,0 +1,5 @@
+tissue,ratio_central,ratio_lo,ratio_hi,margin_headline_dec,margin_pooled_dec,margin_jointworst_dec,fluid_at_worst
+Colonic crypt,12.649110640673516,0.8,200.0,1.46,1.35,-0.24,False
+Epidermis (sun-exp.),63.24555320336759,5.0,800.0,2.16,2.05,0.55,True
+HSC (blood),74.83314773547883,7.000000000000001,800.0,2.23,2.13,0.7,True
+Hypermutator tumor,51.639777949432236,6.666666666666667,400.0,2.07,1.96,0.68,True

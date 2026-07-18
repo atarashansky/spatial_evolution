@@ -1,0 +1,21 @@
+{
+ "within_ensemble_seed_reuse_pairs": 480,
+ "reuse_structure": "s_d=0.0025 and s_d=0.04 ladders share identical per-rung seed lists (96/rung)",
+ "within_seed_cross_ladder_spearman": -0.29,
+ "published_slope": [
+  0.7008,
+  0.3597,
+  0.8151
+ ],
+ "seed_cluster_bootstrap_slope": [
+  0.7008,
+  0.407,
+  0.7868
+ ],
+ "p_slope_le_0": 0.0,
+ "independent_subset_slopes": {
+  "0.0025": 0.701,
+  "0.04": 0.701
+ },
+ "verdict": "anti-tracking slope robust to the shared-seed dependence: seed-cluster CI excludes zero; independent-seed subsets give the same slope"
+}

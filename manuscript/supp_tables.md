@@ -1,12 +1,10 @@
-# Supplementary Tables
-
 ## Supplementary Table 1 | Run provenance by figure (current numbering)
 
 All simulations use the spatial Moran strip model (Numba kernel `evolution_strip.py`, validated against
 the 2018 reference implementation; Birth–death variant `evolution_strip_bd.py`; k-clone variant
 `evolution_kclone.py`; composition kernel `evolution_strip_dfe.py`; frequency-dependent kernel
 `evolution_strip_fd.py`; lineage-tracing kernel `evolution_lineage.py`; rule-switch kernel
-`evolution_strip_mixed.py`; instrumented contact-census kernel `census2.py`, bit-for-bit identical to `strip_census.py` at equal seed). Ensembles were run on a 64-core driver (`ensemble_driver.py`); zero unexplained failures across the campaign. **Itemized total: 108,237 runs** across the 33 ensembles itemized below (excluding exemplar renders); the ensembles added or extended in revision are marked ‡ (11 table rows; some logical additions span more than one row). A further 9,160-run rule-switch ensemble (mixed dB/Bd 'pusher' clones), not part of the present analysis, is described separately.
+`evolution_strip_mixed.py`; instrumented contact-census kernel `census2.py`, bit-for-bit identical to `strip_census.py` at equal seed). Ensembles were run on a 64-core driver (`ensemble_driver.py`); zero unexplained failures across the campaign. **Itemized total: 118,363 runs** across the 37 ensembles itemized below (excluding exemplar renders); the ensembles added or extended in revision are marked ‡ (11 table rows; some logical additions span more than one row). A further 9,160-run rule-switch ensemble (mixed dB/Bd 'pusher' clones), not part of the present analysis, is described separately.
 "Censored" = runs that reached the frame cap without fixation; censored runs enter as lower bounds where noted.
 
 | Figure | Ensemble (track) | Runs | Geometry | Cap (frames) | Censoring | Data artifacts | Notes |
@@ -41,6 +39,13 @@ the 2018 reference implementation; Birth–death variant `evolution_strip_bd.py`
 | S19 | Aspect-ratio replication ladder (new runs only) | 1,029 | 96x512, 768x64, 96x256, 384x64 | to fixation | none | `aspect_ladder.parquet` | 933 production + 96 pilot; pools with 3,509 reused runs booked above; 768x64 arm deadline-curtailed (n = 8–50/rung); s_d = 0.01 |
 | S20 (a–c) | Pusher-switch mixed-rule ensemble (kinetic neutrality, plateau shares, incidence law) | 9,160 | 192x64 | 7.5x10^5 (plateau); 5x10^5–1.5x10^6 (b* grids) | none | `data/pusher_switch/*` (`calibration_runs.parquet`, `ensemble_main.parquet`, validation/refine tables) | b* logistic grid 4,440 runs; b/b* × load × 120 seeds plateau grid; absolute-clock contrast arm; μ_c × load incidence grid; kernel `evolution_strip_mixed.py`, validated bit-exact at μ_c = 0 |
 | S20 (d, e) | Front-morphology ensembles (pusher vs fitness vs neutral fronts) | 258 | 768x64, 384x64 | 2.4x10^4 (fine); 10^5 (coarse) | none | `rough_out/`, `rough_out2/`, `pusher_morphology_summary.json` | 40 seeds/arm × 4 arms (coarse) + 24 seeds/arm × 4 arms (fine) + 2 representative snapshots; b = 0.075 = 1.8 b*, s_d = 0.04 |
+| S25 | Ridge-profile re-anchoring (2,000-run pooled neutral anchor + shelf densification + bracket midpoints; retires the constant-ratio law) | 4,700 | 192x32 | to fixation | none | `ridge_profile_runs.parquet`, `ridge_profile_analysis_pool.parquet`, `ridge_profile_summary.json` | analysis pool 12,756 loaded + 2,856 neutral; homogeneity rejected Q = 41.6, RE pool 0.47 [0.38, 0.60]; seeds 12,900,000-12,921,299 |
+| Fig. 4h, Supplementary Fig. S21  | Front census functional form and contact structure | 956 (14-rung θ ladder 192×32 at 64/rung + 5-rung 192×128 at 12/rung, s_d = 0.01) | `census2.py` | 0 | `contact_census_runs.parquet` |
+| Supplementary Fig. S22  | Fixed-s_d bracketing supplement for estimator robustness | 2,100 (14 rungs × 150 runs at s_d = 0.0025, 0.005, 0.02) | `evolution_strip.py` | 0 | `estimator_supplement_runs.parquet` |
+| Supplementary Fig. S23  | Click-onset effect-size sweep (round-6 test, against hypothesis) | 5,360 (s_d = 0.0025, 0.01, 0.04 ladders at 96/rung, densified 288/rung; 288 neutral; 464 pilot) | `sdr_kernel.py` (instrumented, unmodified) | 0 | `onset_runs.parquet` |
+| S24 | Census across effect size (pre-registered θ₀-transfer test; against derivation) | 3,712 | 192x32 | to fixation | none | `census_sd_runs.parquet`, `census_sd_summary.json` | 3 s_d x 12 loads x 96 = 3,456 + 256 neutral; seeds from 12,640,000; 0 errors |
+| S26 | Von Neumann census stencil test (pre-registered out-of-sample prediction; against derivation) | 1,708 | 192x32 (4-site stencil) | to fixation | none | `vn_census_runs.parquet`, `vn_census_summary.json` | 1,152 loaded (12 rungs x 96) + 300 vN neutral anchors + 256 validation (bit-exact vs `evolve_strip(moore=False)`; KS p = 0.53); seeds from 12,900,000 |
+| — | Fitness-precision probes (float32 underflow check) | 6 | 192x32 | to fixation | none | `fitness_underflow_check.json` | diagnostic runs at U_d ≤ 0.4, s_d ≤ 0.16; smallest living-cell fitness 9.7e-5, no run near float32 subnormal |
 
 ## Supplementary Table 2 | Mapping model load parameters to human tissues
 
@@ -98,6 +103,3 @@ Exact number of runs per U_d/s_d rung for every arm that a caption or the main t
 |---|---|---|---|---|---|---|---|---|---|---|
 | 192×32 | 24 | 24 | 24 | 24 | 24 | 24 | 24 | 24 | 24 | 216 |
 | 192×128 | – | 13 | 14 | 15 | 16 | 16 | 16 | – | – | 90 |
-| Fig. 4h, Supplementary Fig. S21 ‡ | Front census functional form and contact structure | 956 (14-rung θ ladder 192×32 at 64/rung + 5-rung 192×128 at 12/rung, s_d = 0.01) | `census2.py` | 0 | `contact_census_runs.parquet` |
-| Supplementary Fig. S22 ‡ | Fixed-s_d bracketing supplement for estimator robustness | 2,100 (14 rungs × 150 runs at s_d = 0.0025, 0.005, 0.02) | `evolution_strip.py` | 0 | `estimator_supplement_runs.parquet` |
-| Supplementary Fig. S23 ‡ | Click-onset effect-size sweep (round-6 test, against hypothesis) | 5,360 (s_d = 0.0025, 0.01, 0.04 ladders at 96/rung, densified 288/rung; 288 neutral; 464 pilot) | `sdr_kernel.py` (instrumented, unmodified) | 0 | `onset_runs.parquet` |

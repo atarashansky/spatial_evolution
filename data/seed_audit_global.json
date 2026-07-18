@@ -1,0 +1,62 @@
+{
+ "unique_seeded_runs_audited": 54355,
+ "seeds_reused_across_different_parameter_sets": 3182,
+ "run_instances_involved": 6460,
+ "largest_cross_ensemble_pairs": [
+  {
+   "a": "ridge_profile_runs",
+   "b": "vn_census_runs",
+   "shared_seeds": 1556
+  },
+  {
+   "a": "sdsweep_results",
+   "b": "tfix_results",
+   "shared_seeds": 600
+  },
+  {
+   "a": "onset_runs",
+   "b": "sdsweep_results",
+   "shared_seeds": 196
+  },
+  {
+   "a": "bd_results",
+   "b": "onset_runs",
+   "shared_seeds": 192
+  },
+  {
+   "a": "estimator_sensitivity_ladders",
+   "b": "onset_runs",
+   "shared_seeds": 150
+  },
+  {
+   "a": "onset_runs",
+   "b": "tfix_results",
+   "shared_seeds": 96
+  }
+ ],
+ "same_seed_cross_ensemble_outcome_correlation": [
+  {
+   "pair": "sdsweep_results x onset_runs (click-onset)",
+   "n_pairs": 196,
+   "spearman_rho_median_Tfix": 0.481
+  },
+  {
+   "pair": "sdsweep_results x tfix_results",
+   "n_pairs": 750,
+   "spearman_rho_median_Tfix": 0.382
+  },
+  {
+   "pair": "bd_results x onset_runs",
+   "n_pairs": 192,
+   "spearman_rho_median_Tfix": -0.008
+  }
+ ],
+ "within_ensemble_reuse": "click-onset ensemble only: s_d=0.0025 and 0.04 ladders share identical per-rung seed lists (onset_seed_dependence_check.json); slope robust to seed-cluster bootstrap 0.70 [0.41,0.79]",
+ "round7_arm_overlap": {
+  "vn_census_runs \u2229 ridge_profile_runs": 1556,
+  "census_sd_runs \u2229 ridge_profile_runs": 0,
+  "census_sd_runs \u2229 vn_census_runs": 0,
+  "note": "both round-7 arms allocated from base 12,900,000; different geometries/questions, never compared in any statistic; violates the stated per-arm disjointness convention and is disclosed"
+ },
+ "replicated_pool_records_excluded": 6950
+}

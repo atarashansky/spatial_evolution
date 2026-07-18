@@ -1,0 +1,81 @@
+{
+ "note": "run ledger \u2014 Supp Table 1 is the itemised source of truth (rows sum exactly) Round 7: +10,126 runs (census-across-sd 3,712; von Neumann census stencil test 1,708; ridge-profile re-anchoring 4,700; 6 fitness-underflow probe runs); both pre-registered census transfer tests came out against the derivation reading and are reported as such.",
+ "total_runs": 118363,
+ "ensembles": 37,
+ "round4_additions": [
+  {
+   "ensemble": "n0_census_instrumented",
+   "figure": "5g,h",
+   "runs": 312,
+   "detail": "192x32 (9 U_d/s_d rungs x 24) + 192x128 (6 rungs x 13-16), s_d=0.01, per-cell hit counts, to fixation"
+  }
+ ],
+ "prior_change": "intensivity arm 1,458 -> 2,159 after completion of 384x128 aspect-ratio control (already booked in v20)",
+ "round5_additions": [
+  {
+   "ensemble": "ratchet_click_census",
+   "figure": "S17",
+   "runs": 1984,
+   "detail": "192x32, s_d=0.01: 12 loads x128 + 96 at U_d/s_d=10 (1,632 loaded, zero censored) + 192 neutral + 160 imposed-gap (5 g0 x 32)"
+  },
+  {
+   "ensemble": "neighbourhood_ridge",
+   "figure": "S18",
+   "runs": 2906,
+   "detail": "von Neumann 192x32 (13 rungs x150 + 200 neutral = 2,150), von Neumann 192x128 (8 rungs x60-100 + 100 neutral = 660), Moore in-track replication 96; s_d=0.01, cap 2e7, zero censored"
+  },
+  {
+   "ensemble": "aspect_ladder",
+   "figure": "S19",
+   "runs": 1029,
+   "detail": "new runs only (933 production + 96 pilot); analysis pools +2,159 intensivity + 1,350 ridge-campaign runs already booked"
+  }
+ ],
+ "round6_additions": {
+  "census_functional_form_and_contacts": {
+   "runs": 956,
+   "ensemble": "14-rung theta ladder 192x32 (64/rung) + 5-rung 192x128 (12/rung), sd=0.01, instrumented census kernel census2.py",
+   "artifact": "contact_census_runs.parquet"
+  },
+  "estimator_bracketing_supplement": {
+   "runs": 2100,
+   "ensemble": "14 rungs x 150 runs at sd=0.0025/0.005/0.02, production kernel",
+   "artifact": "estimator_supplement_runs.parquet"
+  },
+  "click_onset_sd_sweep": {
+   "runs": 5360,
+   "ensemble": "sd 0.0025/0.01/0.04 click-census ladders 192x32 (96/rung, 288/rung on 0.0025 shelf) + 288 neutral + 464 pilot; against-hypothesis: onset does not track ridge",
+   "artifact": "onset_runs.parquet"
+  }
+ },
+ "round7_additions": {
+  "census_across_sd": {
+   "runs": 3712,
+   "ensemble": "Moore 192x32 least-loaded census at sd = 0.0025/0.01(control)/0.04 x 12 loads x 96 + 256 neutral; pre-registered test of theta0 transferability (FAILED: theta0 sd-dependent, Q=943; fixed inversion predicts flat vs measured U-shaped ridge)",
+   "artifact": "census_sd_runs.parquet",
+   "figure": "S24",
+   "seed_base": 12640000
+  },
+  "vn_census_stencil_test": {
+   "runs": 1708,
+   "ensemble": "von Neumann 192x32 census at sd=0.01: 1,152 loaded x 12 rungs x 96 + 300 vN neutral anchors + 256 validation; pre-registered out-of-sample prediction of the vN ridge (FAILED: predicted 0.193 vs measured 0.302)",
+   "artifact": "vn_census_runs.parquet",
+   "figure": "S26",
+   "seed_base": 12900000
+  },
+  "fitness_underflow_probes": {
+   "runs": 6,
+   "ensemble": "probe runs to fixation at high-load arms (mud up to 0.4, sd up to 0.16) recording end-state fitness range; diagnostic, not analysed for T_fix",
+   "artifact": "fitness_underflow_check.json",
+   "figure": null,
+   "seed_base": 12000001
+  },
+  "ridge_profile_reanchor": {
+   "runs": 4700,
+   "ensemble": "2,000-run pooled neutral anchor + 2,100 shelf densification at sd=0.0025 (theta 0.4-3.0) + 600 bracket-midpoint runs at sd=0.005/0.02; re-anchoring of the fixed-sd ridge ladder; homogeneity rejected (Q=41.6), RE pool 0.475 [0.379,0.595]",
+   "artifact": "ridge_profile_runs.parquet",
+   "figure": "S25",
+   "seed_base": 12900000
+  }
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "mud0.4_sd0.16": {
+  "t_fix": 23959,
+  "min_fit": 9.700678492663428e-05,
+  "max_fit": 0.0015788235468789935,
+  "ratio_max_over_min": 16.275392532348633,
+  "frac_lt_1e30": 0.0,
+  "n_zero_alive": 0,
+  "n_alive": 6144
+ },
+ "mud0.1_sd0.16": {
+  "t_fix": 256486,
+  "min_fit": 0.3512980341911316,
+  "max_fit": 1.0,
+  "ratio_max_over_min": 2.846585750579834,
+  "frac_lt_1e30": 0.0,
+  "n_zero_alive": 0,
+  "n_alive": 6144
+ },
+ "mud0.05_sd0.02": {
+  "t_fix": 77143,
+  "min_fit": 0.5454843640327454,
+  "max_fit": 0.7536420226097107,
+  "ratio_max_over_min": 1.3816015720367432,
+  "frac_lt_1e30": 0.0,
+  "n_zero_alive": 0,
+  "n_alive": 6144
+ }
+}

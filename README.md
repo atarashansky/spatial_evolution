@@ -47,3 +47,14 @@ Three new analyses, each pre-specified as a test that could fail; one did.
 - **Gap-variance exponent, window-resolved** — data `data/gap_variance_curves.parquet`; summary `data/gap_variance_chi_summary.json`. Result: chi is a launch transient followed by load-dependent saturation below 2; 'random slope' is the fixation-timescale idealization.
 
 Run total after revision: 108,237 runs across 33 ensembles (Supplementary Table 1), zero censored, zero unexplained failures.
+
+## Round-7 additions (revision)
+
+Round 7 was governed by a pre-registration deposited in this repository (`preregistration/prereg_r7.md`, commit `8b80f0a`, timestamped before any round-7 data were generated). It fixed, in advance, the a-priori identification of the competing population (a boundary cell's opposite-clone contacts), the census scale θ₀ and the closure constant c at their Moore/s_d = 0.01 calibration values, and stated the pass criteria and the independently measured target (von Neumann ridge 0.30 [0.27, 0.40]).
+
+- **Census across effect size** (`data/census_sd_runs.parquet`, 3,712 runs; Fig. S24) — AGAINST the derivation reading: θ₀ is s_d-dependent (0.393/0.404/0.500, Cochran Q = 943) while the opposite-clone contact count is a lattice constant (2.90); the fixed inversion predicts a flat ridge against a measured U-shaped one (+0.235 [0.122, 0.321] from s_d = 0.01 to 0.04).
+- **Von Neumann census stencil test** (`data/vn_census_runs.parquet`, 1,708 runs; kernel port bit-exact vs `evolve_strip(moore=False)`; Fig. S26) — the pre-registered out-of-sample prediction FAILS: predicted vN ridge 0.193 [0.190, 0.196] vs measured 0.302 [0.265, 0.400]; θ₀ stencil-dependent (0.298 vs 0.404). Post-hoc identifications that would pass are shown and declined.
+- **Consequence**: the census inversion is a consistency check that closes only at its calibration point (Moore, s_d = 0.01), not a derivation; the freeze/flow ridge is reported as a measured, effect-size- and stencil-dependent criterion.
+- **Provenance audits added**: `data/onset_seed_dependence_check.json` (seed-reuse audit of the click-onset ensemble; the anti-tracking slope survives a seed-cluster bootstrap, 0.70 [0.41, 0.79]); `data/fitness_underflow_check.json` (float32 precision: smallest living-cell fitness 9.7e-5); `data/tissue_placement_joint.csv` (joint worst-case tissue placements — colon corner-dependent).
+
+Run total after round 7: 113,663 runs across 36 ensembles, zero censored, zero unexplained failures.
