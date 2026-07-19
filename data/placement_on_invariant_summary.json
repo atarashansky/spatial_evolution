@@ -1,0 +1,83 @@
+{
+ "track": "placement_on_invariant_profile",
+ "generated_by": "round10 integration (lead)",
+ "rng_seed": 20260718,
+ "barrier": "half_drop_endpoint bootstrap (invariant_crossover_boot.parquet, kind=tfix, 2000 replicates/rung, one replicate per MC draw)",
+ "draws": "placement_reanalysis_draws.parquet primary-arm draws (prof_loglin__extrap_clamp__shape_on__del_1x), 20,000 per tissue",
+ "convention": "margin = log10(theta_tissue / (barrier(s_d) * shape)); fluid = margin > 0; barrier interpolated log-log in s_d; clamp arm outside [0.0025, 0.04]",
+ "rungs": [
+  0.0025,
+  0.005,
+  0.01,
+  0.02,
+  0.04
+ ],
+ "half_drop_profile_median_ci": {
+  "0.0025": [
+   1.2977,
+   0.6836,
+   2.0401
+  ],
+  "0.005": [
+   0.4436,
+   0.3639,
+   0.687
+  ],
+  "0.01": [
+   0.5438,
+   0.4484,
+   0.6575
+  ],
+  "0.02": [
+   0.5759,
+   0.5386,
+   0.6436
+  ],
+  "0.04": [
+   0.7869,
+   0.7517,
+   0.8369
+  ]
+ },
+ "per_tissue": {
+  "Colonic crypt": {
+   "p_fluid_level05": 1.0,
+   "p_fluid_invariant": 1.0,
+   "median_margin_dec_level05": 1.4104,
+   "median_margin_dec_invariant": 1.142,
+   "p5_margin_dec_invariant": 0.4714,
+   "median_margin_shift_dec": -0.2684,
+   "frac_draws_below_lowest_rung": 0.536
+  },
+  "Epidermis (sun-exp.)": {
+   "p_fluid_level05": 1.0,
+   "p_fluid_invariant": 1.0,
+   "median_margin_dec_level05": 2.1014,
+   "median_margin_dec_invariant": 1.8369,
+   "p5_margin_dec_invariant": 1.2457,
+   "median_margin_shift_dec": -0.2645,
+   "frac_draws_below_lowest_rung": 0.5384
+  },
+  "HSC (blood)": {
+   "p_fluid_level05": 1.0,
+   "p_fluid_invariant": 1.0,
+   "median_margin_dec_level05": 2.1738,
+   "median_margin_dec_invariant": 1.908,
+   "p5_margin_dec_invariant": 1.373,
+   "median_margin_shift_dec": -0.2658,
+   "frac_draws_below_lowest_rung": 0.5386
+  },
+  "Hypermutator tumour": {
+   "p_fluid_level05": 1.0,
+   "p_fluid_invariant": 1.0,
+   "median_margin_dec_level05": 2.114,
+   "median_margin_dec_invariant": 1.8995,
+   "p5_margin_dec_invariant": 1.219,
+   "median_margin_shift_dec": -0.2145,
+   "frac_draws_below_lowest_rung": 0.2688
+  }
+ },
+ "min_p_fluid_invariant_all_tissues": 1.0,
+ "n_draws_per_tissue": 20000,
+ "note_open_endedness": "below s_d = 0.0025 the invariant barrier is held at the lowest-rung value (clamp arm); 27-54% of draws lie there, matching the placement track's open-endedness caveat"
+}

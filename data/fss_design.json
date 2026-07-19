@@ -1,0 +1,443 @@
+{
+ "track": "finite-size / boundary-condition convergence of the s_d = 0.01 crossover (T8 cluster 1 + walled-boundary cluster)",
+ "written_before_any_production_run": true,
+ "question": "Does the crossover load theta* = U_d*/s_d at s_d = 0.01 drift with lattice size L, or plateau? And does a walled transverse boundary shift theta* outside the periodic interval?",
+ "reference_protocol_matched": {
+  "source_pool": "ridge_profile_analysis_pool.parquet (round-7 primary pool; 12,756 loaded + 2,856 neutral, 192x32, sd rungs 0.0025..0.04)",
+  "reference_geometry": "L_long = 192, L_short = 32, Moore stencil, periodic transverse boundary",
+  "kernel": "evolution_strip.py from round-8/9 kernel bundle (artifact 382c3b90), unmodified; helper evolution_fast4.py",
+  "fixed_parameters": {
+   "dt": 2400.0,
+   "avg": 1.16e-05,
+   "p_die": 0.027451494,
+   "sb": 0.1,
+   "mub": 0.0,
+   "moore": true,
+   "sampling": 10000,
+   "com_stride": 0,
+   "prof_halfwidth": 64,
+   "ben_cap": 1024,
+   "initial_condition": "clone A x <= L_long/2, clone B the rest, all fitness 1.0 (no burn-in)",
+   "fixation_criterion": "exact frame at which cntA == 0 or cntB == 0 (early stop); t_fix = -1 if frame cap reached (censored)"
+  },
+  "load_axis": "theta = U_d/s_d = mud/sd (deposited convention); loaded arms use sd = 0.01, mud = theta * 0.01",
+  "theta_ladder_reference": [
+   0.05,
+   0.1,
+   0.15,
+   0.2,
+   0.3,
+   0.4,
+   0.5,
+   0.6,
+   0.8,
+   1.0,
+   1.2,
+   2.0,
+   5.0,
+   10.0
+  ],
+  "pool_run_counts_at_sd_0.01": "96-246 loaded runs per theta rung (14 rungs), pooled 2,856-run neutral anchor",
+  "estimator": "median T_fix(theta) / median T_fix(own neutral anchor) ratio; crossing located by linear interpolation of the RATIO against log(theta) at the first descending crossing (deposited 'loglin' scheme); level 1/2 = legacy convention",
+  "kernel_replication_check": {
+   "cases": [
+    {
+     "seed": 12900000,
+     "sd": 0.0,
+     "mud": 0.0,
+     "t_fix": 1129978,
+     "expect": 1129978,
+     "match": true,
+     "wall_s": 44.6
+    },
+    {
+     "seed": 12900001,
+     "sd": 0.0,
+     "mud": 0.0,
+     "t_fix": 1325918,
+     "expect": 1325918,
+     "match": true,
+     "wall_s": 49.07
+    },
+    {
+     "seed": 12921119,
+     "sd": 0.02,
+     "mud": 0.01,
+     "t_fix": 62462,
+     "expect": 62462,
+     "match": true,
+     "wall_s": 2.4
+    },
+    {
+     "seed": 12912152,
+     "sd": 0.0025,
+     "mud": 0.00175,
+     "t_fix": 65070,
+     "expect": 65070,
+     "match": true,
+     "wall_s": 2.64
+    }
+   ],
+   "all_match": true
+  }
+ },
+ "design": {
+  "sd": 0.01,
+  "L_long_ladder_at_L_short_32": [
+   "G96 (96)",
+   "G192 (192, reference-geometry replication)",
+   "G384 (384)",
+   "G768 (768)",
+   "G1536 (1536, reduced ladder + replication, cost-capped)"
+  ],
+  "L_short_arm_at_L_long_192": [
+   "S16 (192x16)",
+   "S64 (192x64)"
+  ],
+  "walled_arm": "W32 (192x32, periodic_y = False; x walled as always)",
+  "own_neutral_anchor_per_cell": true,
+  "cells": {
+   "G96": {
+    "L_long": 96,
+    "L_short": 32,
+    "periodic_y": true,
+    "numgen": 20000000,
+    "thetas": [
+     0.05,
+     0.1,
+     0.15,
+     0.2,
+     0.3,
+     0.4,
+     0.5,
+     0.6,
+     0.8,
+     1.0,
+     1.2,
+     2.0,
+     5.0,
+     10.0
+    ],
+    "n_per_rung": 200,
+    "n_anchor": 400,
+    "seed_min": 14000000,
+    "seed_max": 14003399,
+    "n_loaded": 2800,
+    "n_total": 3200,
+    "boundary": "periodic transverse (production convention)"
+   },
+   "G192": {
+    "L_long": 192,
+    "L_short": 32,
+    "periodic_y": true,
+    "numgen": 20000000,
+    "thetas": [
+     0.05,
+     0.1,
+     0.15,
+     0.2,
+     0.3,
+     0.4,
+     0.5,
+     0.6,
+     0.8,
+     1.0,
+     1.2,
+     2.0,
+     5.0,
+     10.0
+    ],
+    "n_per_rung": 200,
+    "n_anchor": 400,
+    "seed_min": 14004000,
+    "seed_max": 14007399,
+    "n_loaded": 2800,
+    "n_total": 3200,
+    "boundary": "periodic transverse (production convention)"
+   },
+   "G384": {
+    "L_long": 384,
+    "L_short": 32,
+    "periodic_y": true,
+    "numgen": 20000000,
+    "thetas": [
+     0.05,
+     0.1,
+     0.15,
+     0.2,
+     0.3,
+     0.4,
+     0.5,
+     0.6,
+     0.8,
+     1.0,
+     1.2,
+     2.0,
+     5.0,
+     10.0
+    ],
+    "n_per_rung": 200,
+    "n_anchor": 400,
+    "seed_min": 14008000,
+    "seed_max": 14011399,
+    "n_loaded": 2800,
+    "n_total": 3200,
+    "boundary": "periodic transverse (production convention)"
+   },
+   "G768": {
+    "L_long": 768,
+    "L_short": 32,
+    "periodic_y": true,
+    "numgen": 40000000,
+    "thetas": [
+     0.05,
+     0.1,
+     0.15,
+     0.2,
+     0.3,
+     0.4,
+     0.5,
+     0.6,
+     0.8,
+     1.0,
+     1.2,
+     2.0,
+     5.0,
+     10.0
+    ],
+    "n_per_rung": 150,
+    "n_anchor": 250,
+    "seed_min": 14012000,
+    "seed_max": 14015249,
+    "n_loaded": 2100,
+    "n_total": 2350,
+    "boundary": "periodic transverse (production convention)"
+   },
+   "G1536": {
+    "L_long": 1536,
+    "L_short": 32,
+    "periodic_y": true,
+    "numgen": 100000000,
+    "thetas": [
+     0.2,
+     0.3,
+     0.4,
+     0.5,
+     0.6,
+     0.8,
+     1.0,
+     2.0,
+     5.0,
+     10.0
+    ],
+    "n_per_rung": 48,
+    "n_anchor": 100,
+    "seed_min": 14016000,
+    "seed_max": 14019099,
+    "n_loaded": 480,
+    "n_total": 580,
+    "boundary": "periodic transverse (production convention)"
+   },
+   "S16": {
+    "L_long": 192,
+    "L_short": 16,
+    "periodic_y": true,
+    "numgen": 20000000,
+    "thetas": [
+     0.05,
+     0.1,
+     0.15,
+     0.2,
+     0.3,
+     0.4,
+     0.5,
+     0.6,
+     0.8,
+     1.0,
+     1.2,
+     2.0,
+     5.0,
+     10.0
+    ],
+    "n_per_rung": 200,
+    "n_anchor": 400,
+    "seed_min": 14020000,
+    "seed_max": 14023399,
+    "n_loaded": 2800,
+    "n_total": 3200,
+    "boundary": "periodic transverse (production convention)"
+   },
+   "S64": {
+    "L_long": 192,
+    "L_short": 64,
+    "periodic_y": true,
+    "numgen": 20000000,
+    "thetas": [
+     0.05,
+     0.1,
+     0.15,
+     0.2,
+     0.3,
+     0.4,
+     0.5,
+     0.6,
+     0.8,
+     1.0,
+     1.2,
+     2.0,
+     5.0,
+     10.0
+    ],
+    "n_per_rung": 200,
+    "n_anchor": 400,
+    "seed_min": 14024000,
+    "seed_max": 14027399,
+    "n_loaded": 2800,
+    "n_total": 3200,
+    "boundary": "periodic transverse (production convention)"
+   },
+   "W32": {
+    "L_long": 192,
+    "L_short": 32,
+    "periodic_y": false,
+    "numgen": 20000000,
+    "thetas": [
+     0.05,
+     0.1,
+     0.15,
+     0.2,
+     0.3,
+     0.4,
+     0.5,
+     0.6,
+     0.8,
+     1.0,
+     1.2,
+     2.0,
+     5.0,
+     10.0
+    ],
+    "n_per_rung": 200,
+    "n_anchor": 400,
+    "seed_min": 14028000,
+    "seed_max": 14031399,
+    "n_loaded": 2800,
+    "n_total": 3200,
+    "boundary": "WALLED transverse (non-periodic y; x always walled)"
+   }
+  },
+  "totals": {
+   "planned_runs": 22130,
+   "cells": 8
+  }
+ },
+ "seeds": {
+  "policy": "one contiguous fresh block per cell, disjoint per cell and per arm; ledger maximum before this campaign = 13,777,699 (round-9 advantaged-competitor), sibling round-10 tracks running concurrently reserve 13,780,000-13,819,999 (low-s_d campaign) and 13,800,000-13,803,999 (ridge-exponent campaign) and use 13,900,000+ smoke seeds; this campaign therefore allocates strictly ABOVE all of them",
+  "campaign_block": [
+   14000000,
+   14031399
+  ],
+  "reserved_never_deposited": {
+   "spillover_headroom": [
+    14032000,
+    14049999
+   ],
+   "smoke_and_calibration_scratch": [
+    14090000,
+    14099999
+   ]
+  },
+  "per_cell_blocks": {
+   "G96": [
+    14000000,
+    14003399
+   ],
+   "G192": [
+    14004000,
+    14007399
+   ],
+   "G384": [
+    14008000,
+    14011399
+   ],
+   "G768": [
+    14012000,
+    14015249
+   ],
+   "G1536": [
+    14016000,
+    14019099
+   ],
+   "S16": [
+    14020000,
+    14023399
+   ],
+   "S64": [
+    14024000,
+    14027399
+   ],
+   "W32": [
+    14028000,
+    14031399
+   ]
+  },
+  "layout": "cell base + rung_index*200 + rep for loaded rungs (rep < n_per_rung <= 200); anchors at base + 3000 + rep",
+  "overlap_with_deposited_tables": "verified 0 seeds of 22,130 fall inside any deposited per-run table's seed range (audit in fss_summary.json)",
+  "tasks_file_sha256": "6b6c7c340571717a0c12b1fd320d05226e8620f43f7d843a63ae826001efcfea"
+ },
+ "deviations_declared_in_advance": [
+  "G768 runs 150 (not 200) loaded runs per rung and a 250-run anchor; G1536 runs a reduced 10-rung ladder (theta 0.2..10, dropping 0.05/0.1/0.15/1.2) at 48 runs per rung with a 100-run anchor. Both reductions are compute-driven (G1536 dominates the budget at ~0.9 core-hour per neutral run); the design keeps the largest lattice at reduced replication rather than dropping it, and the memo will report its wider bootstrap intervals as such.",
+  "Frame cap (numgen) is a censoring bound only and does not enter the dynamics. It is kept at the pool's 2e7 for all cells with L_long <= 384 and both L_short arms and the walled arm, raised to 4e7 for G768 and 1e8 for G1536 so that neutral anchors do not censor (the deposited 768x32 finite-size ensemble at cap 4e7 had zero censoring). Any censored run is reported and handled by Kaplan-Meier-consistent median (median unaffected if fewer than half censored).",
+  "Sibling round-10 campaigns share the 64-core host during the launch window; worker count is set to the free capacity at launch time and may vary across waves. This affects only wall time, never the RNG stream (each run is single-threaded and seeded per run)."
+ ],
+ "analysis_plan_preregistered": {
+  "per_cell_crossover": {
+   "half_drop_estimator": "convention-free primary: the two plateaus are estimated as the mean of log median T_fix over the two smallest thetas measured in the cell (upper plateau, theta 0.05 & 0.1; for G1536 theta 0.2 & 0.3) and over the two largest (lower plateau, theta 5 & 10); theta_half = the load at which log median T_fix crosses the midpoint of the two plateau levels, by linear interpolation of log-median vs log-theta at the first descending crossing. Reported as [value, ci_lo, ci_hi].",
+   "legacy_level_half": "deposited convention: ratio R(theta) = median T_fix(theta)/median T_fix(own anchor); crossing of R = 1/2 by linear interpolation of R against log(theta) at the first descending crossing (loglin scheme); isotonic (weighted PAVA) variant reported as a sensitivity column.",
+   "additional_levels": "R = 0.4 and R = 0.6 crossings reported for the convention-envelope",
+   "bootstrap": "run-level, B = 2000 resamples per cell; every loaded rung AND the cell's own anchor resampled with replacement within each replicate; CIs are the 2.5th/97.5th percentiles of the replicate distribution"
+  },
+  "convergence_test": {
+   "ladder": "the five L_long values at L_short = 32 (96, 192, 384, 768, 1536)",
+   "fits": {
+    "constant": "theta*(L) = theta_inf (weighted least squares in log theta*, weights = 1/bootstrap variance)",
+    "power_law_plus_plateau": "theta*(L) = theta_inf + A * L^(-b), b > 0 (weighted nonlinear least squares in log theta*)"
+   },
+   "comparison": "AICc difference (n = 5, k = 1 vs 3) and an F-test of the nested improvement; the fit-family bootstrap re-fits both models on each of >= 2000 run-level bootstrap replicates of the five theta*(L) values to give the interval of theta_inf and of the extrapolated large-L limit; monotone drift is additionally tested by a Spearman-type sign test on the bootstrap replicates (P(all four successive differences same sign))",
+   "verdict_rule": "PLATEAU if (i) the constant model is preferred by dAICc and (ii) |theta*(1536) - theta*(96)| is smaller than the summed half-widths of their CIs; DRIFT if the power-law-plus-plateau is preferred AND the bootstrap sign test supports monotone change; INCONCLUSIVE otherwise. The same test is repeated on the half-drop and the level-1/2 estimators; if they disagree the memo reports both.",
+   "L_short_axis": "S16, G192, S64 at fixed L_long = 192 test whether theta* moves with the transverse size at fixed longitudinal size (three-point weighted slope of theta* vs log L_short with bootstrap CI)"
+  },
+  "walled_test": "theta*_W32 minus theta*_G192 (paired estimator, joint bootstrap over both cells' runs); walled arm 'shifts theta*' if the 95% CI of the difference excludes 0, and it is separately reported whether theta*_W32 lies outside the G192 95% CI (the reviewer's stated criterion). Also compared against the deposited pool's own 192x32 crossing.",
+  "pool_replication_check": "G192 (fresh seeds, identical protocol) vs the deposited sd=0.01 pool: level-1/2 crossing must agree within joint bootstrap CI; rung-wise Mann-Whitney and Fisher-combined p reported (pool consistency, as in round 7).",
+  "reporting_discipline": "every reported number is a field in fss_summary.json; all estimates stored as [value, ci_lo, ci_hi] from >= 2000 run-level bootstrap resamples"
+ },
+ "outputs": [
+  "fss_design.json (this file, saved before running)",
+  "fss_driver.py",
+  "fss_runs.parquet",
+  "fss_summary.json",
+  "fig_fss_crossover.png",
+  "fss_memo.md",
+  "kernel_check.json"
+ ],
+ "compute": {
+  "host": "64-core local, shared with two sibling campaigns at launch",
+  "estimated_core_hours": 363,
+  "workers": "free capacity at launch, up to 60",
+  "task_order": "largest lattices and neutral anchors first (long-tail first)"
+ },
+ "deviations_executed_during_run": [
+  {
+   "when": "2026-07-18 ~21:50 UTC, after all six small/medium cells had completed (19,200 runs) and 100 large-lattice neutral anchors had landed",
+   "what": "G768 loaded arm reduced 150 -> 60 runs per rung (14 rungs) and anchor 250 -> 100; G1536 loaded arm reduced 48 -> 24 runs per rung (10 rungs) and anchor 100 -> 60. Truncation keeps the LOWEST seed indices of each pre-allocated rung/anchor block (task list fss_tasks_reduced.json), i.e. a prefix of the pre-registered list, not a selection on outcomes; no loaded large-lattice run had been observed at the time. Runs already banked beyond the reduced anchor counts are retained as extra data.",
+   "why": "the remaining large-lattice work at the pre-registered replication (about 190 core-hours at the solo per-site-frame rate) could not be completed within the session at the observed throughput: concurrent sibling campaigns on the shared 64-core host inflated the per-site-frame cost by a factor of about 1.8-2.4 (measured 3.4-4.8e-9 s vs 1.85e-9 s solo), i.e. an estimated ~340-450 core-hours (~6+ h wall) still to go. NOTE (correction to the first-written version of this record): the observed neutral anchor medians (G768 5.1e6, G1536 1.4e7 frames) are BELOW the design cost model's per-run assumptions (neut[768]=7,258,605.5 taken from the deposited prior 768x32 finite-size ensemble; neut[1536]=7,258,605.5*2**1.7253~2.40e7), not above them; the overrun is a host-contention throughput shortfall against the pre-registered run counts, not a mis-estimated neutral fixation time. The design's stated rule is to run the largest lattices at reduced replication rather than drop them; the ladder stays complete (5 L_long points) and the reduced counts (60/rung + 100 anchor at 768; 24/rung + 60 anchor at 1536) still meet or exceed the deposited prior finite-size ensemble (60 neutral runs at 768x32).",
+   "consequence": "wider bootstrap intervals on the two largest lattices; reported as such in the memo. Frame caps unchanged (G768 4e7, G1536 1e8; observed max anchor t_fix 1.3e7 and 5.1e7 respectively, no censoring)."
+  },
+  {
+   "when": "2026-07-19 ~00:00 UTC, after 11 G1536 loaded runs and 49-58 large-lattice anchors had completed (no loaded-ladder result observed)",
+   "what": "G1536 loaded arm reduced again, 24 -> 12 runs per rung (all 10 rungs kept); G1536 anchor stays at 60. Same prefix-truncation rule (lowest 12 seed indices per rung; fss_tasks_reduced2.json). G768 unchanged from the first reduction (60/rung + 100 anchor).",
+   "why": "sustained host contention (load average ~95 on 64 cores from concurrent sibling campaigns) held the G1536 loaded ladder to ~30 completions/hour, implying ~7 more hours for the first-reduced 240-run ladder. Rule as before: keep the largest lattice at reduced replication rather than drop it.",
+   "consequence": "the 1536x32 point carries the widest bootstrap interval of the ladder (12 runs per rung); the convergence fit weights it by 1/variance accordingly, and the memo flags it as the least-replicated point."
+  }
+ ]
+}

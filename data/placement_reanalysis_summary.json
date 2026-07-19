@@ -1,0 +1,2156 @@
+{
+ "track": "Round 9 reanalysis, task B: tissue-placement Monte Carlo on the invariant five-rung barrier profile with full rung-level bootstrap",
+ "convention": "theta = U_d/s_d = mud/sd (U_d = mud, NO factor 2); margin = log10(theta/(barrier(s_d)*shape)); fluid = margin > 0",
+ "inputs": {
+  "tissue_boxes": {
+   "Colonic crypt": {
+    "mud": [
+     0.016,
+     0.2
+    ],
+    "sd": [
+     0.0005,
+     0.01
+    ]
+   },
+   "Epidermis (sun-exp.)": {
+    "mud": [
+     0.1,
+     0.8
+    ],
+    "sd": [
+     0.0005,
+     0.01
+    ]
+   },
+   "HSC (blood)": {
+    "mud": [
+     0.14,
+     0.8
+    ],
+    "sd": [
+     0.0005,
+     0.01
+    ]
+   },
+   "Hypermutator tumour": {
+    "mud": [
+     0.4,
+     0.8
+    ],
+    "sd": [
+     0.001,
+     0.03
+    ]
+   }
+  },
+  "tissue_box_source": "tissue_overlay_table.json (art 47c769d9); log-uniform draws within each stated box (round-8 protocol, run_placement_mc.py)",
+  "barrier_profile": {
+   "source": "ridge_profile_analysis_pool.parquet (art 4b92d826), full 2,856-run pooled anchor, replicated to max|diff|=0 vs deposit",
+   "point_loglin": {
+    "0.0025": 0.6325050589791732,
+    "0.005": 0.3582432968872697,
+    "0.01": 0.3725154110229679,
+    "0.02": 0.5287613248516944,
+    "0.04": 0.6214904474587227
+   },
+   "point_isotonic": {
+    "0.0025": 0.6367774468521528,
+    "0.005": 0.3582432968872697,
+    "0.01": 0.3725154110229679,
+    "0.02": 0.5287613248516944,
+    "0.04": 0.6214904474587227
+   },
+   "rung_bootstrap_loglin": {
+    "0.0025": {
+     "theta_star": 0.6325050589791732,
+     "boot_ci": [
+      0.29342810724192125,
+      0.8253817457728638
+     ],
+     "boot_ci68": [
+      0.5377949936227602,
+      0.6795405561358879
+     ],
+     "boot_median": 0.6307403886331944,
+     "se_log": 0.2439265701575031,
+     "frac_valid": 1.0
+    },
+    "0.005": {
+     "theta_star": 0.3582432968872697,
+     "boot_ci": [
+      0.28049587499367346,
+      0.38754559181237264
+     ],
+     "boot_ci68": [
+      0.3352290032065524,
+      0.37030438437063057
+     ],
+     "boot_median": 0.3566389188977481,
+     "se_log": 0.07864624025381477,
+     "frac_valid": 1.0
+    },
+    "0.01": {
+     "theta_star": 0.3725154110229679,
+     "boot_ci": [
+      0.32476677421236,
+      0.4348351651660723
+     ],
+     "boot_ci68": [
+      0.3521850697225018,
+      0.39375064218329914
+     ],
+     "boot_median": 0.371986472905007,
+     "se_log": 0.06884832038105491,
+     "frac_valid": 1.0
+    },
+    "0.02": {
+     "theta_star": 0.5287613248516944,
+     "boot_ci": [
+      0.4754376396451562,
+      0.5699429316544085
+     ],
+     "boot_ci68": [
+      0.5111599419315741,
+      0.5455689403572455
+     ],
+     "boot_median": 0.5304221994466225,
+     "se_log": 0.0448299058557105,
+     "frac_valid": 1.0
+    },
+    "0.04": {
+     "theta_star": 0.6214904474587227,
+     "boot_ci": [
+      0.49121473349433115,
+      0.6830724274178259
+     ],
+     "boot_ci68": [
+      0.5506483821792281,
+      0.6517241045890385
+     ],
+     "boot_median": 0.6015020070835566,
+     "se_log": 0.0868697161838038,
+     "frac_valid": 1.0
+    }
+   },
+   "rung_bootstrap_isotonic": {
+    "0.0025": {
+     "theta_star": 0.6367774468521528,
+     "boot_ci": [
+      0.5159654073453397,
+      0.8392435896471503
+     ]
+    },
+    "0.005": {
+     "theta_star": 0.3582432968872697,
+     "boot_ci": [
+      0.29445491381380284,
+      0.3875729631727403
+     ]
+    },
+    "0.01": {
+     "theta_star": 0.3725154110229679,
+     "boot_ci": [
+      0.32541849946912643,
+      0.43470440058164284
+     ]
+    },
+    "0.02": {
+     "theta_star": 0.5287613248516944,
+     "boot_ci": [
+      0.4761707979726791,
+      0.5694652466554436
+     ]
+    },
+    "0.04": {
+     "theta_star": 0.6214904474587227,
+     "boot_ci": [
+      0.49973238330700687,
+      0.6742007020061521
+     ]
+    }
+   },
+   "bootstrap": "run-level joint bootstrap, B=3000, one shared anchor draw across the five rungs per replicate; each MC draw uses ONE joint replicate (rung correlations preserved), barrier interpolated linearly in log-log between rungs",
+   "boot_corr_log_loglin": [
+    [
+     0.9999999999999999,
+     0.13413767614833214,
+     0.136919071021554,
+     0.07408028373521508,
+     0.09627061616719777
+    ],
+    [
+     0.1341376761483321,
+     1.0,
+     0.10844895296233024,
+     0.10050776411329851,
+     0.06322109930876102
+    ],
+    [
+     0.13691907102155404,
+     0.10844895296233024,
+     1.0,
+     0.10242530823097883,
+     0.06819439794224381
+    ],
+    [
+     0.0740802837352151,
+     0.10050776411329852,
+     0.10242530823097884,
+     1.0,
+     0.03637474313967398
+    ],
+    [
+     0.09627061616719777,
+     0.06322109930876102,
+     0.06819439794224383,
+     0.036374743139673975,
+     0.9999999999999999
+    ]
+   ],
+   "lowest_rung_open_endedness": "s_d = 0.0025 is the lowest MEASURED rung; the ridge/anchor ratio still exceeds 1/2 there (0.63 loglin, 0.64 isotonic) so it is a crossover but no rung exists below it. Below s_d = 0.0025 the barrier is unmeasured: arm 'clamp' continues theta*(0.0025) as a constant (lower bound if the low-s_d rise continues), arm 'slope' continues the per-replicate 0.0025->0.005 log-log slope (barrier keeps rising). Fraction of draws below the measured range is reported per tissue as frac_extrapolated_sd.",
+   "lowest_rung_bimodality": "loglin bootstrap at s_d=0.0025 is bimodal (2.5th percentile 0.293 from a spurious first-crossing at the theta=0.30 local dip; isotonic PAVA crossing 0.637 [0.514, 0.840] is the shelf-robust interval) \u2014 both profiles are carried as separate arms"
+  },
+  "shape_correction": {
+   "dist": "log-uniform",
+   "lo": 1.3,
+   "hi": 3.0,
+   "det": 2.0,
+   "arm_off": "shape multiplier fixed to 1 (no elongation penalty)"
+  },
+  "deleterious_fraction_arms": {
+   "factors": [
+    0.1,
+    1.0,
+    10.0
+   ],
+   "meaning": "U_d box scaled by the factor: 0.1x = ten-fold FEWER deleterious targets per division, 10x = ten-fold more"
+  },
+  "n_draws_per_tissue_per_arm": 100000,
+  "rng_block": [
+   13760000,
+   13769999
+  ]
+ },
+ "primary_arm": "prof_loglin__extrap_clamp__shape_on__del_1x",
+ "arm_naming": "prof_{loglin|isotonic}__extrap_{clamp|slope}__shape_{on|off}__del_{0.1|1|10}x, plus RE_tau_draw comparison arms (round-8-style N(log RE, tau=0.23) barrier draw, s_d-agnostic)",
+ "arms": {
+  "prof_loglin__extrap_clamp__shape_on__del_0.1x": {
+   "Colonic crypt": {
+    "p_fluid": 0.80052,
+    "p_fluid_in_range": 0.6336058286532081,
+    "p_fluid_extrapolated": 0.9433773175212962,
+    "frac_extrapolated_sd": 0.53883,
+    "margin_median_dec": 0.40682091966254247,
+    "margin_p5_dec": -0.3165246869843797,
+    "margin_p2_5_dec": -0.4160735844580298,
+    "margin_p95_dec": 1.1902702080383054,
+    "margin_p97_5_dec": 1.3196579569690217,
+    "margin_mean_dec": 0.4138491789222006,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 0.9999,
+    "p_fluid_in_range": 0.9997838865836791,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53728,
+    "margin_median_dec": 1.1019394395872335,
+    "margin_p5_dec": 0.4465014985992833,
+    "margin_p2_5_dec": 0.35259377650089013,
+    "margin_p95_dec": 1.8295969687660472,
+    "margin_p97_5_dec": 1.9476289755745648,
+    "margin_mean_dec": 1.1118149700845237,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53786,
+    "margin_median_dec": 1.1701897861110817,
+    "margin_p5_dec": 0.5725625953808391,
+    "margin_p2_5_dec": 0.48129810484860114,
+    "margin_p95_dec": 1.865520117414151,
+    "margin_p97_5_dec": 1.9751665734107562,
+    "margin_mean_dec": 1.185916318486055,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 0.99889,
+    "p_fluid_in_range": 0.9984778047476036,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.27079,
+    "margin_median_dec": 1.115491208439512,
+    "margin_p5_dec": 0.28253878416090605,
+    "margin_p2_5_dec": 0.19795031278937875,
+    "margin_p95_dec": 1.6730079538647307,
+    "margin_p97_5_dec": 1.771344216219316,
+    "margin_mean_dec": 1.044809819508386,
+    "n": 100000
+   }
+  },
+  "prof_loglin__extrap_clamp__shape_on__del_1x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.5368,
+    "margin_median_dec": 1.4092211753148782,
+    "margin_p5_dec": 0.6831675595034192,
+    "margin_p2_5_dec": 0.5837423363142862,
+    "margin_p95_dec": 2.1838356613501975,
+    "margin_p97_5_dec": 2.312916576352564,
+    "margin_mean_dec": 1.4134348446774052,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53748,
+    "margin_median_dec": 2.1026017679308353,
+    "margin_p5_dec": 1.4491816284358872,
+    "margin_p2_5_dec": 1.355333916602711,
+    "margin_p95_dec": 2.833364434278312,
+    "margin_p97_5_dec": 2.9474273870844274,
+    "margin_mean_dec": 2.112202157839362,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.5362,
+    "margin_median_dec": 2.1705028975833356,
+    "margin_p5_dec": 1.5694247391772222,
+    "margin_p2_5_dec": 1.479316509572086,
+    "margin_p95_dec": 2.8605989312914533,
+    "margin_p97_5_dec": 2.9701960895862856,
+    "margin_mean_dec": 2.185038227820952,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26958,
+    "margin_median_dec": 2.11505036228485,
+    "margin_p5_dec": 1.2874836392789564,
+    "margin_p2_5_dec": 1.200402941778726,
+    "margin_p95_dec": 2.6770002160358293,
+    "margin_p97_5_dec": 2.771709351038875,
+    "margin_mean_dec": 2.044934427659796,
+    "n": 100000
+   }
+  },
+  "prof_loglin__extrap_clamp__shape_on__del_10x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.54006,
+    "margin_median_dec": 2.4101374843648213,
+    "margin_p5_dec": 1.6826003318164793,
+    "margin_p2_5_dec": 1.5813419891174232,
+    "margin_p95_dec": 3.194528857240356,
+    "margin_p97_5_dec": 3.3217151837970373,
+    "margin_mean_dec": 2.4144844145331685,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.5373,
+    "margin_median_dec": 3.100279409324889,
+    "margin_p5_dec": 2.446897993141221,
+    "margin_p2_5_dec": 2.355060717340765,
+    "margin_p95_dec": 3.830365180514951,
+    "margin_p97_5_dec": 3.947624623680193,
+    "margin_mean_dec": 3.1111626375041377,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53855,
+    "margin_median_dec": 3.170695131148406,
+    "margin_p5_dec": 2.5687095324422398,
+    "margin_p2_5_dec": 2.476183453296706,
+    "margin_p95_dec": 3.86173105399861,
+    "margin_p97_5_dec": 3.9723312599940357,
+    "margin_mean_dec": 3.1851919008165765,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26849,
+    "margin_median_dec": 3.1127501465754364,
+    "margin_p5_dec": 2.2836677883687018,
+    "margin_p2_5_dec": 2.199674142539393,
+    "margin_p95_dec": 3.675578566542802,
+    "margin_p97_5_dec": 3.767240746457713,
+    "margin_mean_dec": 3.0430528393329714,
+    "n": 100000
+   }
+  },
+  "prof_loglin__extrap_clamp__shape_off__del_0.1x": {
+   "Colonic crypt": {
+    "p_fluid": 0.95103,
+    "p_fluid_in_range": 0.8950164104335809,
+    "p_fluid_extrapolated": 0.9993480852331992,
+    "frac_extrapolated_sd": 0.53688,
+    "margin_median_dec": 0.7048672608502652,
+    "margin_p5_dec": 0.0027152854749390226,
+    "margin_p2_5_dec": -0.09085377203851208,
+    "margin_p95_dec": 1.4745852843468736,
+    "margin_p97_5_dec": 1.591887001025645,
+    "margin_mean_dec": 0.7093205034114424,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53713,
+    "margin_median_dec": 1.397949903066672,
+    "margin_p5_dec": 0.7737935266216636,
+    "margin_p2_5_dec": 0.6772643798797988,
+    "margin_p95_dec": 2.1114613226336703,
+    "margin_p97_5_dec": 2.2197514659075117,
+    "margin_mean_dec": 1.4071842297859571,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53925,
+    "margin_median_dec": 1.4669862953349888,
+    "margin_p5_dec": 0.8936070547594358,
+    "margin_p2_5_dec": 0.8010275759767076,
+    "margin_p95_dec": 2.1385223210128053,
+    "margin_p97_5_dec": 2.2391608975028015,
+    "margin_mean_dec": 1.4809084214677473,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26856,
+    "margin_median_dec": 1.4231041170872396,
+    "margin_p5_dec": 0.5997860358908425,
+    "margin_p2_5_dec": 0.5334462332129394,
+    "margin_p95_dec": 1.9406399766204703,
+    "margin_p97_5_dec": 2.020688197598196,
+    "margin_mean_dec": 1.3389844064255734,
+    "n": 100000
+   }
+  },
+  "prof_loglin__extrap_clamp__shape_off__del_1x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53526,
+    "margin_median_dec": 1.7046786851040312,
+    "margin_p5_dec": 1.000201216982648,
+    "margin_p2_5_dec": 0.903807847503465,
+    "margin_p95_dec": 2.466918098554428,
+    "margin_p97_5_dec": 2.5847651193053967,
+    "margin_mean_dec": 1.707208891646855,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53873,
+    "margin_median_dec": 2.3966873675868676,
+    "margin_p5_dec": 1.7737954336770378,
+    "margin_p2_5_dec": 1.681364777240332,
+    "margin_p95_dec": 3.107860453741772,
+    "margin_p97_5_dec": 3.2147853056471134,
+    "margin_mean_dec": 2.406679489302043,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53812,
+    "margin_median_dec": 2.4667986982704155,
+    "margin_p5_dec": 1.9021412192299814,
+    "margin_p2_5_dec": 1.8096382103996849,
+    "margin_p95_dec": 3.1414761115575676,
+    "margin_p97_5_dec": 3.2450330653778283,
+    "margin_mean_dec": 2.4819896078819847,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26887,
+    "margin_median_dec": 2.4240719451222597,
+    "margin_p5_dec": 1.6004131715301713,
+    "margin_p2_5_dec": 1.5342966703641754,
+    "margin_p95_dec": 2.941028309325197,
+    "margin_p97_5_dec": 3.020468443143346,
+    "margin_mean_dec": 2.340277903146216,
+    "n": 100000
+   }
+  },
+  "prof_loglin__extrap_clamp__shape_off__del_10x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.536,
+    "margin_median_dec": 2.7041923271828345,
+    "margin_p5_dec": 2.0059134911003436,
+    "margin_p2_5_dec": 1.9110164162331975,
+    "margin_p95_dec": 3.4700093883444105,
+    "margin_p97_5_dec": 3.5873306040477857,
+    "margin_mean_dec": 2.7092180345550902,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53638,
+    "margin_median_dec": 3.396255117332856,
+    "margin_p5_dec": 2.7743602451888307,
+    "margin_p2_5_dec": 2.681785166792753,
+    "margin_p95_dec": 4.109428362007945,
+    "margin_p97_5_dec": 4.2185726682920945,
+    "margin_mean_dec": 3.4059311172491125,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53906,
+    "margin_median_dec": 3.46709554420526,
+    "margin_p5_dec": 2.896551769471456,
+    "margin_p2_5_dec": 2.8052286225535754,
+    "margin_p95_dec": 4.143037109742181,
+    "margin_p97_5_dec": 4.24122194900051,
+    "margin_mean_dec": 3.4825838638003934,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.2705,
+    "margin_median_dec": 3.4260139580564535,
+    "margin_p5_dec": 2.6031078605030884,
+    "margin_p2_5_dec": 2.5363011377664892,
+    "margin_p95_dec": 3.942429341088931,
+    "margin_p97_5_dec": 4.022619274862928,
+    "margin_mean_dec": 3.3415440944606525,
+    "n": 100000
+   }
+  },
+  "prof_loglin__extrap_slope__shape_on__del_0.1x": {
+   "Colonic crypt": {
+    "p_fluid": 0.72689,
+    "p_fluid_in_range": 0.6378447196927194,
+    "p_fluid_extrapolated": 0.8037944015803794,
+    "frac_extrapolated_sd": 0.53658,
+    "margin_median_dec": 0.26018772682746283,
+    "margin_p5_dec": -0.3482698017010837,
+    "margin_p2_5_dec": -0.43375572163315146,
+    "margin_p95_dec": 0.9135504140037348,
+    "margin_p97_5_dec": 1.0925596365316956,
+    "margin_mean_dec": 0.27394466767799186,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 0.9999,
+    "p_fluid_in_range": 0.9998483206933911,
+    "p_fluid_extrapolated": 0.9999442896935933,
+    "frac_extrapolated_sd": 0.5385,
+    "margin_median_dec": 0.955432727981846,
+    "margin_p5_dec": 0.42495614092057615,
+    "margin_p2_5_dec": 0.34220045464052284,
+    "margin_p95_dec": 1.5478662426084937,
+    "margin_p97_5_dec": 1.7549202702977114,
+    "margin_mean_dec": 0.9714368852482573,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.5398,
+    "margin_median_dec": 1.0272115437507878,
+    "margin_p5_dec": 0.5493840432941525,
+    "margin_p2_5_dec": 0.46743096516595706,
+    "margin_p95_dec": 1.5782703629934058,
+    "margin_p97_5_dec": 1.7943548817800217,
+    "margin_mean_dec": 1.044812370575827,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 0.99889,
+    "p_fluid_in_range": 0.9984795770210667,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26994,
+    "margin_median_dec": 1.091745615388458,
+    "margin_p5_dec": 0.28356625517123374,
+    "margin_p2_5_dec": 0.20305855394632433,
+    "margin_p95_dec": 1.5249733751803791,
+    "margin_p97_5_dec": 1.6476570591758652,
+    "margin_mean_dec": 1.0055726790104964,
+    "n": 100000
+   }
+  },
+  "prof_loglin__extrap_slope__shape_on__del_1x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53793,
+    "margin_median_dec": 1.2631341233225284,
+    "margin_p5_dec": 0.6533596933315823,
+    "margin_p2_5_dec": 0.5679272550422125,
+    "margin_p95_dec": 1.9101072857275743,
+    "margin_p97_5_dec": 2.0737170016040456,
+    "margin_mean_dec": 1.2731896792650814,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53727,
+    "margin_median_dec": 1.9549299764180155,
+    "margin_p5_dec": 1.4242123673547034,
+    "margin_p2_5_dec": 1.3406450145547828,
+    "margin_p95_dec": 2.5526359765130335,
+    "margin_p97_5_dec": 2.7485158934898744,
+    "margin_mean_dec": 1.9711094720932172,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53563,
+    "margin_median_dec": 2.027677597588632,
+    "margin_p5_dec": 1.547079546698749,
+    "margin_p2_5_dec": 1.4653974252312023,
+    "margin_p95_dec": 2.580229854523497,
+    "margin_p97_5_dec": 2.7926593551060708,
+    "margin_mean_dec": 2.0455549013351044,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26978,
+    "margin_median_dec": 2.091354850628184,
+    "margin_p5_dec": 1.2835882419455047,
+    "margin_p2_5_dec": 1.1967881041873996,
+    "margin_p95_dec": 2.5201939260517197,
+    "margin_p97_5_dec": 2.6368586755873276,
+    "margin_mean_dec": 2.004586565046804,
+    "n": 100000
+   }
+  },
+  "prof_loglin__extrap_slope__shape_on__del_10x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53784,
+    "margin_median_dec": 2.2623917539531657,
+    "margin_p5_dec": 1.6567089603888594,
+    "margin_p2_5_dec": 1.5683770622527564,
+    "margin_p95_dec": 2.9146061854093808,
+    "margin_p97_5_dec": 3.0790337500957845,
+    "margin_mean_dec": 2.2743761177990747,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53503,
+    "margin_median_dec": 2.9543778648704837,
+    "margin_p5_dec": 2.421866715962838,
+    "margin_p2_5_dec": 2.3398100830107884,
+    "margin_p95_dec": 3.54748032877493,
+    "margin_p97_5_dec": 3.7380822138696623,
+    "margin_mean_dec": 2.971044014680692,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53578,
+    "margin_median_dec": 3.0278035431216095,
+    "margin_p5_dec": 2.545033876802209,
+    "margin_p2_5_dec": 2.4631971509934627,
+    "margin_p95_dec": 3.5807246798483905,
+    "margin_p97_5_dec": 3.807934363913078,
+    "margin_mean_dec": 3.044944175432228,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26937,
+    "margin_median_dec": 3.0904049727608767,
+    "margin_p5_dec": 2.282860348158368,
+    "margin_p2_5_dec": 2.199689959373212,
+    "margin_p95_dec": 3.5202846883714596,
+    "margin_p97_5_dec": 3.641603722707725,
+    "margin_mean_dec": 3.004023211292917,
+    "n": 100000
+   }
+  },
+  "prof_loglin__extrap_slope__shape_off__del_0.1x": {
+   "Colonic crypt": {
+    "p_fluid": 0.94338,
+    "p_fluid_in_range": 0.8956300747345524,
+    "p_fluid_extrapolated": 0.9847673094513618,
+    "frac_extrapolated_sd": 0.53569,
+    "margin_median_dec": 0.556667056452172,
+    "margin_p5_dec": -0.01524752533490069,
+    "margin_p2_5_dec": -0.10532088423632978,
+    "margin_p95_dec": 1.1692675994983361,
+    "margin_p97_5_dec": 1.351403201467003,
+    "margin_mean_dec": 0.5679372818276542,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53702,
+    "margin_median_dec": 1.2511503684554341,
+    "margin_p5_dec": 0.7608677860177707,
+    "margin_p2_5_dec": 0.6706440116603462,
+    "margin_p95_dec": 1.807643999637508,
+    "margin_p97_5_dec": 2.0121948415563207,
+    "margin_mean_dec": 1.267503274122028,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53774,
+    "margin_median_dec": 1.3223496468142812,
+    "margin_p5_dec": 0.8830073623572908,
+    "margin_p2_5_dec": 0.7981953187852266,
+    "margin_p95_dec": 1.84208836864747,
+    "margin_p97_5_dec": 2.0825880231075553,
+    "margin_mean_dec": 1.3413206051806745,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26932,
+    "margin_median_dec": 1.4100831467841695,
+    "margin_p5_dec": 0.5999957573634019,
+    "margin_p2_5_dec": 0.5345768376955395,
+    "margin_p95_dec": 1.7606614516105812,
+    "margin_p97_5_dec": 1.9031662185113045,
+    "margin_mean_dec": 1.2996132510048937,
+    "n": 100000
+   }
+  },
+  "prof_loglin__extrap_slope__shape_off__del_1x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53643,
+    "margin_median_dec": 1.5574653358705497,
+    "margin_p5_dec": 0.9898781987345809,
+    "margin_p2_5_dec": 0.9021884760018425,
+    "margin_p95_dec": 2.162383843266284,
+    "margin_p97_5_dec": 2.3399086690624653,
+    "margin_mean_dec": 1.5682307994777065,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53679,
+    "margin_median_dec": 2.250865187700972,
+    "margin_p5_dec": 1.7572489799971387,
+    "margin_p2_5_dec": 1.6675863531437427,
+    "margin_p95_dec": 2.807370819695135,
+    "margin_p97_5_dec": 3.022616578911591,
+    "margin_mean_dec": 2.266676833978916,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53612,
+    "margin_median_dec": 2.3198308709231537,
+    "margin_p5_dec": 1.8827795190778303,
+    "margin_p2_5_dec": 1.7957745748779386,
+    "margin_p95_dec": 2.836995046131403,
+    "margin_p97_5_dec": 3.079393364489717,
+    "margin_mean_dec": 2.3391121916804294,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.2702,
+    "margin_median_dec": 2.4123616505942027,
+    "margin_p5_dec": 1.6017784406055526,
+    "margin_p2_5_dec": 1.5334196816066283,
+    "margin_p95_dec": 2.758356981516693,
+    "margin_p97_5_dec": 2.902571511657929,
+    "margin_mean_dec": 2.3003084620332492,
+    "n": 100000
+   }
+  },
+  "prof_loglin__extrap_slope__shape_off__del_10x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53819,
+    "margin_median_dec": 2.5542858888135487,
+    "margin_p5_dec": 1.9855877618931652,
+    "margin_p2_5_dec": 1.8970963432044798,
+    "margin_p95_dec": 3.1651225913702543,
+    "margin_p97_5_dec": 3.3445329303447706,
+    "margin_mean_dec": 2.566755421658201,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53826,
+    "margin_median_dec": 3.2514082232377213,
+    "margin_p5_dec": 2.760805939856739,
+    "margin_p2_5_dec": 2.6725726315783587,
+    "margin_p95_dec": 3.8047634238678367,
+    "margin_p97_5_dec": 4.018165175377718,
+    "margin_mean_dec": 3.2682468915026575,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53633,
+    "margin_median_dec": 3.321628724384656,
+    "margin_p5_dec": 2.883504425167556,
+    "margin_p2_5_dec": 2.798628753827036,
+    "margin_p95_dec": 3.8435938195272317,
+    "margin_p97_5_dec": 4.09253654477563,
+    "margin_mean_dec": 3.3412221156539315,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.2704,
+    "margin_median_dec": 3.413839169500002,
+    "margin_p5_dec": 2.6033774666199947,
+    "margin_p2_5_dec": 2.5357977317628615,
+    "margin_p95_dec": 3.759916935171194,
+    "margin_p97_5_dec": 3.912893138905706,
+    "margin_mean_dec": 3.3030935714372975,
+    "n": 100000
+   }
+  },
+  "prof_isotonic__extrap_clamp__shape_on__del_0.1x": {
+   "Colonic crypt": {
+    "p_fluid": 0.79064,
+    "p_fluid_in_range": 0.6257212987684093,
+    "p_fluid_extrapolated": 0.9336582269026813,
+    "frac_extrapolated_sd": 0.53556,
+    "margin_median_dec": 0.3849864751041312,
+    "margin_p5_dec": -0.3226568052447668,
+    "margin_p2_5_dec": -0.41797948574487687,
+    "margin_p95_dec": 1.1391264771661396,
+    "margin_p97_5_dec": 1.2575631458962817,
+    "margin_mean_dec": 0.3867067749767976,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 0.99992,
+    "p_fluid_in_range": 0.9998269971022015,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53758,
+    "margin_median_dec": 1.078525717077441,
+    "margin_p5_dec": 0.4444710187252515,
+    "margin_p2_5_dec": 0.3499295829004409,
+    "margin_p95_dec": 1.780688208621336,
+    "margin_p97_5_dec": 1.8893636587775506,
+    "margin_mean_dec": 1.0855705555357473,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53572,
+    "margin_median_dec": 1.1482199245570652,
+    "margin_p5_dec": 0.5646122614900068,
+    "margin_p2_5_dec": 0.4809907596388204,
+    "margin_p95_dec": 1.8102793164695246,
+    "margin_p97_5_dec": 1.9128078586398864,
+    "margin_mean_dec": 1.158975187108003,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 0.99886,
+    "p_fluid_in_range": 0.9984357848518112,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.2712,
+    "margin_median_dec": 1.107224738047068,
+    "margin_p5_dec": 0.2799200087576501,
+    "margin_p2_5_dec": 0.19453952856945972,
+    "margin_p95_dec": 1.622712856001267,
+    "margin_p97_5_dec": 1.703739022399458,
+    "margin_mean_dec": 1.0293957754724974,
+    "n": 100000
+   }
+  },
+  "prof_isotonic__extrap_clamp__shape_on__del_1x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.5409,
+    "margin_median_dec": 1.386828176058828,
+    "margin_p5_dec": 0.6785405095674175,
+    "margin_p2_5_dec": 0.5829979163695371,
+    "margin_p95_dec": 2.1425454518312894,
+    "margin_p97_5_dec": 2.260303606939016,
+    "margin_mean_dec": 1.3894106947875244,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53885,
+    "margin_median_dec": 2.0830114789806604,
+    "margin_p5_dec": 1.4419903732825479,
+    "margin_p2_5_dec": 1.3515860084311546,
+    "margin_p95_dec": 2.77860837440055,
+    "margin_p97_5_dec": 2.887843775199025,
+    "margin_mean_dec": 2.0880415743105742,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.5358,
+    "margin_median_dec": 2.145848577688779,
+    "margin_p5_dec": 1.566398338895357,
+    "margin_p2_5_dec": 1.4784525210506927,
+    "margin_p95_dec": 2.8097137858124657,
+    "margin_p97_5_dec": 2.9141842548172927,
+    "margin_mean_dec": 2.1589623345953664,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26657,
+    "margin_median_dec": 2.1052414646922353,
+    "margin_p5_dec": 1.277446041359471,
+    "margin_p2_5_dec": 1.1935550024844943,
+    "margin_p95_dec": 2.619487306562846,
+    "margin_p97_5_dec": 2.700308981246425,
+    "margin_mean_dec": 2.0271347203160084,
+    "n": 100000
+   }
+  },
+  "prof_isotonic__extrap_clamp__shape_on__del_10x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53534,
+    "margin_median_dec": 2.381139816361261,
+    "margin_p5_dec": 1.6781461106355813,
+    "margin_p2_5_dec": 1.5797346515729636,
+    "margin_p95_dec": 3.1427683810159426,
+    "margin_p97_5_dec": 3.2586184420528963,
+    "margin_mean_dec": 2.3846181969716627,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53996,
+    "margin_median_dec": 3.082409852329526,
+    "margin_p5_dec": 2.4431121019700592,
+    "margin_p2_5_dec": 2.3520803554721654,
+    "margin_p95_dec": 3.7862942641941846,
+    "margin_p97_5_dec": 3.8938523718704356,
+    "margin_mean_dec": 3.0890471511388338,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53874,
+    "margin_median_dec": 3.1480794812792787,
+    "margin_p5_dec": 2.564472393250397,
+    "margin_p2_5_dec": 2.476575626846102,
+    "margin_p95_dec": 3.810319559109281,
+    "margin_p97_5_dec": 3.9155715197567313,
+    "margin_mean_dec": 3.160540012606203,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.27095,
+    "margin_median_dec": 3.1091991192608512,
+    "margin_p5_dec": 2.2756372860231235,
+    "margin_p2_5_dec": 2.1927163029079613,
+    "margin_p95_dec": 3.623122152986892,
+    "margin_p97_5_dec": 3.7002758165134324,
+    "margin_mean_dec": 3.029722579371193,
+    "n": 100000
+   }
+  },
+  "prof_isotonic__extrap_clamp__shape_off__del_0.1x": {
+   "Colonic crypt": {
+    "p_fluid": 0.95013,
+    "p_fluid_in_range": 0.8927448897752152,
+    "p_fluid_extrapolated": 0.9992759945792414,
+    "frac_extrapolated_sd": 0.53867,
+    "margin_median_dec": 0.6829119319179433,
+    "margin_p5_dec": 0.00029176921246007757,
+    "margin_p2_5_dec": -0.09225366720741013,
+    "margin_p95_dec": 1.422128414863327,
+    "margin_p97_5_dec": 1.5326189463757884,
+    "margin_mean_dec": 0.6842658753388485,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53791,
+    "margin_median_dec": 1.376557322666187,
+    "margin_p5_dec": 0.7715297582823095,
+    "margin_p2_5_dec": 0.6764268147875176,
+    "margin_p95_dec": 2.057740398453831,
+    "margin_p97_5_dec": 2.1627820257510124,
+    "margin_mean_dec": 1.3824397568975852,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.54178,
+    "margin_median_dec": 1.446130627228277,
+    "margin_p5_dec": 0.8968326390020127,
+    "margin_p2_5_dec": 0.8080431455137643,
+    "margin_p95_dec": 2.083947118539682,
+    "margin_p97_5_dec": 2.178140339497637,
+    "margin_mean_dec": 1.4564466163033107,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26894,
+    "margin_median_dec": 1.4164742671367663,
+    "margin_p5_dec": 0.5951081661161642,
+    "margin_p2_5_dec": 0.5253770532779529,
+    "margin_p95_dec": 1.8939828346025074,
+    "margin_p97_5_dec": 1.9570310996281797,
+    "margin_mean_dec": 1.3233838576770691,
+    "n": 100000
+   }
+  },
+  "prof_isotonic__extrap_clamp__shape_off__del_1x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53769,
+    "margin_median_dec": 1.6826211949227563,
+    "margin_p5_dec": 0.9991556745015961,
+    "margin_p2_5_dec": 0.9059250917703495,
+    "margin_p95_dec": 2.4203636320126973,
+    "margin_p97_5_dec": 2.5361257281865894,
+    "margin_mean_dec": 1.6824070362505923,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53718,
+    "margin_median_dec": 2.3787782862830955,
+    "margin_p5_dec": 1.769375425988092,
+    "margin_p2_5_dec": 1.6795472463396761,
+    "margin_p95_dec": 3.0552414242487784,
+    "margin_p97_5_dec": 3.15749458979092,
+    "margin_mean_dec": 2.382198040815323,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.536,
+    "margin_median_dec": 2.44214456309423,
+    "margin_p5_dec": 1.8937547157084558,
+    "margin_p2_5_dec": 1.8026012755234295,
+    "margin_p95_dec": 3.087675258250419,
+    "margin_p97_5_dec": 3.1804722276529356,
+    "margin_mean_dec": 2.454603392851151,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26997,
+    "margin_median_dec": 2.417377081843087,
+    "margin_p5_dec": 1.5941319031325119,
+    "margin_p2_5_dec": 1.5258941524454495,
+    "margin_p95_dec": 2.8919968497268855,
+    "margin_p97_5_dec": 2.955845852594238,
+    "margin_mean_dec": 2.3242939592294296,
+    "n": 100000
+   }
+  },
+  "prof_isotonic__extrap_clamp__shape_off__del_10x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53574,
+    "margin_median_dec": 2.680712501813459,
+    "margin_p5_dec": 2.0035095068603197,
+    "margin_p2_5_dec": 1.9153178908233903,
+    "margin_p95_dec": 3.4171974157919145,
+    "margin_p97_5_dec": 3.52890824730215,
+    "margin_mean_dec": 2.6816545025339087,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53868,
+    "margin_median_dec": 3.3768172962854606,
+    "margin_p5_dec": 2.7719039875448823,
+    "margin_p2_5_dec": 2.678152182758216,
+    "margin_p95_dec": 4.058573265738018,
+    "margin_p97_5_dec": 4.164921487296193,
+    "margin_mean_dec": 3.3832778892450452,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53711,
+    "margin_median_dec": 3.444752354281786,
+    "margin_p5_dec": 2.8919792619421845,
+    "margin_p2_5_dec": 2.798713419661977,
+    "margin_p95_dec": 4.090727465904197,
+    "margin_p97_5_dec": 4.182898923177458,
+    "margin_mean_dec": 3.4550425853096125,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26878,
+    "margin_median_dec": 3.415552541183307,
+    "margin_p5_dec": 2.59603381460515,
+    "margin_p2_5_dec": 2.5286486155884034,
+    "margin_p95_dec": 3.8885530504648793,
+    "margin_p97_5_dec": 3.9545985151861798,
+    "margin_mean_dec": 3.3227265897985774,
+    "n": 100000
+   }
+  },
+  "prof_isotonic__extrap_slope__shape_on__del_0.1x": {
+   "Colonic crypt": {
+    "p_fluid": 0.70361,
+    "p_fluid_in_range": 0.6253570501168527,
+    "p_fluid_extrapolated": 0.7708410797947498,
+    "frac_extrapolated_sd": 0.53788,
+    "margin_median_dec": 0.2260128381670819,
+    "margin_p5_dec": -0.35286306031726655,
+    "margin_p2_5_dec": -0.4331634568012158,
+    "margin_p95_dec": 0.8075639669273321,
+    "margin_p97_5_dec": 0.8854092349589469,
+    "margin_mean_dec": 0.2269075000082807,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 0.99995,
+    "p_fluid_in_range": 0.9998927751924686,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53369,
+    "margin_median_dec": 0.9278380380186244,
+    "margin_p5_dec": 0.4137152021370824,
+    "margin_p2_5_dec": 0.33477621868816276,
+    "margin_p95_dec": 1.4325865438403607,
+    "margin_p97_5_dec": 1.5054899790468577,
+    "margin_mean_dec": 0.9264495059263351,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.5363,
+    "margin_median_dec": 0.9984428102754529,
+    "margin_p5_dec": 0.5398036970427438,
+    "margin_p2_5_dec": 0.46112549226461336,
+    "margin_p95_dec": 1.4535304915739082,
+    "margin_p97_5_dec": 1.5194863351176535,
+    "margin_mean_dec": 0.9985741763346901,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 0.9985,
+    "p_fluid_in_range": 0.9979543966833951,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26672,
+    "margin_median_dec": 1.0791758395918332,
+    "margin_p5_dec": 0.28159391855342714,
+    "margin_p2_5_dec": 0.19512666549304591,
+    "margin_p95_dec": 1.4590575906890182,
+    "margin_p97_5_dec": 1.5106076200409773,
+    "margin_mean_dec": 0.9820788583526064,
+    "n": 100000
+   }
+  },
+  "prof_isotonic__extrap_slope__shape_on__del_1x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53674,
+    "margin_median_dec": 1.2247382865816498,
+    "margin_p5_dec": 0.6461780185302233,
+    "margin_p2_5_dec": 0.5643919800900186,
+    "margin_p95_dec": 1.8067475989317971,
+    "margin_p97_5_dec": 1.8814292636663077,
+    "margin_mean_dec": 1.2257827120385394,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53774,
+    "margin_median_dec": 1.9283127694071451,
+    "margin_p5_dec": 1.4166459564082419,
+    "margin_p2_5_dec": 1.3364728887375392,
+    "margin_p95_dec": 2.4378698259405804,
+    "margin_p97_5_dec": 2.5076028923684124,
+    "margin_mean_dec": 1.9276746685161477,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53845,
+    "margin_median_dec": 2.0019948804837777,
+    "margin_p5_dec": 1.5391424177650381,
+    "margin_p2_5_dec": 1.4615389771914757,
+    "margin_p95_dec": 2.4552920031928616,
+    "margin_p97_5_dec": 2.5219626594326057,
+    "margin_mean_dec": 2.000246208178985,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.27017,
+    "margin_median_dec": 2.0797957984317637,
+    "margin_p5_dec": 1.280917249649148,
+    "margin_p2_5_dec": 1.1971073698358086,
+    "margin_p95_dec": 2.4580484476981557,
+    "margin_p97_5_dec": 2.5103802177003307,
+    "margin_mean_dec": 1.9822766329836143,
+    "n": 100000
+   }
+  },
+  "prof_isotonic__extrap_slope__shape_on__del_10x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.54026,
+    "margin_median_dec": 2.2289129182985006,
+    "margin_p5_dec": 1.6469663714955547,
+    "margin_p2_5_dec": 1.5650122081741087,
+    "margin_p95_dec": 2.8089700208357042,
+    "margin_p97_5_dec": 2.886283313933188,
+    "margin_mean_dec": 2.229162716710846,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53852,
+    "margin_median_dec": 2.9262551665295593,
+    "margin_p5_dec": 2.412622875976811,
+    "margin_p2_5_dec": 2.3298863844239417,
+    "margin_p95_dec": 3.4334185663673313,
+    "margin_p97_5_dec": 3.5045325531103173,
+    "margin_mean_dec": 2.9262431053233486,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53567,
+    "margin_median_dec": 2.9985560479830813,
+    "margin_p5_dec": 2.5392290409468807,
+    "margin_p2_5_dec": 2.456085757618492,
+    "margin_p95_dec": 3.4519833150939814,
+    "margin_p97_5_dec": 3.5191900455162033,
+    "margin_mean_dec": 2.997950267071257,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26921,
+    "margin_median_dec": 3.079359425376042,
+    "margin_p5_dec": 2.2772155134414227,
+    "margin_p2_5_dec": 2.1940858755811075,
+    "margin_p95_dec": 3.4579703625992813,
+    "margin_p97_5_dec": 3.5089490349021957,
+    "margin_mean_dec": 2.98172399340276,
+    "n": 100000
+   }
+  },
+  "prof_isotonic__extrap_slope__shape_off__del_0.1x": {
+   "Colonic crypt": {
+    "p_fluid": 0.93985,
+    "p_fluid_in_range": 0.891272813873433,
+    "p_fluid_extrapolated": 0.9815465239449184,
+    "frac_extrapolated_sd": 0.53811,
+    "margin_median_dec": 0.5260046491591284,
+    "margin_p5_dec": -0.023005578779623597,
+    "margin_p2_5_dec": -0.1105882944415291,
+    "margin_p95_dec": 1.0685060583064503,
+    "margin_p97_5_dec": 1.1307844575448656,
+    "margin_mean_dec": 0.5242752125333455,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.54123,
+    "margin_median_dec": 1.2233072128385665,
+    "margin_p5_dec": 0.7492264747723149,
+    "margin_p2_5_dec": 0.6634366942690672,
+    "margin_p95_dec": 1.6877675215465013,
+    "margin_p97_5_dec": 1.7476968741028727,
+    "margin_mean_dec": 1.223306461688454,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53682,
+    "margin_median_dec": 1.29543207776765,
+    "margin_p5_dec": 0.8728372243632674,
+    "margin_p2_5_dec": 0.7917010089758131,
+    "margin_p95_dec": 1.704302981684446,
+    "margin_p97_5_dec": 1.7628567875520442,
+    "margin_mean_dec": 1.2944052104598034,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.27121,
+    "margin_median_dec": 1.406115092327124,
+    "margin_p5_dec": 0.5954719531556175,
+    "margin_p2_5_dec": 0.5298653466347677,
+    "margin_p95_dec": 1.6963550165774486,
+    "margin_p97_5_dec": 1.736411903217241,
+    "margin_mean_dec": 1.280608787794323,
+    "n": 100000
+   }
+  },
+  "prof_isotonic__extrap_slope__shape_off__del_1x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53775,
+    "margin_median_dec": 1.5206610166077206,
+    "margin_p5_dec": 0.9776549843280266,
+    "margin_p2_5_dec": 0.8892470987411895,
+    "margin_p95_dec": 2.0688378539322807,
+    "margin_p97_5_dec": 2.130921061021218,
+    "margin_mean_dec": 1.5218349371163435,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.5368,
+    "margin_median_dec": 2.220636951940449,
+    "margin_p5_dec": 1.7514071628311654,
+    "margin_p2_5_dec": 1.6669687362673404,
+    "margin_p95_dec": 2.6901557052650196,
+    "margin_p97_5_dec": 2.7510018922784685,
+    "margin_mean_dec": 2.222193316129191,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53513,
+    "margin_median_dec": 2.2935406953226076,
+    "margin_p5_dec": 1.874461822616843,
+    "margin_p2_5_dec": 1.79205891668286,
+    "margin_p95_dec": 2.702534120037249,
+    "margin_p97_5_dec": 2.7604653696064827,
+    "margin_mean_dec": 2.2941003903761947,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26795,
+    "margin_median_dec": 2.402083777575807,
+    "margin_p5_dec": 1.5976319053534982,
+    "margin_p2_5_dec": 1.5272109297946543,
+    "margin_p95_dec": 2.69542947680353,
+    "margin_p97_5_dec": 2.737629996179305,
+    "margin_mean_dec": 2.277949858954659,
+    "n": 100000
+   }
+  },
+  "prof_isotonic__extrap_slope__shape_off__del_10x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.5363,
+    "margin_median_dec": 2.5191710896311985,
+    "margin_p5_dec": 1.978060303008113,
+    "margin_p2_5_dec": 1.8928807449053644,
+    "margin_p95_dec": 3.0674080786556917,
+    "margin_p97_5_dec": 3.1286337123848615,
+    "margin_mean_dec": 2.5209162172931117,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.54056,
+    "margin_median_dec": 3.2207002092056447,
+    "margin_p5_dec": 2.750415835536041,
+    "margin_p2_5_dec": 2.6655793129756042,
+    "margin_p95_dec": 3.6882784645897164,
+    "margin_p97_5_dec": 3.7472563921227446,
+    "margin_mean_dec": 3.22145912875391,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53756,
+    "margin_median_dec": 3.2961689164665904,
+    "margin_p5_dec": 2.873768764959613,
+    "margin_p2_5_dec": 2.789757483718714,
+    "margin_p95_dec": 3.700713859769015,
+    "margin_p97_5_dec": 3.760180629368378,
+    "margin_mean_dec": 3.2953404451305595,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26998,
+    "margin_median_dec": 3.4023412022144424,
+    "margin_p5_dec": 2.5974772097864522,
+    "margin_p2_5_dec": 2.5304012318470903,
+    "margin_p95_dec": 3.695134101834422,
+    "margin_p97_5_dec": 3.7368880990018,
+    "margin_mean_dec": 3.2786919564047596,
+    "n": 100000
+   }
+  },
+  "RE_tau_draw__shape_on__del_0.1x": {
+   "Colonic crypt": {
+    "p_fluid": 0.78766,
+    "p_fluid_in_range": 0.575622621930128,
+    "p_fluid_extrapolated": 0.970154807978565,
+    "frac_extrapolated_sd": 0.53744,
+    "margin_median_dec": 0.4333044368059457,
+    "margin_p5_dec": -0.42244856884640997,
+    "margin_p2_5_dec": -0.5452141464100575,
+    "margin_p95_dec": 1.279494277089799,
+    "margin_p97_5_dec": 1.4016568027514003,
+    "margin_mean_dec": 0.43243967214841367,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 0.99671,
+    "p_fluid_in_range": 0.9928935545187489,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53704,
+    "margin_median_dec": 1.129426965508705,
+    "margin_p5_dec": 0.33271433815563956,
+    "margin_p2_5_dec": 0.2173312717529956,
+    "margin_p95_dec": 1.9230431663629548,
+    "margin_p97_5_dec": 2.0344797405978086,
+    "margin_mean_dec": 1.1302692690264988,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 0.99945,
+    "p_fluid_in_range": 0.9988158546300084,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53553,
+    "margin_median_dec": 1.2024072921667428,
+    "margin_p5_dec": 0.45216457132996557,
+    "margin_p2_5_dec": 0.34378038280056167,
+    "margin_p95_dec": 1.9557772605878951,
+    "margin_p97_5_dec": 2.0649096258763753,
+    "margin_mean_dec": 1.2022023330953626,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 0.99846,
+    "p_fluid_in_range": 0.9978917971744606,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26952,
+    "margin_median_dec": 1.044796014198488,
+    "margin_p5_dec": 0.30988222143301314,
+    "margin_p2_5_dec": 0.2236006519190507,
+    "margin_p95_dec": 1.7715014280415993,
+    "margin_p97_5_dec": 1.8583942099738942,
+    "margin_mean_dec": 1.042903710714489,
+    "n": 100000
+   }
+  },
+  "RE_tau_draw__shape_on__del_1x": {
+   "Colonic crypt": {
+    "p_fluid": 0.99991,
+    "p_fluid_in_range": 0.9998042882616448,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.54014,
+    "margin_median_dec": 1.4320920591506996,
+    "margin_p5_dec": 0.5804284115705749,
+    "margin_p2_5_dec": 0.4546852205748869,
+    "margin_p95_dec": 2.2799464779938248,
+    "margin_p97_5_dec": 2.4058781226270463,
+    "margin_mean_dec": 1.4318489388237596,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53741,
+    "margin_median_dec": 2.1303313924330194,
+    "margin_p5_dec": 1.3371747481855543,
+    "margin_p2_5_dec": 1.2186101941673488,
+    "margin_p95_dec": 2.923684789796107,
+    "margin_p97_5_dec": 3.035333549106125,
+    "margin_mean_dec": 2.1302914328256857,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53769,
+    "margin_median_dec": 2.201225626302357,
+    "margin_p5_dec": 1.4513502996526033,
+    "margin_p2_5_dec": 1.3447078269246322,
+    "margin_p95_dec": 2.9507867805987145,
+    "margin_p97_5_dec": 3.0600958401058214,
+    "margin_mean_dec": 2.201938968838721,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.26995,
+    "margin_median_dec": 2.045374983804364,
+    "margin_p5_dec": 1.3084960698108075,
+    "margin_p2_5_dec": 1.2235469796980891,
+    "margin_p95_dec": 2.7732286125300187,
+    "margin_p97_5_dec": 2.8581536607943083,
+    "margin_mean_dec": 2.042851375787527,
+    "n": 100000
+   }
+  },
+  "RE_tau_draw__shape_on__del_10x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53746,
+    "margin_median_dec": 2.432409133570517,
+    "margin_p5_dec": 1.579042373165994,
+    "margin_p2_5_dec": 1.454679557504916,
+    "margin_p95_dec": 3.2768248077820736,
+    "margin_p97_5_dec": 3.4024910748689625,
+    "margin_mean_dec": 2.431204740193373,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53956,
+    "margin_median_dec": 3.1320779495343447,
+    "margin_p5_dec": 2.3379936189028605,
+    "margin_p2_5_dec": 2.223061909390031,
+    "margin_p95_dec": 3.9235763956435377,
+    "margin_p97_5_dec": 4.038635685938804,
+    "margin_mean_dec": 3.131849606993936,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.54058,
+    "margin_median_dec": 3.2060580549216153,
+    "margin_p5_dec": 2.451664665391611,
+    "margin_p2_5_dec": 2.3441432128616997,
+    "margin_p95_dec": 3.955827096929801,
+    "margin_p97_5_dec": 4.060255730458628,
+    "margin_mean_dec": 3.204675457569186,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.27071,
+    "margin_median_dec": 3.044688207077828,
+    "margin_p5_dec": 2.312828158256375,
+    "margin_p2_5_dec": 2.229858180301084,
+    "margin_p95_dec": 3.7717373291869123,
+    "margin_p97_5_dec": 3.856683863787493,
+    "margin_mean_dec": 3.0436679051860924,
+    "n": 100000
+   }
+  },
+  "RE_tau_draw__shape_off__del_0.1x": {
+   "Colonic crypt": {
+    "p_fluid": 0.91861,
+    "p_fluid_in_range": 0.8235613581561054,
+    "p_fluid_extrapolated": 0.9996849926807123,
+    "frac_extrapolated_sd": 0.53967,
+    "margin_median_dec": 0.7289928117010174,
+    "margin_p5_dec": -0.10871797866195343,
+    "margin_p2_5_dec": -0.22448406388747627,
+    "margin_p95_dec": 1.5632404404821316,
+    "margin_p97_5_dec": 1.6809261739490506,
+    "margin_mean_dec": 0.7284855890483429,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53979,
+    "margin_median_dec": 1.4283548614357615,
+    "margin_p5_dec": 0.6542442947382905,
+    "margin_p2_5_dec": 0.5454174511481411,
+    "margin_p95_dec": 2.201717905655325,
+    "margin_p97_5_dec": 2.306963763313996,
+    "margin_mean_dec": 1.4270735872422013,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53858,
+    "margin_median_dec": 1.500269997046492,
+    "margin_p5_dec": 0.7660704471617148,
+    "margin_p2_5_dec": 0.6655436020716647,
+    "margin_p95_dec": 2.2351782596710095,
+    "margin_p97_5_dec": 2.3316670368960857,
+    "margin_mean_dec": 1.5003424898865254,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.27098,
+    "margin_median_dec": 1.3363083031240204,
+    "margin_p5_dec": 0.6344539001003309,
+    "margin_p2_5_dec": 0.5590100840383727,
+    "margin_p95_dec": 2.0394555886171135,
+    "margin_p97_5_dec": 2.114487566527285,
+    "margin_mean_dec": 1.3380968204936978,
+    "n": 100000
+   }
+  },
+  "RE_tau_draw__shape_off__del_1x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53751,
+    "margin_median_dec": 1.7264719738077416,
+    "margin_p5_dec": 0.8922878290425859,
+    "margin_p2_5_dec": 0.7782295744782444,
+    "margin_p95_dec": 2.564682841106318,
+    "margin_p97_5_dec": 2.681898930219314,
+    "margin_mean_dec": 1.7268777425413466,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53722,
+    "margin_median_dec": 2.4284270606625276,
+    "margin_p5_dec": 1.651536481218697,
+    "margin_p2_5_dec": 1.5445079759257745,
+    "margin_p95_dec": 3.200341497693311,
+    "margin_p97_5_dec": 3.3087237057529792,
+    "margin_mean_dec": 2.426707244619216,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53629,
+    "margin_median_dec": 2.4950484186700876,
+    "margin_p5_dec": 1.768860939494409,
+    "margin_p2_5_dec": 1.6709639195378048,
+    "margin_p95_dec": 3.227773590060859,
+    "margin_p97_5_dec": 3.3291204536755643,
+    "margin_mean_dec": 2.496481165343846,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.27113,
+    "margin_median_dec": 2.3382908079771045,
+    "margin_p5_dec": 1.6334680824865115,
+    "margin_p2_5_dec": 1.5605752047515418,
+    "margin_p95_dec": 3.040668573892858,
+    "margin_p97_5_dec": 3.114354413990023,
+    "margin_mean_dec": 2.3377613671204807,
+    "n": 100000
+   }
+  },
+  "RE_tau_draw__shape_off__del_10x": {
+   "Colonic crypt": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53484,
+    "margin_median_dec": 2.7223833034988205,
+    "margin_p5_dec": 1.8931543155722865,
+    "margin_p2_5_dec": 1.7769202932155965,
+    "margin_p95_dec": 3.559111735661405,
+    "margin_p97_5_dec": 3.676276204775809,
+    "margin_mean_dec": 2.72402038493474,
+    "n": 100000
+   },
+   "Epidermis (sun-exp.)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53878,
+    "margin_median_dec": 3.4258833161631266,
+    "margin_p5_dec": 2.6524514230337988,
+    "margin_p2_5_dec": 2.5465270338199857,
+    "margin_p95_dec": 4.195471641006868,
+    "margin_p97_5_dec": 4.303495488402472,
+    "margin_mean_dec": 3.4253994084061032,
+    "n": 100000
+   },
+   "HSC (blood)": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.53998,
+    "margin_median_dec": 3.4970531872404083,
+    "margin_p5_dec": 2.7656652798387493,
+    "margin_p2_5_dec": 2.66378313129179,
+    "margin_p95_dec": 4.231563463430284,
+    "margin_p97_5_dec": 4.330559617712528,
+    "margin_mean_dec": 3.497876666222957,
+    "n": 100000
+   },
+   "Hypermutator tumour": {
+    "p_fluid": 1.0,
+    "p_fluid_in_range": 1.0,
+    "p_fluid_extrapolated": 1.0,
+    "frac_extrapolated_sd": 0.27037,
+    "margin_median_dec": 3.3367954821689487,
+    "margin_p5_dec": 2.6327592904271757,
+    "margin_p2_5_dec": 2.560295413430008,
+    "margin_p95_dec": 4.044706676506177,
+    "margin_p97_5_dec": 4.119240674438656,
+    "margin_mean_dec": 3.3382874675294683,
+    "n": 100000
+   }
+  }
+ },
+ "per_tissue_min_over_physical_arms": {
+  "Colonic crypt": {
+   "del_0.1x": {
+    "p_fluid_min": 0.70361,
+    "arm_min": "prof_isotonic__extrap_slope__shape_on__del_0.1x",
+    "n_arms": 8
+   },
+   "del_1x": {
+    "p_fluid_min": 1.0,
+    "arm_min": "prof_loglin__extrap_clamp__shape_on__del_1x",
+    "n_arms": 8
+   },
+   "del_10x": {
+    "p_fluid_min": 1.0,
+    "arm_min": "prof_loglin__extrap_clamp__shape_on__del_10x",
+    "n_arms": 8
+   }
+  },
+  "Epidermis (sun-exp.)": {
+   "del_0.1x": {
+    "p_fluid_min": 0.9999,
+    "arm_min": "prof_loglin__extrap_clamp__shape_on__del_0.1x",
+    "n_arms": 8
+   },
+   "del_1x": {
+    "p_fluid_min": 1.0,
+    "arm_min": "prof_loglin__extrap_clamp__shape_on__del_1x",
+    "n_arms": 8
+   },
+   "del_10x": {
+    "p_fluid_min": 1.0,
+    "arm_min": "prof_loglin__extrap_clamp__shape_on__del_10x",
+    "n_arms": 8
+   }
+  },
+  "HSC (blood)": {
+   "del_0.1x": {
+    "p_fluid_min": 1.0,
+    "arm_min": "prof_loglin__extrap_clamp__shape_on__del_0.1x",
+    "n_arms": 8
+   },
+   "del_1x": {
+    "p_fluid_min": 1.0,
+    "arm_min": "prof_loglin__extrap_clamp__shape_on__del_1x",
+    "n_arms": 8
+   },
+   "del_10x": {
+    "p_fluid_min": 1.0,
+    "arm_min": "prof_loglin__extrap_clamp__shape_on__del_10x",
+    "n_arms": 8
+   }
+  },
+  "Hypermutator tumour": {
+   "del_0.1x": {
+    "p_fluid_min": 0.9985,
+    "arm_min": "prof_isotonic__extrap_slope__shape_on__del_0.1x",
+    "n_arms": 8
+   },
+   "del_1x": {
+    "p_fluid_min": 1.0,
+    "arm_min": "prof_loglin__extrap_clamp__shape_on__del_1x",
+    "n_arms": 8
+   },
+   "del_10x": {
+    "p_fluid_min": 1.0,
+    "arm_min": "prof_loglin__extrap_clamp__shape_on__del_10x",
+    "n_arms": 8
+   }
+  }
+ },
+ "comparison_round8_vs_round9": {
+  "Colonic crypt": {
+   "round8_re_tau_draw": {
+    "p_fluid": 0.99987,
+    "margin_median_dec": 1.434453729601826,
+    "margin_p5_dec": 0.5817197442164529
+   },
+   "round9_rung_bootstrap": {
+    "p_fluid": 1.0,
+    "margin_median_dec": 1.4092211753148782,
+    "margin_p5_dec": 0.6831675595034192
+   }
+  },
+  "Epidermis (sun-exp.)": {
+   "round8_re_tau_draw": {
+    "p_fluid": 1.0,
+    "margin_median_dec": 2.128995090411282,
+    "margin_p5_dec": 1.3362346103077913
+   },
+   "round9_rung_bootstrap": {
+    "p_fluid": 1.0,
+    "margin_median_dec": 2.1026017679308353,
+    "margin_p5_dec": 1.4491816284358872
+   }
+  },
+  "HSC (blood)": {
+   "round8_re_tau_draw": {
+    "p_fluid": 1.0,
+    "margin_median_dec": 2.197202655758711,
+    "margin_p5_dec": 1.4458056987265293
+   },
+   "round9_rung_bootstrap": {
+    "p_fluid": 1.0,
+    "margin_median_dec": 2.1705028975833356,
+    "margin_p5_dec": 1.5694247391772222
+   }
+  },
+  "Hypermutator tumour": {
+   "round8_re_tau_draw": {
+    "p_fluid": 1.0,
+    "margin_median_dec": 2.0477317012449525,
+    "margin_p5_dec": 1.3144392949928585
+   },
+   "round9_rung_bootstrap": {
+    "p_fluid": 1.0,
+    "margin_median_dec": 2.11505036228485,
+    "margin_p5_dec": 1.2874836392789564
+   }
+  }
+ },
+ "barrier_multipliers": {
+  "definition": "factor by which the whole barrier (ridge*shape) must be scaled up to bring P(fluid) down to q; loglin profile, clamp extrapolation",
+  "values": {
+   "Colonic crypt": {
+    "del_0.1x": {
+     "shape_on": {
+      "0.9": 0.6533701802409032,
+      "0.75": 1.2128905641840253,
+      "0.5": 2.557678711182205
+     },
+     "shape_off": {
+      "0.9": 1.3248223569987225,
+      "0.75": 2.405748291449699,
+      "0.5": 5.057360021959095
+     }
+    },
+    "del_1x": {
+     "shape_on": {
+      "0.9": 6.536269796427876,
+      "0.75": 11.982336739651224,
+      "0.5": 25.48561299603791
+     },
+     "shape_off": {
+      "0.9": 13.199616061835583,
+      "0.75": 24.257630505926844,
+      "0.5": 50.994448235530555
+     }
+    },
+    "del_10x": {
+     "shape_on": {
+      "0.9": 64.95186824728101,
+      "0.75": 120.3215569982946,
+      "0.5": 255.97161796861397
+     },
+     "shape_off": {
+      "0.9": 132.8683568207678,
+      "0.75": 243.40606257647426,
+      "0.5": 507.7208685287671
+     }
+    }
+   },
+   "Epidermis (sun-exp.)": {
+    "del_0.1x": {
+     "shape_on": {
+      "0.9": 3.737121007738989,
+      "0.75": 6.441166898524722,
+      "0.5": 12.68165607881552
+     },
+     "shape_off": {
+      "0.9": 7.55223344554299,
+      "0.75": 12.867552419495127,
+      "0.5": 25.070505005904273
+     }
+    },
+    "del_1x": {
+     "shape_on": {
+      "0.9": 37.31862896683807,
+      "0.75": 64.32355555543326,
+      "0.5": 126.50587637113428
+     },
+     "shape_off": {
+      "0.9": 75.89494618796734,
+      "0.75": 129.4456393927028,
+      "0.5": 251.7173881510961
+     }
+    },
+    "del_10x": {
+     "shape_on": {
+      "0.9": 372.3093822232438,
+      "0.75": 640.0527994234195,
+      "0.5": 1263.676105616647
+     },
+     "shape_off": {
+      "0.9": 759.6255719015189,
+      "0.75": 1284.6090749887283,
+      "0.5": 2490.567514318888
+     }
+    }
+   },
+   "HSC (blood)": {
+    "del_0.1x": {
+     "shape_on": {
+      "0.9": 4.83364420674448,
+      "0.75": 7.919619172686113,
+      "0.5": 14.902431885741585
+     },
+     "shape_off": {
+      "0.9": 9.836430078228044,
+      "0.75": 15.757824269094815,
+      "0.5": 29.068118710333056
+     }
+    },
+    "del_1x": {
+     "shape_on": {
+      "0.9": 48.09369094847282,
+      "0.75": 79.19697876439143,
+      "0.5": 148.25136047047826
+     },
+     "shape_off": {
+      "0.9": 98.60766032036116,
+      "0.75": 158.27021183195941,
+      "0.5": 292.15460360852694
+     }
+    },
+    "del_10x": {
+     "shape_on": {
+      "0.9": 479.70505491421653,
+      "0.75": 789.8678409674372,
+      "0.5": 1478.6418472093976
+     },
+     "shape_off": {
+      "0.9": 980.8188916014484,
+      "0.75": 1567.6692448303127,
+      "0.5": 2922.656437360533
+     }
+    }
+   },
+   "Hypermutator tumour": {
+    "del_0.1x": {
+     "shape_on": {
+      "0.9": 2.5203291317060024,
+      "0.75": 5.268372740619484,
+      "0.5": 13.052592133472459
+     },
+     "shape_off": {
+      "0.9": 5.0414230901418735,
+      "0.75": 10.468315847070613,
+      "0.5": 26.556957756775482
+     }
+    },
+    "del_1x": {
+     "shape_on": {
+      "0.9": 25.372982975349753,
+      "0.75": 53.03885020646931,
+      "0.5": 129.902293081346
+     },
+     "shape_off": {
+      "0.9": 50.57353922908109,
+      "0.75": 105.2902325121723,
+      "0.5": 267.1043808239026
+     }
+    },
+    "del_10x": {
+     "shape_on": {
+      "0.9": 252.43827668796482,
+      "0.75": 524.0856146372761,
+      "0.5": 1297.9088314966027
+     },
+     "shape_off": {
+      "0.9": 499.1921935292387,
+      "0.75": 1030.080579340647,
+      "0.5": 2661.0745851007023
+     }
+    }
+   }
+  }
+ },
+ "headline": {
+  "colon_p_fluid_primary": 1.0,
+  "colon_margin_median_dec_primary": 1.4092211753148782,
+  "colon_margin_p5_dec_primary": 0.6831675595034192,
+  "colon_frac_extrapolated_sd": 0.5368,
+  "min_p_fluid_at_stated_del_all_physical_arms": 1.0,
+  "min_p_fluid_over_all_30_arms_all_tissues": 0.70361,
+  "min_p_fluid_arm": "prof_isotonic__extrap_slope__shape_on__del_0.1x",
+  "min_p_fluid_tissue": "Colonic crypt",
+  "colon_p_fluid_del_0p1x_range": [
+   0.70361,
+   0.95103
+  ],
+  "colon_barrier_multiplier_for_p90_shape_on": 6.536269796427876,
+  "colon_barrier_multiplier_for_p90_shape_off": 13.199616061835583,
+  "round8_colon_p_fluid": 0.99987,
+  "round9_colon_p_fluid": 1.0,
+  "verdict": "FOR: with the measured five-rung bootstrap in place of the tau=0.23 heterogeneity model, every tissue is fluid-side with P >= 0.9999 at the stated deleterious fraction under every profile/extrapolation/shape arm; only the 10x-fewer-deleterious-targets arm on the colon drops (to 0.70-0.95)"
+ },
+ "runs_executed": 0
+}

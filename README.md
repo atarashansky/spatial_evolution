@@ -46,7 +46,7 @@ Three new analyses, each pre-specified as a test that could fail; one did.
 - **Click-onset effect-size sweep (AGAINST hypothesis)** — drivers `drivers/onset_driver.py`, `drivers/run_onset_sweep.py`, `drivers/onset_analysis.py`, `drivers/assemble.py`; kernel `kernels/sdr_kernel.py`; data `data/onset_runs.parquet` (5,360 runs), `data/onset_ladder_table.csv`, `data/onset_reference_time_robustness.csv`, `data/kmin_snapshots.npz`; summary `data/onset_summary.json`; figure `figures/fig_S23_onset_vs_ridge.png`. Result: click-onset does NOT track the ridge (onset/ridge = 0.18, 1.10, 1.27 at s_d = 0.0025, 0.01, 0.04); the s_d = 0.01 coincidence is withdrawn as evidence in the revised manuscript.
 - **Gap-variance exponent, window-resolved** — data `data/gap_variance_curves.parquet`; summary `data/gap_variance_chi_summary.json`. Result: chi is a launch transient followed by load-dependent saturation below 2; 'random slope' is the fixation-timescale idealization.
 
-Run total after revision: 108,237 runs across 33 ensembles (Supplementary Table 1), zero censored, zero unexplained failures.
+Run total after revision: 215,454 ledger runs (212,204 distinct simulations) across 50 ensemble rows (Supplementary Table 1), zero censored, zero unexplained failures.
 
 ## Round-7 additions (revision)
 

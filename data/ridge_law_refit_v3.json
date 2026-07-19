@@ -1,0 +1,1032 @@
+{
+ "track": "ridge-law extension v3 (pre-registered): does the exponent k in U_d \u221d s_d^k differ from 1?",
+ "convention": "theta = U_d/s_d = mud/sd (U_d = mud, no factor of 2); ridge point at fixed Lambda=mud*sd is s* = first upward crossing of median(t_fix)/anchor_median through 1/2 scanning up in sd (log-sd/linear-ratio interp); s* ~ Lambda^gamma, gamma = 1/(k+1); k=1 <-> Haigh U_d/s_d = const",
+ "preregistration": {
+  "design_json": "ridge_law_design_v3.json (artifact 8d699f59, v1 dd4353e3 deposited BEFORE any run; v2 b71d93a1 prose errata only)",
+  "rule": "k=1 is EXCLUDED only if BOTH the point-scatter OLS 95% CI and the run-level bootstrap 95% CI exclude 1.0 on the extended dataset; otherwise reported RETAINED",
+  "runs_planned": 4050,
+  "runs_executed": 4050,
+  "runs_censored": 0,
+  "runs_errored": 0
+ },
+ "anchor": {
+  "n": 3056,
+  "median": [
+   573328.0,
+   554368.3875,
+   591753.0
+  ],
+  "note": "identical pooled 3,056-run 192x32 neutral pool as the deposited round-8 refit (all new points share the pool's protocol/geometry; no new anchor runs)"
+ },
+ "reproduction_of_current_fit": {
+  "points_8_reproduced": true,
+  "gamma": 0.4643822687345789,
+  "k": 1.153398325747785,
+  "k_ci95_ols": [
+   0.8726562002890632,
+   1.5331610481762015
+  ],
+  "k_ci95_runlevel_boot_recomputed": [
+   1.0589874681639924,
+   1.2760784433483736
+  ],
+  "dAIC_k1_vs_free": -0.14351212801845037,
+  "matches_deposit_ad304afe": true
+ },
+ "point_table": [
+  {
+   "Lambda": 1e-06,
+   "family": "new_v3",
+   "is_new": true,
+   "n_rungs": 6,
+   "sd_rungs": [
+    0.0003125,
+    0.000625,
+    0.00125,
+    0.0025,
+    0.005,
+    0.01
+   ],
+   "n_runs": [
+    150,
+    150,
+    150,
+    150,
+    150,
+    150
+   ],
+   "median_ratios": [
+    0.72011,
+    0.67845,
+    0.59831,
+    0.77564,
+    0.92236,
+    1.04047
+   ],
+   "s_star": null,
+   "s_star_ci95_runlevel_boot": [
+    null,
+    null
+   ],
+   "boot_frac_crossing_defined": 0.0045,
+   "min_ratio": 0.5983,
+   "min_ratio_sd": 0.00125,
+   "boot_P_min_ratio_gt_half": 0.9955,
+   "boot_min_ratio_ci95": [
+    0.5136858575321159,
+    0.673429823068082
+   ]
+  },
+  {
+   "Lambda": 3e-06,
+   "family": "new_v3",
+   "is_new": true,
+   "n_rungs": 6,
+   "sd_rungs": [
+    0.000625,
+    0.00125,
+    0.0025,
+    0.005,
+    0.01,
+    0.02
+   ],
+   "n_runs": [
+    150,
+    150,
+    150,
+    150,
+    150,
+    150
+   ],
+   "median_ratios": [
+    0.54929,
+    0.53969,
+    0.62934,
+    0.84694,
+    1.01023,
+    1.06812
+   ],
+   "s_star": null,
+   "s_star_ci95_runlevel_boot": [
+    null,
+    null
+   ],
+   "boot_frac_crossing_defined": 0.013,
+   "min_ratio": 0.5397,
+   "min_ratio_sd": 0.00125,
+   "boot_P_min_ratio_gt_half": 0.987,
+   "boot_min_ratio_ci95": [
+    0.5064002113613962,
+    0.5716094035957812
+   ]
+  },
+  {
+   "Lambda": 1e-05,
+   "family": "T1",
+   "is_new": false,
+   "n_rungs": 5,
+   "sd_rungs": [
+    0.0025,
+    0.005,
+    0.01,
+    0.02,
+    0.04
+   ],
+   "n_runs": [
+    150,
+    150,
+    150,
+    150,
+    150
+   ],
+   "median_ratios": [
+    0.41264,
+    0.44634,
+    0.86519,
+    0.95797,
+    0.99132
+   ],
+   "s_star": 0.005464283435345928,
+   "s_star_ci95_runlevel_boot": [
+    0.00506447391958188,
+    0.0058830553058826325
+   ],
+   "boot_frac_crossing_defined": 0.999,
+   "min_ratio": 0.4126,
+   "min_ratio_sd": 0.0025,
+   "boot_P_min_ratio_gt_half": 0.001,
+   "boot_min_ratio_ci95": [
+    0.3579288439329971,
+    0.45619126727407644
+   ]
+  },
+  {
+   "Lambda": 3e-05,
+   "family": "T1",
+   "is_new": false,
+   "n_rungs": 5,
+   "sd_rungs": [
+    0.0025,
+    0.005,
+    0.01,
+    0.02,
+    0.04
+   ],
+   "n_runs": [
+    150,
+    150,
+    150,
+    150,
+    150
+   ],
+   "median_ratios": [
+    0.32839,
+    0.29879,
+    0.5568,
+    0.95199,
+    0.94182
+   ],
+   "s_star": 0.008584809561836913,
+   "s_star_ci95_runlevel_boot": [
+    0.007175197853809366,
+    0.010350231976587979
+   ],
+   "boot_frac_crossing_defined": 1.0,
+   "min_ratio": 0.2988,
+   "min_ratio_sd": 0.005,
+   "boot_P_min_ratio_gt_half": 0.0,
+   "boot_min_ratio_ci95": [
+    0.27542368218894975,
+    0.3274548399277548
+   ]
+  },
+  {
+   "Lambda": 0.0001,
+   "family": "T1",
+   "is_new": false,
+   "n_rungs": 5,
+   "sd_rungs": [
+    0.0025,
+    0.005,
+    0.01,
+    0.02,
+    0.04
+   ],
+   "n_runs": [
+    150,
+    150,
+    150,
+    150,
+    150
+   ],
+   "median_ratios": [
+    0.24067,
+    0.23541,
+    0.27162,
+    0.71488,
+    0.96851
+   ],
+   "s_star": 0.014292223044941092,
+   "s_star_ci95_runlevel_boot": [
+    0.013049163279137948,
+    0.01617307658140131
+   ],
+   "boot_frac_crossing_defined": 1.0,
+   "min_ratio": 0.2354,
+   "min_ratio_sd": 0.005,
+   "boot_P_min_ratio_gt_half": 0.0,
+   "boot_min_ratio_ci95": [
+    0.21743744801660356,
+    0.2497504188018669
+   ]
+  },
+  {
+   "Lambda": 0.00025,
+   "family": "grid",
+   "is_new": false,
+   "n_rungs": 4,
+   "sd_rungs": [
+    0.0025,
+    0.01,
+    0.04,
+    0.16
+   ],
+   "n_runs": [
+    250,
+    150,
+    150,
+    150
+   ],
+   "median_ratios": [
+    0.21632,
+    0.1936,
+    0.84014,
+    1.13416
+   ],
+   "s_star": 0.01928941177804808,
+   "s_star_ci95_runlevel_boot": [
+    0.017593991743977012,
+    0.022594143830960735
+   ],
+   "boot_frac_crossing_defined": 1.0,
+   "min_ratio": 0.1936,
+   "min_ratio_sd": 0.01,
+   "boot_P_min_ratio_gt_half": 0.0,
+   "boot_min_ratio_ci95": [
+    0.18285415527463192,
+    0.2097642313463858
+   ]
+  },
+  {
+   "Lambda": 0.0005,
+   "family": "grid",
+   "is_new": false,
+   "n_rungs": 4,
+   "sd_rungs": [
+    0.0025,
+    0.01,
+    0.04,
+    0.16
+   ],
+   "n_runs": [
+    150,
+    150,
+    150,
+    150
+   ],
+   "median_ratios": [
+    0.18664,
+    0.17604,
+    0.67397,
+    1.04126
+   ],
+   "s_star": 0.024643600426071922,
+   "s_star_ci95_runlevel_boot": [
+    0.019815631072869294,
+    0.028777265871816227
+   ],
+   "boot_frac_crossing_defined": 1.0,
+   "min_ratio": 0.176,
+   "min_ratio_sd": 0.01,
+   "boot_P_min_ratio_gt_half": 0.0,
+   "boot_min_ratio_ci95": [
+    0.15033429874209014,
+    0.1893488543548137
+   ]
+  },
+  {
+   "Lambda": 0.001,
+   "family": "grid",
+   "is_new": false,
+   "n_rungs": 4,
+   "sd_rungs": [
+    0.0025,
+    0.01,
+    0.04,
+    0.16
+   ],
+   "n_runs": [
+    150,
+    400,
+    400,
+    400
+   ],
+   "median_ratios": [
+    0.16494,
+    0.14282,
+    0.51499,
+    0.94882
+   ],
+   "s_star": 0.03782747380623552,
+   "s_star_ci95_runlevel_boot": [
+    0.031935609026701124,
+    0.045083763059639265
+   ],
+   "boot_frac_crossing_defined": 1.0,
+   "min_ratio": 0.1428,
+   "min_ratio_sd": 0.01,
+   "boot_P_min_ratio_gt_half": 0.0,
+   "boot_min_ratio_ci95": [
+    0.13470037236460167,
+    0.1521031564592745
+   ]
+  },
+  {
+   "Lambda": 0.002,
+   "family": "grid",
+   "is_new": false,
+   "n_rungs": 4,
+   "sd_rungs": [
+    0.0025,
+    0.01,
+    0.04,
+    0.16
+   ],
+   "n_runs": [
+    150,
+    150,
+    150,
+    150
+   ],
+   "median_ratios": [
+    0.17167,
+    0.1319,
+    0.14896,
+    0.95096
+   ],
+   "s_star": 0.07338141427346123,
+   "s_star_ci95_runlevel_boot": [
+    0.06672823040148393,
+    0.07848409381501868
+   ],
+   "boot_frac_crossing_defined": 1.0,
+   "min_ratio": 0.1319,
+   "min_ratio_sd": 0.01,
+   "boot_P_min_ratio_gt_half": 0.0,
+   "boot_min_ratio_ci95": [
+    0.12096198794912406,
+    0.14003581737497886
+   ]
+  },
+  {
+   "Lambda": 0.004,
+   "family": "grid",
+   "is_new": false,
+   "n_rungs": 3,
+   "sd_rungs": [
+    0.01,
+    0.04,
+    0.16
+   ],
+   "n_runs": [
+    150,
+    250,
+    150
+   ],
+   "median_ratios": [
+    0.12289,
+    0.11526,
+    0.81376
+   ],
+   "s_star": 0.08583823084973825,
+   "s_star_ci95_runlevel_boot": [
+    0.07214909182283327,
+    0.09851699712616693
+   ],
+   "boot_frac_crossing_defined": 1.0,
+   "min_ratio": 0.1153,
+   "min_ratio_sd": 0.04,
+   "boot_P_min_ratio_gt_half": 0.0,
+   "boot_min_ratio_ci95": [
+    0.10650314984985552,
+    0.1227940791740527
+   ]
+  },
+  {
+   "Lambda": 0.0065,
+   "family": "new_v3",
+   "is_new": true,
+   "n_rungs": 5,
+   "sd_rungs": [
+    0.02,
+    0.04,
+    0.08,
+    0.16,
+    0.24
+   ],
+   "n_runs": [
+    150,
+    150,
+    150,
+    150,
+    150
+   ],
+   "median_ratios": [
+    0.10453,
+    0.10287,
+    0.18356,
+    0.82114,
+    0.94554
+   ],
+   "s_star": 0.11284842687926155,
+   "s_star_ci95_runlevel_boot": [
+    0.10582576672923202,
+    0.12039430800262872
+   ],
+   "boot_frac_crossing_defined": 1.0,
+   "min_ratio": 0.1029,
+   "min_ratio_sd": 0.04,
+   "boot_P_min_ratio_gt_half": 0.0,
+   "boot_min_ratio_ci95": [
+    0.08878496837645282,
+    0.10909668691995944
+   ]
+  },
+  {
+   "Lambda": 0.01,
+   "family": "new_v3",
+   "is_new": true,
+   "n_rungs": 5,
+   "sd_rungs": [
+    0.04,
+    0.08,
+    0.16,
+    0.24,
+    0.32
+   ],
+   "n_runs": [
+    150,
+    150,
+    150,
+    150,
+    150
+   ],
+   "median_ratios": [
+    0.08579,
+    0.09661,
+    0.78206,
+    0.87868,
+    0.94457
+   ],
+   "s_star": 0.12029500190043699,
+   "s_star_ci95_runlevel_boot": [
+    0.11655802943754598,
+    0.12665544859184602
+   ],
+   "boot_frac_crossing_defined": 1.0,
+   "min_ratio": 0.0858,
+   "min_ratio_sd": 0.04,
+   "boot_P_min_ratio_gt_half": 0.0,
+   "boot_min_ratio_ci95": [
+    0.07992491150535894,
+    0.09590816434553984
+   ]
+  },
+  {
+   "Lambda": 0.025,
+   "family": "new_v3",
+   "is_new": true,
+   "n_rungs": 5,
+   "sd_rungs": [
+    0.08,
+    0.16,
+    0.24,
+    0.32,
+    0.4
+   ],
+   "n_runs": [
+    150,
+    150,
+    150,
+    150,
+    150
+   ],
+   "median_ratios": [
+    0.08356,
+    0.41344,
+    0.77184,
+    0.85543,
+    0.76758
+   ],
+   "s_star": 0.17646078958229716,
+   "s_star_ci95_runlevel_boot": [
+    0.16218899599938716,
+    0.1949934034076975
+   ],
+   "boot_frac_crossing_defined": 1.0,
+   "min_ratio": 0.0836,
+   "min_ratio_sd": 0.08,
+   "boot_P_min_ratio_gt_half": 0.0,
+   "boot_min_ratio_ci95": [
+    0.07456305479199606,
+    0.09325301604924563
+   ]
+  }
+ ],
+ "new_points_summary": {
+  "defined": [
+   {
+    "Lambda": 0.0065,
+    "s_star": [
+     0.11284842687926155,
+     0.10582576672923202,
+     0.12039430800262872
+    ]
+   },
+   {
+    "Lambda": 0.01,
+    "s_star": [
+     0.12029500190043699,
+     0.11655802943754598,
+     0.12665544859184602
+    ]
+   },
+   {
+    "Lambda": 0.025,
+    "s_star": [
+     0.17646078958229716,
+     0.16218899599938716,
+     0.1949934034076975
+    ]
+   }
+  ],
+  "undefined_low_Lambda": [
+   {
+    "Lambda": 1e-06,
+    "min_ratio": [
+     0.5983,
+     0.5135968312119498,
+     0.6745479452688343
+    ],
+    "boot_P_no_crossing": 0.9955,
+    "rungs_sd": [
+     0.0003125,
+     0.000625,
+     0.00125,
+     0.0025,
+     0.005,
+     0.01
+    ],
+    "median_ratios": [
+     0.72011,
+     0.67845,
+     0.59831,
+     0.77564,
+     0.92236,
+     1.04047
+    ]
+   },
+   {
+    "Lambda": 3e-06,
+    "min_ratio": [
+     0.5397,
+     0.5056291027778186,
+     0.5727719387050076
+    ],
+    "boot_P_no_crossing": 0.987,
+    "rungs_sd": [
+     0.000625,
+     0.00125,
+     0.0025,
+     0.005,
+     0.01,
+     0.02
+    ],
+    "median_ratios": [
+     0.54929,
+     0.53969,
+     0.62934,
+     0.84694,
+     1.01023,
+     1.06812
+    ]
+   }
+  ],
+  "handling": "per the pre-registered undefined-point rule the two low-Lambda points (1e-6, 3e-6) are excluded from the exponent fit (no 1/2 crossing anywhere on their ladders; P(no crossing) >= 0.987) and reported as a trough floor"
+ },
+ "trough_floor": {
+  "statement": "the ladder-minimum median ratio rises above 1/2 as Lambda falls; the traced 1/2-crossing law terminates at a floor",
+  "min_ratio_by_Lambda": [
+   {
+    "Lambda": 1e-06,
+    "min_ratio": [
+     0.5983,
+     0.5135968312119498,
+     0.6745479452688343
+    ],
+    "sd_at_min": 0.00125
+   },
+   {
+    "Lambda": 3e-06,
+    "min_ratio": [
+     0.5397,
+     0.5056291027778186,
+     0.5727719387050076
+    ],
+    "sd_at_min": 0.00125
+   },
+   {
+    "Lambda": 1e-05,
+    "min_ratio": [
+     0.4126,
+     0.3585343465129647,
+     0.4580909135836895
+    ],
+    "sd_at_min": 0.0025
+   },
+   {
+    "Lambda": 3e-05,
+    "min_ratio": [
+     0.2988,
+     0.27424508216290416,
+     0.3273293314652894
+    ],
+    "sd_at_min": 0.005
+   },
+   {
+    "Lambda": 0.0001,
+    "min_ratio": [
+     0.2354,
+     0.21794861493408207,
+     0.2506794523511287
+    ],
+    "sd_at_min": 0.005
+   },
+   {
+    "Lambda": 0.00025,
+    "min_ratio": [
+     0.1936,
+     0.18334990106259866,
+     0.20878322928586643
+    ],
+    "sd_at_min": 0.01
+   },
+   {
+    "Lambda": 0.0005,
+    "min_ratio": [
+     0.176,
+     0.15027160395189118,
+     0.18977359507720318
+    ],
+    "sd_at_min": 0.01
+   },
+   {
+    "Lambda": 0.001,
+    "min_ratio": [
+     0.1428,
+     0.13490200465898108,
+     0.1527169198479329
+    ],
+    "sd_at_min": 0.01
+   },
+   {
+    "Lambda": 0.002,
+    "min_ratio": [
+     0.1319,
+     0.12041308593831106,
+     0.14001309630202324
+    ],
+    "sd_at_min": 0.01
+   },
+   {
+    "Lambda": 0.004,
+    "min_ratio": [
+     0.1153,
+     0.10599662147056063,
+     0.1227668369911781
+    ],
+    "sd_at_min": 0.04
+   },
+   {
+    "Lambda": 0.0065,
+    "min_ratio": [
+     0.1029,
+     0.08882775927063016,
+     0.10910746042698374
+    ],
+    "sd_at_min": 0.04
+   },
+   {
+    "Lambda": 0.01,
+    "min_ratio": [
+     0.0858,
+     0.07979742894526662,
+     0.09501510678207983
+    ],
+    "sd_at_min": 0.04
+   },
+   {
+    "Lambda": 0.025,
+    "min_ratio": [
+     0.0836,
+     0.07480751172431103,
+     0.09336822703065203
+    ],
+    "sd_at_min": 0.08
+   }
+  ],
+  "Lambda_floor_where_min_ratio_reaches_half": 4.369620564453299e-06,
+  "interpretation": "for Lambda <= ~4e-6 no s_d yields a loaded median T_fix below half the neutral median; the two lowest pre-registered abscissae probe this regime and return no ridge point rather than a shifted one"
+ },
+ "refit_extended": {
+  "n_points_defined": 11,
+  "n_points_total_design": 13,
+  "Lambda_range_defined": [
+   1e-05,
+   0.025
+  ],
+  "Lambda_span_x_defined": 2500.0,
+  "Lambda_span_x_current": 400.0,
+  "gamma": [
+   0.46465370916027626,
+   0.4310479194757876,
+   0.49825949884476495
+  ],
+  "gamma_se": 0.017145811063514635,
+  "gamma_ci95_ols": [
+   0.42586718985096195,
+   0.5034402284695906
+  ],
+  "gamma_ci95_runlevel_boot": [
+   0.45060774665194525,
+   0.47859128692039876
+  ],
+  "k": [
+   1.1521403580468634,
+   0.9863331204975474,
+   1.3481499017333638
+  ],
+  "k_se": 0.07941439233945298,
+  "k_ci95_ols": [
+   0.9863331204975474,
+   1.3481499017333638
+  ],
+  "k_ci95_runlevel_boot": [
+   1.0894655367461288,
+   1.2192250528437794
+  ],
+  "runlevel_boot": {
+   "B": 3000,
+   "shared_anchor_draw_per_replicate": true,
+   "seed": 20260718,
+   "replicates_defined": 3000,
+   "k_median": 1.151024842493686,
+   "P_k_lt_1": 0.0,
+   "frac_replicates_k1_over_k2_by_AIC": 1.0
+  },
+  "prefactor": 1.0434224971955888,
+  "r2": 0.9878937400836575,
+  "rss": 0.1638998787312561,
+  "models_vs_free": {
+   "k0_pure_rate": {
+    "gamma0": 1.0,
+    "dAIC": 49.637132393584174,
+    "F": 974.8853149274632,
+    "p": 1.7388106396620025e-10
+   },
+   "k1_Haigh": {
+    "gamma0": 0.5,
+    "dAIC": 2.254362144235195,
+    "F": 4.249830663888668,
+    "p": 0.06931030134706026
+   },
+   "k2": {
+    "gamma0": 0.3333333333333333,
+    "dAIC": 20.190110569033905,
+    "F": 58.66082498251227,
+    "p": 3.129352880307229e-05
+   },
+   "sstar_const": {
+    "gamma0": 0.0,
+    "dAIC": 46.554358728699526,
+    "F": 734.417047229482,
+    "p": 6.144501580319724e-10
+   }
+  },
+  "family_and_curvature_test": {
+   "common_slope": 0.46465370916027626,
+   "family_slopes": {
+    "family0": 0.41765900680875084,
+    "family1": 0.588182404549561,
+    "family2": 0.34538692935760007
+   },
+   "family_F": 2.124108447574307,
+   "family_p": 0.21500927719433383,
+   "dAIC_separate_minus_common": -2.922863318743481,
+   "curvature_coef": 0.006398930834049381,
+   "curvature_F": 0.6797600983706211,
+   "curvature_p": 0.4335616589084711,
+   "dAIC_quad_minus_lin": 1.1029241700870003
+  },
+  "leave_one_out": {
+   "k_range": [
+    1.101308500984461,
+    1.1746292587803482
+   ],
+   "table": [
+    {
+     "dropped_Lambda": 1e-05,
+     "k": 1.101308500984461,
+     "k_ci95_ols": [
+      0.9057570425570332,
+      1.3415801652724682
+     ],
+     "dAIC_k1": -0.4987021455429357
+    },
+    {
+     "dropped_Lambda": 3e-05,
+     "k": 1.1395581685948337,
+     "k_ci95_ols": [
+      0.9471761523124611,
+      1.3741227286057844
+     ],
+     "dAIC_k1": 0.8635125442012423
+    },
+    {
+     "dropped_Lambda": 0.0001,
+     "k": 1.1541082635106705,
+     "k_ci95_ols": [
+      0.9694045827846152,
+      1.3770429437665652
+     ],
+     "dAIC_k1": 1.7065573230394904
+    },
+    {
+     "dropped_Lambda": 0.00025,
+     "k": 1.165009064735092,
+     "k_ci95_ols": [
+      0.9941044472467404,
+      1.367954479729124
+     ],
+     "dAIC_k1": 2.799480700900091
+    },
+    {
+     "dropped_Lambda": 0.0005,
+     "k": 1.1595532516503164,
+     "k_ci95_ols": [
+      1.0080562669819173,
+      1.335774829368087
+     ],
+     "dAIC_k1": 3.557417272612952
+    },
+    {
+     "dropped_Lambda": 0.001,
+     "k": 1.149711364626223,
+     "k_ci95_ols": [
+      0.9783148937843336,
+      1.353623692126673
+     ],
+     "dAIC_k1": 2.0293623793993874
+    },
+    {
+     "dropped_Lambda": 0.002,
+     "k": 1.1711708598425465,
+     "k_ci95_ols": [
+      1.0237610974946127,
+      1.3417422099256209
+     ],
+     "dAIC_k1": 4.511211658310664
+    },
+    {
+     "dropped_Lambda": 0.004,
+     "k": 1.1619192221131276,
+     "k_ci95_ols": [
+      0.9807763668071952,
+      1.3795280954373772
+     ],
+     "dAIC_k1": 2.1933469277312128
+    },
+    {
+     "dropped_Lambda": 0.0065,
+     "k": 1.1746292587803482,
+     "k_ci95_ols": [
+      0.9943555524381729,
+      1.3907322296822056
+     ],
+     "dAIC_k1": 2.8256091792319182
+    },
+    {
+     "dropped_Lambda": 0.01,
+     "k": 1.1472240817623849,
+     "k_ci95_ols": [
+      0.9596367292296519,
+      1.3745270486487446
+     ],
+     "dAIC_k1": 1.3151126261307624
+    },
+    {
+     "dropped_Lambda": 0.025,
+     "k": 1.1292359390006261,
+     "k_ci95_ols": [
+      0.9371552212665399,
+      1.3636013867569061
+     ],
+     "dAIC_k1": 0.4864885991955319
+    }
+   ]
+  }
+ },
+ "sensitivity": {
+  "anchor_convention": {
+   "pooled_all": {
+    "n": 11,
+    "gamma": 0.46465370916027626,
+    "k": 1.1521403580468634,
+    "k_ci95_ols": [
+     0.9863331204975474,
+     1.3481499017333638
+    ],
+    "dAIC_k1": 2.254362144235195
+   },
+   "legacy_anchors_for_old_pooled_for_new": {
+    "n": 11,
+    "gamma": 0.4737300359070178,
+    "k": 1.1109068967631952,
+    "k_ci95_ols": [
+     0.9594857278981204,
+     1.2876904015757518
+    ],
+    "dAIC_k1": 0.8249150876308846
+   },
+   "N32_anchor_for_all": {
+    "n": 11,
+    "gamma": 0.46822350380361255,
+    "k": 1.1357321703769725,
+    "k_ci95_ols": [
+     0.9583464083960784,
+     1.3484535908036368
+    ],
+    "dAIC_k1": 1.0472023859649298
+   }
+  },
+  "common_anchor_dgamma_dlna_numeric": -0.06201934494274494,
+  "crossing_level": {
+   "0.4": {
+    "n": 10,
+    "k": 1.012139851159855,
+    "k_ci95_ols": [
+     0.7779963921345214,
+     1.3173045301843485
+    ],
+    "dAIC_k1": -1.9858880143431392
+   },
+   "0.5": {
+    "n": 11,
+    "k": 1.1521403580468634,
+    "k_ci95_ols": [
+     0.9863331204975474,
+     1.3481499017333638
+    ],
+    "dAIC_k1": 2.254362144235195
+   },
+   "0.6": {
+    "n": 13,
+    "k": 0.9939299121096783,
+    "k_ci95_ols": [
+     0.8541655536265842,
+     1.1564824907101245
+    ],
+    "dAIC_k1": -1.9907217937894544
+   }
+  },
+  "estimator_geometry_bias": {
+   "delta_k_current_8": -0.008131950053915205,
+   "delta_k_extended_layout": 0.002282941537606664,
+   "note": "see estimator_calibration.json: |delta k| < 0.01, two orders below the sampling error"
+  }
+ },
+ "decision": {
+  "k_point_estimate": 1.1521403580468634,
+  "ols_ci_excludes_1": false,
+  "runlevel_boot_ci_excludes_1": true,
+  "k_equals_1_excluded_per_preregistered_rule": false,
+  "verdict": "k = 1 (Haigh U_d/s_d = const) is RETAINED under the pre-registered rule: the point-scatter OLS 95% CI [0.986, 1.348] includes 1.0 (marginally), although the run-level bootstrap 95% CI [1.089, 1.219] excludes it and dAIC(k=1 vs free) = +2.25 (F-test p = 0.069). The free exponent is k = 1.152 +/- 0.079 on 11 defined points spanning Lambda x2500; k=0 (dAIC +49.6), k=2 (+20.2) and s*=const (+46.6) remain decisively rejected.",
+  "for_or_against_paper": "FOR the paper's current claim as pre-registered (k=1 retained: the extended dataset does not exclude Haigh's form on both currencies) \u2014 with the material caveat that the retention is marginal (OLS lower bound 0.986, dAIC(k=1) +2.25, bootstrap excludes 1); the point estimate is k = 1.15 and the paper should report k = 1.15 [0.99, 1.35] alongside k=1."
+ },
+ "runtime": {
+  "campaign_wall_s": 1232.0,
+  "workers": 60,
+  "core_hours": 19.846240530545668,
+  "runs": 4050
+ }
+}

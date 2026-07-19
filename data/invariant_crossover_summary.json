@@ -1,0 +1,2262 @@
+{
+ "verdict": {
+  "against_paper": true,
+  "verdict_one_line": "AGAINST the paper's current freeze-bar: the level-crossing theta* is not a measured crossover load (its value moves 6.1-fold across the reported level conventions at s_d = 0.01, 1.21 -> 0.20), whereas two convention-free descriptors -- the half-drop of the log-median fixation-time curve (theta*_half = 0.54 [0.45, 0.66] at s_d = 0.01) and the chi_late departure load (0.45 [0.35, 0.55]) -- agree with each other within CI; the level-0.5 ridge (0.37) sits below the half-drop interval and no single reported level (0.25 / 0.5 / 0.75) coincides with the invariant, whose equivalent level runs from 0.29 to 0.48 across s_d and descriptors.",
+  "invariants_agree_at_sd0p01": true,
+  "halfdrop_vs_inflection_agree_all_sd": true,
+  "halfdrop_inside_convention_band_all_sd": true,
+  "level_0p5_below_halfdrop_ci_at_sd0p01": true,
+  "no_reported_level_matches_invariant_at_sd0p01": true,
+  "equivalent_level_range": [
+   0.28612917306800556,
+   0.48474476555528057
+  ],
+  "plateau_unidentified_rungs": [
+   0.0025,
+   0.005
+  ],
+  "neutral_anchor_not_spanned_rungs": [
+   0.0025,
+   0.005
+  ]
+ },
+ "task": "Round-10: convention-independent crossover descriptors (T3 cluster 1) from deposited data only",
+ "generated_by": "invariant_crossover.py",
+ "rng_seed": 20260718,
+ "bootstrap_resamples": 2000,
+ "bootstrap_scheme": "run-level: runs resampled with replacement within every load rung; whole gap trajectories resampled for chi; one shared neutral-anchor draw per replicate",
+ "percentile_ci": [
+  2.5,
+  97.5
+ ],
+ "inputs": {
+  "ridge_pool_rows": 15612,
+  "loaded_runs": 12756,
+  "neutral_runs": 2856,
+  "sd_rungs": [
+   0.0025,
+   0.005,
+   0.01,
+   0.02,
+   0.04
+  ],
+  "neutral_pool_medians": {
+   "census": 575481.0,
+   "ladderN32": 540332.0,
+   "new": 569566.0,
+   "tfixexp1": 585867.5,
+   "tfixexp2": 601622.0
+  },
+  "gap_variance_geometry": "192x32, s_d = 0.01 only (all arms of sigma_dR_gridseries.parquet)",
+  "gap_variance_geometry_check": {
+   "sd": [
+    0.01
+   ],
+   "L_long": [
+    192.0
+   ],
+   "L_short": [
+    32.0
+   ]
+  },
+  "gap_variance_load_rungs": [
+   0.05,
+   0.1,
+   0.15,
+   0.2,
+   0.3,
+   0.4,
+   0.5,
+   0.6,
+   0.8,
+   1.2,
+   2.0,
+   4.0,
+   10.0
+  ],
+  "envelope_levels": [
+   0.25,
+   0.3,
+   0.4,
+   0.5,
+   0.6,
+   0.7,
+   0.75
+  ]
+ },
+ "input_consistency": {
+  "gap_variance_curve_reproduction": {
+   "n_gridpoints_compared": 1553,
+   "n_alive_exact_match": true,
+   "max_rel_diff_var_g": 1.4417117150960343e-15
+  },
+  "chi_late_vs_deposit": {
+   "max_abs_diff_vs_deposit_chi_late": 1.6653345369377348e-15,
+   "n_rungs_compared": 13
+  },
+  "neutral_gap_arm": {
+   "n_neutral_runs": 192,
+   "max_abs_g": 0.0,
+   "frac_nan": 0.45167100694444445,
+   "imposed_gap_arm": {
+    "n_runs": 160,
+    "imposed_g_values": [
+     0.005,
+     0.01,
+     0.02,
+     0.04,
+     0.08
+    ],
+    "max_within_run_g_sd": 0.0,
+    "chi_late_composition_only_f0333": -3.1652483907095514
+   }
+  }
+ },
+ "definitions": {
+  "half_drop_endpoint": "theta at which log10(median T_fix) has fallen halfway between its lowest-sampled-load and highest-sampled-load values (first descending crossing, linear interp in log10 theta)",
+  "half_drop_neutral_normalised": "as above but the low-load reference is log10 of the pooled kind=='neutral' median T_fix (theta -> 0 anchor)",
+  "half_drop_common_range": "as endpoint half-drop but every rung restricted to the shared load window [0.1, 1.2] (endpoint medians interpolated in log-load)",
+  "half_drop_isotonic": "endpoint half-drop after weighted PAVA (weights = runs per rung) on the log-medians (robustness to non-monotone rungs)",
+  "inflection_4pl": "weighted 4PL in log-load, y = L + (U-L)/(1+10^{h(x-c)}); theta50 = 10^c; plateau reached if the fitted curve at the sampled endpoint is within 5% of the drop (U-L) of the asymptote",
+  "chi_late": "OLS slope of log10 Var_alive[g] vs log10 t over the terminal fraction f of the retained log-time span (grid frames = grid_mult*500, retained when n_alive >= 30); f in [0.2, 0.3333333333333333, 0.5]",
+  "chi_frozen_reference": "inverse-variance-weighted mean of chi_late over the 3 lowest sampled loads (theta = 0.05, 0.10, 0.15); the neutral ensemble carries no fitness gap (g == 0), so a neutral chi is undefined and the frozen-interface floor of the loaded ladder is the reference",
+  "chi_departure_rule": "smallest sampled load theta_i (above the reference rungs) such that z_j = (chi_j - chi_frozen)/sqrt(SE_j^2 + SE_frozen^2) >= 2 for j = i and for EVERY higher sampled load (sustained exceedance); reported as bracket (theta_{i-1}, theta_i] and its geometric midpoint; z >= 3 tabulated as sensitivity",
+  "chi_half_rise": "load at which chi_late (piecewise-linear in log-load through the rung values) first rises through the midpoint of its lowest-load and highest-load values (mirror image of the T_fix half-drop; no threshold parameter)"
+ },
+ "neutral_anchor": {
+  "neutral_median_pooled": 572583.5,
+  "n_neutral": 2856,
+  "neutral_pool_medians": {
+   "census": 575481.0,
+   "ladderN32": 540332.0,
+   "new": 569566.0,
+   "tfixexp1": 585867.5,
+   "tfixexp2": 601622.0
+  }
+ },
+ "per_sd": {
+  "0.0025": {
+   "sd": 0.0025,
+   "n_runs": 4452,
+   "n_rungs": 22,
+   "theta_min": 0.05,
+   "theta_max": 16.0,
+   "median_lowest_load": 444503.0,
+   "median_highest_load": 137981.0,
+   "neutral_median_pooled": 572583.5,
+   "ratio_at_theta_min": 0.7763112279693704,
+   "ratio_at_theta_max": 0.24097969990403145,
+   "half_drop_endpoint": {
+    "theta_star": [
+     1.3178054767757075,
+     0.6836277584504833,
+     2.04007878358464
+    ],
+    "log10_target": 5.39384699226725,
+    "status": "ok",
+    "boot_frac_ok": 1.0
+   },
+   "half_drop_neutral_normalised": {
+    "theta_star": [
+     0.6550049846595675,
+     0.29616496118613833,
+     0.8947295805838816
+    ],
+    "status": "ok",
+    "boot_status_frequency": {
+     "ok": 1.0
+    },
+    "target_log10": 5.448829058511912,
+    "note": "status 'at_left_edge' means the lowest sampled loaded rung already lies below the neutral-normalised half-drop target, i.e. the descriptor is only upper-bounded by theta_min at this s_d"
+   },
+   "half_drop_common_range": {
+    "theta_star": [
+     0.4429765695483821,
+     0.2455980937010257,
+     0.49520246311325317
+    ],
+    "range": [
+     0.1,
+     1.2
+    ],
+    "status": "ok"
+   },
+   "half_drop_isotonic": {
+    "theta_star": [
+     1.1616739428998446,
+     0.6905449908426701,
+     1.6362299941049585
+    ],
+    "status": "ok"
+   },
+   "inflection_4pl": {
+    "theta50": [
+     1.1330749850408712,
+     0.014109996918798287,
+     291.9015494935434
+    ],
+    "U_lowload_plateau_log10": [
+     6.1255433404359945,
+     5.767785935291182,
+     7.725796510911205
+    ],
+    "L_highload_plateau_log10": [
+     4.695292635137609,
+     3.1178510728704882,
+     5.083159094234139
+    ],
+    "hill_h": [
+     0.28998072421846,
+     0.09279012860331752,
+     0.6577453939178693
+    ],
+    "hill_at_bound": false,
+    "U_minus_log10_neutral": 0.36770451152896655,
+    "U_over_neutral_ratio": 2.3318709469248784,
+    "lowload_plateau_reached": false,
+    "highload_plateau_reached": false,
+    "inflection_inside_range": true,
+    "boot_frac_valid": 1.0,
+    "boot_frac_inflection_inside_range": 0.846,
+    "theta50_ci_width_decades": 4.315709481431025,
+    "identified": false
+   },
+   "agreement": {
+    "log10_halfdrop_over_inflection": [
+     0.08869417709682602,
+     -2.302681561613063,
+     1.9147597740645033
+    ],
+    "log10_endpoint_over_neutralnorm": [
+     0.30066028456036176,
+     0.03956271062835906,
+     0.6166755948648677
+    ]
+   },
+   "neutral_anchor_spanned": false,
+   "highload_shelf_spanned": false,
+   "pool_restricted_sensitivity": {
+    "census": {
+     "n_runs": 1152,
+     "n_rungs": 12,
+     "theta_range": [
+      0.05,
+      5.0
+     ],
+     "half_drop_endpoint": [
+      0.5463900598289716,
+      0.2724961024625805,
+      1.3074877113862173
+     ],
+     "status": "ok",
+     "boot": 400,
+     "ratio_at_theta_min": 0.7763112279693701
+    },
+    "ladder": {
+     "n_runs": 1200,
+     "n_rungs": 8,
+     "theta_range": [
+      0.08,
+      16.0
+     ],
+     "half_drop_endpoint": [
+      0.8963629420367079,
+      0.6393918257940631,
+      1.8964376605580977
+     ],
+     "status": "ok",
+     "boot": 400,
+     "ratio_at_theta_min": 0.8510592778171224
+    },
+    "new": {
+     "n_runs": 2100,
+     "n_rungs": 7,
+     "theta_range": [
+      0.4,
+      3.0
+     ],
+     "half_drop_endpoint": [
+      1.0311318711524564,
+      0.6420291842644876,
+      1.4716821658081887
+     ],
+     "status": "ok",
+     "boot": 400,
+     "ratio_at_theta_min": 0.5838860183711202
+    }
+   }
+  },
+  "0.005": {
+   "sd": 0.005,
+   "n_runs": 1350,
+   "n_rungs": 8,
+   "theta_min": 0.1,
+   "theta_max": 4.0,
+   "median_lowest_load": 464730.0,
+   "median_highest_load": 134969.0,
+   "neutral_median_pooled": 572583.5,
+   "ratio_at_theta_min": 0.8116370800066716,
+   "ratio_at_theta_max": 0.2357193317655853,
+   "half_drop_endpoint": {
+    "theta_star": [
+     0.4597256102734355,
+     0.36386717890198694,
+     0.6869584887842815
+    ],
+    "log10_target": 5.398717369411639,
+    "status": "ok",
+    "boot_frac_ok": 1.0
+   },
+   "half_drop_neutral_normalised": {
+    "theta_star": [
+     0.36840433653081284,
+     0.2864263967772032,
+     0.41759071545956045
+    ],
+    "status": "ok",
+    "boot_status_frequency": {
+     "ok": 1.0
+    },
+    "target_log10": 5.444036429534564,
+    "note": "status 'at_left_edge' means the lowest sampled loaded rung already lies below the neutral-normalised half-drop target, i.e. the descriptor is only upper-bounded by theta_min at this s_d"
+   },
+   "half_drop_common_range": {
+    "theta_star": [
+     0.3630100295942791,
+     0.2734985762885503,
+     0.42691536252483836
+    ],
+    "range": [
+     0.1,
+     1.2
+    ],
+    "status": "ok"
+   },
+   "half_drop_isotonic": {
+    "theta_star": [
+     0.4597256102734355,
+     0.3658799803594274,
+     0.6785551266140734
+    ],
+    "status": "ok"
+   },
+   "inflection_4pl": {
+    "theta50": [
+     0.39433332269861654,
+     0.02244131335361722,
+     0.539853094928323
+    ],
+    "U_lowload_plateau_log10": [
+     5.799399641233416,
+     5.677908016028783,
+     7.425147532136725
+    ],
+    "L_highload_plateau_log10": [
+     5.084310137374834,
+     4.889144068111233,
+     5.160165541409656
+    ],
+    "hill_h": [
+     1.159286255008482,
+     0.43404660858531535,
+     1.740795127991307
+    ],
+    "hill_at_bound": false,
+    "U_minus_log10_neutral": 0.041560812326387975,
+    "U_over_neutral_ratio": 1.1004259222599608,
+    "lowload_plateau_reached": false,
+    "highload_plateau_reached": false,
+    "inflection_inside_range": true,
+    "boot_frac_valid": 1.0,
+    "boot_frac_inflection_inside_range": 0.952,
+    "theta50_ci_width_decades": 1.3812273255429857,
+    "identified": false
+   },
+   "agreement": {
+    "log10_halfdrop_over_inflection": [
+     0.09616508853232639,
+     -0.03642415819392567,
+     1.2201994765126905
+    ],
+    "log10_endpoint_over_neutralnorm": [
+     0.09001639243341089,
+     0.009597664329054468,
+     0.29255446629840764
+    ]
+   },
+   "neutral_anchor_spanned": false,
+   "highload_shelf_spanned": false,
+   "pool_restricted_sensitivity": {
+    "ladder": {
+     "n_runs": 1050,
+     "n_rungs": 7,
+     "theta_range": [
+      0.1,
+      4.0
+     ],
+     "half_drop_endpoint": [
+      0.4597256102734355,
+      0.3441006398433918,
+      0.694365168026033
+     ],
+     "status": "ok",
+     "boot": 400,
+     "ratio_at_theta_min": 0.8116370800066713
+    }
+   }
+  },
+  "0.01": {
+   "sd": 0.01,
+   "n_runs": 2802,
+   "n_rungs": 14,
+   "theta_min": 0.05,
+   "theta_max": 10.0,
+   "median_lowest_load": 593171.5,
+   "median_highest_load": 86058.0,
+   "neutral_median_pooled": 572583.5,
+   "ratio_at_theta_min": 1.0359563277670418,
+   "ratio_at_theta_max": 0.15029772950146136,
+   "half_drop_endpoint": {
+    "theta_star": [
+     0.5426504624859552,
+     0.44836728417978333,
+     0.6574775280923296
+    ],
+    "log10_target": 5.353985762595524,
+    "status": "ok",
+    "boot_frac_ok": 1.0
+   },
+   "half_drop_neutral_normalised": {
+    "theta_star": [
+     0.5523127538632255,
+     0.4770605250428729,
+     0.6024286869889809
+    ],
+    "status": "ok",
+    "boot_status_frequency": {
+     "ok": 1.0
+    },
+    "target_log10": 5.346315038853062,
+    "note": "status 'at_left_edge' means the lowest sampled loaded rung already lies below the neutral-normalised half-drop target, i.e. the descriptor is only upper-bounded by theta_min at this s_d"
+   },
+   "half_drop_common_range": {
+    "theta_star": [
+     0.38867644674065044,
+     0.34397869549403537,
+     0.5189439209924067
+    ],
+    "range": [
+     0.1,
+     1.2
+    ],
+    "status": "ok"
+   },
+   "half_drop_isotonic": {
+    "theta_star": [
+     0.5426504624859552,
+     0.4518148479562699,
+     0.6274658621041953
+    ],
+    "status": "ok"
+   },
+   "inflection_4pl": {
+    "theta50": [
+     0.4791601649058212,
+     0.405749843122699,
+     0.5721593301690701
+    ],
+    "U_lowload_plateau_log10": [
+     5.848898280347057,
+     5.748661074879964,
+     5.940883269015241
+    ],
+    "L_highload_plateau_log10": [
+     4.919265450587843,
+     4.867868986855366,
+     4.9630144673096135
+    ],
+    "hill_h": [
+     1.284832827874562,
+     1.0454171107348902,
+     1.649964515113398
+    ],
+    "hill_at_bound": false,
+    "U_minus_log10_neutral": 0.09105945144002892,
+    "U_over_neutral_ratio": 1.233273646969568,
+    "lowload_plateau_reached": false,
+    "highload_plateau_reached": true,
+    "inflection_inside_range": true,
+    "boot_frac_valid": 1.0,
+    "boot_frac_inflection_inside_range": 1.0,
+    "theta50_ci_width_decades": 0.14925862376388496,
+    "identified": true
+   },
+   "agreement": {
+    "log10_halfdrop_over_inflection": [
+     0.04759296720223016,
+     -0.025034021748846485,
+     0.11949801629107258
+    ],
+    "log10_endpoint_over_neutralnorm": [
+     -0.007311771468571551,
+     -0.06310680598551695,
+     0.0847607999770829
+    ]
+   },
+   "neutral_anchor_spanned": true,
+   "highload_shelf_spanned": true,
+   "pool_restricted_sensitivity": {
+    "census": {
+     "n_runs": 1152,
+     "n_rungs": 12,
+     "theta_range": [
+      0.05,
+      5.0
+     ],
+     "half_drop_endpoint": [
+      0.5112877064422594,
+      0.36075022467633566,
+      0.6617520345447147
+     ],
+     "status": "ok",
+     "boot": 400,
+     "ratio_at_theta_min": 1.035956327767042
+    },
+    "ladder": {
+     "n_runs": 1650,
+     "n_rungs": 11,
+     "theta_range": [
+      0.1,
+      10.0
+     ],
+     "half_drop_endpoint": [
+      0.5817770877605033,
+      0.4858550984198836,
+      0.6721562457242902
+     ],
+     "status": "ok",
+     "boot": 400,
+     "ratio_at_theta_min": 0.866315567947732
+    }
+   }
+  },
+  "0.02": {
+   "sd": 0.02,
+   "n_runs": 1350,
+   "n_rungs": 8,
+   "theta_min": 0.025,
+   "theta_max": 1.2,
+   "median_lowest_load": 549232.0,
+   "median_highest_load": 99867.5,
+   "neutral_median_pooled": 572583.5,
+   "ratio_at_theta_min": 0.9592173019306355,
+   "ratio_at_theta_max": 0.17441560925175106,
+   "half_drop_endpoint": {
+    "theta_star": [
+     0.5737362129498704,
+     0.5386367809239762,
+     0.6436493981171281
+    ],
+    "log10_target": 5.369590005461218,
+    "status": "ok",
+    "boot_frac_ok": 1.0
+   },
+   "half_drop_neutral_normalised": {
+    "theta_star": [
+     0.5684584492765593,
+     0.5362027448637634,
+     0.6361362404642533
+    ],
+    "status": "ok",
+    "boot_status_frequency": {
+     "ok": 1.0
+    },
+    "target_log10": 5.3786315035761465,
+    "note": "status 'at_left_edge' means the lowest sampled loaded rung already lies below the neutral-normalised half-drop target, i.e. the descriptor is only upper-bounded by theta_min at this s_d"
+   },
+   "half_drop_common_range": {
+    "theta_star": [
+     0.5833290007285274,
+     0.548284856048154,
+     0.6631282055234936
+    ],
+    "range": [
+     0.1,
+     1.2
+    ],
+    "status": "ok"
+   },
+   "half_drop_isotonic": {
+    "theta_star": [
+     0.5737362129498704,
+     0.5362224259288373,
+     0.6406878504488677
+    ],
+    "status": "ok"
+   },
+   "inflection_4pl": {
+    "theta50": [
+     0.6270048569860972,
+     0.575981238003958,
+     0.7900072340072963
+    ],
+    "U_lowload_plateau_log10": [
+     5.716006817327258,
+     5.662881423766502,
+     5.780677714650597
+    ],
+    "L_highload_plateau_log10": [
+     4.913905557788132,
+     4.666652881516836,
+     4.999916780550006
+    ],
+    "hill_h": [
+     3.3197669759881183,
+     1.952417093018601,
+     5.109916841052008
+    ],
+    "hill_at_bound": false,
+    "U_minus_log10_neutral": -0.041832011579770345,
+    "U_over_neutral_ratio": 0.9081717500108182,
+    "lowload_plateau_reached": true,
+    "highload_plateau_reached": false,
+    "inflection_inside_range": true,
+    "boot_frac_valid": 1.0,
+    "boot_frac_inflection_inside_range": 0.9985,
+    "theta50_ci_width_decades": 0.13722273113649197,
+    "identified": true
+   },
+   "agreement": {
+    "log10_halfdrop_over_inflection": [
+     -0.03762852802608266,
+     -0.13908367690574555,
+     0.0049901269086379645
+    ],
+    "log10_endpoint_over_neutralnorm": [
+     0.004451977703146259,
+     -0.012082443694253578,
+     0.021291352720669336
+    ]
+   },
+   "neutral_anchor_spanned": true,
+   "highload_shelf_spanned": false,
+   "pool_restricted_sensitivity": {
+    "ladder": {
+     "n_runs": 1050,
+     "n_rungs": 7,
+     "theta_range": [
+      0.025,
+      1.2
+     ],
+     "half_drop_endpoint": [
+      0.5554754031783337,
+      0.4994019554935556,
+      0.6392476828157007
+     ],
+     "status": "ok",
+     "boot": 400,
+     "ratio_at_theta_min": 0.959217301930636
+    }
+   }
+  },
+  "0.04": {
+   "sd": 0.04,
+   "n_runs": 2802,
+   "n_rungs": 19,
+   "theta_min": 0.00625,
+   "theta_max": 10.0,
+   "median_lowest_load": 568350.5,
+   "median_highest_load": 50405.5,
+   "neutral_median_pooled": 572583.5,
+   "ratio_at_theta_min": 0.9926071917894944,
+   "ratio_at_theta_max": 0.08803170192644391,
+   "half_drop_endpoint": {
+    "theta_star": [
+     0.7832072125979144,
+     0.7516991716026191,
+     0.8368906047207992
+    ],
+    "log10_target": 5.228547086751682,
+    "status": "ok",
+    "boot_frac_ok": 1.0
+   },
+   "half_drop_neutral_normalised": {
+    "theta_star": [
+     0.7819565692600747,
+     0.7533039615522976,
+     0.8318759418737425
+    ],
+    "status": "ok",
+    "boot_status_frequency": {
+     "ok": 1.0
+    },
+    "target_log10": 5.230158378006917,
+    "note": "status 'at_left_edge' means the lowest sampled loaded rung already lies below the neutral-normalised half-drop target, i.e. the descriptor is only upper-bounded by theta_min at this s_d"
+   },
+   "half_drop_common_range": {
+    "theta_star": [
+     0.6814381989703828,
+     0.649600736926509,
+     0.7349021494529303
+    ],
+    "range": [
+     0.1,
+     1.2
+    ],
+    "status": "ok"
+   },
+   "half_drop_isotonic": {
+    "theta_star": [
+     0.7832072125979144,
+     0.7511329713465746,
+     0.8355188352939662
+    ],
+    "status": "ok"
+   },
+   "inflection_4pl": {
+    "theta50": [
+     0.8021170875658736,
+     0.7706232650904151,
+     0.848710556041892
+    ],
+    "U_lowload_plateau_log10": [
+     5.727765642090002,
+     5.7059532574954055,
+     5.7485471027592645
+    ],
+    "L_highload_plateau_log10": [
+     4.714989006776223,
+     4.6914892079372486,
+     4.737373135462618
+    ],
+    "hill_h": [
+     2.6393782057632995,
+     2.335610390169904,
+     3.1561961108477306
+    ],
+    "hill_at_bound": false,
+    "U_minus_log10_neutral": -0.030073186817025643,
+    "U_over_neutral_ratio": 0.9330970430839891,
+    "lowload_plateau_reached": true,
+    "highload_plateau_reached": true,
+    "inflection_inside_range": true,
+    "boot_frac_valid": 1.0,
+    "boot_frac_inflection_inside_range": 1.0,
+    "theta50_ci_width_decades": 0.04191748764175188,
+    "identified": true
+   },
+   "agreement": {
+    "log10_halfdrop_over_inflection": [
+     -0.010722485354400117,
+     -0.030657518080617955,
+     0.011210619192834411
+    ],
+    "log10_endpoint_over_neutralnorm": [
+     0.000579986654840374,
+     -0.006854494709759487,
+     0.011035443174309776
+    ]
+   },
+   "neutral_anchor_spanned": true,
+   "highload_shelf_spanned": true,
+   "pool_restricted_sensitivity": {
+    "census": {
+     "n_runs": 1152,
+     "n_rungs": 12,
+     "theta_range": [
+      0.05,
+      5.0
+     ],
+     "half_drop_endpoint": [
+      0.8220626393941171,
+      0.7511634615624454,
+      0.8770128086554131
+     ],
+     "status": "ok",
+     "boot": 400,
+     "ratio_at_theta_min": 0.772628795625442
+    },
+    "ladder": {
+     "n_runs": 1650,
+     "n_rungs": 11,
+     "theta_range": [
+      0.00625,
+      10.0
+     ],
+     "half_drop_endpoint": [
+      0.879396740643386,
+      0.8289509473854249,
+      0.9614263524533809
+     ],
+     "status": "ok",
+     "boot": 400,
+     "ratio_at_theta_min": 0.992607191789494
+    }
+   }
+  }
+ },
+ "chi_late_profile": {
+  "sd": 0.01,
+  "geometry": "192x32",
+  "thetas": [
+   0.05,
+   0.1,
+   0.15,
+   0.2,
+   0.3,
+   0.4,
+   0.5,
+   0.6,
+   0.8,
+   1.2,
+   2.0,
+   4.0,
+   10.0
+  ],
+  "per_rung": [
+   {
+    "theta": 0.05,
+    "n_runs": 128,
+    "chi_late_f0.200": 0.0918706453,
+    "chi_se_f0.200": 0.1508238985,
+    "chi_lo_f0.200": -0.2829117717,
+    "chi_hi_f0.200": 0.3042319016,
+    "n_win_f0.200": 42,
+    "chi_late_f0.333": 0.1879554134,
+    "chi_se_f0.333": 0.0883237322,
+    "chi_lo_f0.333": -0.0272939557,
+    "chi_hi_f0.333": 0.3216687126,
+    "n_win_f0.333": 69,
+    "chi_late_f0.500": 0.229073692,
+    "chi_se_f0.500": 0.0365034331,
+    "chi_lo_f0.500": 0.1309480372,
+    "chi_hi_f0.500": 0.2741921864,
+    "n_win_f0.500": 104
+   },
+   {
+    "theta": 0.1,
+    "n_runs": 128,
+    "chi_late_f0.200": 0.059784677,
+    "chi_se_f0.200": 0.1999209311,
+    "chi_lo_f0.200": -0.5528934966,
+    "chi_hi_f0.200": 0.2408477043,
+    "n_win_f0.200": 42,
+    "chi_late_f0.333": 0.1512319305,
+    "chi_se_f0.333": 0.0915464952,
+    "chi_lo_f0.333": -0.095206913,
+    "chi_hi_f0.333": 0.2563873076,
+    "n_win_f0.333": 69,
+    "chi_late_f0.500": 0.2525111177,
+    "chi_se_f0.500": 0.0377964084,
+    "chi_lo_f0.500": 0.1359316602,
+    "chi_hi_f0.500": 0.2893099777,
+    "n_win_f0.500": 103
+   },
+   {
+    "theta": 0.15,
+    "n_runs": 128,
+    "chi_late_f0.200": 0.0977456138,
+    "chi_se_f0.200": 0.16684396,
+    "chi_lo_f0.200": -0.3282082347,
+    "chi_hi_f0.200": 0.3166626483,
+    "n_win_f0.200": 41,
+    "chi_late_f0.333": 0.2746940459,
+    "chi_se_f0.333": 0.0864983562,
+    "chi_lo_f0.333": 0.0445831556,
+    "chi_hi_f0.333": 0.3820388893,
+    "n_win_f0.333": 68,
+    "chi_late_f0.500": 0.3060773187,
+    "chi_se_f0.500": 0.0391106236,
+    "chi_lo_f0.500": 0.1937518701,
+    "chi_hi_f0.500": 0.3436837477,
+    "n_win_f0.500": 102
+   },
+   {
+    "theta": 0.2,
+    "n_runs": 128,
+    "chi_late_f0.200": -0.0976360883,
+    "chi_se_f0.200": 0.1637864262,
+    "chi_lo_f0.200": -0.4272418942,
+    "chi_hi_f0.200": 0.2102991041,
+    "n_win_f0.200": 40,
+    "chi_late_f0.333": 0.2412745963,
+    "chi_se_f0.333": 0.0726944195,
+    "chi_lo_f0.333": 0.0712620392,
+    "chi_hi_f0.333": 0.353898138,
+    "n_win_f0.333": 67,
+    "chi_late_f0.500": 0.294002583,
+    "chi_se_f0.500": 0.039707589,
+    "chi_lo_f0.500": 0.1980050287,
+    "chi_hi_f0.500": 0.3542641659,
+    "n_win_f0.500": 101
+   },
+   {
+    "theta": 0.3,
+    "n_runs": 128,
+    "chi_late_f0.200": 0.4823026265,
+    "chi_se_f0.200": 0.1955178491,
+    "chi_lo_f0.200": 0.0494231437,
+    "chi_hi_f0.200": 0.8068274271,
+    "n_win_f0.200": 40,
+    "chi_late_f0.333": 0.1970974186,
+    "chi_se_f0.333": 0.1062012572,
+    "chi_lo_f0.333": -0.0148614439,
+    "chi_hi_f0.333": 0.3937993577,
+    "n_win_f0.333": 65,
+    "chi_late_f0.500": 0.3510252219,
+    "chi_se_f0.500": 0.0591460196,
+    "chi_lo_f0.500": 0.2230242829,
+    "chi_hi_f0.500": 0.4538206981,
+    "n_win_f0.500": 100
+   },
+   {
+    "theta": 0.4,
+    "n_runs": 128,
+    "chi_late_f0.200": -0.0599026854,
+    "chi_se_f0.200": 0.1970822764,
+    "chi_lo_f0.200": -0.5248545747,
+    "chi_hi_f0.200": 0.2554751006,
+    "n_win_f0.200": 38,
+    "chi_late_f0.333": 0.2853190324,
+    "chi_se_f0.333": 0.1184014939,
+    "chi_lo_f0.333": 0.041374357,
+    "chi_hi_f0.333": 0.512100572,
+    "n_win_f0.333": 64,
+    "chi_late_f0.500": 0.5429984224,
+    "chi_se_f0.500": 0.0690915208,
+    "chi_lo_f0.500": 0.4077915812,
+    "chi_hi_f0.500": 0.6832779599,
+    "n_win_f0.500": 97
+   },
+   {
+    "theta": 0.5,
+    "n_runs": 128,
+    "chi_late_f0.200": 0.3186107555,
+    "chi_se_f0.200": 0.2966046539,
+    "chi_lo_f0.200": -0.3725214395,
+    "chi_hi_f0.200": 0.7636036337,
+    "n_win_f0.200": 36,
+    "chi_late_f0.333": 0.7931118356,
+    "chi_se_f0.333": 0.164948533,
+    "chi_lo_f0.333": 0.4173980696,
+    "chi_hi_f0.333": 1.0547024021,
+    "n_win_f0.333": 59,
+    "chi_late_f0.500": 0.8973325934,
+    "chi_se_f0.500": 0.0858371106,
+    "chi_lo_f0.500": 0.6924466431,
+    "chi_hi_f0.500": 1.037273904,
+    "n_win_f0.500": 91
+   },
+   {
+    "theta": 0.6,
+    "n_runs": 128,
+    "chi_late_f0.200": 0.680171168,
+    "chi_se_f0.200": 0.2669002973,
+    "chi_lo_f0.200": 0.166764669,
+    "chi_hi_f0.200": 1.190606202,
+    "n_win_f0.200": 35,
+    "chi_late_f0.333": 0.9615753043,
+    "chi_se_f0.333": 0.1415800859,
+    "chi_lo_f0.333": 0.6687718779,
+    "chi_hi_f0.333": 1.1984930624,
+    "n_win_f0.333": 59,
+    "chi_late_f0.500": 0.9685314843,
+    "chi_se_f0.500": 0.0756589783,
+    "chi_lo_f0.500": 0.8257663397,
+    "chi_hi_f0.500": 1.1094477921,
+    "n_win_f0.500": 90
+   },
+   {
+    "theta": 0.8,
+    "n_runs": 128,
+    "chi_late_f0.200": 0.8308143732,
+    "chi_se_f0.200": 0.2166606897,
+    "chi_lo_f0.200": 0.42047798,
+    "chi_hi_f0.200": 1.2774118287,
+    "n_win_f0.200": 34,
+    "chi_late_f0.333": 1.3103862865,
+    "chi_se_f0.333": 0.1055203822,
+    "chi_lo_f0.333": 1.1039984508,
+    "chi_hi_f0.333": 1.5213654564,
+    "n_win_f0.333": 56,
+    "chi_late_f0.500": 1.2292369457,
+    "chi_se_f0.500": 0.060225496,
+    "chi_lo_f0.500": 1.1095623683,
+    "chi_hi_f0.500": 1.3417478724,
+    "n_win_f0.500": 86
+   },
+   {
+    "theta": 1.2,
+    "n_runs": 128,
+    "chi_late_f0.200": 0.5402781487,
+    "chi_se_f0.200": 0.2735798585,
+    "chi_lo_f0.200": -0.0311523744,
+    "chi_hi_f0.200": 1.0267817188,
+    "n_win_f0.200": 33,
+    "chi_late_f0.333": 1.1123865902,
+    "chi_se_f0.333": 0.1577970022,
+    "chi_lo_f0.333": 0.758984811,
+    "chi_hi_f0.333": 1.3695329171,
+    "n_win_f0.333": 54,
+    "chi_late_f0.500": 1.3227834759,
+    "chi_se_f0.500": 0.0817887041,
+    "chi_lo_f0.500": 1.1352916817,
+    "chi_hi_f0.500": 1.451083843,
+    "n_win_f0.500": 83
+   },
+   {
+    "theta": 2.0,
+    "n_runs": 128,
+    "chi_late_f0.200": 0.4985732929,
+    "chi_se_f0.200": 0.2098189668,
+    "chi_lo_f0.200": 0.0589923742,
+    "chi_hi_f0.200": 0.8695444406,
+    "n_win_f0.200": 32,
+    "chi_late_f0.333": 1.0311377031,
+    "chi_se_f0.333": 0.1223737034,
+    "chi_lo_f0.333": 0.7604248721,
+    "chi_hi_f0.333": 1.2477059745,
+    "n_win_f0.333": 53,
+    "chi_late_f0.500": 1.3189467535,
+    "chi_se_f0.500": 0.0760190182,
+    "chi_lo_f0.500": 1.1581082492,
+    "chi_hi_f0.500": 1.4562401469,
+    "n_win_f0.500": 80
+   },
+   {
+    "theta": 4.0,
+    "n_runs": 128,
+    "chi_late_f0.200": 0.7430274248,
+    "chi_se_f0.200": 0.2080244798,
+    "chi_lo_f0.200": 0.2697905034,
+    "chi_hi_f0.200": 1.0882926745,
+    "n_win_f0.200": 31,
+    "chi_late_f0.333": 1.1111847742,
+    "chi_se_f0.333": 0.1310020158,
+    "chi_lo_f0.333": 0.851692434,
+    "chi_hi_f0.333": 1.3607555333,
+    "n_win_f0.333": 52,
+    "chi_late_f0.500": 1.3552666694,
+    "chi_se_f0.500": 0.0682978453,
+    "chi_lo_f0.500": 1.2214572735,
+    "chi_hi_f0.500": 1.4900578155,
+    "n_win_f0.500": 78
+   },
+   {
+    "theta": 10.0,
+    "n_runs": 96,
+    "chi_late_f0.200": 0.7141940094,
+    "chi_se_f0.200": 0.2545212122,
+    "chi_lo_f0.200": 0.1698843656,
+    "chi_hi_f0.200": 1.1752390597,
+    "n_win_f0.200": 30,
+    "chi_late_f0.333": 1.0133402225,
+    "chi_se_f0.333": 0.1415796989,
+    "chi_lo_f0.333": 0.7006986852,
+    "chi_hi_f0.333": 1.274597953,
+    "n_win_f0.333": 51,
+    "chi_late_f0.500": 1.1977584233,
+    "chi_se_f0.500": 0.0927712721,
+    "chi_lo_f0.500": 0.9965937058,
+    "chi_hi_f0.500": 1.3653326597,
+    "n_win_f0.500": 72
+   }
+  ],
+  "window_sensitivity_table": [
+   {
+    "window_frac": 0.2,
+    "chi_frozen_reference": [
+     0.0862298978,
+     -0.1051344624,
+     0.277594258
+    ],
+    "chi_at_highest_load": [
+     0.7141940094,
+     0.2153324336,
+     1.2130555852
+    ],
+    "departure_bracket_z2": [
+     2.0,
+     4.0
+    ],
+    "departure_midpoint_z2": [
+     2.8284271247,
+     0.4472135955,
+     6.3245553203
+    ],
+    "departure_z2_boot_defined": 0.7405,
+    "departure_bracket_z3": [
+     null,
+     null
+    ],
+    "departure_midpoint_z3": [
+     null,
+     0.692820323,
+     6.3245553203
+    ],
+    "departure_z3_boot_defined": 0.3695,
+    "chi_half_rise": [
+     0.2838257559,
+     0.0894830618,
+     0.6732089032
+    ],
+    "chi_inflection_4pl": [
+     0.5070930997,
+     0.2179101927,
+     1.2935087154
+    ],
+    "chi_top_plateau": 0.6733053576,
+    "chi_floor": 0.0848988006,
+    "hill_at_bound": true
+   },
+   {
+    "window_frac": 0.3333333333,
+    "chi_frozen_reference": [
+     0.2068742183,
+     0.1064818464,
+     0.3072665902
+    ],
+    "chi_at_highest_load": [
+     1.0133402225,
+     0.7358440126,
+     1.2908364323
+    ],
+    "departure_bracket_z2": [
+     0.4,
+     0.5
+    ],
+    "departure_midpoint_z2": [
+     0.4472135955,
+     0.3464101615,
+     0.5477225575
+    ],
+    "departure_z2_boot_defined": 1.0,
+    "departure_bracket_z3": [
+     0.4,
+     0.5
+    ],
+    "departure_midpoint_z3": [
+     0.4472135955,
+     0.4472135955,
+     0.5477225575
+    ],
+    "departure_z3_boot_defined": 0.992,
+    "chi_half_rise": [
+     0.4594508897,
+     0.4008645529,
+     0.5391772111
+    ],
+    "chi_inflection_4pl": [
+     0.4853897844,
+     0.4214476826,
+     0.5519894911
+    ],
+    "chi_top_plateau": 1.1267772749,
+    "chi_floor": 0.2135039245,
+    "hill_at_bound": false
+   },
+   {
+    "window_frac": 0.5,
+    "chi_frozen_reference": [
+     0.2607943618,
+     0.2180665483,
+     0.3035221754
+    ],
+    "chi_at_highest_load": [
+     1.1977584233,
+     1.01592673,
+     1.3795901167
+    ],
+    "departure_bracket_z2": [
+     0.3,
+     0.4
+    ],
+    "departure_midpoint_z2": [
+     0.3464101615,
+     0.1732050808,
+     0.3464101615
+    ],
+    "departure_z2_boot_defined": 1.0,
+    "departure_bracket_z3": [
+     0.3,
+     0.4
+    ],
+    "departure_midpoint_z3": [
+     0.3464101615,
+     0.2449489743,
+     0.4472135955
+    ],
+    "departure_z3_boot_defined": 1.0,
+    "chi_half_rise": [
+     0.4453167496,
+     0.3908211459,
+     0.5061998225
+    ],
+    "chi_inflection_4pl": [
+     0.4869599513,
+     0.4372583136,
+     0.5284204338
+    ],
+    "chi_top_plateau": 1.3154072649,
+    "chi_floor": 0.2611780932,
+    "hill_at_bound": false
+   }
+  ],
+  "primary_window_frac": 0.3333333333333333,
+  "windows": {
+   "f0.200": {
+    "window_frac": 0.2,
+    "chi_late_per_rung": [
+     0.0918706452736498,
+     0.0597846769716499,
+     0.09774561376260008,
+     -0.09763608828006212,
+     0.48230262649965616,
+     -0.059902685393076034,
+     0.3186107554976682,
+     0.6801711680167573,
+     0.8308143731873106,
+     0.5402781486992327,
+     0.49857329286255125,
+     0.743027424832068,
+     0.7141940094266488
+    ],
+    "se_per_rung": [
+     0.15082389853110872,
+     0.1999209310781184,
+     0.16684395999686336,
+     0.1637864262272378,
+     0.19551784913579276,
+     0.19708227636448386,
+     0.2966046538706178,
+     0.2669002973306017,
+     0.21666068966060026,
+     0.273579858469359,
+     0.2098189668474218,
+     0.20802447979542152,
+     0.254521212150898
+    ],
+    "departure_z2": {
+     "bracket": [
+      2.0,
+      4.0
+     ],
+     "theta_departure_midpoint": [
+      2.8284271247461903,
+      0.4472135954999579,
+      6.324555320336759
+     ],
+     "boot_median_midpoint": 1.5491933384829668,
+     "frozen_reference_chi": 0.0862298977948713,
+     "frozen_reference_se": 0.0976348776384358,
+     "z_per_rung": [
+      0.031395476948568965,
+      -0.11886129007984424,
+      0.05957066368248369,
+      -0.9642686372303334,
+      1.8123567796785063,
+      -0.6644175458606646,
+      0.7441880601801978,
+      2.08988760468217,
+      3.1331996743415598,
+      1.5630975607351743,
+      1.7817742252728812,
+      2.8581615640373386,
+      2.303565815878133
+     ],
+     "boot_bracket_frequency": {
+      "(nan,nan]": 0.2595,
+      "(2.0,4.0]": 0.2425,
+      "(1.2,2.0]": 0.2155,
+      "(0.5,0.6]": 0.1245,
+      "(4.0,10.0]": 0.0865
+     },
+     "boot_frac_defined": 0.7405
+    },
+    "departure_z3": {
+     "bracket": [
+      NaN,
+      NaN
+     ],
+     "theta_departure_midpoint": [
+      NaN,
+      0.6928203230275509,
+      6.324555320336759
+     ],
+     "boot_median_midpoint": 2.8284271247461903,
+     "frozen_reference_chi": 0.0862298977948713,
+     "frozen_reference_se": 0.0976348776384358,
+     "z_per_rung": [
+      0.031395476948568965,
+      -0.11886129007984424,
+      0.05957066368248369,
+      -0.9642686372303334,
+      1.8123567796785063,
+      -0.6644175458606646,
+      0.7441880601801978,
+      2.08988760468217,
+      3.1331996743415598,
+      1.5630975607351743,
+      1.7817742252728812,
+      2.8581615640373386,
+      2.303565815878133
+     ],
+     "boot_bracket_frequency": {
+      "(nan,nan]": 0.6305,
+      "(2.0,4.0]": 0.1745,
+      "(4.0,10.0]": 0.13,
+      "(1.2,2.0]": 0.05,
+      "(0.6,0.8]": 0.008
+     },
+     "boot_frac_defined": 0.3695
+    },
+    "chi_half_rise": {
+     "theta_star": [
+      0.28382575591985343,
+      0.08948306182758602,
+      0.6732089031636073
+     ],
+     "status": "ok",
+     "target_chi": 0.40303232735014927,
+     "boot_frac_defined": 1.0
+    },
+    "chi_inflection_4pl": {
+     "theta50": [
+      0.5070930996525969,
+      0.2179101926598085,
+      1.2935087154242795
+     ],
+     "floor_L": 0.08489880062847319,
+     "top_U": 0.6733053576494787,
+     "hill_h": -29.999999999999954,
+     "lowload_plateau_reached": true,
+     "highload_plateau_reached": true,
+     "inflection_inside_range": true,
+     "boot_frac_valid": 1.0
+    }
+   },
+   "f0.333": {
+    "window_frac": 0.3333333333333333,
+    "chi_late_per_rung": [
+     0.18795541337231272,
+     0.15123193051870115,
+     0.27469404592069957,
+     0.24127459631868428,
+     0.19709741855782842,
+     0.28531903242909606,
+     0.7931118355973277,
+     0.9615753043409612,
+     1.3103862864808367,
+     1.1123865902336028,
+     1.0311377031334326,
+     1.1111847742481136,
+     1.013340222450267
+    ],
+    "se_per_rung": [
+     0.0883237321868911,
+     0.09154649524166941,
+     0.08649835617240126,
+     0.07269441954831876,
+     0.10620125716278182,
+     0.1184014938883158,
+     0.1649485329984784,
+     0.14158008590143126,
+     0.10552038218740736,
+     0.15779700222645898,
+     0.12237370339065096,
+     0.13100201575719428,
+     0.1415796989022835
+    ],
+    "departure_z2": {
+     "bracket": [
+      0.4,
+      0.5
+     ],
+     "theta_departure_midpoint": [
+      0.4472135954999579,
+      0.34641016151377546,
+      0.5477225575051661
+     ],
+     "boot_median_midpoint": 0.4472135954999579,
+     "frozen_reference_chi": 0.20687421830308433,
+     "frozen_reference_se": 0.05122059792945537,
+     "z_per_rung": [
+      -0.1852948491898281,
+      -0.5304244823377113,
+      0.6746483308072228,
+      0.38683798097575456,
+      -0.08291900240895031,
+      0.6080725979879174,
+      3.3941860211239545,
+      5.0126094331889,
+      9.408011616067867,
+      5.458119046696412,
+      6.213318736918637,
+      6.429078363044997,
+      5.356437065963594
+     ],
+     "boot_bracket_frequency": {
+      "(0.4,0.5]": 0.8045,
+      "(0.3,0.4]": 0.1005,
+      "(0.5,0.6]": 0.087,
+      "(0.2,0.3]": 0.0045,
+      "(0.15,0.2]": 0.0025
+     },
+     "boot_frac_defined": 1.0
+    },
+    "departure_z3": {
+     "bracket": [
+      0.4,
+      0.5
+     ],
+     "theta_departure_midpoint": [
+      0.4472135954999579,
+      0.4472135954999579,
+      0.5477225575051661
+     ],
+     "boot_median_midpoint": 0.4472135954999579,
+     "frozen_reference_chi": 0.20687421830308433,
+     "frozen_reference_se": 0.05122059792945537,
+     "z_per_rung": [
+      -0.1852948491898281,
+      -0.5304244823377113,
+      0.6746483308072228,
+      0.38683798097575456,
+      -0.08291900240895031,
+      0.6080725979879174,
+      3.3941860211239545,
+      5.0126094331889,
+      9.408011616067867,
+      5.458119046696412,
+      6.213318736918637,
+      6.429078363044997,
+      5.356437065963594
+     ],
+     "boot_bracket_frequency": {
+      "(0.4,0.5]": 0.624,
+      "(0.5,0.6]": 0.335,
+      "(0.3,0.4]": 0.017,
+      "(0.6,0.8]": 0.01,
+      "(nan,nan]": 0.008
+     },
+     "boot_frac_defined": 0.992
+    },
+    "chi_half_rise": {
+     "theta_star": [
+      0.4594508897377855,
+      0.40086455286515016,
+      0.539177211050558
+     ],
+     "status": "ok",
+     "target_chi": 0.6006478179112898,
+     "boot_frac_defined": 1.0
+    },
+    "chi_inflection_4pl": {
+     "theta50": [
+      0.4853897844457189,
+      0.4214476825683223,
+      0.5519894910980265
+     ],
+     "floor_L": 0.2135039245368024,
+     "top_U": 1.1267772748622744,
+     "hill_h": -11.275869605835476,
+     "lowload_plateau_reached": true,
+     "highload_plateau_reached": true,
+     "inflection_inside_range": true,
+     "boot_frac_valid": 1.0
+    }
+   },
+   "f0.500": {
+    "window_frac": 0.5,
+    "chi_late_per_rung": [
+     0.22907369202366468,
+     0.25251111767226475,
+     0.3060773186962554,
+     0.29400258296044696,
+     0.35102522189767377,
+     0.5429984224259683,
+     0.8973325934313477,
+     0.9685314842975202,
+     1.2292369456902283,
+     1.3227834758962373,
+     1.3189467534772648,
+     1.3552666694394557,
+     1.1977584233498937
+    ],
+    "se_per_rung": [
+     0.03650343309040828,
+     0.037796408386791505,
+     0.03911062363547679,
+     0.039707589033936716,
+     0.05914601963201104,
+     0.06909152083836377,
+     0.08583711059364926,
+     0.0756589782733382,
+     0.06022549599033835,
+     0.08178870408784147,
+     0.07601901823078025,
+     0.06829784526955546,
+     0.09277127211945417
+    ],
+    "departure_z2": {
+     "bracket": [
+      0.3,
+      0.4
+     ],
+     "theta_departure_midpoint": [
+      0.34641016151377546,
+      0.17320508075688773,
+      0.34641016151377546
+     ],
+     "boot_median_midpoint": 0.34641016151377546,
+     "frozen_reference_chi": 0.26079436182566695,
+     "frozen_reference_se": 0.021799904863195656,
+     "z_per_rung": [
+      -0.746061773222072,
+      -0.18984069121170843,
+      1.0113254574457253,
+      0.7331021662270589,
+      1.4314268920808977,
+      3.8952037566559756,
+      7.1874790419836225,
+      8.98862068382508,
+      15.120206509645584,
+      12.546518837297699,
+      13.380269792089296,
+      15.266178490544084,
+      9.831918881402897
+     ],
+     "boot_bracket_frequency": {
+      "(0.3,0.4]": 0.594,
+      "(0.2,0.3]": 0.304,
+      "(0.15,0.2]": 0.0905,
+      "(0.4,0.5]": 0.0115
+     },
+     "boot_frac_defined": 1.0
+    },
+    "departure_z3": {
+     "bracket": [
+      0.3,
+      0.4
+     ],
+     "theta_departure_midpoint": [
+      0.34641016151377546,
+      0.2449489742783178,
+      0.4472135954999579
+     ],
+     "boot_median_midpoint": 0.34641016151377546,
+     "frozen_reference_chi": 0.26079436182566695,
+     "frozen_reference_se": 0.021799904863195656,
+     "z_per_rung": [
+      -0.746061773222072,
+      -0.18984069121170843,
+      1.0113254574457253,
+      0.7331021662270589,
+      1.4314268920808977,
+      3.8952037566559756,
+      7.1874790419836225,
+      8.98862068382508,
+      15.120206509645584,
+      12.546518837297699,
+      13.380269792089296,
+      15.266178490544084,
+      9.831918881402897
+     ],
+     "boot_bracket_frequency": {
+      "(0.3,0.4]": 0.8075,
+      "(0.4,0.5]": 0.1025,
+      "(0.2,0.3]": 0.0835,
+      "(0.15,0.2]": 0.0065
+     },
+     "boot_frac_defined": 1.0
+    },
+    "chi_half_rise": {
+     "theta_star": [
+      0.4453167496220042,
+      0.3908211459214194,
+      0.5061998224860679
+     ],
+     "status": "ok",
+     "target_chi": 0.7134160576867792,
+     "boot_frac_defined": 1.0
+    },
+    "chi_inflection_4pl": {
+     "theta50": [
+      0.486959951331448,
+      0.4372583135996483,
+      0.528420433814748
+     ],
+     "floor_L": 0.2611780932261834,
+     "top_U": 1.3154072649125406,
+     "hill_h": -4.555793967702597,
+     "lowload_plateau_reached": true,
+     "highload_plateau_reached": true,
+     "inflection_inside_range": true,
+     "boot_frac_valid": 1.0
+    }
+   }
+  }
+ },
+ "agreement_sd0p01": {
+  "half_drop_endpoint_over_chi_half_rise": {
+   "log10_ratio": [
+    0.06661664644662643,
+    -0.038944879231366004,
+    0.17776130480576754
+   ],
+   "agree_within_ci": true
+  },
+  "inflection_4pl_over_chi_half_rise": {
+   "log10_ratio": [
+    0.02065387696090809,
+    -0.08508186635638776,
+    0.11906493368564991
+   ],
+   "agree_within_ci": true
+  },
+  "half_drop_endpoint_over_chi_departure": {
+   "log10_ratio": [
+    0.08659036067665013,
+    -0.03913964527435506,
+    0.22988821187270722
+   ],
+   "agree_within_ci": true
+  },
+  "inflection_4pl_over_chi_departure": {
+   "log10_ratio": [
+    0.03798262206121625,
+    -0.07923975933786452,
+    0.18470430063198107
+   ],
+   "agree_within_ci": true
+  }
+ },
+ "level_crossing_envelope": {
+  "0.0025": {
+   "levels": [
+    0.25,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.75
+   ],
+   "theta_star": [
+    14.512185103603866,
+    8.448477801263849,
+    1.874496862567764,
+    0.6325050589791732,
+    0.2894289181147134,
+    0.2275942756735799,
+    0.0997287150458273
+   ],
+   "ci_lo": [
+    11.62025536607268,
+    4.947303497170375,
+    1.361686782520781,
+    0.2949735591395028,
+    0.2271347188941681,
+    0.0948722875101488,
+    0.0853096388155005
+   ],
+   "ci_hi": [
+    15.834063870125572,
+    10.562524145202596,
+    2.273389921376816,
+    0.814566421628067,
+    0.4801399782227556,
+    0.2994597222835308,
+    0.2472319459859173
+   ],
+   "ridge_min": 0.0997287150458273,
+   "ridge_max": 14.512185103603866,
+   "spread_factor": 145.51661572030918,
+   "ridge_at": {
+    "0.25": 14.512185103603866,
+    "0.5": 0.6325050589791732,
+    "0.75": 0.0997287150458273
+   },
+   "ci_at": {
+    "0.25": [
+     11.62025536607268,
+     15.834063870125572
+    ],
+    "0.5": [
+     0.2949735591395028,
+     0.814566421628067
+    ],
+    "0.75": [
+     0.0853096388155005,
+     0.2472319459859173
+    ]
+   }
+  },
+  "0.005": {
+   "levels": [
+    0.25,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.75
+   ],
+   "theta_star": [
+    3.050626711420215,
+    1.194331532392948,
+    0.6720958288555775,
+    0.3582432968872697,
+    0.258712638604084,
+    0.1860527123926618,
+    0.1408871775159485
+   ],
+   "ci_lo": [
+    2.2490305295964705,
+    1.052574399041446,
+    0.521912031677182,
+    0.2840104772634532,
+    0.2134034718733254,
+    0.1282156492734574,
+    0.1052301144380821
+   ],
+   "ci_hi": [
+    3.872106896664748,
+    1.8283554084293347,
+    0.8121406196533643,
+    0.3850973550080231,
+    0.3149926368167632,
+    0.2282412508848736,
+    0.2022385224090425
+   ],
+   "ridge_min": 0.1408871775159485,
+   "ridge_max": 3.050626711420215,
+   "spread_factor": 21.652976269432912,
+   "ridge_at": {
+    "0.25": 3.050626711420215,
+    "0.5": 0.3582432968872697,
+    "0.75": 0.1408871775159485
+   },
+   "ci_at": {
+    "0.25": [
+     2.2490305295964705,
+     3.872106896664748
+    ],
+    "0.5": [
+     0.2840104772634532,
+     0.3850973550080231
+    ],
+    "0.75": [
+     0.1052301144380821,
+     0.2022385224090425
+    ]
+   }
+  },
+  "0.01": {
+   "levels": [
+    0.25,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.75
+   ],
+   "theta_star": [
+    1.2094440428829387,
+    0.7607924218189743,
+    0.5374218449567254,
+    0.3725154110229679,
+    0.2999569220526838,
+    0.2282556315723315,
+    0.1992692893596498
+   ],
+   "ci_lo": [
+    0.923817745635488,
+    0.6906255307902116,
+    0.4630539236938246,
+    0.3271733139277371,
+    0.253911988986059,
+    0.1914803387570734,
+    0.1653740389304685
+   ],
+   "ci_hi": [
+    1.5049779959136065,
+    0.8628146787707207,
+    0.570869013294503,
+    0.4309289439985957,
+    0.3351580967158032,
+    0.264447383371715,
+    0.2335618431685252
+   ],
+   "ridge_min": 0.1992692893596498,
+   "ridge_max": 1.2094440428829387,
+   "spread_factor": 6.069395072213471,
+   "ridge_at": {
+    "0.25": 1.2094440428829387,
+    "0.5": 0.3725154110229679,
+    "0.75": 0.1992692893596498
+   },
+   "ci_at": {
+    "0.25": [
+     0.923817745635488,
+     1.5049779959136065
+    ],
+    "0.5": [
+     0.3271733139277371,
+     0.4309289439985957
+    ],
+    "0.75": [
+     0.1653740389304685,
+     0.2335618431685252
+    ]
+   }
+  },
+  "0.02": {
+   "levels": [
+    0.25,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.75
+   ],
+   "theta_star": [
+    0.7959531467509164,
+    0.7073909503512317,
+    0.5826626696190988,
+    0.5287613248516944,
+    0.4374686036019902,
+    0.2721793147893849,
+    0.2102009007645945
+   ],
+   "ci_lo": [
+    0.753914223929885,
+    0.6279706621987139,
+    0.5557971521378418,
+    0.4733159640176449,
+    0.2736634256882262,
+    0.1231977039840911,
+    0.0675434898069026
+   ],
+   "ci_hi": [
+    0.8908872406514936,
+    0.760792907040783,
+    0.6602120456574521,
+    0.56770998133646,
+    0.5210675739336131,
+    0.3901676417428026,
+    0.3166732301361401
+   ],
+   "ridge_min": 0.2102009007645945,
+   "ridge_max": 0.7959531467509164,
+   "spread_factor": 3.786630522779301,
+   "ridge_at": {
+    "0.25": 0.7959531467509164,
+    "0.5": 0.5287613248516944,
+    "0.75": 0.2102009007645945
+   },
+   "ci_at": {
+    "0.25": [
+     0.753914223929885,
+     0.8908872406514936
+    ],
+    "0.5": [
+     0.4733159640176449,
+     0.56770998133646
+    ],
+    "0.75": [
+     0.0675434898069026,
+     0.3166732301361401
+    ]
+   }
+  },
+  "0.04": {
+   "levels": [
+    0.25,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.75
+   ],
+   "theta_star": [
+    0.8532699325005597,
+    0.7833032708060877,
+    0.6993452151966316,
+    0.6214904474587227,
+    0.4771025992497682,
+    0.4079070981360251,
+    0.3319273622281685
+   ],
+   "ci_lo": [
+    0.8054257590531648,
+    0.7596625735105696,
+    0.6718321704427465,
+    0.4910600492091462,
+    0.4344489822126315,
+    0.0425528980983074,
+    0.0351784102601345
+   ],
+   "ci_hi": [
+    0.9012614750182864,
+    0.8368562821037208,
+    0.7464431175788987,
+    0.6825217328517585,
+    0.606252758600884,
+    0.4743886190668034,
+    0.4227036951789919
+   ],
+   "ridge_min": 0.3319273622281685,
+   "ridge_max": 0.8532699325005597,
+   "spread_factor": 2.570652587279074,
+   "ridge_at": {
+    "0.25": 0.8532699325005597,
+    "0.5": 0.6214904474587227,
+    "0.75": 0.3319273622281685
+   },
+   "ci_at": {
+    "0.25": [
+     0.8054257590531648,
+     0.9012614750182864
+    ],
+    "0.5": [
+     0.4910600492091462,
+     0.6825217328517585
+    ],
+    "0.75": [
+     0.0351784102601345,
+     0.4227036951789919
+    ]
+   }
+  }
+ },
+ "comparison_table": [
+  {
+   "sd": 0.0025,
+   "n_runs": 4452,
+   "theta_min": 0.05,
+   "theta_max": 16.0,
+   "half_drop": 1.3178054768,
+   "half_drop_lo": 0.6836277585,
+   "half_drop_hi": 2.0400787836,
+   "half_drop_neutralnorm": 0.6550049847,
+   "half_drop_neutralnorm_lo": 0.2961649612,
+   "half_drop_neutralnorm_hi": 0.8947295806,
+   "half_drop_common": 0.4429765695,
+   "half_drop_common_lo": 0.2455980937,
+   "half_drop_common_hi": 0.4952024631,
+   "inflection": 1.133074985,
+   "inflection_lo": 0.0141099969,
+   "inflection_hi": 291.9015494935,
+   "lowload_plateau_reached": false,
+   "highload_plateau_reached": false,
+   "inflection_identified": false,
+   "inflection_ci_width_dec": 4.3157094814,
+   "plateau_ratio_to_neutral": 2.3318709469,
+   "ratio_at_theta_min": 0.776311228,
+   "neutral_anchor_spanned": false,
+   "highload_shelf_spanned": false,
+   "ridge_min": 0.099728715,
+   "ridge_max": 14.5121851036,
+   "ridge_at_0p25": 14.5121851036,
+   "ridge_at_0p5": 0.632505059,
+   "ridge_at_0p75": 0.099728715,
+   "ridge_spread_factor": 145.5166157203,
+   "equiv_level_halfdrop": 0.4324346526,
+   "equiv_level_inflection": 0.4463366824,
+   "halfdrop_inside_convention_band": true,
+   "inflection_inside_convention_band": true,
+   "halfdrop_vs_inflection_agree": true,
+   "chi_departure": null,
+   "chi_departure_lo": null,
+   "chi_departure_hi": null,
+   "chi_half_rise": null,
+   "chi_half_rise_lo": null,
+   "chi_half_rise_hi": null,
+   "chi_inflection": null,
+   "chi_inflection_lo": null,
+   "chi_inflection_hi": null
+  },
+  {
+   "sd": 0.005,
+   "n_runs": 1350,
+   "theta_min": 0.1,
+   "theta_max": 4.0,
+   "half_drop": 0.4597256103,
+   "half_drop_lo": 0.3638671789,
+   "half_drop_hi": 0.6869584888,
+   "half_drop_neutralnorm": 0.3684043365,
+   "half_drop_neutralnorm_lo": 0.2864263968,
+   "half_drop_neutralnorm_hi": 0.4175907155,
+   "half_drop_common": 0.3630100296,
+   "half_drop_common_lo": 0.2734985763,
+   "half_drop_common_hi": 0.4269153625,
+   "inflection": 0.3943333227,
+   "inflection_lo": 0.0224413134,
+   "inflection_hi": 0.5398530949,
+   "lowload_plateau_reached": false,
+   "highload_plateau_reached": false,
+   "inflection_identified": false,
+   "inflection_ci_width_dec": 1.3812273255,
+   "plateau_ratio_to_neutral": 1.1004259223,
+   "ratio_at_theta_min": 0.81163708,
+   "neutral_anchor_spanned": false,
+   "highload_shelf_spanned": false,
+   "ridge_min": 0.1408871775,
+   "ridge_max": 3.0506267114,
+   "ridge_at_0p25": 3.0506267114,
+   "ridge_at_0p5": 0.3582432969,
+   "ridge_at_0p75": 0.1408871775,
+   "ridge_spread_factor": 21.6529762694,
+   "equiv_level_halfdrop": 0.4603588709,
+   "equiv_level_inflection": 0.4847447656,
+   "halfdrop_inside_convention_band": true,
+   "inflection_inside_convention_band": true,
+   "halfdrop_vs_inflection_agree": true,
+   "chi_departure": null,
+   "chi_departure_lo": null,
+   "chi_departure_hi": null,
+   "chi_half_rise": null,
+   "chi_half_rise_lo": null,
+   "chi_half_rise_hi": null,
+   "chi_inflection": null,
+   "chi_inflection_lo": null,
+   "chi_inflection_hi": null
+  },
+  {
+   "sd": 0.01,
+   "n_runs": 2802,
+   "theta_min": 0.05,
+   "theta_max": 10.0,
+   "half_drop": 0.5426504625,
+   "half_drop_lo": 0.4483672842,
+   "half_drop_hi": 0.6574775281,
+   "half_drop_neutralnorm": 0.5523127539,
+   "half_drop_neutralnorm_lo": 0.477060525,
+   "half_drop_neutralnorm_hi": 0.602428687,
+   "half_drop_common": 0.3886764467,
+   "half_drop_common_lo": 0.3439786955,
+   "half_drop_common_hi": 0.518943921,
+   "inflection": 0.4791601649,
+   "inflection_lo": 0.4057498431,
+   "inflection_hi": 0.5721593302,
+   "lowload_plateau_reached": false,
+   "highload_plateau_reached": true,
+   "inflection_identified": true,
+   "inflection_ci_width_dec": 0.1492586238,
+   "plateau_ratio_to_neutral": 1.233273647,
+   "ratio_at_theta_min": 1.0359563278,
+   "neutral_anchor_spanned": true,
+   "highload_shelf_spanned": true,
+   "ridge_min": 0.1992692894,
+   "ridge_max": 1.2094440429,
+   "ridge_at_0p25": 1.2094440429,
+   "ridge_at_0p5": 0.372515411,
+   "ridge_at_0p75": 0.1992692894,
+   "ridge_spread_factor": 6.0693950722,
+   "equiv_level_halfdrop": 0.3972144167,
+   "equiv_level_inflection": 0.4313088361,
+   "halfdrop_inside_convention_band": true,
+   "inflection_inside_convention_band": true,
+   "halfdrop_vs_inflection_agree": true,
+   "chi_departure": 0.4472135955,
+   "chi_departure_lo": 0.3464101615,
+   "chi_departure_hi": 0.5477225575,
+   "chi_half_rise": 0.4594508897,
+   "chi_half_rise_lo": 0.4008645529,
+   "chi_half_rise_hi": 0.5391772111,
+   "chi_inflection": 0.4853897844,
+   "chi_inflection_lo": 0.4214476826,
+   "chi_inflection_hi": 0.5519894911
+  },
+  {
+   "sd": 0.02,
+   "n_runs": 1350,
+   "theta_min": 0.025,
+   "theta_max": 1.2,
+   "half_drop": 0.5737362129,
+   "half_drop_lo": 0.5386367809,
+   "half_drop_hi": 0.6436493981,
+   "half_drop_neutralnorm": 0.5684584493,
+   "half_drop_neutralnorm_lo": 0.5362027449,
+   "half_drop_neutralnorm_hi": 0.6361362405,
+   "half_drop_common": 0.5833290007,
+   "half_drop_common_lo": 0.548284856,
+   "half_drop_common_hi": 0.6631282055,
+   "inflection": 0.627004857,
+   "inflection_lo": 0.575981238,
+   "inflection_hi": 0.790007234,
+   "lowload_plateau_reached": true,
+   "highload_plateau_reached": false,
+   "inflection_identified": true,
+   "inflection_ci_width_dec": 0.1372227311,
+   "plateau_ratio_to_neutral": 0.90817175,
+   "ratio_at_theta_min": 0.9592173019,
+   "neutral_anchor_spanned": true,
+   "highload_shelf_spanned": false,
+   "ridge_min": 0.2102009008,
+   "ridge_max": 0.7959531468,
+   "ridge_at_0p25": 0.7959531468,
+   "ridge_at_0p5": 0.5287613249,
+   "ridge_at_0p75": 0.2102009008,
+   "ridge_spread_factor": 3.7866305228,
+   "equiv_level_halfdrop": 0.4159044771,
+   "equiv_level_inflection": 0.3621879879,
+   "halfdrop_inside_convention_band": true,
+   "inflection_inside_convention_band": true,
+   "halfdrop_vs_inflection_agree": true,
+   "chi_departure": null,
+   "chi_departure_lo": null,
+   "chi_departure_hi": null,
+   "chi_half_rise": null,
+   "chi_half_rise_lo": null,
+   "chi_half_rise_hi": null,
+   "chi_inflection": null,
+   "chi_inflection_lo": null,
+   "chi_inflection_hi": null
+  },
+  {
+   "sd": 0.04,
+   "n_runs": 2802,
+   "theta_min": 0.00625,
+   "theta_max": 10.0,
+   "half_drop": 0.7832072126,
+   "half_drop_lo": 0.7516991716,
+   "half_drop_hi": 0.8368906047,
+   "half_drop_neutralnorm": 0.7819565693,
+   "half_drop_neutralnorm_lo": 0.7533039616,
+   "half_drop_neutralnorm_hi": 0.8318759419,
+   "half_drop_common": 0.681438199,
+   "half_drop_common_lo": 0.6496007369,
+   "half_drop_common_hi": 0.7349021495,
+   "inflection": 0.8021170876,
+   "inflection_lo": 0.7706232651,
+   "inflection_hi": 0.848710556,
+   "lowload_plateau_reached": true,
+   "highload_plateau_reached": true,
+   "inflection_identified": true,
+   "inflection_ci_width_dec": 0.0419174876,
+   "plateau_ratio_to_neutral": 0.9330970431,
+   "ratio_at_theta_min": 0.9926071918,
+   "neutral_anchor_spanned": true,
+   "highload_shelf_spanned": true,
+   "ridge_min": 0.3319273622,
+   "ridge_max": 0.8532699325,
+   "ridge_at_0p25": 0.8532699325,
+   "ridge_at_0p5": 0.6214904475,
+   "ridge_at_0p75": 0.3319273622,
+   "ridge_spread_factor": 2.5706525873,
+   "equiv_level_halfdrop": 0.3001081713,
+   "equiv_level_inflection": 0.2861291731,
+   "halfdrop_inside_convention_band": true,
+   "inflection_inside_convention_band": true,
+   "halfdrop_vs_inflection_agree": true,
+   "chi_departure": null,
+   "chi_departure_lo": null,
+   "chi_departure_hi": null,
+   "chi_half_rise": null,
+   "chi_half_rise_lo": null,
+   "chi_half_rise_hi": null,
+   "chi_inflection": null,
+   "chi_inflection_lo": null,
+   "chi_inflection_hi": null
+  }
+ ],
+ "headline": {
+  "sd0p01_half_drop": [
+   0.5426504624859552,
+   0.44836728417978333,
+   0.6574775280923296
+  ],
+  "sd0p01_inflection": [
+   0.4791601649058212,
+   0.405749843122699,
+   0.5721593301690701
+  ],
+  "sd0p01_chi_departure_midpoint": [
+   0.4472135954999579,
+   0.34641016151377546,
+   0.5477225575051661
+  ],
+  "sd0p01_chi_departure_bracket": [
+   0.4,
+   0.5
+  ],
+  "sd0p01_chi_half_rise": [
+   0.4594508897377855,
+   0.40086455286515016,
+   0.539177211050558
+  ],
+  "sd0p01_chi_inflection": [
+   0.4853897844457189,
+   0.4214476825683223,
+   0.5519894910980265
+  ],
+  "sd0p01_ridge_at_levels": {
+   "0.25": 1.2094440428829387,
+   "0.5": 0.3725154110229679,
+   "0.75": 0.1992692893596498
+  },
+  "sd0p01_ridge_ci_at_levels": {
+   "0.25": [
+    0.923817745635488,
+    1.5049779959136065
+   ],
+   "0.5": [
+    0.3271733139277371,
+    0.4309289439985957
+   ],
+   "0.75": [
+    0.1653740389304685,
+    0.2335618431685252
+   ]
+  },
+  "sd0p01_ridge_min_max": [
+   0.1992692893596498,
+   1.2094440428829387
+  ],
+  "sd0p01_ridge_spread_factor": 6.069395072213471,
+  "invariants_agree_pairwise": {
+   "half_drop_endpoint_over_chi_half_rise": true,
+   "inflection_4pl_over_chi_half_rise": true,
+   "half_drop_endpoint_over_chi_departure": true,
+   "inflection_4pl_over_chi_departure": true
+  },
+  "n_pairwise_agreements_of_4": 4,
+  "ridge_level_inside_halfdrop_ci": {
+   "0.25": false,
+   "0.5": false,
+   "0.75": false
+  },
+  "ridge_level_inside_inflection_ci": {
+   "0.25": false,
+   "0.5": false,
+   "0.75": false
+  },
+  "halfdrop_vs_inflection_agree_per_sd": {
+   "0.0025": true,
+   "0.005": true,
+   "0.01": true,
+   "0.02": true,
+   "0.04": true
+  },
+  "equiv_level_halfdrop_per_sd": {
+   "0.0025": 0.43243465262611197,
+   "0.005": 0.46035887086988253,
+   "0.01": 0.3972144167371546,
+   "0.02": 0.41590447712615375,
+   "0.04": 0.3001081713249983
+  },
+  "equiv_level_inflection_per_sd": {
+   "0.0025": 0.4463366824496791,
+   "0.005": 0.48474476555528057,
+   "0.01": 0.4313088361032209,
+   "0.02": 0.36218798785621137,
+   "0.04": 0.28612917306800556
+  }
+ },
+ "runtime_seconds": 368.3
+}

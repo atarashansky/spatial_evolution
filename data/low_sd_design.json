@@ -1,0 +1,648 @@
+{
+ "campaign": "low_sd_ladder_round9b",
+ "created_utc": "2026-07-18T17:57:41.475502Z",
+ "purpose": "LOCATE (not lower-bound) the low-s_d arm of the freeze/flow ridge theta*(s_d) and the trough vertex; the round-8 s_d=0.00125 rung is only a lower bound (median ratio bottomed at 0.52-0.55 for theta<=1.6, no half crossing).",
+ "kernel": {
+  "file": "evolution_strip.py (round-8 bundle {{artifact:382c3b90}}), dependency evolution_fast4.py; driver ensemble_driver.run_ensemble pattern",
+  "validation": "4 deposited runs (round-8 s_d=0.00125 loaded seed 13576600, round-8 neutral seed 13570000, round-7 anchor seed 12900000, round-7 D25 seed 12913000) replayed BIT-IDENTICAL in t_fix and winner before any production run (validation_result.json)"
+ },
+ "geometry_protocol": {
+  "L_long": 192,
+  "L_short": 32,
+  "numgen": 40000000,
+  "dt": 2400.0,
+  "sb": 0.1,
+  "mub": 0.0,
+  "sampling": 10000,
+  "avg": 1.16e-05,
+  "periodic_y": true,
+  "moore": true,
+  "com_stride": 0,
+  "prof_halfwidth": 64,
+  "ben_cap": 1024
+ },
+ "protocol_note": "verbatim the round-8 low-s_d extension protocol: 192x32 strip, Moore, periodic_y, dt=2400, avg=1.16e-5 (p_die 0.02746), sb=0.1, mub=0 (no beneficial channel), cap numgen=4e7, sampling=10000, two-clone half split, run to exact fixation (t_fix=-1 = censored); burn-in: none in this protocol (fresh half/half field, matching the deposit); fixation criterion: one clone reaches count 0 (exact frame).",
+ "load_axis_convention": "theta = U_d/s_d = mud/sd with U_d = mud (deposited convention; no factor of 2)",
+ "anchor_policy": "each new rung gets its OWN fresh, independent neutral (mud=sd=0) ensemble on the same geometry; 600 runs for the two new low-s_d rungs (matching the round-8 anchor size), 300 for the two intermediate rungs; the primary normalisation uses the rung's own anchor; sensitivity variant re-normalises by the pooled 2,856-run round-7 anchor (median 572,583.5) and reports both.",
+ "rung_ladders_theta": {
+  "0.00125": [
+   0.02,
+   0.027937,
+   0.039025,
+   0.054512,
+   0.076146,
+   0.1,
+   0.106366,
+   0.148579,
+   0.2,
+   0.207545,
+   0.289912,
+   0.4,
+   0.404968,
+   0.565685,
+   0.790186,
+   0.8,
+   1.103784,
+   1.541837,
+   1.6,
+   2.153739,
+   3.008482,
+   3.2,
+   4.202444,
+   5.870248,
+   8.199946,
+   11.454219,
+   16.0
+  ],
+  "0.0005": [
+   0.02,
+   0.028133,
+   0.039573,
+   0.055665,
+   0.078301,
+   0.1,
+   0.110142,
+   0.15493,
+   0.2,
+   0.217932,
+   0.306552,
+   0.4,
+   0.43121,
+   0.60656,
+   0.8,
+   0.853214,
+   1.200168,
+   1.6,
+   1.68821,
+   2.374711,
+   3.2,
+   3.340375,
+   4.69872,
+   6.4,
+   6.609428,
+   9.297116,
+   12.8,
+   13.077736,
+   18.395726,
+   25.6,
+   25.876246,
+   36.398678,
+   51.2
+  ],
+  "0.007": [
+   0.05,
+   0.1,
+   0.15,
+   0.2,
+   0.28,
+   0.4,
+   0.5657,
+   0.8,
+   1.1314,
+   1.6,
+   2.263,
+   4.0
+  ],
+  "0.015": [
+   0.025,
+   0.05,
+   0.075,
+   0.15,
+   0.3,
+   0.4,
+   0.5,
+   0.6,
+   0.8,
+   1.2,
+   1.7,
+   2.4,
+   4.0
+  ]
+ },
+ "runs_per_loaded_rung": {
+  "0.00125": 128,
+  "0.0005": 128,
+  "0.007": 128,
+  "0.015": 128
+ },
+ "anchor_runs": {
+  "0.00125": 600,
+  "0.0005": 600,
+  "0.007": 300,
+  "0.015": 300
+ },
+ "loaded_runs_per_set": {
+  "0.00125": 3456,
+  "0.0005": 4224,
+  "0.007": 1536,
+  "0.015": 1664
+ },
+ "total_planned_runs": 12680,
+ "grid_rationale": {
+  "0.00125": "round-8 sampled theta 0.1-1.6 only; ratio floor 0.52 -> crossing extrapolates to theta ~2.3-3.5. Ladder extends to theta=16 (mud=0.02) to expose the HIGH-load plateau/asymptote and down to theta=0.02 to resolve the LOW-load plateau (ratio->1).",
+  "0.0005": "never sampled. Same two-plateau requirement; the crossing scales up as s_d falls, so the ladder reaches theta=51.2 (mud=0.0256) and starts at theta=0.02.",
+  "0.007": "bracket the trough vertex between the deposited 0.005 and 0.01 rungs; grid centred on the crossing (~0.3-0.4).",
+  "0.015": "bracket between 0.01 and 0.02; grid centred on the crossing (~0.4-0.5)."
+ },
+ "adaptive_extension_rule": "PRE-REGISTERED: after wave 1, if a new low-s_d ladder's rung-median ratio has not descended through 0.5 by its top rung, add rungs at successive x2 in theta (128 runs each) until it does or until theta reaches 204.8; if the ratio at the lowest rung is below 0.9 (low plateau unresolved), add rungs at successive /2 until >=0.9. A densification wave then adds up to 6 rungs at sqrt(2)/4-spacing inside each located [theta_i, theta_{i+1}] bracketing interval where the ratio crosses 0.5, 128 runs each, seeds from a separate contiguous block (13,820,000+). These additions are declared here so they are not post-hoc.",
+ "seed_registry": {
+  "ledger_max_prior": 13777699,
+  "campaign_base": 13780000,
+  "production_block": [
+   13780000,
+   13792679
+  ],
+  "densification_block_start": 13820000,
+  "allocation": {
+   "0.0005": {
+    "anchor": [
+     13780000,
+     13780599
+    ],
+    "loaded": {
+     "0.02": [
+      13780600,
+      13780727
+     ],
+     "0.028133": [
+      13780728,
+      13780855
+     ],
+     "0.039573": [
+      13780856,
+      13780983
+     ],
+     "0.055665": [
+      13780984,
+      13781111
+     ],
+     "0.078301": [
+      13781112,
+      13781239
+     ],
+     "0.1": [
+      13781240,
+      13781367
+     ],
+     "0.110142": [
+      13781368,
+      13781495
+     ],
+     "0.15493": [
+      13781496,
+      13781623
+     ],
+     "0.2": [
+      13781624,
+      13781751
+     ],
+     "0.217932": [
+      13781752,
+      13781879
+     ],
+     "0.306552": [
+      13781880,
+      13782007
+     ],
+     "0.4": [
+      13782008,
+      13782135
+     ],
+     "0.43121": [
+      13782136,
+      13782263
+     ],
+     "0.60656": [
+      13782264,
+      13782391
+     ],
+     "0.8": [
+      13782392,
+      13782519
+     ],
+     "0.853214": [
+      13782520,
+      13782647
+     ],
+     "1.20017": [
+      13782648,
+      13782775
+     ],
+     "1.6": [
+      13782776,
+      13782903
+     ],
+     "1.68821": [
+      13782904,
+      13783031
+     ],
+     "2.37471": [
+      13783032,
+      13783159
+     ],
+     "3.2": [
+      13783160,
+      13783287
+     ],
+     "3.34037": [
+      13783288,
+      13783415
+     ],
+     "4.69872": [
+      13783416,
+      13783543
+     ],
+     "6.4": [
+      13783544,
+      13783671
+     ],
+     "6.60943": [
+      13783672,
+      13783799
+     ],
+     "9.29712": [
+      13783800,
+      13783927
+     ],
+     "12.8": [
+      13783928,
+      13784055
+     ],
+     "13.0777": [
+      13784056,
+      13784183
+     ],
+     "18.3957": [
+      13784184,
+      13784311
+     ],
+     "25.6": [
+      13784312,
+      13784439
+     ],
+     "25.8762": [
+      13784440,
+      13784567
+     ],
+     "36.3987": [
+      13784568,
+      13784695
+     ],
+     "51.2": [
+      13784696,
+      13784823
+     ]
+    }
+   },
+   "0.00125": {
+    "anchor": [
+     13784824,
+     13785423
+    ],
+    "loaded": {
+     "0.02": [
+      13785424,
+      13785551
+     ],
+     "0.027937": [
+      13785552,
+      13785679
+     ],
+     "0.039025": [
+      13785680,
+      13785807
+     ],
+     "0.054512": [
+      13785808,
+      13785935
+     ],
+     "0.076146": [
+      13785936,
+      13786063
+     ],
+     "0.1": [
+      13786064,
+      13786191
+     ],
+     "0.106366": [
+      13786192,
+      13786319
+     ],
+     "0.148579": [
+      13786320,
+      13786447
+     ],
+     "0.2": [
+      13786448,
+      13786575
+     ],
+     "0.207545": [
+      13786576,
+      13786703
+     ],
+     "0.289912": [
+      13786704,
+      13786831
+     ],
+     "0.4": [
+      13786832,
+      13786959
+     ],
+     "0.404968": [
+      13786960,
+      13787087
+     ],
+     "0.565685": [
+      13787088,
+      13787215
+     ],
+     "0.790186": [
+      13787216,
+      13787343
+     ],
+     "0.8": [
+      13787344,
+      13787471
+     ],
+     "1.10378": [
+      13787472,
+      13787599
+     ],
+     "1.54184": [
+      13787600,
+      13787727
+     ],
+     "1.6": [
+      13787728,
+      13787855
+     ],
+     "2.15374": [
+      13787856,
+      13787983
+     ],
+     "3.00848": [
+      13787984,
+      13788111
+     ],
+     "3.2": [
+      13788112,
+      13788239
+     ],
+     "4.20244": [
+      13788240,
+      13788367
+     ],
+     "5.87025": [
+      13788368,
+      13788495
+     ],
+     "8.19995": [
+      13788496,
+      13788623
+     ],
+     "11.4542": [
+      13788624,
+      13788751
+     ],
+     "16": [
+      13788752,
+      13788879
+     ]
+    }
+   },
+   "0.007": {
+    "anchor": [
+     13788880,
+     13789179
+    ],
+    "loaded": {
+     "0.05": [
+      13789180,
+      13789307
+     ],
+     "0.1": [
+      13789308,
+      13789435
+     ],
+     "0.15": [
+      13789436,
+      13789563
+     ],
+     "0.2": [
+      13789564,
+      13789691
+     ],
+     "0.28": [
+      13789692,
+      13789819
+     ],
+     "0.4": [
+      13789820,
+      13789947
+     ],
+     "0.5657": [
+      13789948,
+      13790075
+     ],
+     "0.8": [
+      13790076,
+      13790203
+     ],
+     "1.1314": [
+      13790204,
+      13790331
+     ],
+     "1.6": [
+      13790332,
+      13790459
+     ],
+     "2.263": [
+      13790460,
+      13790587
+     ],
+     "4": [
+      13790588,
+      13790715
+     ]
+    }
+   },
+   "0.015": {
+    "anchor": [
+     13790716,
+     13791015
+    ],
+    "loaded": {
+     "0.025": [
+      13791016,
+      13791143
+     ],
+     "0.05": [
+      13791144,
+      13791271
+     ],
+     "0.075": [
+      13791272,
+      13791399
+     ],
+     "0.15": [
+      13791400,
+      13791527
+     ],
+     "0.3": [
+      13791528,
+      13791655
+     ],
+     "0.4": [
+      13791656,
+      13791783
+     ],
+     "0.5": [
+      13791784,
+      13791911
+     ],
+     "0.6": [
+      13791912,
+      13792039
+     ],
+     "0.8": [
+      13792040,
+      13792167
+     ],
+     "1.2": [
+      13792168,
+      13792295
+     ],
+     "1.7": [
+      13792296,
+      13792423
+     ],
+     "2.4": [
+      13792424,
+      13792551
+     ],
+     "4": [
+      13792552,
+      13792679
+     ]
+    }
+   }
+  },
+  "rule": "seed integer = the kernel RNG seed; contiguous per arm; every arm disjoint; entire block above the ledger maximum; zero overlap with all 15,612 pooled runs verified before launch and re-verified on the deposited parquet.",
+  "overlap_check": {
+   "known_seed_count": 21776,
+   "known_max": 13576695,
+   "production_block_overlap": 0,
+   "densification_block_overlap": 0,
+   "design_seeds_unique": true,
+   "block_above_ledger_max": true
+  }
+ },
+ "estimators": {
+  "half_drop_primary": "Convention-free crossover: theta_1/2 = load at which log10(median T_fix) falls halfway between the ladder's LOW-load plateau P_lo and HIGH-load plateau P_hi, i.e. median T_fix = sqrt(P_lo * P_hi) (geometric midpoint), located by linear interpolation of log-median-T_fix against log-theta at the first descending crossing. P_lo = median of the pooled t_fix over the rungs with theta below theta_lo* where the log-median vs log-theta slope is statistically flat (plateau detection: rungs whose median differs from the lowest-theta rung by less than the run-level bootstrap SE band, and always including the anchor as the theta->0 limit); P_hi = the analogous flat set at the top of the ladder; if the top is still descending (no flat set), P_hi is the top-rung median and the estimate is flagged UPPER-plateau-unresolved (a lower bound). Plateau sets are re-derived inside every bootstrap replicate.",
+  "legacy_level_half": "theta at which median T_fix / own-anchor neutral median crosses 1/2 (loglin, first descending crossing) - the deposited round-7/8 estimator (ridge_analysis.loglin_cross), reported for comparison; also the isotonic (weighted PAVA) variant.",
+  "bootstrap": "run-level, B=2000 (>=2000 as mandated): every rung and the anchor resampled with replacement; for cross-s_d fits a JOINT bootstrap resamples all rungs per replicate; CIs = 2.5/97.5 percentiles; every estimate stored [value, ci_lo, ci_hi]."
+ },
+ "vertex_model_comparison": {
+  "data": "half-drop crossings theta*(s_d) with bootstrap SE of log theta*, on the combined ladder set: pool s_d in {0.0025,0.005,0.01,0.02,0.04} (re-estimated identically from the deposited pool) plus the new 0.0005, 0.00125, 0.007, 0.015 rungs.",
+  "forms": {
+   "quadratic_in_log_sd": "y = a x^2 + b x + c, x = ln s_d, y = ln theta*; vertex x_v = -b/2a, WLS weights 1/var_log; 3 params",
+   "piecewise_linear": "y = c + m_lo*(x - x_v) for x<=x_v, y = c + m_hi*(x - x_v) for x>x_v (continuous hinge), vertex x_v profiled over a fine grid; 4 params",
+   "power_law_with_floor": "theta* = t0 + A*|ln(s_d/s_v)|^p; vertex s_v (the floor location) profiled; 4 params (t0, A, p, s_v)"
+  },
+  "decision": "AICc (small-sample corrected; n=9 crossings) on the WLS Gaussian likelihood with known variances (weights 1/var_log): the form with lowest AICc is selected; forms within 2 AICc of the best are reported as indistinguishable; the trough-vertex s_v is reported under EACH form with its form-conditional bootstrap CI (refit inside every joint-bootstrap replicate), and the FORM-SELECTION frequency across replicates is reported as the model-uncertainty summary."
+ },
+ "reporting_commitments": [
+  "verdict FOR/AGAINST the paper's implicit reading (a locatable low-s_d crossing / a resolved trough) in the memo's first line",
+  "whether the low-s_d arm is BOUNDED at 0.00125 and 0.0005: bounded == a located crossing with a finite two-sided run-level bootstrap CI whose plateau flags are both resolved",
+  "every number a field of low_sd_summary.json; the memo is written by reading that JSON",
+  "if a rung is run at reduced replication for wall-time reasons it is stated, never dropped"
+ ],
+ "compute_plan": "single local host, 64 cores; ~60 spawn-context workers, NUMBA/OMP/MKL threads pinned to 1 per worker; standalone launcher under bash; resume-safe jsonl shards keyed by seed.",
+ "posthoc_deviation_wave2": {
+  "classification": "DEVIATION FROM PRE-REGISTRATION - wave 2 was NOT authorised by the pre-registered adaptive_extension_rule.",
+  "preregistered_trigger": "extend upward ONLY IF the ladder's rung-median ratio has NOT descended through 0.5 by its top rung",
+  "observed_after_wave1": {
+   "sd_0.0005_top_rung_ratio": 0.467,
+   "sd_0.0005_top_theta": 51.2,
+   "sd_0.00125_top_rung_ratio": 0.354,
+   "sd_0.00125_top_theta": 16.0
+  },
+  "trigger_condition_met": false,
+  "what_was_done_anyway": "2,048 additional runs (x2 high-load extensions to theta 204.8 / 64 plus densification), launched on an undeclared criterion (top-of-ladder 'still descending' / plateau-flatness). This is a post-hoc decision the pre-registration was written to prevent, and it is disclosed as such.",
+  "treatment": "EXCLUDED from all primary estimates. Retained in low_sd_runs.parquet flagged wave='wave2_posthoc'; reported in low_sd_summary.json ONLY under posthoc_sensitivity_wave2_included. Never to be described as pre-registered.",
+  "seed_block": [
+   13820000,
+   13822047
+  ],
+  "allocation": {
+   "0.0005": {
+    "102.4": [
+     13820000,
+     13820127
+    ],
+    "204.8": [
+     13820128,
+     13820255
+    ],
+    "15.222": [
+     13821280,
+     13821407
+    ],
+    "21.527": [
+     13821408,
+     13821535
+    ],
+    "30.444": [
+     13821536,
+     13821663
+    ],
+    "43.054": [
+     13821664,
+     13821791
+    ],
+    "60.887": [
+     13821792,
+     13821919
+    ],
+    "72.408": [
+     13821920,
+     13822047
+    ]
+   },
+   "0.00125": {
+    "32": [
+     13820256,
+     13820383
+    ],
+    "64": [
+     13820384,
+     13820511
+    ],
+    "2.378": [
+     13820512,
+     13820639
+    ],
+    "2.828": [
+     13820640,
+     13820767
+    ],
+    "3.364": [
+     13820768,
+     13820895
+    ],
+    "3.7": [
+     13820896,
+     13821023
+    ],
+    "4.757": [
+     13821024,
+     13821151
+    ],
+    "5.657": [
+     13821152,
+     13821279
+    ]
+   }
+  }
+ }
+}

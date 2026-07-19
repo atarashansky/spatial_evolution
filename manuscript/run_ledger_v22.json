@@ -1,7 +1,7 @@
 {
- "note": "run ledger \u2014 Supp Table 1 is the itemised source of truth (rows sum exactly) Round 7: +10,126 runs (census-across-sd 3,712; von Neumann census stencil test 1,708; ridge-profile re-anchoring 4,700; 6 fitness-underflow probe runs); both pre-registered census transfer tests came out against the derivation reading and are reported as such. Round 8: +17,636 runs (ridge-law low-s_d extension, Supplementary Fig. S28; lattice-topology control, S29; open-system nucleation test, S30); placement Monte-Carlo and anchor leave-one-out are analysis-only (S27). Total 135,999 runs across 40 ensembles.",
- "total_runs": 135999,
- "ensembles": 40,
+ "note": "Regenerated for release v4 to match Supplementary Table 1 (round-16 manuscript): 215,454 ledger runs of which 212,204 are distinct simulations; adds the C10 campaign layer (finite-size sweep, ridge-law refit/estimator calibration, low-s_d falsifier, invariant crossover profile, anchor sensitivity, nu-sweep, placement reanalysis, advantaged-competitor) absent from v3.",
+ "total_runs": 215454,
+ "ensembles": 50,
  "round4_additions": [
   {
    "ensemble": "n0_census_instrumented",
@@ -99,5 +99,8 @@
    "runs": 13100,
    "detail": "192x64: E1 lineage-nucleation (600 neutral + 400/loaded rung x3), E2a single-cell marker (2,000/rung), E2b disc r=3 (600 neutral, 400/loaded), CS closed half-domain reference (600 neutral + 300/rung x3); seeds 13,520,000-13,547,499; +60,108 diagnostic pilot rows not counted"
   }
- }
+ },
+ "version": "v4",
+ "manuscript_round": 16,
+ "distinct_simulations": 212204
 }

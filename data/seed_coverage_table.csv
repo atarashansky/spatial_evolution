@@ -1,0 +1,42 @@
+supp_table1_figure,ensemble,runs_stated,category,unique_runs_in_seed_audit,table,note
+"S1, S8",Neutral controls (width/tilt/plateau),7900,B,0,controls_neutral.parquet + w/theta trajectory .npz,"tracks are width/trajectory, not seeded run tables; controls_summary.json aggregate only"
+"S8, S2",Tension spectra (dB),479,B,0,"tension_results.parquet, tension_spectra.npz",spectra table; no per-run seed ledger among audit inputs
+S2,Collapse replication arms,288,B,0,collapse_replication.parquet,"2-row aggregate, no seed column"
+"2a-c, 1c",T_fix scaling ladders,4250,A,4100,tfix_results.parquet,"4,250 rows; 150 are exact duplicates of bd_results rows, so 4,100 unique enter the audit | PARTIAL DOUBLE-BOOKING: 150 of these neutral runs are also re-deposited inside the S3/Bd row (bd source=tfix_neutral_reuse); they count once in the 132,749 distinct simulations"
+3a-d,Mechanism: arrest/deposition/excursions,320,B,0,"scar_data.npz, excursion_stats.parquet, jackpot_data.npz","excursion_stats.parquet excluded by the audit as DERIVED (event table, not per-run)"
+"4a-b, S3",Effect-size (s_d) sweep,1580,A,1580,sdsweep_results.parquet,
+4c,Tail ensemble (Hill alpha vs s_d),1600,A_dup,0,tail_ensemble.parquet,"1,600 rows byte-identical to bd_results rows (bd 'source'=tail_ensemble_reuse); audited under the S3 row; DOUBLE-BOOKED against S3 within the 135,999"
+S6,"alpha(s_d, L_short) map",9200,B,0,alpha_map_runs.parquet,per-run seeded table IS deposited but is NOT among the audit's inputs -> unaudited
+S3,Bd vs dB battery,2900,A,2900,bd_results.parquet,"2,900 rows all audited; but 1,600 (source=tail_ensemble_reuse) + 150 (source=tfix_neutral_reuse) are re-deposits of runs booked in rows 4c and 2a-c -> only 1,150 are new simulations | of the 2,900 Bd rows only 1,150 are new simulations; 1,600 duplicate row 4c (A_dup) and 150 duplicate rows in 2a-c (partial overlap kept in category A)"
+S4,k-clone tournaments,960,B,0,kclone_runs/events/results.parquet,seeded per-run tables deposited but NOT among audit inputs -> unaudited
+S5,Beneficial-supply arms,1500,A_dup,0,tfix_results.parquet (exp 2),"1,500 = tfix_results exp-2 arm, already booked in the 2a-c row (4,250); DOUBLE-BOOKED in the 135,999; audited within tfix's 4,100 unique"
+5,DFE composition (ladder+anchors+sens+tissue),12300,A,12300,production_dfe.parquet,
+5 (pilot),DFE pilot + point-mass validation,1700,C,0,"pilot_dfe.parquet, validation_pairs.parquet","pilot/validation, seeded tables deposited but not among audit inputs; no headline statistic"
+S16,Frequency-dependent selection phases 1-3,5600,B,0,fd_p1/p2/p3.parquet,seeded per-run tables deposited but NOT among audit inputs -> unaudited
+"S16 (pilot), S7",FD pilot + width-invariance,3336,C,0,"fd_pilot_results.parquet, fd_width_summary.parquet",pilot; not among audit inputs
+6,"Regime map (Lambda, s_d) grid + neutral anchor",2300,B,0,regime_map_grid.parquet,seeded per-run table deposited but NOT among audit inputs -> unaudited
+7 (lineage kernels),Lineage-tracing kernels,144,B,0,lineage_sims.pkl,"pickle, no per-run seed table"
+"2d-e, S9, S14",Finite-size L_long sweep,1870,A,1870,finite_size.parquet,
+"3e-f, S10","Reduced-model inputs (v(g), D0, MSD)",1560,A,1560,reduced_model_runs.parquet,
+"S15, S8 (methods)",Stiffness/noise/Laplace/tilt controls,2520,B,0,tension_test.parquet,"42-row aggregate, no seed column"
+S15 (audit),Independent stiffness re-measurement,312,B,0,"audit_runs.tar.gz, tension_audit_results.csv",tarball + summary csv; not among audit's parquet inputs
+"4d-f, S11",Ridge tracing (ridge law) T1/T2/T3/N-crossing,7400,A,7400,ridge_law.parquet,"4,700 of its 7,400 rows are also deposited inside estimator_sensitivity_ladders.parquet (groups T1/T2a/T2b/N32) and 2,700 are unique to ridge_law.parquet; all 7,400 are in the audit universe (dedup attributes the shared 4,700 to the ladders table)"
+7,Confrontation kernel ensembles (power surface),12000,B,0,confrontation_stats.parquet (339-row aggregate),"12,000 kernel realisations deposited only as aggregate stats; no per-run seed ledger"
+4f,Intensivity extension + aspect control,2159,A,2159,intensivity_ext.parquet,
+"4g, 4h",Least-loaded-class census (instrumented),306,B,0,"n0_census.parquet, n0_census_raw.parquet","n0_census (15 rows) lacks seed; n0_census_raw excluded by the audit as DERIVED (79,950 per-cell rows)"
+S17,Ratchet-click census / rate-spread test,1984,B,0,sigma_dR_ladder / gridseries / neutral_com.parquet,"all three excluded by the audit as DERIVED (event/series tables), so the 1,984 fixation runs are unaudited"
+S18,Neighbourhood (vN vs Moore) ridge test,2906,A,2906,neighbourhood_ridge.parquet,
+S19,Aspect-ratio ladder (new runs only),1029,B,0,"aspect_ladder.parquet, aspect_runs_raw.parquet","aspect_ladder excluded as DERIVED (pool incl. 3,509 reused runs); aspect_runs_raw not among inputs -> 1,029 new runs unaudited"
+S20 (a-c),Pusher-switch mixed-rule ensemble,9160,B,0,ensemble_main/calibration/refine2/validation_runs.parquet,'not part of the present analysis' per Supp Table 1; per-run tables deposited but not among audit inputs
+"S20 (d, e)",Front-morphology ensembles,258,B,0,"pusher_morphology.parquet (DERIVED-excluded), rough_out/",excluded by the audit as DERIVED
+S25,Ridge-profile re-anchoring,4700,A,4700,ridge_profile_runs.parquet,"headline pool also draws reused audited tables (ladders, census_sd) - see figure coverage"
+"Fig. 4h, S21",Front census functional form + contacts,956,B,0,contact_census_runs.parquet,table has NO seed column (uses 'runid'/rung ids) -> the audit skipped it; 956 runs unaudited
+S22,Fixed-s_d estimator bracketing supplement,2100,A,2100,estimator_supplement_runs.parquet,"the 2,100 supplement runs are byte-identical rows inside estimator_sensitivity_ladders.parquet (group EST); all audited, attributed there under dedup"
+S23,Click-onset effect-size sweep,5360,A,5360,onset_runs.parquet,
+S24,Census across effect size,3712,A,3712,census_sd_runs.parquet,
+S26,Von Neumann census stencil test,1708,A,1708,vn_census_runs.parquet,
+—,Fitness-precision (underflow) probes,6,C,0,fitness_underflow_check.json,"diagnostic probes, JSON only, enter no statistic"
+S27,Placement MC + anchor leave-one-out,0,C,0,placement_mc_*.parquet/json,"analysis-only, 0 runs"
+S28,Ridge-law refit low-s_d extension,1464,B,0,low_sd_extension_runs.parquet,round-8 seeded per-run table deposited AFTER the audit; not among its inputs -> unaudited
+S29,Lattice-topology control (hex/random),3072,B,0,topology_control_runs.parquet,round-8; deposited after the audit -> unaudited
+S30,Open-system ongoing-nucleation test,13100,B,0,open_system_runs.parquet,round-8; deposited after the audit -> unaudited

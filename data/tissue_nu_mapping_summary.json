@@ -1,0 +1,1046 @@
+{
+ "track": "Round 9 reanalysis, task C: placing real esophagus on the nu-sweep's largest-lineage-fraction axis",
+ "definitions": {
+  "model_f1": "f1_stat = time-average over the run's stationary window (t >= 0.1 t_max) of (cells in the largest lineage)/(live cells in the 192x64 domain), from nu_sweep_analyse.py; nu = probability that a birth founds a NEW unlabelled lineage",
+  "tissue_f1_primary": "f1_tissue = (area of the largest labelled clone in a mouse)/(that mouse's total oesophageal-epithelium area, oe_area_um2), mean over mice with mouse-level bootstrap CI (B=4000)",
+  "tissue_f1_upper_bound": "f1_of_labelled = largest clone / summed labelled clone area \u2014 corrects for the low label density (labelled fraction 1-6%) and therefore OVERSTATES the fraction any lineage occupies of the whole tissue; carried only as a ceiling",
+  "detection_floor_um2": 50.27,
+  "clone_size_units": "um2 (per-clone YFP area, Colom 2020 Suppl. Table 6); tissue = mouse oesophageal epithelium (the deposit carries no skin table)"
+ },
+ "data_source": {
+  "artifact": "colom2020_clones.parquet (art e81867af)",
+  "rows_used": "tissue == 'mouse esophageal epithelium (YFP lineage tracing)', Suppl. T6 control and DEN arms, n=59,310 clones, 24 control + 16 DEN mouse-time-points",
+  "rows_not_used": "EE/DN-Maml1 (Suppl. T14, flagged in confrontation_summary.json as a value-by-value duplicate of the T6 DEN arms), confetti tables (no per-mouse tissue area)",
+  "shape_statistics": "NOT AVAILABLE: the deposited clone tables carry per-clone AREAS ONLY (columns: clone_size_value in um2, oe_area_um2). No perimeter, boundary or shape column exists, so the shape/perimeter comparison the reviewers suggested is skipped rather than invented."
+ },
+ "tissue_f1_timecourse": {
+  "Control": {
+   "10 days": {
+    "age_days": 10,
+    "n_mice": 2,
+    "n_clones": 11552,
+    "f1_tissue": [
+     0.0001061109757138926,
+     5.803216607362588e-05,
+     0.00015418978535415933
+    ],
+    "f1_tissue_median": [
+     0.0001061109757138926,
+     5.803216607362588e-05,
+     0.00015418978535415933
+    ],
+    "f1_tissue_max_mouse": 0.00015418978535415933,
+    "f1_of_labelled": [
+     0.003089552011837051,
+     0.002667191162055648,
+     0.0035119128616184535
+    ],
+    "labelled_frac": [
+     0.037167087211106814,
+     0.016524375279312012,
+     0.05780979914290161
+    ],
+    "max_clone_um2": [
+     7555.445,
+     4119.83,
+     10991.06
+    ],
+    "max_clone_um2_max_mouse": 10991.06
+   },
+   "1 month": {
+    "age_days": 30,
+    "n_mice": 5,
+    "n_clones": 15865,
+    "f1_tissue": [
+     0.00014203417167675712,
+     0.0001086564960958011,
+     0.00017730631524867651
+    ],
+    "f1_tissue_median": [
+     0.0001454490850877118,
+     8.877268953393567e-05,
+     0.0001989846718849396
+    ],
+    "f1_tissue_max_mouse": 0.0001989846718849396,
+    "f1_of_labelled": [
+     0.004753713650602723,
+     0.0039099927021074175,
+     0.005662012769958247
+    ],
+    "labelled_frac": [
+     0.030517293575469017,
+     0.023967452461131272,
+     0.040154796468029184
+    ],
+    "max_clone_um2": [
+     11369.72,
+     8235.27,
+     14504.169999999998
+    ],
+    "max_clone_um2_max_mouse": 16277.97
+   },
+   "3 months": {
+    "age_days": 91,
+    "n_mice": 3,
+    "n_clones": 4152,
+    "f1_tissue": [
+     0.00019324953285838667,
+     0.00016122405559978846,
+     0.00024210379449107264
+    ],
+    "f1_tissue_median": [
+     0.0001764207484842989,
+     0.00016122405559978846,
+     0.00024210379449107262
+    ],
+    "f1_tissue_max_mouse": 0.00024210379449107262,
+    "f1_of_labelled": [
+     0.007692385139806683,
+     0.005609682020137302,
+     0.010678128681967934
+    ],
+    "labelled_frac": [
+     0.02780884139937066,
+     0.016521691556519554,
+     0.0431582028396588
+    ],
+    "max_clone_um2": [
+     14467.463333333333,
+     12108.75,
+     18790.34
+    ],
+    "max_clone_um2_max_mouse": 18790.34
+   },
+   "6 months": {
+    "age_days": 183,
+    "n_mice": 6,
+    "n_clones": 2474,
+    "f1_tissue": [
+     0.00019254943917007452,
+     0.00014950445060897598,
+     0.00024168848024213024
+    ],
+    "f1_tissue_median": [
+     0.00017001849351639095,
+     0.0001392474291552685,
+     0.00026838239483856414
+    ],
+    "f1_tissue_max_mouse": 0.00029683003706009413,
+    "f1_of_labelled": [
+     0.02785693241518063,
+     0.020010015522812268,
+     0.036475340246155195
+    ],
+    "labelled_frac": [
+     0.009122454497815968,
+     0.0046555886970606215,
+     0.015830452281636476
+    ],
+    "max_clone_um2": [
+     14284.091666666667,
+     10922.214999999998,
+     17776.403333333335
+    ],
+    "max_clone_um2_max_mouse": 21124.93
+   },
+   "12 months": {
+    "age_days": 365,
+    "n_mice": 5,
+    "n_clones": 3485,
+    "f1_tissue": [
+     0.0016772850321122921,
+     0.0007840725425393329,
+     0.0025750669839026525
+    ],
+    "f1_tissue_median": [
+     0.0018418666829389083,
+     0.0005099005916924212,
+     0.0034203385167915663
+    ],
+    "f1_tissue_max_mouse": 0.0034203385167915663,
+    "f1_of_labelled": [
+     0.061503726814274476,
+     0.03339895724483605,
+     0.08960849638371289
+    ],
+    "labelled_frac": [
+     0.031084153883626908,
+     0.017457525002526154,
+     0.04537151401714971
+    ],
+    "max_clone_um2": [
+     129161.41399999999,
+     56521.03600000001,
+     201801.79200000002
+    ],
+    "max_clone_um2_max_mouse": 268778.58
+   }
+  },
+  "DEN": {
+   "10 days": {
+    "age_days": 10,
+    "n_mice": 3,
+    "n_clones": 15092,
+    "f1_tissue": [
+     0.00016286679698585124,
+     8.515987093027099e-05,
+     0.0003087395326437619
+    ],
+    "f1_tissue_median": [
+     9.470098738352092e-05,
+     8.515987093027098e-05,
+     0.0003087395326437619
+    ],
+    "f1_tissue_max_mouse": 0.0003087395326437619,
+    "f1_of_labelled": [
+     0.003657471798538287,
+     0.002590958355199692,
+     0.004312798082529027
+    ],
+    "labelled_frac": [
+     0.04257688326690485,
+     0.023275725088721236,
+     0.07158682756200747
+    ],
+    "max_clone_um2": [
+     10921.113333333333,
+     5713.420000000001,
+     18939.01
+    ],
+    "max_clone_um2_max_mouse": 18939.01
+   },
+   "1 month": {
+    "age_days": 30,
+    "n_mice": 3,
+    "n_clones": 5682,
+    "f1_tissue": [
+     0.00015787300787129454,
+     0.00010813271175627344,
+     0.00018826510820127472
+    ],
+    "f1_tissue_median": [
+     0.00017722120365633545,
+     0.00010813271175627344,
+     0.00018826510820127472
+    ],
+    "f1_tissue_max_mouse": 0.00018826510820127472,
+    "f1_of_labelled": [
+     0.010858055021064234,
+     0.006034615376181497,
+     0.014285501173740398
+    ],
+    "labelled_frac": [
+     0.017433448428666384,
+     0.007569402742064306,
+     0.029367439780143056
+    ],
+    "max_clone_um2": [
+     13577.82,
+     8762.15,
+     17578.35
+    ],
+    "max_clone_um2_max_mouse": 17578.35
+   },
+   "3 months": {
+    "age_days": 91,
+    "n_mice": 3,
+    "n_clones": 539,
+    "f1_tissue": [
+     0.0007345120200465544,
+     0.0005705354728607021,
+     0.0008817004806907647
+    ],
+    "f1_tissue_median": [
+     0.000751300106588196,
+     0.0005705354728607021,
+     0.0008817004806907648
+    ],
+    "f1_tissue_max_mouse": 0.0008817004806907648,
+    "f1_of_labelled": [
+     0.16689472832639451,
+     0.05062054653504796,
+     0.3601242941942398
+    ],
+    "labelled_frac": [
+     0.008743118094950271,
+     0.001584273768969813,
+     0.014841801561111577
+    ],
+    "max_clone_um2": [
+     60397.28333333333,
+     46769.09,
+     71821.88
+    ],
+    "max_clone_um2_max_mouse": 71821.88
+   },
+   "6 months": {
+    "age_days": 183,
+    "n_mice": 4,
+    "n_clones": 281,
+    "f1_tissue": [
+     0.001352572443838828,
+     0.001239889090992017,
+     0.0014552722936535152
+    ],
+    "f1_tissue_median": [
+     0.0013883275223743842,
+     0.0011706616268168952,
+     0.0014629731037896477
+    ],
+    "f1_tissue_max_mouse": 0.0014629731037896477,
+    "f1_of_labelled": [
+     0.16484870450768246,
+     0.12624331087508864,
+     0.21317211906942402
+    ],
+    "labelled_frac": [
+     0.00864585652734405,
+     0.00694465515312905,
+     0.010481541467159024
+    ],
+    "max_clone_um2": [
+     100589.4625,
+     91804.77,
+     109374.155
+    ],
+    "max_clone_um2_max_mouse": 110535.65
+   },
+   "12 months": {
+    "age_days": 365,
+    "n_mice": 3,
+    "n_clones": 188,
+    "f1_tissue": [
+     0.0029733730467779765,
+     0.002793430105429866,
+     0.0033293874120757547
+    ],
+    "f1_tissue_median": [
+     0.0027973016228283075,
+     0.002793430105429866,
+     0.0033293874120757547
+    ],
+    "f1_tissue_max_mouse": 0.0033293874120757547,
+    "f1_of_labelled": [
+     0.1289348733742968,
+     0.09865640876164172,
+     0.18356739784947576
+    ],
+    "labelled_frac": [
+     0.025232195220776788,
+     0.015238553553622192,
+     0.033747299885197556
+    ],
+    "max_clone_um2": [
+     231352.37666666668,
+     190822.14,
+     267632.88
+    ],
+    "max_clone_um2_max_mouse": 267632.88
+   }
+  }
+ },
+ "tissue_headline": {
+  "control_12mo_f1_tissue": [
+   0.0016772850321122921,
+   0.0007840725425393329,
+   0.0025750669839026525
+  ],
+  "control_12mo_f1_tissue_max_mouse": 0.0034203385167915663,
+  "control_6mo_f1_tissue": [
+   0.00019254943917007452,
+   0.00014950445060897598,
+   0.00024168848024213024
+  ],
+  "control_3mo_f1_tissue": [
+   0.00019324953285838667,
+   0.00016122405559978846,
+   0.00024210379449107264
+  ],
+  "control_12mo_f1_of_labelled_ceiling": [
+   0.061503726814274476,
+   0.03339895724483605,
+   0.08960849638371289
+  ],
+  "control_12mo_labelled_frac": [
+   0.031084153883626908,
+   0.017457525002526154,
+   0.04537151401714971
+  ],
+  "control_12mo_largest_clone_um2": [
+   129161.41399999999,
+   56521.03600000001,
+   201801.79200000002
+  ],
+  "control_12mo_largest_clone_um2_max_mouse": 268778.58,
+  "den_12mo_f1_tissue": [
+   0.0029733730467779765,
+   0.002793430105429866,
+   0.0033293874120757547
+  ],
+  "den_12mo_f1_of_labelled_ceiling": [
+   0.1289348733742968,
+   0.09865640876164172,
+   0.18356739784947576
+  ]
+ },
+ "model_axis": {
+  "cells": [
+   {
+    "nu": 5e-06,
+    "theta": 0.0,
+    "n_runs": 96,
+    "f1_stat": [
+     0.7819282390453197,
+     0.7519566774368286,
+     0.8109497432355528
+    ],
+    "f1_max": 0.9788589477539062,
+    "K_stat": 2.7317708333333335
+   },
+   {
+    "nu": 2e-05,
+    "theta": 0.0,
+    "n_runs": 120,
+    "f1_stat": [
+     0.5536835847077547,
+     0.5308172967698839,
+     0.5762216758728028
+    ],
+    "f1_max": 0.8501837836371529,
+    "K_stat": 6.58263888888889
+   },
+   {
+    "nu": 5e-05,
+    "theta": 0.0,
+    "n_runs": 150,
+    "f1_stat": [
+     0.4017473913122106,
+     0.3871112054895472,
+     0.41686292012532555
+    ],
+    "f1_max": 0.6720610894097222,
+    "K_stat": 12.515277777777778
+   },
+   {
+    "nu": 0.00015,
+    "theta": 0.0,
+    "n_runs": 150,
+    "f1_stat": [
+     0.24269352665653934,
+     0.23560833514178237,
+     0.2501085052490234
+    ],
+    "f1_max": 0.4091498480902777,
+    "K_stat": 28.591944444444447
+   },
+   {
+    "nu": 0.0005,
+    "theta": 0.0,
+    "n_runs": 150,
+    "f1_stat": [
+     0.123688146520544,
+     0.12068028693305122,
+     0.1268162458405671
+    ],
+    "f1_max": 0.20755262586805556,
+    "K_stat": 73.12516666666667
+   },
+   {
+    "nu": 0.0015,
+    "theta": 0.0,
+    "n_runs": 150,
+    "f1_stat": [
+     0.060817382812499994,
+     0.0596950390625,
+     0.062012402886284713
+    ],
+    "f1_max": 0.1006982421875,
+    "K_stat": 171.16613333333333
+   },
+   {
+    "nu": 5e-06,
+    "theta": 0.4,
+    "n_runs": 64,
+    "f1_stat": [
+     0.8531951904296875,
+     0.8235296858681572,
+     0.88321410285102
+    ],
+    "f1_max": 0.9908370971679688,
+    "K_stat": 2.1673177083333335
+   },
+   {
+    "nu": 2e-05,
+    "theta": 0.4,
+    "n_runs": 80,
+    "f1_stat": [
+     0.6684475792778863,
+     0.634287272559272,
+     0.7033871301015218
+    ],
+    "f1_max": 0.9301778157552084,
+    "K_stat": 5.078645833333334
+   },
+   {
+    "nu": 5e-05,
+    "theta": 0.4,
+    "n_runs": 100,
+    "f1_stat": [
+     0.528662109375,
+     0.5069004652235244,
+     0.5516346655951606
+    ],
+    "f1_max": 0.8233138020833333,
+    "K_stat": 9.702083333333334
+   },
+   {
+    "nu": 0.00015,
+    "theta": 0.4,
+    "n_runs": 100,
+    "f1_stat": [
+     0.3224322509765625,
+     0.30806181420220263,
+     0.33725866275363503
+    ],
+    "f1_max": 0.5453361002604167,
+    "K_stat": 24.387916666666666
+   },
+   {
+    "nu": 0.0005,
+    "theta": 0.4,
+    "n_runs": 100,
+    "f1_stat": [
+     0.16415365804036458,
+     0.15738274139404296,
+     0.17139725087483726
+    ],
+    "f1_max": 0.2799763997395833,
+    "K_stat": 67.36463333333333
+   },
+   {
+    "nu": 0.0015,
+    "theta": 0.4,
+    "n_runs": 100,
+    "f1_stat": [
+     0.07796181640625,
+     0.07549702962239584,
+     0.08050534423828125
+    ],
+    "f1_max": 0.13287760416666666,
+    "K_stat": 164.27
+   },
+   {
+    "nu": 5e-06,
+    "theta": 0.8,
+    "n_runs": 64,
+    "f1_stat": [
+     0.9471812778049046,
+     0.9256235573026869,
+     0.9653752340210807
+    ],
+    "f1_max": 0.9993400573730469,
+    "K_stat": 1.7688802083333335
+   },
+   {
+    "nu": 2e-05,
+    "theta": 0.8,
+    "n_runs": 80,
+    "f1_stat": [
+     0.8096860673692492,
+     0.7785658211178249,
+     0.840502863989936
+    ],
+    "f1_max": 0.9827534993489582,
+    "K_stat": 4.1015625
+   },
+   {
+    "nu": 5e-05,
+    "theta": 0.8,
+    "n_runs": 100,
+    "f1_stat": [
+     0.6634201388888888,
+     0.6307813576592339,
+     0.6943736885918511
+    ],
+    "f1_max": 0.9222566731770834,
+    "K_stat": 8.590833333333332
+   },
+   {
+    "nu": 0.00015,
+    "theta": 0.8,
+    "n_runs": 100,
+    "f1_stat": [
+     0.43934641520182294,
+     0.41485083601209843,
+     0.4631378665500217
+    ],
+    "f1_max": 0.7353995768229166,
+    "K_stat": 22.402083333333334
+   },
+   {
+    "nu": 0.0005,
+    "theta": 0.8,
+    "n_runs": 100,
+    "f1_stat": [
+     0.22648923068576388,
+     0.21566884877522785,
+     0.2377467126803928
+    ],
+    "f1_max": 0.40631103515625,
+    "K_stat": 63.63065
+   },
+   {
+    "nu": 0.0015,
+    "theta": 0.8,
+    "n_runs": 100,
+    "f1_stat": [
+     0.09888037109374999,
+     0.0954435603841146,
+     0.10235967692057288
+    ],
+    "f1_max": 0.18425618489583337,
+    "K_stat": 161.33360000000002
+   }
+  ],
+  "f1_range_theta0": [
+   0.060817382812499994,
+   0.7819282390453197
+  ],
+  "f1_range_theta0p4": [
+   0.07796181640625,
+   0.8531951904296875
+  ],
+  "f1_min_over_sweep": 0.060817382812499994,
+  "lattice": "192 x 64 = 12,288 cells",
+  "nu_grid": [
+   0.0015,
+   0.0005,
+   0.00015,
+   5e-05,
+   2e-05,
+   5e-06
+  ],
+  "loglin_fit_f1_vs_nu": {
+   "0.0": {
+    "intercept": -2.408511996657349,
+    "slope": -0.4516669250982184,
+    "r2": 0.9706268222576412
+   },
+   "0.4": {
+    "intercept": -2.1962700643030857,
+    "slope": -0.4236097821301391,
+    "r2": 0.9449962939122233
+   },
+   "0.8": {
+    "intercept": -1.97801823241472,
+    "slope": -0.3945427171217871,
+    "r2": 0.9103827827713781
+   }
+  },
+  "accel_vs_f1": {
+   "0.4": [
+    {
+     "nu": 5e-06,
+     "f1": 0.8531951904296875,
+     "accel_level2": [
+      1.9774939231282946,
+      1.7461965039271932,
+      2.358490123488403
+     ]
+    },
+    {
+     "nu": 2e-05,
+     "f1": 0.6684475792778863,
+     "accel_level2": [
+      1.9759665144596652,
+      1.6439413526487054,
+      2.3309232511655242
+     ]
+    },
+    {
+     "nu": 5e-05,
+     "f1": 0.528662109375,
+     "accel_level2": [
+      1.6038244237916626,
+      1.4360698355322303,
+      1.778212242375127
+     ]
+    },
+    {
+     "nu": 0.00015,
+     "f1": 0.3224322509765625,
+     "accel_level2": [
+      1.5244244789303325,
+      1.3765918779464965,
+      1.6619667962066165
+     ]
+    },
+    {
+     "nu": 0.0005,
+     "f1": 0.16415365804036458,
+     "accel_level2": [
+      1.3582294246211553,
+      1.2478138634300053,
+      1.4206022382645642
+     ]
+    },
+    {
+     "nu": 0.0015,
+     "f1": 0.07796181640625,
+     "accel_level2": [
+      1.1290257411740938,
+      1.0746711666358784,
+      1.2075865229244396
+     ]
+    }
+   ],
+   "0.8": [
+    {
+     "nu": 5e-06,
+     "f1": 0.9471812778049046,
+     "accel_level2": [
+      4.33725764988455,
+      3.908837508727744,
+      5.0736118405758415
+     ]
+    },
+    {
+     "nu": 2e-05,
+     "f1": 0.8096860673692492,
+     "accel_level2": [
+      4.045996509412121,
+      3.573359242081042,
+      4.602889907426695
+     ]
+    },
+    {
+     "nu": 5e-05,
+     "f1": 0.6634201388888888,
+     "accel_level2": [
+      3.4545990538878577,
+      3.165062275142097,
+      3.8201133535353256
+     ]
+    },
+    {
+     "nu": 0.00015,
+     "f1": 0.43934641520182294,
+     "accel_level2": [
+      2.418712142301748,
+      2.168520475394409,
+      2.716172824768306
+     ]
+    },
+    {
+     "nu": 0.0005,
+     "f1": 0.22648923068576388,
+     "accel_level2": [
+      1.7591323341116216,
+      1.5941509235739084,
+      1.9553825208796223
+     ]
+    },
+    {
+     "nu": 0.0015,
+     "f1": 0.09888037109374999,
+     "accel_level2": [
+      1.3469035257729889,
+      1.2808535513061385,
+      1.4430637752181041
+     ]
+    }
+   ]
+  },
+  "closed_limits": {
+   "theta_0p4": {
+    "burnin": 1.3902111303032774,
+    "fresh": 1.376080369838233
+   },
+   "theta_0p8": {
+    "burnin": 4.016701472556894,
+    "fresh": 3.2616789448145047
+   }
+  }
+ },
+ "placement": {
+  "decades_below_sweep_min_control_12mo": 1.6672750776406706,
+  "decades_below_sweep_min_control_12mo_ceiling": 0.10298051642686376,
+  "decades_below_sweep_min_control_3mo": 2.6057634962724774,
+  "nu_required_theta0p4_for_control_12mo_f1": 23.287049887526575,
+  "nu_required_theta0_for_control_12mo_f1": 6.490564710667055,
+  "nu_required_theta0p4_for_ceiling_f1": 0.004724348829927773,
+  "nu_required_note": "nu is a probability (<= 1); the fitted f1(nu) power law would need nu > 1 to reach the tissue's f1, i.e. the tissue lies beyond the 'every birth founds a new lineage' end of the axis \u2014 outside the sweep by construction, not just by range",
+  "implied_accel_control_12mo": {
+   "theta_0p4": {
+    "linear_to_origin": 1.0027758838160055,
+    "powerlaw_excess": 1.0069470210694227,
+    "sweep_lowest_f1": 0.07796181640625,
+    "sweep_lowest_accel": [
+     1.1290257411740938,
+     1.0746711666358784,
+     1.2075865229244396
+    ]
+   },
+   "theta_0p8": {
+    "linear_to_origin": 1.005884444859277,
+    "powerlaw_excess": 1.0050990073324608,
+    "sweep_lowest_f1": 0.09888037109374999,
+    "sweep_lowest_accel": [
+     1.3469035257729889,
+     1.2808535513061385,
+     1.4430637752181041
+    ]
+   }
+  },
+  "implied_accel_control_12mo_ceiling": {
+   "theta_0p4": {
+    "linear_to_origin": 1.101787827721066,
+    "powerlaw_excess": 1.1271173107724273,
+    "sweep_lowest_f1": 0.07796181640625,
+    "sweep_lowest_accel": [
+     1.1290257411740938,
+     1.0746711666358784,
+     1.2075865229244396
+    ]
+   },
+   "theta_0p8": {
+    "linear_to_origin": 1.2157744701405062,
+    "powerlaw_excess": 1.2053089235208443,
+    "sweep_lowest_f1": 0.09888037109374999,
+    "sweep_lowest_accel": [
+     1.3469035257729889,
+     1.2808535513061385,
+     1.4430637752181041
+    ]
+   }
+  },
+  "implied_accel_den_12mo_ceiling": {
+   "theta_0p4": {
+    "linear_to_origin": 1.2133854541512827,
+    "powerlaw_excess": 1.231011892394507,
+    "sweep_lowest_f1": 0.07796181640625,
+    "sweep_lowest_accel": [
+     1.1290257411740938,
+     1.0746711666358784,
+     1.2075865229244396
+    ]
+   },
+   "theta_0p8": {
+    "linear_to_origin": 1.452344198083866,
+    "powerlaw_excess": 1.438758897001669,
+    "sweep_lowest_f1": 0.09888037109374999,
+    "sweep_lowest_accel": [
+     1.3469035257729889,
+     1.2808535513061385,
+     1.4430637752181041
+    ]
+   }
+  },
+  "sweep_endpoint_accel": {
+   "theta_0p4_at_f1_0p078": [
+    1.1290257411740938,
+    1.0746711666358784,
+    1.2075865229244396
+   ],
+   "theta_0p8_at_f1_0p099": [
+    1.3469035257729889,
+    1.2808535513061385,
+    1.4430637752181041
+   ],
+   "theta_0p4_at_f1_0p853": [
+    1.9774939231282946,
+    1.7461965039271932,
+    2.358490123488403
+   ],
+   "theta_0p8_at_f1_0p947": [
+    4.33725764988455,
+    3.908837508727744,
+    5.0736118405758415
+   ]
+  }
+ },
+ "macroscopic_regime": {
+  "criterion": "a boundary is 'macroscopic' (fluidization-eligible in the sweep's mechanism) when the clone it bounds occupies a fraction of the tissue at least as large as the sweep's LEAST stringent stationary largest-lineage fraction, f1 = 0.078 (nu = 1.5e-3, theta = 0.4); thresholds 1e-2, 1e-3, 1e-4 also tabulated",
+  "perimeter_proxy": "perimeter share approximated as sqrt(area) share (compact-clone assumption) because no perimeters are deposited",
+  "per_arm": {
+   "Control 3 months": {
+    "0.078": {
+     "n_clones_macroscopic": 0,
+     "frac_clones": 0.0,
+     "frac_area": 0.0,
+     "frac_boundary_perim_prop_sqrt_area": 0.0
+    },
+    "0.01": {
+     "n_clones_macroscopic": 0,
+     "frac_clones": 0.0,
+     "frac_area": 0.0,
+     "frac_boundary_perim_prop_sqrt_area": 0.0
+    },
+    "0.001": {
+     "n_clones_macroscopic": 0,
+     "frac_clones": 0.0,
+     "frac_area": 0.0,
+     "frac_boundary_perim_prop_sqrt_area": 0.0
+    },
+    "0.0001": {
+     "n_clones_macroscopic": 59,
+     "frac_clones": 0.014210019267822735,
+     "frac_area": 0.09075896163763655,
+     "frac_boundary_perim_prop_sqrt_area": 0.0413683013776419
+    }
+   },
+   "Control 6 months": {
+    "0.078": {
+     "n_clones_macroscopic": 0,
+     "frac_clones": 0.0,
+     "frac_area": 0.0,
+     "frac_boundary_perim_prop_sqrt_area": 0.0
+    },
+    "0.01": {
+     "n_clones_macroscopic": 0,
+     "frac_clones": 0.0,
+     "frac_area": 0.0,
+     "frac_boundary_perim_prop_sqrt_area": 0.0
+    },
+    "0.001": {
+     "n_clones_macroscopic": 0,
+     "frac_clones": 0.0,
+     "frac_area": 0.0,
+     "frac_boundary_perim_prop_sqrt_area": 0.0
+    },
+    "0.0001": {
+     "n_clones_macroscopic": 59,
+     "frac_clones": 0.023848019401778497,
+     "frac_area": 0.1545089057042902,
+     "frac_boundary_perim_prop_sqrt_area": 0.0709288083759439
+    }
+   },
+   "Control 12 months": {
+    "0.078": {
+     "n_clones_macroscopic": 0,
+     "frac_clones": 0.0,
+     "frac_area": 0.0,
+     "frac_boundary_perim_prop_sqrt_area": 0.0
+    },
+    "0.01": {
+     "n_clones_macroscopic": 0,
+     "frac_clones": 0.0,
+     "frac_area": 0.0,
+     "frac_boundary_perim_prop_sqrt_area": 0.0
+    },
+    "0.001": {
+     "n_clones_macroscopic": 9,
+     "frac_clones": 0.002582496413199426,
+     "frac_area": 0.10026761659625365,
+     "frac_boundary_perim_prop_sqrt_area": 0.021317487297223096
+    },
+    "0.0001": {
+     "n_clones_macroscopic": 411,
+     "frac_clones": 0.11793400286944046,
+     "frac_area": 0.5970688140747071,
+     "frac_boundary_perim_prop_sqrt_area": 0.33495989914603047
+    }
+   },
+   "DEN 3 months": {
+    "0.078": {
+     "n_clones_macroscopic": 0,
+     "frac_clones": 0.0,
+     "frac_area": 0.0,
+     "frac_boundary_perim_prop_sqrt_area": 0.0
+    },
+    "0.01": {
+     "n_clones_macroscopic": 0,
+     "frac_clones": 0.0,
+     "frac_area": 0.0,
+     "frac_boundary_perim_prop_sqrt_area": 0.0
+    },
+    "0.001": {
+     "n_clones_macroscopic": 0,
+     "frac_clones": 0.0,
+     "frac_area": 0.0,
+     "frac_boundary_perim_prop_sqrt_area": 0.0
+    },
+    "0.0001": {
+     "n_clones_macroscopic": 69,
+     "frac_clones": 0.1280148423005566,
+     "frac_area": 0.5938229739854121,
+     "frac_boundary_perim_prop_sqrt_area": 0.3433560580171335
+    }
+   },
+   "DEN 6 months": {
+    "0.078": {
+     "n_clones_macroscopic": 0,
+     "frac_clones": 0.0,
+     "frac_area": 0.0,
+     "frac_boundary_perim_prop_sqrt_area": 0.0
+    },
+    "0.01": {
+     "n_clones_macroscopic": 0,
+     "frac_clones": 0.0,
+     "frac_area": 0.0,
+     "frac_boundary_perim_prop_sqrt_area": 0.0
+    },
+    "0.001": {
+     "n_clones_macroscopic": 4,
+     "frac_clones": 0.014234875444839857,
+     "frac_area": 0.15672390125377023,
+     "frac_boundary_perim_prop_sqrt_area": 0.06187705208494373
+    },
+    "0.0001": {
+     "n_clones_macroscopic": 77,
+     "frac_clones": 0.27402135231316727,
+     "frac_area": 0.8138527468092409,
+     "frac_boundary_perim_prop_sqrt_area": 0.5743986450560487
+    }
+   },
+   "DEN 12 months": {
+    "0.078": {
+     "n_clones_macroscopic": 0,
+     "frac_clones": 0.0,
+     "frac_area": 0.0,
+     "frac_boundary_perim_prop_sqrt_area": 0.0
+    },
+    "0.01": {
+     "n_clones_macroscopic": 0,
+     "frac_clones": 0.0,
+     "frac_area": 0.0,
+     "frac_boundary_perim_prop_sqrt_area": 0.0
+    },
+    "0.001": {
+     "n_clones_macroscopic": 24,
+     "frac_clones": 0.1276595744680851,
+     "frac_area": 0.5746269966079025,
+     "frac_boundary_perim_prop_sqrt_area": 0.3476101735874616
+    },
+    "0.0001": {
+     "n_clones_macroscopic": 98,
+     "frac_clones": 0.5212765957446809,
+     "frac_area": 0.9588008710099756,
+     "frac_boundary_perim_prop_sqrt_area": 0.8341080908012285
+    }
+   }
+  },
+  "frac_boundaries_macroscopic_at_sweep_criterion": 0.0,
+  "largest_clone_over_sweep_criterion_decades": 1.3578128579892537
+ },
+ "headline": {
+  "control_12mo_f1_tissue": [
+   0.0016772850321122921,
+   0.0007840725425393329,
+   0.0025750669839026525
+  ],
+  "control_12mo_f1_ceiling": [
+   0.061503726814274476,
+   0.03339895724483605,
+   0.08960849638371289
+  ],
+  "sweep_f1_min": 0.07796181640625,
+  "decades_gap": 1.6672750776406706,
+  "decades_gap_ceiling": 0.10298051642686376,
+  "implied_accel_theta0p8_linear": 1.005884444859277,
+  "implied_accel_theta0p8_ceiling_linear": 1.2157744701405062,
+  "frac_boundaries_macroscopic": 0.0,
+  "verdict": "AGAINST direct applicability to real tissue: real oesophagus f1 (1.7e-3 at 12 mo; ceiling 0.06) sits 1.7 (ceiling 0.1) decades below the sweep's lowest f1, where the acceleration is already only 1.13/1.35; extrapolated acceleration ~1.0 and zero boundaries are in the macroscopic regime"
+ },
+ "runs_executed": 0
+}

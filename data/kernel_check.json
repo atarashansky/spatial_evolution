@@ -1,0 +1,41 @@
+{
+ "cases": [
+  {
+   "seed": 12900000,
+   "sd": 0.0,
+   "mud": 0.0,
+   "t_fix": 1129978,
+   "expect": 1129978,
+   "match": true,
+   "wall_s": 44.6
+  },
+  {
+   "seed": 12900001,
+   "sd": 0.0,
+   "mud": 0.0,
+   "t_fix": 1325918,
+   "expect": 1325918,
+   "match": true,
+   "wall_s": 49.07
+  },
+  {
+   "seed": 12921119,
+   "sd": 0.02,
+   "mud": 0.01,
+   "t_fix": 62462,
+   "expect": 62462,
+   "match": true,
+   "wall_s": 2.4
+  },
+  {
+   "seed": 12912152,
+   "sd": 0.0025,
+   "mud": 0.00175,
+   "t_fix": 65070,
+   "expect": 65070,
+   "match": true,
+   "wall_s": 2.64
+  }
+ ],
+ "all_match": true
+}

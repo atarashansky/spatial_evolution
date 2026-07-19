@@ -1,0 +1,348 @@
+{
+ "study": "SYNTHETIC estimator calibration for the ridge-extraction estimator and the two interval currencies (data structure only, no new lattice runs)",
+ "estimand_estimator": "at fixed Lambda, s* = first upward crossing of median(t_fix)/anchor_median through 1/2, scanning up in sd, log-sd/linear-ratio interpolation (cross_up_in_x_lin, the deposited estimator)",
+ "synthetic_generator": {
+  "known_crossing": "median-ratio vs ln(sd) is a two-branch logistic with an EXACT 1/2 crossing at s*_true; per-ladder shape parameters drawn as width w~U(0.35,0.75) ln-units, deep-load floor r_lo~U(0.08,0.20), near-neutral ceiling r_hi~U(0.92,1.05), spanning the deposited family of profiles",
+  "run_level_noise": "each rung's runs = true_median x resample from the empirical (t_fix/rung-median) residual bank of deposited 192x32 loaded rungs (>=90 runs each; 115 rungs, 19,356 residuals), matched by the rung's median-ratio quintile (log-IQR 0.62 deep-load -> 0.99 near-neutral); anchor = a realisation resampled from the real 3,056-run neutral pool",
+  "law": "s*_true(Lambda) = c Lambda^gamma_true, gamma_true = 1/(k_true+1); scenario 'law_exact' has no point scatter, 'law_plus_scatter' adds independent lognormal ln-scatter of sd = observed 8-point residual sd (0.156) minus the simulation-noise share (0.079) in quadrature = 0.135",
+  "layout": "the REAL 13-point rung layout (8 legacy points + 5 pre-registered new points), real per-rung run counts (150; grid rows 150-400)"
+ },
+ "per_point_calibration": {
+  "n_replicates_per_point": 250,
+  "by_point": {
+   "1e-05": {
+    "family": "T1",
+    "n_rungs": 5,
+    "s_hat_over_s_true_mean": 0.9618,
+    "s_hat_over_s_true_median": 0.9616,
+    "ln_bias": -0.0424,
+    "ln_sd": 0.084,
+    "frac_defined": 1.0
+   },
+   "3e-05": {
+    "family": "T1",
+    "n_rungs": 5,
+    "s_hat_over_s_true_mean": 0.9634,
+    "s_hat_over_s_true_median": 0.9585,
+    "ln_bias": -0.0401,
+    "ln_sd": 0.0746,
+    "frac_defined": 1.0
+   },
+   "0.0001": {
+    "family": "T1",
+    "n_rungs": 5,
+    "s_hat_over_s_true_mean": 0.9653,
+    "s_hat_over_s_true_median": 0.9616,
+    "ln_bias": -0.0386,
+    "ln_sd": 0.0804,
+    "frac_defined": 1.0
+   },
+   "0.00025": {
+    "family": "grid",
+    "n_rungs": 4,
+    "s_hat_over_s_true_mean": 0.9279,
+    "s_hat_over_s_true_median": 0.9241,
+    "ln_bias": -0.082,
+    "ln_sd": 0.1205,
+    "frac_defined": 1.0
+   },
+   "0.0005": {
+    "family": "grid",
+    "n_rungs": 4,
+    "s_hat_over_s_true_mean": 0.934,
+    "s_hat_over_s_true_median": 0.9256,
+    "ln_bias": -0.0747,
+    "ln_sd": 0.1141,
+    "frac_defined": 1.0
+   },
+   "0.001": {
+    "family": "grid",
+    "n_rungs": 4,
+    "s_hat_over_s_true_mean": 0.9344,
+    "s_hat_over_s_true_median": 0.933,
+    "ln_bias": -0.0721,
+    "ln_sd": 0.0918,
+    "frac_defined": 1.0
+   },
+   "0.002": {
+    "family": "grid",
+    "n_rungs": 4,
+    "s_hat_over_s_true_mean": 0.9376,
+    "s_hat_over_s_true_median": 0.9331,
+    "ln_bias": -0.0703,
+    "ln_sd": 0.1094,
+    "frac_defined": 1.0
+   },
+   "0.004": {
+    "family": "grid",
+    "n_rungs": 3,
+    "s_hat_over_s_true_mean": 0.9839,
+    "s_hat_over_s_true_median": 0.983,
+    "ln_bias": -0.0204,
+    "ln_sd": 0.0916,
+    "frac_defined": 1.0
+   },
+   "1e-06": {
+    "family": "new_v3",
+    "n_rungs": 6,
+    "s_hat_over_s_true_mean": 0.9557,
+    "s_hat_over_s_true_median": 0.9525,
+    "ln_bias": -0.0479,
+    "ln_sd": 0.0725,
+    "frac_defined": 1.0
+   },
+   "3e-06": {
+    "family": "new_v3",
+    "n_rungs": 6,
+    "s_hat_over_s_true_mean": 0.9722,
+    "s_hat_over_s_true_median": 0.9624,
+    "ln_bias": -0.0317,
+    "ln_sd": 0.0828,
+    "frac_defined": 1.0
+   },
+   "0.0065": {
+    "family": "new_v3",
+    "n_rungs": 5,
+    "s_hat_over_s_true_mean": 0.9629,
+    "s_hat_over_s_true_median": 0.954,
+    "ln_bias": -0.0409,
+    "ln_sd": 0.0792,
+    "frac_defined": 1.0
+   },
+   "0.01": {
+    "family": "new_v3",
+    "n_rungs": 5,
+    "s_hat_over_s_true_mean": 0.9706,
+    "s_hat_over_s_true_median": 0.9646,
+    "ln_bias": -0.0327,
+    "ln_sd": 0.0742,
+    "frac_defined": 1.0
+   },
+   "0.025": {
+    "family": "new_v3",
+    "n_rungs": 5,
+    "s_hat_over_s_true_mean": 0.9719,
+    "s_hat_over_s_true_median": 0.9762,
+    "ln_bias": -0.0308,
+    "ln_sd": 0.0687,
+    "frac_defined": 1.0
+   }
+  },
+  "pooled": {
+   "frac_defined": 1.0,
+   "s_hat_over_s_true_mean": 0.9570469730689387,
+   "ln_bias": -0.04804965961981677,
+   "ln_sd": 0.09148739115686777
+  },
+  "per_point_bootstrap_ci_coverage_of_s_true": {
+   "nominal": 0.95,
+   "empirical": 0.91,
+   "n": 400,
+   "note": "run-level bootstrap CI on a single point's s* (200 resamples/point on 400 synthetic points); under-covers because it omits the interpolation-curvature bias"
+  },
+  "geometry_dependence": {
+   "factor2_5rung_ladders_ln_bias": -0.0381375,
+   "factor4_4rung_grid_rows_ln_bias": -0.07477500000000001,
+   "effect_on_k_if_each_point_debias_corrected": {
+    "current_8_points_delta_k": -0.008131950053915205,
+    "extended_13_point_layout_delta_k": 0.002282941537606664,
+    "verdict": "the crossing estimator is biased low by ~2-8% depending on rung spacing (interpolation curvature), but the induced tilt of the exponent is |delta k| < 0.01 on both the current and the extended layout - two orders of magnitude below the sampling error - so no debias correction is applied and none can change the model verdict"
+   }
+  }
+ },
+ "full_pipeline_calibration": {
+  "k_true_grid": [
+   0.8,
+   1.0,
+   1.15,
+   1.5
+  ],
+  "scenarios": [
+   "law_exact",
+   "law_plus_scatter"
+  ],
+  "replicates_per_cell": 300,
+  "bootstrap_B_per_replicate": 400,
+  "table": {
+   "k0.8_law_exact": {
+    "n": 300,
+    "n_kdef": 300,
+    "k_hat_mean": 0.8080935990136715,
+    "k_hat_med": 0.8095151907076854,
+    "k_hat_sd": 0.021729196700401073,
+    "bias": 0.00809359901367146,
+    "rel_bias": 0.010116998767089325,
+    "cov95_ols": 0.9866666666666667,
+    "cov95_boot": 0.9493243243243243,
+    "halfwidth_ols": 0.05897809233406548,
+    "halfwidth_boot": 0.04409091966985318,
+    "frac_excl_k1_ols": 1.0,
+    "frac_excl_k1_boot": 1.0,
+    "frac_excl_k1_both": 0.9866666666666667,
+    "boot_defined": 0.9866666666666667,
+    "pts_defined": 12.11
+   },
+   "k0.8_law_plus_scatter": {
+    "n": 300,
+    "n_kdef": 300,
+    "k_hat_mean": 0.8093061809173876,
+    "k_hat_med": 0.8106204029580967,
+    "k_hat_sd": 0.04751710460672838,
+    "bias": 0.009306180917387552,
+    "rel_bias": 0.01163272614673444,
+    "cov95_ols": 0.9466666666666667,
+    "cov95_boot": 0.6757679180887372,
+    "halfwidth_ols": 0.10388916867782366,
+    "halfwidth_boot": 0.044120503018795,
+    "frac_excl_k1_ols": 0.91,
+    "frac_excl_k1_boot": 1.0,
+    "frac_excl_k1_both": 0.8866666666666667,
+    "boot_defined": 0.9766666666666667,
+    "pts_defined": 12.263333333333334
+   },
+   "k1_law_exact": {
+    "n": 300,
+    "n_kdef": 300,
+    "k_hat_mean": 1.0099445283926376,
+    "k_hat_med": 1.009138560053526,
+    "k_hat_sd": 0.0281208606078788,
+    "bias": 0.009944528392637597,
+    "rel_bias": 0.009944528392637597,
+    "cov95_ols": 0.98,
+    "cov95_boot": 0.9433333333333334,
+    "halfwidth_ols": 0.07111409002614288,
+    "halfwidth_boot": 0.05248168373016618,
+    "frac_excl_k1_ols": 0.02,
+    "frac_excl_k1_boot": 0.056666666666666664,
+    "frac_excl_k1_both": 0.016666666666666666,
+    "boot_defined": 1.0,
+    "pts_defined": 13.0
+   },
+   "k1_law_plus_scatter": {
+    "n": 300,
+    "n_kdef": 300,
+    "k_hat_mean": 1.0078133944340464,
+    "k_hat_med": 1.0094483591128987,
+    "k_hat_sd": 0.056848881412235354,
+    "bias": 0.007813394434046383,
+    "rel_bias": 0.007813394434046383,
+    "cov95_ols": 0.9466666666666667,
+    "cov95_boot": 0.67,
+    "halfwidth_ols": 0.13052210715205115,
+    "halfwidth_boot": 0.05255594514579762,
+    "frac_excl_k1_ols": 0.05333333333333334,
+    "frac_excl_k1_boot": 0.33,
+    "frac_excl_k1_both": 0.05333333333333334,
+    "boot_defined": 1.0,
+    "pts_defined": 12.996666666666666
+   },
+   "k1.15_law_exact": {
+    "n": 300,
+    "n_kdef": 300,
+    "k_hat_mean": 1.158459164831321,
+    "k_hat_med": 1.1569266870191832,
+    "k_hat_sd": 0.030305156415306414,
+    "bias": 0.008459164831321031,
+    "rel_bias": 0.007355795505496549,
+    "cov95_ols": 0.98,
+    "cov95_boot": 0.95,
+    "halfwidth_ols": 0.08663914706938514,
+    "halfwidth_boot": 0.062434420988963346,
+    "frac_excl_k1_ols": 0.99,
+    "frac_excl_k1_boot": 1.0,
+    "frac_excl_k1_both": 0.99,
+    "boot_defined": 1.0,
+    "pts_defined": 13.0
+   },
+   "k1.15_law_plus_scatter": {
+    "n": 300,
+    "n_kdef": 300,
+    "k_hat_mean": 1.1688185881946225,
+    "k_hat_med": 1.1705257754268155,
+    "k_hat_sd": 0.06713974495493112,
+    "bias": 0.018818588194622565,
+    "rel_bias": 0.016363989734454406,
+    "cov95_ols": 0.9566666666666667,
+    "cov95_boot": 0.6354515050167224,
+    "halfwidth_ols": 0.15208724533367757,
+    "halfwidth_boot": 0.06365634298938916,
+    "frac_excl_k1_ols": 0.6366666666666667,
+    "frac_excl_k1_boot": 0.9665551839464883,
+    "frac_excl_k1_both": 0.6366666666666667,
+    "boot_defined": 0.9966666666666667,
+    "pts_defined": 12.996666666666666
+   },
+   "k1.5_law_exact": {
+    "n": 300,
+    "n_kdef": 300,
+    "k_hat_mean": 1.5194982095735066,
+    "k_hat_med": 1.5193645610600655,
+    "k_hat_sd": 0.03878914176779897,
+    "bias": 0.019498209573506564,
+    "rel_bias": 0.01299880638233771,
+    "cov95_ols": 0.9866666666666667,
+    "cov95_boot": 0.947565543071161,
+    "halfwidth_ols": 0.10768192593016979,
+    "halfwidth_boot": 0.0823672941627549,
+    "frac_excl_k1_ols": 1.0,
+    "frac_excl_k1_boot": 1.0,
+    "frac_excl_k1_both": 0.89,
+    "boot_defined": 0.89,
+    "pts_defined": 12.753333333333334
+   },
+   "k1.5_law_plus_scatter": {
+    "n": 300,
+    "n_kdef": 300,
+    "k_hat_mean": 1.533748851328093,
+    "k_hat_med": 1.5274556847862695,
+    "k_hat_sd": 0.08716072195912872,
+    "bias": 0.03374885132809302,
+    "rel_bias": 0.02249923421872868,
+    "cov95_ols": 0.9466666666666667,
+    "cov95_boot": 0.6437246963562753,
+    "halfwidth_ols": 0.1949424198074563,
+    "halfwidth_boot": 0.08686092561011749,
+    "frac_excl_k1_ols": 1.0,
+    "frac_excl_k1_boot": 1.0,
+    "frac_excl_k1_both": 0.8233333333333334,
+    "boot_defined": 0.8233333333333334,
+    "pts_defined": 12.353333333333333
+   }
+  },
+  "reading": {
+   "bias": "k_hat relative bias ranges 0.7% to 2.2% across the 8 (k_true, scenario) cells (max at k1.5_law_plus_scatter); mean k_hat within 2.3% of k_true everywhere",
+   "bias_min_max": [
+    0.007355795505496549,
+    0.02249923421872868
+   ],
+   "ols_interval": "point-scatter OLS 95% CI covers k_true at 94.7%-98.7% across all 8 cells -> nominal (mildly conservative when the law is exact)",
+   "ols_coverage_min_max": [
+    0.9466666666666667,
+    0.9866666666666667
+   ],
+   "bootstrap_interval": "run-level bootstrap 95% CI covers 94.3%-95.0% when the law is exact but only 63.5%-67.6% with real point scatter -> a simulation-noise interval, NOT a valid interval for k when points scatter about the law",
+   "bootstrap_coverage_law_exact_min_max": [
+    0.9433333333333334,
+    0.95
+   ],
+   "bootstrap_coverage_with_scatter_min_max": [
+    0.6354515050167224,
+    0.6757679180887372
+   ],
+   "joint_rule_size": "under k_true=1 the pre-registered event (BOTH intervals exclude 1) occurs in 1.7% (law-exact) / 5.3% (with-scatter) of replicates -> nominal 5% size",
+   "joint_rule_size_law_exact_and_scatter": [
+    0.016666666666666666,
+    0.05333333333333334
+   ],
+   "joint_rule_power": "at k_true=1.15 the joint rule excludes 1 in 99.0% (law-exact) / 63.7% (with-scatter) of replicates; at k_true=0.8 or 1.5 in >= 82.3% (minimum 82.3% at k1.5_law_plus_scatter)",
+   "joint_rule_power_k1p15_exact_scatter": [
+    0.99,
+    0.6366666666666667
+   ],
+   "joint_rule_power_extreme_k_min": 0.8233333333333334,
+   "boot_excludes_k1_under_null_with_scatter": 0.33,
+   "conclusion_for_reviewers": "estimator and OLS interval are calibrated; the run-level bootstrap alone excludes k=1 in 33.0% of null (k_true=1) replicates when real point scatter is present (nominal 5%), which is exactly why the pre-registered rule requires BOTH currencies to exclude 1"
+  }
+ },
+ "errata": "v1 (43df2247) reading prose stated a joint-rule power floor of '>=88%' at k_true 0.8/1.5 (table minimum is 82.3%, k1.5 with scatter) and a relative-bias range of '+0.7% to +1.6%' (table maximum is 2.25%, k1.5 with scatter). This version derives every reading string from the table programmatically; the table itself is unchanged."
+}

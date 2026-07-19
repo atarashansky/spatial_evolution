@@ -1,0 +1,175 @@
+{
+ "track": "round9_seed_overlap_S25_S26",
+ "outcome_stated_first": "FOR the paper on the S25-S26 correlation question; AGAINST the paper on the audit-coverage question",
+ "against_hypothesis": true,
+ "S25_S26_seed_overlap": {
+  "shared_seed_integers": 1556,
+  "seed_span": [
+   12900000,
+   12901999
+  ],
+  "seed_base": 12900000,
+  "resolvable_pairs": 1556,
+  "S25_side": "Moore neutral anchor arm ANCH (mud=0, 192x32, numgen 2e7) - all 1,556 shared runs; these ARE members of the S25 pooled neutral anchor (2,856) that normalises every re-anchored ridge",
+  "S26_side": {
+   "V1_prod_neutral_validation": 128,
+   "V2_census_neutral_validation": 128,
+   "vN_neutral_anchor_A": 300,
+   "loaded_vN_ladder_L (12 theta rungs)": 1000
+  },
+  "geometry_note": "different stencils (Moore vs von Neumann) and numgen; shared integer = shared RNG prefix only",
+  "outcome_unit": "T_fix percentile within each run's own ensemble arm (natural units)",
+  "spearman_rho_pooled": 0.0183,
+  "spearman_rho_pooled_ci95_bootstrap": [
+   -0.0297,
+   0.0672
+  ],
+  "permutation_test": {
+   "n_shuffles": 2000,
+   "scheme": "shuffle S26 outcomes within arm (breaks seed pairing, preserves arm structure)",
+   "p_two_sided": 0.4818,
+   "p_one_sided_greater": 0.2434,
+   "null_mean": -0.0004,
+   "null_sd": 0.0263,
+   "null_max": 0.0967
+  },
+  "alternative_conventions": {
+   "median_per_arm_rho": 0.0112,
+   "fisher_z_pooled_per_arm_rho": 0.0194,
+   "raw_within_cell_rank_rho": 0.0136,
+   "neutral_only_subset_n556_rho": 0.0311
+  },
+  "per_arm": [
+   {
+    "arm": "prod_neutral|V1_prod_neutral|0.0",
+    "n": 128,
+    "rho": -0.0678,
+    "perm_p_two_sided": 0.4498
+   },
+   {
+    "arm": "census_neutral|V2_census_neutral|0.0",
+    "n": 128,
+    "rho": 0.0265,
+    "perm_p_two_sided": 0.7676
+   },
+   {
+    "arm": "census_neutral|A_anchor|0.0",
+    "n": 300,
+    "rho": -0.0042,
+    "perm_p_two_sided": 0.942
+   },
+   {
+    "arm": "census_loaded|L_ladder|0.05",
+    "n": 96,
+    "rho": 0.0556,
+    "perm_p_two_sided": 0.6127
+   },
+   {
+    "arm": "census_loaded|L_ladder|0.1",
+    "n": 96,
+    "rho": 0.1155,
+    "perm_p_two_sided": 0.2759
+   },
+   {
+    "arm": "census_loaded|L_ladder|0.15",
+    "n": 96,
+    "rho": -0.0041,
+    "perm_p_two_sided": 0.9765
+   },
+   {
+    "arm": "census_loaded|L_ladder|0.2",
+    "n": 96,
+    "rho": -0.0499,
+    "perm_p_two_sided": 0.6152
+   },
+   {
+    "arm": "census_loaded|L_ladder|0.3",
+    "n": 96,
+    "rho": -0.0289,
+    "perm_p_two_sided": 0.7806
+   },
+   {
+    "arm": "census_loaded|L_ladder|0.4",
+    "n": 96,
+    "rho": 0.0572,
+    "perm_p_two_sided": 0.5877
+   },
+   {
+    "arm": "census_loaded|L_ladder|0.5",
+    "n": 96,
+    "rho": -0.1047,
+    "perm_p_two_sided": 0.3113
+   },
+   {
+    "arm": "census_loaded|L_ladder|0.6",
+    "n": 96,
+    "rho": 0.1891,
+    "perm_p_two_sided": 0.06
+   },
+   {
+    "arm": "census_loaded|L_ladder|0.8",
+    "n": 96,
+    "rho": -0.0812,
+    "perm_p_two_sided": 0.4178
+   },
+   {
+    "arm": "census_loaded|L_ladder|1.0",
+    "n": 96,
+    "rho": 0.1788,
+    "perm_p_two_sided": 0.091
+   },
+   {
+    "arm": "census_loaded|L_ladder|2.0",
+    "n": 40,
+    "rho": 0.134,
+    "perm_p_two_sided": 0.4028
+   }
+  ],
+  "reported_band_for_other_pairs": [
+   0.29,
+   0.48
+  ],
+  "band_floor_in_null_SDs": 11.1,
+  "verdict": "rho = 0.02 (95% CI [-0.03, 0.07], permutation P = 0.48) is NOT inside the 0.29-0.48 band the paper characterises for other flagged pairs: it lies BELOW that band, i.e. weaker than 'at most weakly outcome-correlated'; no per-arm rho reaches 0.29 (max 0.19). The shared 12,900,000 seed block therefore carries no detectable outcome correlation between S25 and S26."
+ },
+ "audit_coverage": {
+  "seed_audit_unique_runs": 54355,
+  "reproduced_from_audit_inputs": true,
+  "reproduction_note": "54,355 reproduces exactly by applying the audit's own de-duplication to the 16 seeded, non-DERIVED tables among its 28 lineage-recorded inputs (raw 62,905 records; 8,550 exact-duplicate records removed). Two internal defects in seed_audit_global.json: (i) its embedded parquet_files dict lists only 13 of the 16 tables actually used (finite_size, intensivity_ext, neighbourhood_ridge, production_dfe, reduced_model_runs are missing from the dict yet ARE in the count), so the recorded script does not regenerate its own JSON (it yields 33,560); (ii) 'replicated_pool_records_excluded' says 6,950 but the true duplicate count under its own rule is 8,550; (iii) the three same-seed rho values (0.481/0.382/-0.008) are hard-coded literals in the script, not computed there.",
+  "stated_total_runs": 135999,
+  "supp_table1_rows_sum": 135999,
+  "decomposition": {
+   "A_audited_per_run_tables_run_bookings": 54505,
+   "B_deposited_only_as_aggregates_or_unaudited_seeded_tables": 73352,
+   "C_diagnostic_pilots_probes_analysis_only": 5042,
+   "check_sum_equals_135999": 135999,
+   "audited_unique_runs_reconciled_to_54355": 54355,
+   "A_dup_row_level_double_bookings": 3100,
+   "partial_double_booking_inside_category_A": 150,
+   "note": "category totals A + A_dup + B + C = 135,999 checksum ledger ROWS; distinct-simulation count removes the two whole double-booked rows (A_dup = 3,100) AND the 150-run partial overlap inside category A (tfix neutral runs re-deposited in the Bd row): 135,999 - 3,250 = 132,749"
+  },
+  "distinct_run_ledger_note": "the 135,999 headline double-books 3,250 runs vs distinct simulations: the 4c tail-ensemble row (1,600) is re-deposited inside bd_results (source=tail_ensemble_reuse); S5 (1,500) is the exp-2 arm of the 2a-c tfix row (4,250); and 150 neutral T_fix runs (bd source=tfix_neutral_reuse) sit in BOTH the 2a-c row and the Bd row (a partial overlap inside category A). Distinct simulations = 135,999 - 3,250 = 132,749. Minor: S19 pilot arm deposits 94 runs against a stated 96 (aspect row 1,029 vs 1,027 resolvable).",
+  "main_figure_headline_coverage_pct": {
+   "Fig1_takeover_and_bar": 100.0,
+   "Fig2_scaling": 100.0,
+   "Fig3_mechanism": 0.0,
+   "Fig4_freeze_bar": 100.0,
+   "Fig5_DFE": 100.0,
+   "Fig6_regime_map_surface": 0.0,
+   "Fig7_confrontation_kernels": 0.0
+  },
+  "uncovered_main_figure_headlines": [
+   "Fig 3 mechanism ensemble (320 runs; excursion_stats event table DERIVED-excluded; scar/jackpot .npz have no seed ledger)",
+   "Fig 4c/S6 tail-index bound (alpha_map_runs.parquet 9,200 seeded runs, deposited but NOT audited; shares 800 seed integers with audited tables)",
+   "Fig 6a regime surface (regime_map_grid.parquet 2,300 seeded runs, deposited but NOT audited; shares 192 seed integers with audited tables)",
+   "Fig 7 confrontation kernels (12,000 realisations, aggregate-only confrontation_stats.parquet, no per-run seed ledger)"
+  ],
+  "double_bookings": {
+   "row_4c_tail_ensemble_redeposited_in_bd_results": 1600,
+   "row_S5_beneficial_supply_is_tfix_exp2_arm": 1500,
+   "partial_150_tfix_neutral_runs_redeposited_in_bd_row_within_category_A": 150
+  },
+  "double_booked_runs_total": 3250,
+  "distinct_simulations": 132749
+ }
+}
