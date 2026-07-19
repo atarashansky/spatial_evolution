@@ -1,0 +1,68 @@
+{
+ "purpose": "like-for-like log-log growth exponents (area vs age, 1/3/6/12 months) with bootstrap 95% CIs, for the Fig. 8 confrontation",
+ "sources": {
+  "tissue_clones": "colom2020_clones.parquet (Control arm, um2)",
+  "model_pool": "measured_pools.npz neutral|{1,3,6,12}mo (deep pools; n = 597696/257240/145881/81204)",
+  "trace_to": "confrontation_summary.json growth_law_mismatch"
+ },
+ "tissue_control": {
+  "n_clones": {
+   "1 month": 15865,
+   "3 months": 4152,
+   "6 months": 2474,
+   "12 months": 3485
+  },
+  "median_um2": {
+   "1 month": 424.12,
+   "3 months": 968.14,
+   "6 months": 852.76,
+   "12 months": 956.5
+  },
+  "median_slope": 0.3068275072016659,
+  "median_slope_ci95": [
+   0.26423335982387547,
+   0.34352192518773417
+  ],
+  "mean_slope": 0.5444129169898975,
+  "mean_slope_ci95": [
+   0.5134421939367079,
+   0.578095983382015
+  ],
+  "late_median_slope_3_12mo": -0.009051072503113738,
+  "late_median_slope_ci95": [
+   -0.10427079495352123,
+   0.07541283794748171
+  ]
+ },
+ "model_neutral": {
+  "median_um2": [
+   415.38,
+   917.19,
+   1575.0900000000001,
+   2785.11
+  ],
+  "mean_um2": [
+   934.5426146904111,
+   2157.82659341471,
+   3815.9267417278465,
+   6844.110631742279
+  ],
+  "median_slope": 0.759443638724472,
+  "median_slope_ci95": [
+   0.7553641774812081,
+   0.7644538612456953
+  ],
+  "mean_slope": 0.795715148947928,
+  "mean_slope_ci95": [
+   0.7903165657749892,
+   0.8004101265578463
+  ]
+ },
+ "bootstrap": {
+  "tissue_resamples": 2000,
+  "model_resamples": 400,
+  "unit": "clone (within age)",
+  "seed": 7
+ },
+ "note": "manuscript v85 pairs model MEAN slope 0.80 with tissue MEDIAN slope 0.31 (mixed statistics); like-for-like the contrast holds on both: medians 0.759 vs 0.307, means 0.796 vs 0.544, non-overlapping CIs"
+}

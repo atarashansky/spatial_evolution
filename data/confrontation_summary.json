@@ -1,0 +1,539 @@
+{
+ "track": "D - honest statistics for the data confrontation (Fig 8)",
+ "verdict": "The two-clone strip kernel does NOT reproduce control mouse-oesophagus clone-size dynamics: after an explicit measurement layer fitted on the 1-month control arm, the out-of-sample residual KS grows monotonically with age (0.057 at 3 mo, 0.171 at 6 mo, 0.276 at 12 mo; critical ~0.02) because the model coarsens as t^~0.8 while the tissue's median clone area saturates after 3 months. Every one of 24 published data-vs-kernel comparisons is formally rejected, and load never rescues the fit. The manuscript's load signal (KS 0.04-0.09) and its 600-3,200-clone power prescription are a mean-rescaling discretization artifact; 80% discrimination power is reached only at 12 months and s_d >= 5e-3 (n80 ~730-18,000/arm); elsewhere power stays below 80% up to 51,200 clones/arm (max 0.52 at s_d=1e-2/6mo, 0.23 at s_d<=2e-3/3mo, otherwise near the 0.05 size).",
+ "data_arm_accounting": [
+  {
+   "source": "Colom2020 Suppl.T6",
+   "arm": "control (uninduced-mutagen)",
+   "age": "10 days",
+   "n_clones": 11552,
+   "n_mice": 2.0,
+   "used_in_confrontation": false,
+   "note": ""
+  },
+  {
+   "source": "Colom2020 Suppl.T6",
+   "arm": "control (uninduced-mutagen)",
+   "age": "1 month",
+   "n_clones": 15865,
+   "n_mice": 5.0,
+   "used_in_confrontation": true,
+   "note": ""
+  },
+  {
+   "source": "Colom2020 Suppl.T6",
+   "arm": "control (uninduced-mutagen)",
+   "age": "3 months",
+   "n_clones": 4152,
+   "n_mice": 3.0,
+   "used_in_confrontation": true,
+   "note": ""
+  },
+  {
+   "source": "Colom2020 Suppl.T6",
+   "arm": "control (uninduced-mutagen)",
+   "age": "6 months",
+   "n_clones": 2474,
+   "n_mice": 6.0,
+   "used_in_confrontation": true,
+   "note": ""
+  },
+  {
+   "source": "Colom2020 Suppl.T6",
+   "arm": "control (uninduced-mutagen)",
+   "age": "12 months",
+   "n_clones": 3485,
+   "n_mice": 5.0,
+   "used_in_confrontation": true,
+   "note": ""
+  },
+  {
+   "source": "Colom2020 Suppl.T6",
+   "arm": "DEN (mutagenised)",
+   "age": "10 days",
+   "n_clones": 15092,
+   "n_mice": 3.0,
+   "used_in_confrontation": false,
+   "note": ""
+  },
+  {
+   "source": "Colom2020 Suppl.T6",
+   "arm": "DEN (mutagenised)",
+   "age": "1 month",
+   "n_clones": 5682,
+   "n_mice": 3.0,
+   "used_in_confrontation": true,
+   "note": ""
+  },
+  {
+   "source": "Colom2020 Suppl.T6",
+   "arm": "DEN (mutagenised)",
+   "age": "3 months",
+   "n_clones": 539,
+   "n_mice": 3.0,
+   "used_in_confrontation": true,
+   "note": ""
+  },
+  {
+   "source": "Colom2020 Suppl.T6",
+   "arm": "DEN (mutagenised)",
+   "age": "6 months",
+   "n_clones": 281,
+   "n_mice": 4.0,
+   "used_in_confrontation": true,
+   "note": ""
+  },
+  {
+   "source": "Colom2020 Suppl.T6",
+   "arm": "DEN (mutagenised)",
+   "age": "12 months",
+   "n_clones": 188,
+   "n_mice": 3.0,
+   "used_in_confrontation": true,
+   "note": ""
+  },
+  {
+   "source": "Colom2020 Suppl.T14",
+   "arm": "'YFP' 30/90/180/360 d + 10 d",
+   "age": "all",
+   "n_clones": 21782,
+   "n_mice": NaN,
+   "used_in_confrontation": false,
+   "note": "IDENTICAL to Suppl.T6 YFP-DEN arms (verified value-by-value) - a double count in the parquet, not new data"
+  },
+  {
+   "source": "Colom2020 Suppl.T14",
+   "arm": "DN-Maml1 mutant clones",
+   "age": "10/30/90/180/360 d",
+   "n_clones": 1862,
+   "n_mice": NaN,
+   "used_in_confrontation": false,
+   "note": "strong-driver mutant clones; not a load/neutral test"
+  },
+  {
+   "source": "Colom2020 Suppl.T9",
+   "arm": "confetti-DEN clones",
+   "age": "unknown",
+   "n_clones": 125,
+   "n_mice": NaN,
+   "used_in_confrontation": false,
+   "note": "no age recorded"
+  },
+  {
+   "source": "Colom2020 Suppl.T15",
+   "arm": "confetti edge/enclosed vs DN-Maml1",
+   "age": "unknown",
+   "n_clones": 440,
+   "n_mice": NaN,
+   "used_in_confrontation": false,
+   "note": "not a size distribution test"
+  }
+ ],
+ "arm_accounting_note": "colom2020_clones.parquet has 83,519 rows but only 61,737 unique clones: Suppl.Table 14 'YFP' arms (n=21,782) are value-for-value identical to the Suppl.Table 6 YFP-DEN arms - a double count. Confrontation uses Suppl.T6 only: control 15,865/4,152/2,474/3,485 and DEN 5,682/539/281/188 at 1/3/6/12 months.",
+ "simulation_ensemble": {
+  "total_runs": 12000,
+  "runs_per_condition": 2000,
+  "conditions": {
+   "neutral": {
+    "mud": 0.0,
+    "sd": 0.0
+   },
+   "loaded_sd0.0005": {
+    "mud": 0.4,
+    "sd": 0.0005,
+    "Lambda": 0.0002
+   },
+   "loaded_sd0.001": {
+    "mud": 0.4,
+    "sd": 0.001,
+    "Lambda": 0.0004
+   },
+   "loaded_sd0.002": {
+    "mud": 0.4,
+    "sd": 0.002,
+    "Lambda": 0.0008
+   },
+   "loaded_sd0.005": {
+    "mud": 0.4,
+    "sd": 0.005,
+    "Lambda": 0.002
+   },
+   "loaded_sd0.01": {
+    "mud": 0.4,
+    "sd": 0.01,
+    "Lambda": 0.004
+   }
+  },
+  "geometry": "512 x 256 strip, periodic-y, Moore, p_ind_sim=0.02, p_die=0.0274/frame",
+  "time_points_frames": {
+   "10d": 99,
+   "1mo": 296,
+   "3mo": 896,
+   "6mo": 1796,
+   "12mo": 3591
+  },
+  "seeds": "10000+i (wave1, 400) and 20000+i (wave2, 1600) per condition",
+  "kernel": "evolution_lineage.py (bit-reproducible serial Numba)"
+ },
+ "fact_check_of_panel_claim": {
+  "manuscript_claim": "both kernels fit the observed 3-month distribution equally well (KS = 0.16 both)",
+  "reproduced_from_archived_ensembles": {
+   "KS_neutral": 0.164,
+   "KS_loaded_sd0.01": 0.178,
+   "n_data": 4152,
+   "critical_alpha0.05": 0.027,
+   "ratio_over_critical": [
+    6.0,
+    6.6
+   ],
+   "p_asymptotic": [
+    "6e-59",
+    "8e-70"
+   ],
+   "verdict": "both kernels formally REJECTED, not equally acceptable"
+  },
+  "all_24_archived_comparisons_reject": true,
+  "archived_ratio_range_over_critical": [
+   2.7,
+   14.1
+  ]
+ },
+ "rescaledKS_artifact": {
+  "finding": "mean-rescaled KS between neutral and loaded kernels equals its own self-vs-self split-half null at 1-6 months for every s_d <= 5e-3; it is a step-lattice offset on small integer clone sizes, not load",
+  "KS_rescaled_1mo_all_sd": 0.0918,
+  "self_null_1mo": 0.0915,
+  "KS_unscaled_1mo": 0.004,
+  "genuine_signal_only": "unscaled/model-based analysis: a strong shape signal exists only at 12 months and s_d >= 5e-3 (unscaled KS 0.021-0.057; 80% power reachable). Weak sub-threshold signal exists elsewhere (max LR power at 51,200/arm: 0.52 at s_d=1e-2|6mo, 0.23 at s_d<=2e-3|3mo, ~0.05-0.10 in the rest), never reaching 80% power within 51,200 clones/arm."
+ },
+ "measurement_layer": {
+  "components": [
+   "induction thinning + adjacency fusion (fit p_ind)",
+   "per-clone lognormal footprint area A=c*F (fit mu_F, sigma_F)",
+   "pixel discretization 1.29 um2 (fixed from data)",
+   "detection floor 50.27 um2 drop (fixed from data)"
+  ],
+  "fit_arm": "1-month control (n=15,865), absolute um2, KS objective, differential evolution",
+  "fitted": {
+   "p_ind": 0.0051,
+   "mu_F_um2_per_cell": 60.5,
+   "sigma_F": 1.062,
+   "KS_fit_1mo": 0.026
+  },
+  "bootstrap_95CI": {
+   "p_ind": [
+    0.0009,
+    0.018
+   ],
+   "mu_F": [
+    56.4,
+    60.9
+   ],
+   "sigma_F": [
+    1.06,
+    1.13
+   ],
+   "KS_fit": [
+    0.0256,
+    0.0296
+   ]
+  },
+  "ablation_1mo_KS": {
+   "full": 0.031,
+   "fusion_off": 0.03,
+   "footprint_spread_off": 0.161,
+   "detection_floor_off": 0.083,
+   "pixel_rounding_off": 0.031
+  },
+  "identifiability": "footprint dispersion sigma_F and the detection floor carry the fit; fusion and pixel rounding are inert (<=0.001 KS) at fitted densities (<=5% of clones touch), so p_ind is unidentified [0.0009,0.018] and no conclusion depends on it"
+ },
+ "out_of_sample_control_residual_KS": {
+  "1mo": {
+   "D": 0.03037185009155613,
+   "CI": [
+    0.027934882507922764,
+    0.03827131432099199
+   ],
+   "crit": 0.010923666441958892,
+   "n_data": 15865,
+   "n_sim": 597696
+  },
+  "3mo": {
+   "D": 0.05732595217828862,
+   "CI": [
+    0.0534730284187652,
+    0.07235183498222872
+   ],
+   "crit": 0.021244572334758533,
+   "n_data": 4152,
+   "n_sim": 257240
+  },
+  "6mo": {
+   "D": 0.17055013782759126,
+   "CI": [
+    0.15919293426984935,
+    0.1906307988725841
+   ],
+   "crit": 0.0275328805369074,
+   "n_data": 2474,
+   "n_sim": 145881
+  },
+  "12mo": {
+   "D": 0.2762917446801534,
+   "CI": [
+    0.2613970741947747,
+    0.29311108146993203
+   ],
+   "crit": 0.02349217188898884,
+   "n_data": 3485,
+   "n_sim": 81204
+  }
+ },
+ "growth_law_mismatch": {
+  "data_median_area_1_3_6_12mo_um2": [
+   424,
+   968,
+   853,
+   957
+  ],
+  "model_neutral_measured_median_um2": [
+   415,
+   917,
+   1575,
+   2785
+  ],
+  "loglog_slope_area_vs_time": {
+   "data_median": 0.31,
+   "data_mean": 0.55,
+   "model_measured_mean": 0.8,
+   "model_cells_mean": 0.84
+  },
+  "note": "static area transform cannot fix a wrong time evolution; per-timepoint refit still rejects at 12 mo (KS 0.076, ratio 2.8) and needs an unphysical shrinking footprint 60->20 um2/cell; medians/means from the deep 2,000-run pools",
+  "model_neutral_measured_mean_um2": [
+   935,
+   2158,
+   3816,
+   6844
+  ]
+ },
+ "power_surface": {
+  "test": "Neyman-Pearson likelihood ratio on log-area KDE densities of the layered kernels, alpha=0.05, size verified 0.040-0.055, held-out MC pools",
+  "n_grid": [
+   100,
+   200,
+   400,
+   800,
+   1600,
+   3200,
+   6400,
+   12800,
+   25600,
+   51200
+  ],
+  "n80_required_per_arm": {
+   "sd0.0005|1mo": null,
+   "sd0.0005|3mo": null,
+   "sd0.0005|6mo": null,
+   "sd0.0005|12mo": null,
+   "sd0.001|1mo": null,
+   "sd0.001|3mo": null,
+   "sd0.001|6mo": null,
+   "sd0.001|12mo": null,
+   "sd0.002|1mo": null,
+   "sd0.002|3mo": null,
+   "sd0.002|6mo": null,
+   "sd0.002|12mo": null,
+   "sd0.005|1mo": null,
+   "sd0.005|3mo": null,
+   "sd0.005|6mo": null,
+   "sd0.005|12mo": 18156.888440260853,
+   "sd0.01|1mo": null,
+   "sd0.01|3mo": null,
+   "sd0.01|6mo": null,
+   "sd0.01|12mo": 728.2166949464774
+  },
+  "max_power_reached": {
+   "sd0.0005|1mo": 0.05266666666666667,
+   "sd0.0005|3mo": 0.06,
+   "sd0.0005|6mo": 0.104,
+   "sd0.0005|12mo": 0.050666666666666665,
+   "sd0.001|1mo": 0.05466666666666667,
+   "sd0.001|3mo": 0.23466666666666666,
+   "sd0.001|6mo": 0.04733333333333333,
+   "sd0.001|12mo": 0.050666666666666665,
+   "sd0.002|1mo": 0.09666666666666666,
+   "sd0.002|3mo": 0.228,
+   "sd0.002|6mo": 0.05466666666666667,
+   "sd0.002|12mo": 0.10533333333333333,
+   "sd0.005|1mo": 0.04066666666666666,
+   "sd0.005|3mo": 0.06933333333333333,
+   "sd0.005|6mo": 0.05533333333333333,
+   "sd0.005|12mo": 0.996,
+   "sd0.01|1mo": 0.064,
+   "sd0.01|3mo": 0.17133333333333334,
+   "sd0.01|6mo": 0.5166666666666667,
+   "sd0.01|12mo": 1.0
+  },
+  "sd_floor": "80% power is reached only at 12 mo for s_d >= 5e-3 (n80 ~18,000 at 5e-3, ~730 at 1e-2). Everywhere else power < 0.8 up to 51,200 clones/arm; it is not identically at the test size: max power at 51,200/arm is 0.52 (s_d=1e-2, 6 mo), 0.23 (s_d=1e-3/2e-3, 3 mo), 0.17 (s_d=1e-2, 3 mo), and 0.05-0.11 in the remaining cells. KS needs ~4,000/arm where LR needs ~730."
+ },
+ "executed_tests": [
+  {
+   "n": 5682,
+   "T": 19.92992165208871,
+   "T0_med": 0.5279540936009053,
+   "T0_hi": 4.024383221402951,
+   "T1_med": 0.19435700736498113,
+   "T1_lo": -3.1939164712449553,
+   "z_neut": 8.55734403049155,
+   "z_load": 9.444122290014883,
+   "p_reject_neutral": 0.0,
+   "p_at_or_below_under_loaded": 1.0,
+   "arm": "DEN",
+   "age": "1 month",
+   "tp": "1mo",
+   "loaded_kernel": "loaded_sd0.001",
+   "KS_gof_neutral": 0.09243416930658221,
+   "KS_gof_loaded": 0.09093561422034496
+  },
+  {
+   "n": 5682,
+   "T": 16.66530036199201,
+   "T0_med": -0.18552872056571396,
+   "T0_hi": 3.4578658952141286,
+   "T1_med": 0.07285366985672301,
+   "T1_lo": -3.3780014370411666,
+   "z_neut": 7.576200188531126,
+   "z_load": 7.876193070811392,
+   "p_reject_neutral": 0.0,
+   "p_at_or_below_under_loaded": 1.0,
+   "arm": "DEN",
+   "age": "1 month",
+   "tp": "1mo",
+   "loaded_kernel": "loaded_sd0.01",
+   "KS_gof_neutral": 0.09243416930658221,
+   "KS_gof_loaded": 0.09087268743400215
+  },
+  {
+   "n": 4152,
+   "T": 2.2416891908574454,
+   "T0_med": -0.2727720041199,
+   "T0_hi": 2.7702979972234805,
+   "T1_med": -0.39046383062052376,
+   "T1_lo": -3.4241509028409873,
+   "z_neut": 1.3654354314253292,
+   "z_load": 0.7549554122047356,
+   "p_reject_neutral": 0.08733333333333333,
+   "p_at_or_below_under_loaded": 0.908,
+   "arm": "control",
+   "age": "3 months",
+   "tp": "3mo",
+   "loaded_kernel": "loaded_sd0.001",
+   "KS_gof_neutral": 0.05697147398843927,
+   "KS_gof_loaded": 0.05578772639691715
+  },
+  {
+   "n": 4152,
+   "T": 5.996201416920185,
+   "T0_med": 0.05298924069622646,
+   "T0_hi": 2.542030746411401,
+   "T1_med": 0.13048933536088492,
+   "T1_lo": -2.1999954572826432,
+   "z_neut": 4.048985436193913,
+   "z_load": 3.879744386835375,
+   "p_reject_neutral": 0.0,
+   "p_at_or_below_under_loaded": 1.0,
+   "arm": "control",
+   "age": "3 months",
+   "tp": "3mo",
+   "loaded_kernel": "loaded_sd0.01",
+   "KS_gof_neutral": 0.05697147398843927,
+   "KS_gof_loaded": 0.05548516377649326
+  },
+  {
+   "n": 3485,
+   "T": 23.902390220513183,
+   "T0_med": -0.03958722684412233,
+   "T0_hi": 1.9862359726207595,
+   "T1_med": 0.2721137171401805,
+   "T1_lo": -1.8882271317706654,
+   "z_neut": 19.35087246360011,
+   "z_load": 18.458044992700536,
+   "p_reject_neutral": 0.0,
+   "p_at_or_below_under_loaded": 1.0,
+   "arm": "control",
+   "age": "12 months",
+   "tp": "12mo",
+   "loaded_kernel": "loaded_sd0.001",
+   "KS_gof_neutral": 0.2762917446801534,
+   "KS_gof_loaded": 0.27576950968944736
+  },
+  {
+   "n": 3485,
+   "T": 128.59952483121154,
+   "T0_med": -20.113744541613766,
+   "T0_hi": -11.441503511150215,
+   "T1_med": 6.887428607232884,
+   "T1_lo": -2.61446822076773,
+   "z_neut": 27.75669452713143,
+   "z_load": 21.323139838619017,
+   "p_reject_neutral": 0.0,
+   "p_at_or_below_under_loaded": 1.0,
+   "arm": "control",
+   "age": "12 months",
+   "tp": "12mo",
+   "loaded_kernel": "loaded_sd0.01",
+   "KS_gof_neutral": 0.2762917446801534,
+   "KS_gof_loaded": 0.25882998436787696
+  },
+  {
+   "n": 188,
+   "T": 0.6340951927814471,
+   "T0_med": -0.02398823917086948,
+   "T0_hi": 0.4989265817413116,
+   "T1_med": 0.011383163962382682,
+   "T1_lo": -0.4402962373974348,
+   "z_neut": 2.1917743332436967,
+   "z_load": 2.0516431246341393,
+   "p_reject_neutral": 0.022333333333333334,
+   "p_at_or_below_under_loaded": 0.9773333333333334,
+   "arm": "DEN",
+   "age": "12 months",
+   "tp": "12mo",
+   "loaded_kernel": "loaded_sd0.001",
+   "KS_gof_neutral": 0.33144394941240707,
+   "KS_gof_loaded": 0.33027103193749363
+  },
+  {
+   "n": 188,
+   "T": 18.61174385409396,
+   "T0_med": -1.1094432324723023,
+   "T0_hi": 1.025271133225112,
+   "T1_med": 0.29722240246654563,
+   "T1_lo": -1.7842836640312463,
+   "z_neut": 15.842223197611146,
+   "z_load": 13.700096116205843,
+   "p_reject_neutral": 0.0,
+   "p_at_or_below_under_loaded": 1.0,
+   "arm": "DEN",
+   "age": "12 months",
+   "tp": "12mo",
+   "loaded_kernel": "loaded_sd0.01",
+   "KS_gof_neutral": 0.33144394941240707,
+   "KS_gof_loaded": 0.313713206025253
+  }
+ ],
+ "executed_test_reading": "DEN 1-mo arm (n=5,682): LR z=+8.6 vs neutral null BUT z=+9.4 vs the loaded model and both models misfit the arm equally (KS 0.092 vs 0.091) - the arm lies outside BOTH members; this is model inadequacy, not discrimination. Control 3-mo (n=4,152): z=1.4, p=0.087 at s_d=1e-3 -> cannot discriminate; at s_d=1e-2 z=4.05 is again dwarfed by the model's own misfit (ratio 2.6). The 12-mo control gives z~19-28 vs both models - pure misfit.",
+ "biological_effect_vs_model_channel": {
+  "DEN_over_control_median_area_ratio_by_age": {
+   "1mo": 0.84,
+   "3mo": 1.42,
+   "6mo": 3.4,
+   "12mo": 8.55
+  },
+  "model_loaded_over_neutral_mean_area_ratio_12mo_sd1e-2": 1.14,
+  "reading": "the real load contrast (mutagenised vs control tissue) is a ~9-fold, monotonically growing enlargement driven by positive selection; the model's deleterious-load channel is a ~1.14-fold effect appearing only at 12 mo - opposite provenance and ~50x smaller. The discriminating observable in these data is DEN-vs-control clone enlargement, and it is not produced by this kernel."
+ },
+ "arm_totals_used": {
+  "control_1_to_12mo": 25976,
+  "DEN_1_to_12mo": 6690
+ }
+}
