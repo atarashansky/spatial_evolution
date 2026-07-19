@@ -17,7 +17,13 @@
    8e-06,
    0.002
   ],
-  "note": "~50 SBS/yr / 25-50 div/yr"
+  "note": "~50 SBS/yr / 25-50 div/yr",
+  "source": "Lee-Six 2019 (10.1038/s41586-019-1672-7): ~49 SBS/crypt/yr; Cagan 2022 (10.1038/s41586-022-04618-z): 40/yr [31-50]; divisions from crypt stem-cell dynamics (Baker 2014 10.1016/j.celrep.2014.07.019; Snippert 2010; Lopez-Garcia 2010). mu_d = snv_per_div x del_frac.",
+  "del_frac": [
+   0.02,
+   0.1
+  ],
+  "rule": "mu_d = snv_per_div * del_frac"
  },
  {
   "tissue": "Epidermis (sun-exp.)",
@@ -37,7 +43,13 @@
    5e-05,
    0.008
   ],
-  "note": "2-6 mut/Mb burden / ~2.6k divisions"
+  "note": "2-6 mut/Mb burden / ~2.6k divisions",
+  "source": "Martincorena 2015 (10.1126/science.aaa6806): 2-6 mut/Mb genome-wide in aged sun-exposed skin; ~2.6e3 divisions; mu_d capped at 0.8.",
+  "del_frac": [
+   0.02,
+   0.1
+  ],
+  "rule": "mu_d = snv_per_div * del_frac"
  },
  {
   "tissue": "HSC (blood)",
@@ -57,7 +69,13 @@
    7e-05,
    0.008
   ],
-  "note": "~14-17 SBS/yr / one division per 25-50 wk (1.04-2.09 div/yr)"
+  "note": "~14-17 SBS/yr / one division per 25-50 wk (1.04-2.09 div/yr)",
+  "source": "ROW WITHDRAWN in manuscript v82+ (structural mismatch: monolayer vs marrow). Inputs retained for the record only.",
+  "del_frac": [
+   0.02,
+   0.1
+  ],
+  "rule": "mu_d = snv_per_div * del_frac"
  },
  {
   "tissue": "Hypermutator tumor",
@@ -77,6 +95,12 @@
    0.0004,
    0.024
   ],
-  "note": "4-100x normal per-division rate"
+  "note": "4-100x normal per-division rate",
+  "source": "4-100x per-division elevation over crypt baseline (hypermutator/MMR-deficient tumours); mu_d capped at 0.8.",
+  "del_frac": [
+   0.02,
+   0.1
+  ],
+  "rule": "mu_d = snv_per_div * del_frac"
  }
 ]
